@@ -104,46 +104,712 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Genesis" startnode="1" creator="Twine" creator-version="2.12.0" format="SugarCube" format-version="2.37.3" ifid="1A11FB98-0316-42E9-A992-498A9C9F5734" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="325,250" size="100,100">&lt;&lt;set $chapter = &quot;Глава I&quot;&gt;&gt;
-&lt;&lt;set $question = 1&gt;&gt;
+	<tw-storydata name="Genesis" startnode="1" creator="Twine" creator-version="2.12.0" format="SugarCube" format-version="2.37.3" ifid="1A11FB98-0316-42E9-A992-498A9C9F5734" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=MedievalSharp&display=swap');
+/* =========================================
+        GENESIS UI SYSTEM v1.0
+        SugarCube Edition
+========================================= */
 
-━━━━━━━━━━━━━━━━━━━━━━
 
+/* =========================================
+        УБИРАЕМ СТАНДАРТНЫЙ UI SUGARCUBE
+========================================= */
+
+
+#ui-bar {
+    display: none;
+}
+
+
+#ui-bar-tray {
+    display: none;
+}
+
+
+/* Основное окно */
+
+#story {
+
+    width:100%;
+
+    min-height:100vh;
+
+    margin-left:0;
+
+}
+
+
+
+/* =========================================
+        ОСНОВНОЙ ЭКРАН
+========================================= */
+
+
+body {
+
+    background:
+    radial-gradient(
+        circle at center,
+        #202030 0%,
+        #090910 60%,
+        #030305 100%
+    );
+
+
+    color:#e6e6e6;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+/* Центральный блок */
+
+.passage {
+
+    width:90%;
+
+
+    max-width:900px;
+
+
+    margin:
+
+    50px auto;
+
+
+    padding:
+
+    45px 35px;
+
+
+
+    background:
+
+    rgba(20,20,35,0.75);
+
+
+
+    border:
+
+    1px solid rgba(180,160,80,0.35);
+
+
+
+    border-radius:18px;
+
+
+
+    box-shadow:
+
+
+    0 0 40px rgba(120,100,255,0.15),
+
+
+    inset 0 0 40px rgba(0,0,0,0.3);
+
+
+
+    animation:
+
+    genesisAppear 0.8s ease;
+
+}
+
+
+
+/* =========================================
+        АНИМАЦИЯ ПОЯВЛЕНИЯ
+========================================= */
+
+
+@keyframes genesisAppear {
+
+
+    from {
+
+        opacity:0;
+
+        transform:
+
+        translateY(25px);
+
+    }
+
+
+
+    to {
+
+        opacity:1;
+
+        transform:
+
+        translateY(0);
+
+    }
+
+}
+
+
+
+/* =========================================
+        ЗАГОЛОВКИ
+========================================= */
+
+
+h1 {
+
+    font-family:
+
+    "Cinzel",
+    serif;
+
+
+    color:#d4af37;
+
+
+    letter-spacing:12px;
+
+
+    font-size:46px;
+
+
+    text-shadow:
+
+    0 0 10px #d4af37,
+
+    0 0 30px rgba(212,175,55,0.7);
+
+}
+
+
+
+h2,
+h3 {
+
+    text-align:center;
+
+
+    color:#ccccff;
+
+}
+
+
+
+/* =========================================
+        РАЗДЕЛИТЕЛИ
+========================================= */
+
+
+hr {
+
+
+    border:none;
+
+
+    height:1px;
+
+
+    margin:30px 0;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        #d4af37,
+
+        transparent
+
+    );
+
+}
+
+
+
+/* =========================================
+        SYSTEM MESSAGE
+========================================= */
+
+
+.system-message {
+
+
+    color:#9fc7ff;
+
+
+    font-style:italic;
+
+
+    text-align:center;
+
+
+
+    text-shadow:
+
+
+    0 0 10px rgba(100,180,255,0.7);
+
+}
+
+
+
+/* =========================================
+        КНОПКИ SUGARCUBE
+========================================= */
+
+
+button,
+.button {
+
+
+    display:block;
+
+
+    width:80%;
+
+
+    max-width:520px;
+
+
+
+    margin:
+
+    15px auto;
+
+
+
+    padding:
+
+    16px 20px;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        145deg,
+
+        rgba(40,40,65,0.95),
+
+        rgba(15,15,30,0.95)
+
+    );
+
+
+
+    color:#e8e8e8;
+
+
+
+    border:
+
+
+    1px solid rgba(212,175,55,0.45);
+
+
+
+    border-radius:12px;
+
+
+
+    font-size:18px;
+
+
+    letter-spacing:1px;
+
+
+
+    cursor:pointer;
+
+
+
+    transition:
+
+    all .3s ease;
+
+
+
+    box-shadow:
+
+
+    0 0 15px rgba(0,0,0,0.5);
+
+}
+
+
+
+/* Наведение */
+
+button:hover,
+.button:hover {
+
+
+    color:white;
+
+
+
+    border-color:#d4af37;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        145deg,
+
+        rgba(80,70,120,0.9),
+
+        rgba(30,25,60,0.95)
+
+    );
+
+
+
+    box-shadow:
+
+
+    0 0 25px rgba(212,175,55,0.45);
+
+
+
+    transform:
+
+    translateY(-3px);
+
+}
+
+
+
+/* Нажатие */
+
+button:active,
+.button:active {
+
+
+    transform:
+
+    translateY(1px);
+
+}
+
+
+
+/* Кнопка продолжения */
+
+.genesis-continue {
+
+
+    border-color:
+
+    rgba(100,180,255,0.7);
+
+
+
+    box-shadow:
+
+
+    0 0 20px rgba(100,180,255,0.3);
+
+}
+
+
+
+/* =========================================
+        ССЫЛКИ TWINE
+========================================= */
+
+
+/* На случай если где-то остались [[выборы]] */
+
+
+a.link-internal {
+
+
+    display:block;
+
+
+    text-align:center;
+
+
+
+    margin:
+
+    15px auto;
+
+
+
+    padding:
+
+    15px;
+
+
+
+    max-width:500px;
+
+
+
+    color:#e6e6e6;
+
+
+
+    background:
+
+
+    rgba(40,40,60,0.8);
+
+
+
+    border:
+
+
+    1px solid rgba(212,175,55,0.5);
+
+
+
+    border-radius:10px;
+
+
+
+    transition:
+
+    .3s;
+
+}
+
+
+
+a.link-internal:hover {
+
+
+    color:white;
+
+
+
+    background:
+
+
+    rgba(80,70,120,0.8);
+
+
+
+    box-shadow:
+
+
+    0 0 20px rgba(212,175,55,0.5);
+
+}
+
+
+
+/* =========================================
+        МОБИЛЬНАЯ ВЕРСИЯ
+========================================= */
+
+
+@media screen and (max-width:700px) {
+
+
+    .passage {
+
+
+        width:95%;
+
+
+        padding:
+
+        25px 15px;
+
+    }
+
+
+
+    body {
+
+
+        font-size:16px;
+
+    }
+
+
+
+    h1 {
+
+
+        font-size:30px;
+
+
+        letter-spacing:5px;
+
+    }
+
+
+
+    button,
+    .button {
+
+
+        width:95%;
+
+
+        font-size:16px;
+
+    }
+
+}
+
+/* =====================================
+        GENESIS MAGIC PARTICLES
+===================================== */
+
+
+body::before {
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+
+    pointer-events:none;
+
+
+    background-image:
+
+    radial-gradient(
+        circle,
+        rgba(212,175,55,0.75) 1.5px,
+        transparent 3px
+    );
+
+
+    background-size:
+
+    100px 100px;
+
+
+    animation:
+
+    particlesMove 18s linear infinite;
+
+
+    opacity:0.45;
+
+
+    z-index:-1;
+
+}
+
+
+
+@keyframes particlesMove {
+
+
+    from {
+
+        background-position:
+
+        0 0;
+
+    }
+
+
+    to {
+
+        background-position:
+
+        400px 400px;
+
+    }
+
+}
+
+/* =====================================
+        GENESIS TYPEWRITER ALIGNMENT
+===================================== */
+
+.typewriter {
+
+    text-align:center;
+
+    color:#ffed9f;
+
+    font-style:italic;
+  font-family:
+    "Playfair Display",
+    serif;
+
+    text-shadow:
+
+    0 0 10px rgba(100,180,255,0.7);
+
+
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">document.head.innerHTML += `
+<link href="https://fonts.googleapis.com/css2?family=Share Tech Mono:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+`;</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="325,250" size="100,100">&lt;&lt;set $chapter = &quot;Глава I&quot;&gt;&gt;&lt;&lt;set $question = 1&gt;&gt;&lt;div class=&quot;typewriter&quot;&gt;━━━━━━━━━━━━━━━━━━━━━━
 Испытание Судьбы
-
 ━━━━━━━━━━━━━━━━━━━━━━
 
-
-Ты не помнишь своего имени.
-
-У тебя нет тела.
-
+Нет имени.
+Нет тела.
 Нет голоса.
+Нет воспоминаний.
 
-Нет прошлого.
 
-Есть только ощущение существования.
+Существует лишь осознание.
+Тихое чувство присутствия среди бесконечного пространства, где ещё не определено, кем ты являешься.
 
-Перед тобой появляется бесконечное пространство, похожее на поверхность спокойного зеркала.
+Вокруг нет ни неба, ни земли.
+Только бескрайняя зеркальная поверхность, уходящая за пределы видимости.
+Каждое отражение показывает возможные формы существования.
+Чужие судьбы.
+Неизвестные пути.
+Но среди всех отражений нет одного.
+Твоего.
 
-На его поверхности возникает текст.
+Спустя некоторое время неподвижная поверхность начинает меняться.
+По зеркальной глади проходит едва заметная рябь.
+Из глубины пространства появляются светящиеся символы.
 
 ━━━━━━━━━━━━━━━━━━━━━━
-
 Система
-
 ━━━━━━━━━━━━━━━━━━━━━━
 
 Испытание Судьбы начато.
+Проверка сущности...
 
-Определение сущности запущено.
+Форма отсутствует.
+Память отсутствует.
+Прошлое недоступно.
 
-Будущая форма будет создана на основе принятых решений.
+Текущая природа не определена.
+Начинается процесс формирования.
+
+Каждое решение станет частью твоего существования.
+Каждый выбор изменит путь, который ещё не создан.
 
 ━━━━━━━━━━━━━━━━━━━━━━
+&lt;&lt;button &quot;Начать испытание&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q001&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 
-
-[[Начать испытание-&gt;Q001]]</tw-passagedata><tw-passagedata pid="2" name="StoryInit" tags="" position="125,250" size="100,100">&lt;&lt;set $logic = 0&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="StoryInit" tags="" position="125,250" size="100,100">&lt;&lt;set $logic = 0&gt;&gt;
 &lt;&lt;set $intuition = 0&gt;&gt;
 &lt;&lt;set $empathy = 0&gt;&gt;
 &lt;&lt;set $charisma = 0&gt;&gt;
@@ -160,7 +826,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;&lt;set $adaptability = 0&gt;&gt;
 &lt;&lt;set $nature = 0&gt;&gt;
 &lt;&lt;set $order = 0&gt;&gt;
-
+&lt;&lt;set $chaos = 0&gt;&gt;
 
 &lt;&lt;set $mirrorStage = 0&gt;&gt;
 
@@ -178,2382 +844,2501 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;&lt;set $hiddenAngel = false&gt;&gt;
 &lt;&lt;set $hiddenDemon = false&gt;&gt;
 &lt;&lt;set $hiddenVoid = false&gt;&gt;
-&lt;&lt;set $hiddenCreator = false&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="Widgets" tags="widget" position="125,375" size="100,100">&lt;&lt;widget &quot;header&quot;&gt;&gt;
-
-━━━━━━━━━━━━━━━━━━━━━━
-
+&lt;&lt;set $hiddenCreator = false&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="Widgets" tags="widget" position="125,375" size="100,100">&lt;&lt;widget &quot;header&quot;&gt;&gt;━━━━━━━━━━━━━━━━━━━━━━
 Испытание Судьбы
-
 &lt;&lt;print $chapter&gt;&gt;
-
 Вопрос &lt;&lt;print $question&gt;&gt; / 50
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-&lt;&lt;/widget&gt;&gt;
-
-
-&lt;&lt;widget &quot;system&quot;&gt;&gt;
-
-━━━━━━━━━━━━━━━━━━━━━━
-
+━━━━━━━━━━━━━━━━━━━━━━&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &quot;system&quot;&gt;&gt;━━━━━━━━━━━━━━━━━━━━━━
 Система
-
 ━━━━━━━━━━━━━━━━━━━━━━
+&lt;&lt;print _args[0]&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="Q001" tags="" position="325,375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 1&gt;&gt;&lt;&lt;header&gt;&gt;
 
-&lt;&lt;print _args[0]&gt;&gt;
+На краю небольшой деревни стоит дом, в котором ещё горит свет.
 
-━━━━━━━━━━━━━━━━━━━━━━
+Зима пришла раньше обычного.
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="Q001" tags="" position="325,375" size="100,100">&lt;&lt;set $question = 1&gt;&gt;
+В амбаре осталось немного зерна.
 
-&lt;&lt;header&gt;&gt;
+Несколько семей уже начали просить помощи, но запасов недостаточно даже для всех жителей.
 
+Староста обращается к тебе и ждёт решения.
 
-Ты существуешь в пустоте.
-
-Перед тобой появляется первый выбор.
-
-Перед тобой возникают пять дверей.
-
-Первая сделана из белого камня.
-
-Вторая покрыта древними символами.
-
-Третья выглядит как живая древесина.
-
-Четвёртая состоит из тёмного металла.
-
-Пятая не имеет формы — лишь колебание воздуха.
-
-
-Что ты делаешь?
-
-
-&lt;&lt;button &quot;Коснуться двери из камня&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
+&lt;&lt;button &quot;Разделить оставшиеся запасы между всеми жителями&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
 	&lt;&lt;goto &quot;Q002&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить символы на двери&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Передать запасы тем, кто сможет выжить до весны&quot;&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $caution += 1&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q002&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Отправиться искать новые источники пищи&quot;&gt;&gt;
+	&lt;&lt;set $adventure += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;set $nature += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q002&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать часть запасов и использовать их для собственной цели&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
 	&lt;&lt;set $curiosity += 1&gt;&gt;
 	&lt;&lt;goto &quot;Q002&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Прислушаться к двери из дерева&quot;&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
-	&lt;&lt;set $nature += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q002&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Открыть тёмную дверь без раздумий&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $adventure += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q002&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попытаться понять невидимую дверь&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q002&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Q002" tags="" position="325,500" size="100,100">&lt;&lt;set $question = 2&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-
-Перед тобой появляется первый звук.
-
-Где-то далеко звучит голос.
-
-Он просит выбрать один предмет, который появится в твоём будущем доме.
-
-
-&lt;&lt;button &quot;Старинная книга знаний&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Не вмешиваться и позволить деревне решить проблему самостоятельно&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $intuition += 1&gt;&gt;
 	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q003&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q002&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Меч неизвестного героя&quot;&gt;&gt;
-	&lt;&lt;set $determination += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q003&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="Q002" tags="" position="325,500" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 2&gt;&gt;&lt;&lt;header&gt;&gt;
 
-&lt;&lt;button &quot;Семя древнего дерева&quot;&gt;&gt;
-	&lt;&lt;set $nature += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q003&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+Перед тобой находится древнее помещение, которого нет ни на одной карте.
 
-&lt;&lt;button &quot;Кристалл с неизвестной энергией&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
+Каменные стены покрыты символами неизвестного происхождения.
+
+В центре лежит предмет, созданный не людьми.
+
+Он не проявляет агрессии.
+
+Но ты чувствуешь, что он способен изменить многое.
+
+Несколько голосов вокруг требуют разных решений.
+
+&lt;&lt;button &quot;Изучить предмет и попытаться понять его природу&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
 	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
 	&lt;&lt;goto &quot;Q003&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Серебряное зеркало&quot;&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Скрыть предмет, чтобы никто не смог использовать его во вред&quot;&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
 	&lt;&lt;set $selfControl += 1&gt;&gt;
 	&lt;&lt;goto &quot;Q003&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Q003" tags="" position="325,625" size="100,100">&lt;&lt;set $question = 3&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-
-Перед тобой появляется разрушенный город.
-
-Ты видишь одного выжившего.
-
-Он просит помощи.
-
-Но неизвестно, является ли он причиной гибели города.
-
-
-&lt;&lt;button &quot;Спасти его немедленно&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Передать предмет тем, кто сможет использовать его для защиты мира&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
 	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Сначала выяснить правду&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $caution += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Оставить его и продолжить путь&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Наблюдать издалека&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Предложить ему идти вместе&quot;&gt;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Q004" tags="" position="325,750" size="100,100">&lt;&lt;set $question = 4&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-
-Ты находишь древний источник силы.
-
-Он может дать тебе могущество.
-
-Но неизвестно, какую цену потребует этот дар.
-
-
-&lt;&lt;button &quot;Использовать силу сразу&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q003&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать силу предмета, пока она доступна&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
 	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q005&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить источник прежде чем брать силу&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $caution += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q005&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попытаться очистить источник&quot;&gt;&gt;
-	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $nature += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q005&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Отказаться от силы&quot;&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q003&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить предмет, пока он не изменил судьбы других&quot;&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;set $will += 1&gt;&gt;
 	&lt;&lt;set $selfControl += 2&gt;&gt;
 	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q005&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q003&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Связать силу с собой навсегда&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="6" name="Q003" tags="" position="325,625" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 3&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Ты просыпаешься в незнакомом месте.
+
+Перед тобой стоит зеркало.
+
+Но оно отражает не твоё лицо.
+
+В нём показываются разные возможности:
+
+воин с оружием в руках;
+
+учёный среди бесконечных книг;
+
+существо с крыльями;
+
+сила, способная изменить окружающий мир.
+
+Голоса из зеркала задают только один вопрос:
+
+&quot;Что ты сделаешь, если однажды получишь силу, превосходящую других?&quot;
+
+&lt;&lt;button &quot;Использую её, чтобы защищать тех, кто не может защитить себя&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $will += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Буду изучать её, пока не пойму все её возможности&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создам новый порядок, где эта сила будет использоваться правильно&quot;&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
 	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Освобожу себя от любых ограничений и буду следовать своему пути&quot;&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Проверю пределы этой силы, даже если мир не выдержит&quot;&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;set $chaos += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q004&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="Q004" tags="" position="325,750" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 4&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой лежит древний механизм.
+
+Когда-то он защищал целый город.
+
+Но сейчас он повреждён.
+
+Чтобы восстановить его, нужна энергия живого существа.
+
+Если активировать механизм, тысячи людей будут спасены.
+
+Но кто-то один должен отдать часть своей силы и больше никогда не сможет жить прежней жизнью.
+
+Перед тобой стоит тот, кто может принять это решение.
+
+&lt;&lt;button &quot;Отдать часть своей силы и восстановить защиту города&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $will += 1&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
 	&lt;&lt;goto &quot;Q005&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Q005" tags="" position="325,875" size="100,100">&lt;&lt;set $question = 5&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-
-Перед тобой появляется зеркало.
-
-В нём ничего нет.
-
-Но голос сообщает:
-
-«Первый этап формирования требует решения».
-
-
-Ты видишь собственную пустоту.
-
-Что ты пытаешься создать первым?
-
-
-&lt;&lt;button &quot;Форму тела&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Найти другой способ, даже если потребуется больше времени&quot;&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $patience += 2&gt;&gt;
+	&lt;&lt;set $knowledge += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q005&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Выбрать того, чья жертва принесёт наибольшую пользу&quot;&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q005&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Отказаться от спасения города, потому что никто не имеет права требовать такую цену&quot;&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q005&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Поглотить энергию механизма и получить её силу себе&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;set $chaos += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q005&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Взгляд, который сможет видеть мир&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="Q005" tags="" position="325,875" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 5&gt;&gt;&lt;&lt;header&gt;&gt;
 
-&lt;&lt;button &quot;Сердце, способное чувствовать&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+Пространство вокруг меняется.
 
-&lt;&lt;button &quot;Разум, способный понять всё&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+Ты снова оказываешься среди бесконечных зеркал.
 
-&lt;&lt;button &quot;Силу, способную изменить судьбу&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="System_05" tags="" position="325,1000" size="100,100">&lt;&lt;set $mirrorStage = 1&gt;&gt;
+Но теперь одно из них больше не пустое.
 
-&lt;&lt;system &quot;Начальный этап завершён.&lt;br&gt;&lt;br&gt;Формирование оболочки начато.&lt;br&gt;&lt;br&gt;Обнаружено первое направление развития сущности.&quot;&gt;&gt;
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Mirror_05&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="Mirror_05" tags="" position="325,1125" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
-
-Зеркальное пространство
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-Поверхность зеркала начинает меняться.
-
-Там, где раньше была лишь пустота, появляется силуэт.
+В отражении появляется силуэт.
 
 Он ещё не имеет лица.
 
 Не имеет имени.
 
-Но теперь ты можешь увидеть очертания будущего тела.
+Но он уже отличается от остальных возможных форм.
 
+Перед зеркалом возникают несколько образов:
+
+существо, связанное с миром живых;
+
+существо, созданное из древней силы;
+
+существо, которое существует вне привычных законов;
+
+существо, способное вести других за собой.
+
+Система наблюдает.
+
+Первое изменение сущности должно быть принято.
+
+&lt;&lt;button &quot;Выбрать форму, которая будет защищать этот мир&quot;&gt;&gt;
+	&lt;&lt;set $justice += 5&gt;&gt;
+	&lt;&lt;set $empathy += 3&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Выбрать форму, которая позволит познать все тайны существования&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 5&gt;&gt;
+	&lt;&lt;set $curiosity += 3&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Выбрать форму, которая сможет изменить сам порядок мира&quot;&gt;&gt;
+	&lt;&lt;set $will += 5&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $hiddenCreator = true&gt;&gt;
+	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Выбрать форму, которая не будет подчиняться никаким законам&quot;&gt;&gt;
+	&lt;&lt;set $independence += 5&gt;&gt;
+	&lt;&lt;set $adaptability += 3&gt;&gt;
+	&lt;&lt;set $chaos += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Отказаться выбирать и позволить форме появиться самой&quot;&gt;&gt;
+	&lt;&lt;set $intuition += 5&gt;&gt;
+	&lt;&lt;set $selfControl += 3&gt;&gt;
+	&lt;&lt;set $patience += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_05&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="System_05" tags="" position="325,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 1&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Стабилизация сущности выполнена.&lt;br&gt;&lt;br&gt;Обнаружены первые признаки формирующегося пути.&lt;br&gt;&lt;br&gt;Начинается дальнейшее определение природы существования.&quot;&gt;&gt;
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Mirror_05&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="Mirror_05" tags="" position="325,1125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+Зеркальная поверхность начинает двигаться.
+
+По её глади проходят волны, словно пространство впервые пытается отразить то, чего ещё не существует.
+Из глубины зеркала постепенно проявляется силуэт.
+
+У него нет лица.
+Нет определённых черт.
+Нет формы, которую можно назвать окончательной.
+
+Лишь первые признаки будущего воплощения.
+
+━━━━━━━━━━━━━━━━━━━━━━
 
 Формирование оболочки:
-
 10%
 
+Система фиксирует:
+Начальная структура проявлена.
+Сущность начинает обретать форму.
 
-━━━━━━━━━━━━━━━━━━━━━━
 
-
-&lt;&lt;button &quot;Продолжить испытание&quot;&gt;&gt;
+&lt;&lt;button &quot;Продолжить испытание&quot; class=&quot;genesis-continue&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Q006&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Q006" tags="" position="325,1250" size="100,100">&lt;&lt;set $question = 6&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется дорога.
-
-Она разделяется на пять путей.
-
-Каждый путь ведёт в неизвестное место.
-
-На одном слышен шум битвы.
-
-На другом — голоса учёных.
-
-Третий окружён лесом.
-
-Четвёртый скрыт туманом.
-
-Пятый полностью пуст.
-
-
-Какой путь ты выбираешь?
-
-
-&lt;&lt;button &quot;Путь битвы&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q007&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Путь знаний&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="Q006" tags="" position="325,1250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 6&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой небольшая мастерская.
+
+В воздухе стоит запах металла, дерева и огня.
+
+На столе лежит незаконченный предмет, над которым работали несколько поколений.
+
+Говорят, что если завершить его правильно, он прослужит сотни лет.
+
+Но многие считают, что тратить годы на одну вещь бессмысленно.
+
+Тебе предлагают решить, что делать дальше.
+
+&lt;&lt;button &quot;Продолжить работу и создать предмет, который останется после тебя&quot;&gt;&gt;
+	&lt;&lt;set $patience += 2&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $knowledge += 1&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q007&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изменить задумку и создать что-то совершенно новое&quot;&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 2&gt;&gt;
 	&lt;&lt;set $logic += 1&gt;&gt;
 	&lt;&lt;goto &quot;Q007&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Продать работу тому, кто сможет использовать её лучше&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;set $caution += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q007&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Сохранить тайну создания и никому не передавать знания&quot;&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q007&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить созданное и начать всё с нуля&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;set $chaos += 1&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q007&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Путь леса&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="Q007" tags="" position="425,1375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 7&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Лес простирается далеко за пределы видимости.
+
+Ты идёшь по следам существа, которого никто раньше не встречал.
+
+На земле остаются странные следы.
+
+Некоторые считают это чудовищем.
+
+Другие говорят, что это древний хранитель леса, который просто пытается выжить.
+
+Через несколько часов ты находишь его убежище.
+
+Существо ранено и не может уйти.
+
+Оно смотрит на тебя и ждёт решения.
+
+&lt;&lt;button &quot;Помочь существу и попытаться понять его&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
 	&lt;&lt;set $nature += 2&gt;&gt;
 	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q007&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Путь тумана&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q007&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Путь пустоты&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $selfControl += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q007&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Q007" tags="" position="425,1375" size="100,100">&lt;&lt;set $question = 7&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты находишь древнюю рукопись.
-
-Она написана неизвестным языком.
-
-Ты можешь:
-
-&lt;&lt;button &quot;Попытаться расшифровать её&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
 	&lt;&lt;goto &quot;Q008&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Использовать магию для понимания&quot;&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q008&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Сохранить её для будущего&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q008&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Продать её тому, кто заплатит больше&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q008&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Уничтожить её, если она опасна&quot;&gt;&gt;
-	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q008&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="Q008" tags="" position="525,1250" size="100,100">&lt;&lt;set $question = 8&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется существо, раненное после битвы.
-
-Оно сильнее тебя.
-
-Но сейчас оно не может сопротивляться.
-
-
-&lt;&lt;button &quot;Помочь ему восстановиться&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить его способности&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попросить его поделиться силой&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Оставить его в покое&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Оставить его в покое и продолжить свой путь&quot;&gt;&gt;
 	&lt;&lt;set $independence += 2&gt;&gt;
 	&lt;&lt;set $caution += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Подготовиться к возможной угрозе&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="Q009" tags="" position="525,1125" size="100,100">&lt;&lt;set $question = 9&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется древняя печать.
-
-Из неё доносится голос.
-
-«Тот, кто разрушит меня, получит силу.
-Тот, кто сохранит меня, получит знание».
-
-
-&lt;&lt;button &quot;Разрушить печать&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $adventure += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить печать&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q008&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить его происхождение и узнать больше&quot;&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
 	&lt;&lt;set $knowledge += 2&gt;&gt;
 	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Защитить печать&quot;&gt;&gt;
-	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попытаться изменить её назначение&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q008&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать ситуацию и получить преимущество&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
 	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q008&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить неизвестное существо до того, как оно станет угрозой&quot;&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;set $will += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q008&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Оставить всё как есть&quot;&gt;&gt;
-	&lt;&lt;set $patience += 2&gt;&gt;
-	&lt;&lt;set $selfControl += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="Q010" tags="" position="525,1000" size="100,100">&lt;&lt;set $question = 10&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="Q008" tags="" position="525,1250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 8&gt;&gt;&lt;&lt;header&gt;&gt;
 
-&lt;&lt;header&gt;&gt;
+Перед тобой открывается древняя библиотека.
 
-━━━━━━━━━━━━━━━━━━━━━━
+Её стены покрыты символами, которых нет ни в одной известной письменности.
 
-РОКОВОЙ ВОПРОС
+В центре зала находится единственная книга.
 
-━━━━━━━━━━━━━━━━━━━━━━
+Она может содержать знания о прошлом мира.
 
+Но говорят, что некоторые знания меняют тех, кто их получает.
 
-Перед тобой появляется отражение.
+Книга открыта.
 
-Оно впервые говорит:
-
-
-«Ты можешь выбрать путь, который изменит твою судьбу».
-
-
-Перед тобой пять символов.
-
-
-Первый — крыло света.
-
-Второй — пламя.
-
-Третий — тень.
-
-Четвёртый — бесконечная пустота.
-
-Пятый — золотая звезда.
-
-
-Что ты принимаешь?
-
-
-&lt;&lt;button &quot;Крыло света&quot;&gt;&gt;
-	&lt;&lt;set $hiddenAngel = true&gt;&gt;
-	&lt;&lt;set $justice += 3&gt;&gt;
+&lt;&lt;button &quot;Прочитать книгу и принять последствия знания&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Скрыть книгу, чтобы никто не смог использовать её силу&quot;&gt;&gt;
 	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;goto &quot;System_10&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Пламя древней силы&quot;&gt;&gt;
-	&lt;&lt;set $hiddenDragon = true&gt;&gt;
-	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Передать книгу тем, кто сможет изучить её лучше&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;set $empathy += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать знания для получения силы&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить книгу вместе с содержащимися в ней тайнами&quot;&gt;&gt;
 	&lt;&lt;set $determination += 2&gt;&gt;
-	&lt;&lt;goto &quot;System_10&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q009&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Тень бездны&quot;&gt;&gt;
-	&lt;&lt;set $hiddenDemon = true&gt;&gt;
-	&lt;&lt;set $curiosity += 3&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="Q009" tags="" position="525,1125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 9&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Городские ворота закрыты.
+
+За ними остаются люди, которым не удалось попасть внутрь до начала осады.
+
+Стражники говорят, что если открыть ворота, город может пасть.
+
+Если оставить их закрытыми, многие погибнут снаружи.
+
+Все ждут твоего решения.
+
+&lt;&lt;button &quot;Открыть ворота и принять риск ради спасения людей&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $will += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Оставить ворота закрытыми ради защиты города&quot;&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Попытаться найти другой путь и спасти всех&quot;&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать хаос осады в своих целях&quot;&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Передать решение тому, кто несёт ответственность&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;set $intuition += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q010&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="Q010" tags="" position="525,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 10&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Зеркала снова появляются вокруг тебя.
+
+Но теперь они больше не показывают пустоту.
+
+В каждом отражении существует другая версия тебя.
+
+В одном ты стоишь среди людей.
+
+В другом — среди существ, которых никогда не видел этот мир.
+
+В третьем — над городами и королевствами.
+
+В четвёртом — за пределами самого пространства.
+
+Система наблюдает.
+
+Она задаёт первый вопрос о природе твоей силы.
+
+Перед тобой появляется источник энергии.
+
+Он может стать основой будущего воплощения.
+
+Но каждая форма силы требует выбора.
+
+&lt;&lt;button &quot;Использовать силу, чтобы защищать тех, кто слабее тебя&quot;&gt;&gt;
+	&lt;&lt;set $justice += 5&gt;&gt;
+	&lt;&lt;set $empathy += 5&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_10&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить силу и понять все её возможности&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 5&gt;&gt;
+	&lt;&lt;set $curiosity += 5&gt;&gt;
+	&lt;&lt;set $logic += 3&gt;&gt;
 	&lt;&lt;set $intuition += 2&gt;&gt;
 	&lt;&lt;goto &quot;System_10&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Пустоту между мирами&quot;&gt;&gt;
-	&lt;&lt;set $hiddenVoid = true&gt;&gt;
-	&lt;&lt;set $logic += 3&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать силу себе и подняться выше остальных&quot;&gt;&gt;
+	&lt;&lt;set $will += 5&gt;&gt;
+	&lt;&lt;set $charisma += 3&gt;&gt;
+	&lt;&lt;set $determination += 4&gt;&gt;
 	&lt;&lt;set $independence += 2&gt;&gt;
 	&lt;&lt;goto &quot;System_10&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изменить силу так, чтобы она стала чем-то новым&quot;&gt;&gt;
+	&lt;&lt;set $adaptability += 5&gt;&gt;
+	&lt;&lt;set $curiosity += 3&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $hiddenCreator = true&gt;&gt;
+	&lt;&lt;goto &quot;System_10&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Отказаться от силы и сохранить свободу выбора&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 5&gt;&gt;
+	&lt;&lt;set $independence += 3&gt;&gt;
+	&lt;&lt;set $patience += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_10&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Золотую звезду творения&quot;&gt;&gt;
-	&lt;&lt;set $hiddenCreator = true&gt;&gt;
-	&lt;&lt;set $charisma += 3&gt;&gt;
-	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;goto &quot;System_10&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="System_10" tags="" position="525,875" size="100,100">&lt;&lt;set $mirrorStage = 2&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="System_10" tags="" position="525,875" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 2&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Вероятности формирования пересчитаны.&lt;br&gt;&lt;br&gt;Обнаружены новые направления развития сущности.&lt;br&gt;&lt;br&gt;Предыдущие варианты существования больше недоступны.&quot;&gt;&gt;
 
-&lt;&lt;system &quot;Роковой выбор зарегистрирован.&lt;br&gt;&lt;br&gt;Вероятности будущего пересчитаны.&lt;br&gt;&lt;br&gt;Некоторые пути судьбы открыты.&lt;br&gt;&lt;br&gt;Некоторые пути больше недоступны.&quot;&gt;&gt;
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Mirror_10&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Mirror_10" tags="" position="525,750" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
+&lt;&lt;/button&gt;&gt;
 
-Зеркальное пространство
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="Mirror_10" tags="" position="525,750" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+Ты обращаешь внимание на одно из отражений.
+Впервые поверхность зеркала отвечает тебе.
+
+У сущности появляются глаза.
+Они ещё не имеют цвета.
+Не отражают эмоций.
+Не принадлежат ни одной форме существования.
+
+Но даже этот первый взгляд уже несёт след сделанных решений.
 
 ━━━━━━━━━━━━━━━━━━━━━━
 
-
-Ты смотришь в отражение.
-
-Теперь у сущности есть глаза.
-
-Они ещё не имеют цвета.
-
-Но в них уже отражается выбранный путь.
-
-
 Формирование оболочки:
-
 20%
 
+Система фиксирует:
+Элемент восприятия сформирован.
+Связь между сущностью и отражением усиливается.
 
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-&lt;&lt;button &quot;Продолжить испытание&quot;&gt;&gt;
+&lt;&lt;button &quot;Продолжить испытание&quot; class=&quot;genesis-continue&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Q011&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Q011" tags="" position="525,625" size="100,100">&lt;&lt;set $question = 11&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты оказываешься перед древним городом.
-
-Врата закрыты.
-
-Страж требует назвать причину, зачем тебе нужен вход.
-
-
-&lt;&lt;button &quot;Я хочу получить знания&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $charisma += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q012&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Я хочу стать сильнее&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="Q011" tags="" position="525,625" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 11&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Ты открываешь глаза в новом месте.
+
+Перед тобой небольшая деревня на краю неизвестных земель.
+
+Люди здесь давно забыли о помощи королевств.
+
+У них почти не осталось еды.
+
+Но рядом находится древний источник воды, который может изменить судьбу этих земель.
+
+Несколько групп хотят получить его.
+
+Одни обещают защитить деревню.
+
+Другие хотят использовать источник ради богатства.
+
+Тебе дают возможность сделать первый шаг.
+
+&lt;&lt;button &quot;Передать источник деревне и защитить её жителей&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $nature += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q012&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Сохранить источник и изучить его происхождение&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $caution += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q012&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать источник для создания собственной силы&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
 	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q012&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Разделить источник между всеми сторонами&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q012&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить источник, чтобы никто не смог им завладеть&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
 	&lt;&lt;set $will += 1&gt;&gt;
 	&lt;&lt;goto &quot;Q012&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Я хочу узнать тайны прошлого&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="19" name="Q012" tags="" position="525,500" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 12&gt;&gt;&lt;&lt;header&gt;&gt;
+
+В глубине подземелья ты находишь древний зал.
+
+На троне сидит существо, которое должно было исчезнуть тысячи лет назад.
+
+Оно не нападает.
+
+Оно предлагает сделку.
+
+Ему нужна помощь, чтобы вернуться в мир.
+
+Взамен оно обещает поделиться частью своей силы.
+
+Но никто не знает, что произойдёт после его возвращения.
+
+&lt;&lt;button &quot;Помочь существу и принять его обещание&quot;&gt;&gt;
 	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q012&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Я хочу помочь тем, кто внутри&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q012&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Я просто хочу увидеть мир&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q012&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Q012" tags="" position="525,500" size="100,100">&lt;&lt;set $question = 12&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты находишь существо, потерявшее память.
-
-Оно не знает, кем было раньше.
-
-
-&lt;&lt;button &quot;Помочь ему вспомнить&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Исследовать его прошлое&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Предложить начать новую жизнь&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Оставить его выбор ему самому&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Использовать его способности&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Q013" tags="" position="525,375" size="100,100">&lt;&lt;set $question = 13&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется оружие без владельца.
-
-Оно ждёт нового хозяина.
-
-
-&lt;&lt;button &quot;Взять его и изучить&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Использовать его в бою&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Передать его достойному человеку&quot;&gt;&gt;
-	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Спрятать его от мира&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попытаться изменить его природу&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Q014" tags="" position="525,250" size="100,100">&lt;&lt;set $question = 14&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты видишь сон о будущем.
-
-В нём есть несколько возможных версий тебя.
-
-
-&lt;&lt;button &quot;Изучить все варианты&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Выбрать самый могущественный путь&quot;&gt;&gt;
 	&lt;&lt;set $will += 2&gt;&gt;
 	&lt;&lt;set $adventure += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Выбрать самый мирный путь&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Отказаться и оставить древнюю силу запечатанной&quot;&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить существо до принятия решения&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $intuition += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Попытаться забрать его силу себе&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить существо вместе с его наследием&quot;&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
 	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q013&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Отказаться от предсказания&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="20" name="Q013" tags="" position="525,375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 13&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой поле после сражения.
+
+Разбитые знамена лежат среди обломков оружия.
+
+Среди погибших находятся люди, зверолюди и неизвестные существа.
+
+Те, кто остался в живых, больше не понимают, за что они сражались.
+
+Перед тобой появляется возможность решить судьбу оставшихся.
+
+&lt;&lt;button &quot;Остановить дальнейшую войну и помочь выжившим&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Наказать тех, кто начал это сражение&quot;&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $will += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить причины конфликта и найти истинного виновника&quot;&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $intuition += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать победу для укрепления своей власти&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Покинуть это место и оставить мир самому решать последствия&quot;&gt;&gt;
 	&lt;&lt;set $independence += 2&gt;&gt;
 	&lt;&lt;set $selfControl += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попытаться изменить сам сон&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Q015" tags="" position="625,125" size="100,100">&lt;&lt;set $question = 15&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой снова появляется зеркало.
-
-Силуэт внутри него становится чётче.
-
-Теперь ты должен выбрать, что появится первым.
-
-
-&lt;&lt;button &quot;Черты лица&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Волосы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Знак силы на теле&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Одежда будущего героя&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Аура вокруг сущности&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="System_15" tags="" position="725,250" size="100,100">&lt;&lt;set $mirrorStage = 3&gt;&gt;
-
-&lt;&lt;system &quot;Этап формирования завершён.&lt;br&gt;&lt;br&gt;Образ сущности становится устойчивым.&lt;br&gt;&lt;br&gt;Внешние признаки начинают проявляться.&quot;&gt;&gt;
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Mirror_15&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Mirror_15" tags="" position="725,375" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
-
-Зеркальное пространство
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-Отражение становится яснее.
-
-Теперь у сущности появляются первые черты лица.
-
-Ты всё ещё не знаешь, кем станешь.
-
-Но пустота постепенно исчезает.
-
-
-Формирование оболочки:
-
-30%
-
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Q016&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Q016" tags="" position="725,500" size="100,100">&lt;&lt;set $question = 16&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется озеро.
-
-Его поверхность показывает возможные события будущего.
-
-Но каждое отражение отличается.
-
-
-&lt;&lt;button &quot;Посмотреть самое счастливое будущее&quot;&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Посмотреть самое могущественное будущее&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить все варианты будущего&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $knowledge += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Отвернуться от видений&quot;&gt;&gt;
-	&lt;&lt;set $selfControl += 2&gt;&gt;
-	&lt;&lt;set $independence += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попытаться изменить увиденное&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Q017" tags="" position="725,625" size="100,100">&lt;&lt;set $question = 17&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты находишь заброшенный храм.
-
-Внутри находится древний алтарь.
-
-
-&lt;&lt;button &quot;Помолиться у алтаря&quot;&gt;&gt;
-	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Исследовать символы храма&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Забрать древний артефакт&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Восстановить храм&quot;&gt;&gt;
-	&lt;&lt;set $nature += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Оставить храм нетронутым&quot;&gt;&gt;
-	&lt;&lt;set $selfControl += 2&gt;&gt;
-	&lt;&lt;set $caution += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Q018" tags="" position="725,750" size="100,100">&lt;&lt;set $question = 18&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется незнакомец.
-
-Он утверждает, что знает твоё будущее.
-
-
-&lt;&lt;button &quot;Попросить рассказать всё&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Проверить его слова&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $caution += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Поверить ему&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $charisma += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Не доверять ему&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Предложить ему испытание&quot;&gt;&gt;
-	&lt;&lt;set $determination += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Q019" tags="" position="725,875" size="100,100">&lt;&lt;set $question = 19&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты видишь огромную дверь.
-
-За ней находится неизвестное.
-
-
-&lt;&lt;button &quot;Открыть её сразу&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить механизм двери&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $knowledge += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Проверить опасность&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Позвать союзников&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Создать свой путь вокруг двери&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $independence += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Q020" tags="" position="725,1000" size="100,100">&lt;&lt;set $question = 20&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется зеркало.
-
-Теперь силуэт почти повторяет человеческую форму.
-
-Но лицо ещё скрыто.
-
-
-Что должно появиться следующим?
-
-
-&lt;&lt;button &quot;Глаза, способные видеть истину&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Лицо, отражающее эмоции&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Волосы, несущие след силы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Знак происхождения&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Тень будущей формы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="System_20" tags="" position="725,1125" size="100,100">&lt;&lt;set $mirrorStage = 4&gt;&gt;
-
-&lt;&lt;system &quot;Формирование продолжается.&lt;br&gt;&lt;br&gt;Обнаружены первые устойчивые признаки личности.&lt;br&gt;&lt;br&gt;Внешний облик начинает связываться с внутренней сущностью.&quot;&gt;&gt;
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Mirror_20&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Mirror_20" tags="" position="725,1250" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
-
-Зеркальное пространство
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-В отражении появляются глаза.
-
-Они ещё не принадлежат человеку или зверю.
-
-Они принадлежат тому, кем ты станешь.
-
-
-Формирование оболочки:
-
-40%
-
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Q021&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Q021" tags="" position="825,1375" size="100,100">&lt;&lt;set $question = 21&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты находишь ребёнка, потерявшегося в опасном месте.
-
-
-&lt;&lt;button &quot;Защитить его&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Проводить его домой&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Научить его выживать&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Позвать кого-то сильнее себя&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Пройти дальше своим путём&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Q022" tags="" position="925,1250" size="100,100">&lt;&lt;set $question = 22&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется древнее дерево.
-
-Оно предлагает часть своей силы.
-
-
-&lt;&lt;button &quot;Принять дар природы&quot;&gt;&gt;
-	&lt;&lt;set $nature += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить источник силы&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Отказаться от дара&quot;&gt;&gt;
-	&lt;&lt;set $selfControl += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Связать себя с деревом&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Использовать силу для своих целей&quot;&gt;&gt;
-	&lt;&lt;set $determination += 2&gt;&gt;
 	&lt;&lt;set $adventure += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="Q023" tags="" position="925,1125" size="100,100">&lt;&lt;set $question = 23&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты слышишь голоса множества людей.
-
-Они зовут тебя.
-
-
-&lt;&lt;button &quot;Ответить им&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q014&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Игнорировать их&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $selfControl += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="Q014" tags="" position="525,250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 14&gt;&gt;&lt;&lt;header&gt;&gt;
 
-&lt;&lt;button &quot;Попытаться понять их мысли&quot;&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+В старом храме находится человек, которого многие считают избранным.
 
-&lt;&lt;button &quot;Найти источник голосов&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $knowledge += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+Перед ним лежит оружие, способное изменить ход истории.
 
-&lt;&lt;button &quot;Защититься от них&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $caution += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="Q024" tags="" position="925,1000" size="100,100">&lt;&lt;set $question = 24&gt;&gt;
+Но пророчество о нём разделилось.
 
-&lt;&lt;header&gt;&gt;
+Одни говорят, что он станет спасителем.
 
-Перед тобой появляется поле битвы.
+Другие утверждают, что именно он принесёт разрушение.
 
-Сражение уже закончилось.
+Он просит тебя решить, что делать с оружием.
 
-
-&lt;&lt;button &quot;Помочь выжившим&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить причины конфликта&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $knowledge += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Забрать опыт победителей&quot;&gt;&gt;
-	&lt;&lt;set $determination += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Похоронить погибших&quot;&gt;&gt;
-	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Уйти, не вмешиваясь&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $caution += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="Q025" tags="" position="925,875" size="100,100">&lt;&lt;set $question = 25&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Тело в зеркале становится полнее.
-
-Теперь должны появиться руки.
-
-
-&lt;&lt;button &quot;Руки воина&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Руки мага&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Руки создателя&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Руки защитника&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Руки исследователя&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="System_25" tags="" position="925,750" size="100,100">&lt;&lt;set $mirrorStage = 5&gt;&gt;
-
-&lt;&lt;system &quot;Новая часть оболочки сформирована.&lt;br&gt;&lt;br&gt;Связь между волей и будущим телом усиливается.&quot;&gt;&gt;
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Mirror_25&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Mirror_25" tags="" position="925,625" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
-
-Зеркальное пространство
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-В отражении появляются руки.
-
-Они пока ещё бесцветны.
-
-Но уже видно, что они созданы для определённой цели.
-
-
-Формирование оболочки:
-
-50%
-
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Q026&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="Q026" tags="" position="925,500" size="100,100">&lt;&lt;set $question = 26&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется древний замок.
-
-
-&lt;&lt;button &quot;Стать его владельцем&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Исследовать его тайны&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Защитить его жителей&quot;&gt;&gt;
+&lt;&lt;button &quot;Передать оружие тому, кто сможет защищать людей&quot;&gt;&gt;
 	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Покинуть его ради странствий&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
-	&lt;&lt;set $independence += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Найти скрытые комнаты&quot;&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="Q027" tags="" position="925,375" size="100,100">&lt;&lt;set $question = 27&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется магический кристалл.
-
-
-&lt;&lt;button &quot;Поглотить его силу&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить его природу&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Сохранить его для будущего&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Передать его другому&quot;&gt;&gt;
 	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изменить его свойства&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Q028" tags="" position="925,250" size="100,100">&lt;&lt;set $question = 28&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты стоишь перед выбором пути.
-
-
-&lt;&lt;button &quot;Путь силы&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $adventure += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Путь знаний&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $knowledge += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Путь гармонии&quot;&gt;&gt;
-	&lt;&lt;set $nature += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Путь порядка&quot;&gt;&gt;
-	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Путь свободы&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Q029" tags="" position="1025,125" size="100,100">&lt;&lt;set $question = 29&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется врата неизвестного мира.
-
-
-&lt;&lt;button &quot;Войти первым&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Подготовиться заранее&quot;&gt;&gt;
+	&lt;&lt;set $trust += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Спрятать оружие, чтобы никто не смог использовать его&quot;&gt;&gt;
 	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить врата&quot;&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить оружие и раскрыть его настоящую природу&quot;&gt;&gt;
 	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Позвать других&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Создать собственные врата&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать оружие и самому определить его предназначение&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить оружие до того, как оно изменит мир&quot;&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
 	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="Q030" tags="" position="1125,250" size="100,100">&lt;&lt;set $question = 30&gt;&gt;
+	&lt;&lt;goto &quot;Q015&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;header&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="22" name="Q015" tags="" position="625,125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 15&gt;&gt;&lt;&lt;header&gt;&gt;
 
-━━━━━━━━━━━━━━━━━━━━━━
+Пространство зеркал снова раскрывается.
 
-РОКОВОЙ ВОПРОС
+Силуэт внутри одного из зеркал становится яснее.
 
-━━━━━━━━━━━━━━━━━━━━━━
+Теперь у него появляются черты.
 
+Но лицо постоянно меняется.
 
-Зеркало перед тобой раскалывается.
+В одном отражении оно выглядит как лицо человека.
 
-Впервые ты видишь не отражение.
+В другом — как лицо существа, которого не существует.
 
-Ты видишь возможные версии себя.
-
-
-Одна станет существом света.
-
-Одна станет существом тьмы.
-
-Одна станет хранителем мира.
-
-Одна станет разрушителем границ.
-
-Одна станет чем-то, чего ещё не существовало.
-
+В третьем — как лицо того, кто наблюдает за временем.
 
 Система сообщает:
 
+Сознание стабилизировано.
 
-«Выбор определит направление дальнейшего формирования сущности.»
+Следующий выбор определит направление развития сущности.
 
+Перед тобой появляются три пути.
 
-Что ты принимаешь?
-
-
-&lt;&lt;button &quot;Сердце света&quot;&gt;&gt;
-	&lt;&lt;set $hiddenAngel = true&gt;&gt;
-	&lt;&lt;set $justice += 3&gt;&gt;
-	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Сердце дракона&quot;&gt;&gt;
-	&lt;&lt;set $hiddenDragon = true&gt;&gt;
-	&lt;&lt;set $will += 3&gt;&gt;
-	&lt;&lt;set $determination += 2&gt;&gt;
-	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Сердце бездны&quot;&gt;&gt;
-	&lt;&lt;set $hiddenDemon = true&gt;&gt;
+&lt;&lt;button &quot;Стать частью мира и связать свою судьбу с другими существами&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 5&gt;&gt;
+	&lt;&lt;set $nature += 3&gt;&gt;
+	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Подняться над существующим миром и искать высшую силу&quot;&gt;&gt;
+	&lt;&lt;set $will += 5&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Остаться за пределами всех созданных законов&quot;&gt;&gt;
+	&lt;&lt;set $independence += 5&gt;&gt;
 	&lt;&lt;set $curiosity += 3&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
-	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Сердце пустоты&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
 	&lt;&lt;set $hiddenVoid = true&gt;&gt;
-	&lt;&lt;set $logic += 3&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
+	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать собственный путь, которого ещё не существовало&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 5&gt;&gt;
+	&lt;&lt;set $adaptability += 3&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $hiddenCreator = true&gt;&gt;
+	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Отказаться от выбора и позволить судьбе продолжить формирование&quot;&gt;&gt;
+	&lt;&lt;set $intuition += 5&gt;&gt;
+	&lt;&lt;set $patience += 3&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_15&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Сердце творения&quot;&gt;&gt;
-	&lt;&lt;set $hiddenCreator = true&gt;&gt;
-	&lt;&lt;set $charisma += 3&gt;&gt;
-	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="System_30" tags="" position="1125,375" size="100,100">&lt;&lt;set $mirrorStage = 6&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="23" name="System_15" tags="" position="725,250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 3&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Структура сущности стабилизирована.&lt;br&gt;&lt;br&gt;Отражение начинает проявлять первые индивидуальные признаки.&lt;br&gt;&lt;br&gt;Форма существования становится более определённой.&quot;&gt;&gt;
 
-&lt;&lt;system &quot;Внимание.&lt;br&gt;&lt;br&gt;Роковой выбор зарегистрирован.&lt;br&gt;&lt;br&gt;Структура будущего изменена.&lt;br&gt;&lt;br&gt;Обнаружены новые вероятности происхождения.&lt;br&gt;&lt;br&gt;Некоторые формы существования теперь доступны.&quot;&gt;&gt;
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Mirror_15&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Mirror_30&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="Mirror_30" tags="" position="1125,500" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="24" name="Mirror_15" tags="" position="725,375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+Отражение становится более чётким.
+Через поверхность зеркала начинают проявляться первые черты лица.
 
-Зеркальное пространство
+Они ещё не определяют твою природу.
+Не указывают на расу.
+Не раскрывают будущую судьбу.
+
+Но пустота, окружавшая сущность с самого начала, постепенно исчезает.
+
+Каждый новый элемент формы становится следом решений, принятых во время испытания.
 
 ━━━━━━━━━━━━━━━━━━━━━━
-
-
-Осколки зеркала начинают собираться обратно.
-
-Теперь отражение имеет тело.
-
-На нём появляется одежда.
-
-Она ещё не принадлежит определённой расе.
-
-Но уже показывает направление будущей судьбы.
-
 
 Формирование оболочки:
+30%
 
-60%
-
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-&lt;&lt;button &quot;Продолжить испытание&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Q031&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="Q031" tags="" position="1125,625" size="100,100">&lt;&lt;set $question = 31&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется древняя библиотека.
-
-Ты чувствуешь, что внутри находятся знания,
-которые могут изменить твою судьбу.
-
-
-Что ты делаешь?
-
-
-&lt;&lt;button &quot;Прочитать самые древние книги&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q016&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Искать запрещённые знания&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="25" name="Q016" tags="" position="725,500" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 16&gt;&gt;&lt;&lt;header&gt;&gt;
 
-&lt;&lt;button &quot;Сохранить знания для будущего&quot;&gt;&gt;
-	&lt;&lt;set $patience += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+Ты находишься на вершине высокой башни.
 
-&lt;&lt;button &quot;Передать знания другим&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+Под тобой раскинулся огромный город.
 
-&lt;&lt;button &quot;Изучить саму природу знаний&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
+Ты видишь тысячи жизней одновременно.
+
+Кто-то просит защиты.
+
+Кто-то хочет изменить свою судьбу.
+
+Кто-то готов отдать всё ради власти.
+
+Перед тобой появляется возможность вмешаться в жизнь города.
+
+&lt;&lt;button &quot;Использовать свою силу, чтобы помочь тем, кто нуждается&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать правила, которые сделают город безопаснее&quot;&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Наблюдать за городом и не вмешиваться&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
 	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="Q032" tags="" position="1125,750" size="100,100">&lt;&lt;set $question = 32&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется древний зверь.
-
-Он охраняет путь дальше.
-
-Он не нападает.
-
-Он ждёт решения.
-
-
-&lt;&lt;button &quot;Попытаться понять его&quot;&gt;&gt;
-	&lt;&lt;set $nature += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изменить город под свои представления о будущем&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Покинуть город и искать другие миры&quot;&gt;&gt;
+	&lt;&lt;set $adventure += 2&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q017&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Сразиться с ним&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="26" name="Q017" tags="" position="725,625" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 17&gt;&gt;&lt;&lt;header&gt;&gt;
+
+В глубине леса ты находишь древнее дерево.
+
+Его корни уходят глубже, чем существует память живых существ.
+
+Дух внутри него говорит, что мир постепенно меняется.
+
+Он предлагает тебе выбрать, что сохранить.
+
+&lt;&lt;button &quot;Сохранить жизнь всех существ, даже если мир изменится&quot;&gt;&gt;
+	&lt;&lt;set $nature += 2&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Сохранить знания прошлого мира&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $intuition += 2&gt;&gt;
+	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Сохранить силу, которая позволит управлять изменениями&quot;&gt;&gt;
 	&lt;&lt;set $will += 2&gt;&gt;
 	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Предложить союз&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить его происхождение&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Обойти его стороной&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
 	&lt;&lt;set $independence += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="Q033" tags="" position="1125,875" size="100,100">&lt;&lt;set $question = 33&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется разрушенный мост.
-
-За ним находится неизвестная земля.
-
-
-&lt;&lt;button &quot;Восстановить мост&quot;&gt;&gt;
-	&lt;&lt;set $patience += 2&gt;&gt;
-	&lt;&lt;set $nature += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Создать новый путь&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Позволить миру измениться естественным образом&quot;&gt;&gt;
 	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Перепрыгнуть через пропасть&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить опасность перехода&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $knowledge += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Позвать других помочь&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Q034" tags="" position="1125,1000" size="100,100">&lt;&lt;set $question = 34&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты находишь древний трон.
-
-Он пуст уже тысячи лет.
-
-На нём осталось лишь ощущение власти.
-
-
-&lt;&lt;button &quot;Сесть на трон&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Исследовать историю трона&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Уничтожить символ власти&quot;&gt;&gt;
-	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Оставить его нетронутым&quot;&gt;&gt;
-	&lt;&lt;set $selfControl += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Создать новую историю трона&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="Q035" tags="" position="1125,1125" size="100,100">&lt;&lt;set $question = 35&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-СЮЖЕТНЫЙ ВОПРОС
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-Зеркальное пространство зовёт тебя.
-
-
-Отражение уже имеет форму.
-
-Но вокруг него нет энергии.
-
-
-Что должно появиться вокруг будущего тела?
-
-
-&lt;&lt;button &quot;Сильная боевая аура&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Спокойная магическая аура&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Аура древней природы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Аура света или тьмы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Аура неизвестной силы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="System_35" tags="" position="1125,1250" size="100,100">&lt;&lt;set $mirrorStage = 7&gt;&gt;
-
-&lt;&lt;system &quot;Формирование продолжается.&lt;br&gt;&lt;br&gt;Внутренняя энергия сущности начинает проявляться.&lt;br&gt;&lt;br&gt;Обнаружена первая устойчивая аура.&quot;&gt;&gt;
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Mirror_35&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Mirror_35" tags="" position="1225,1375" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
-
-Зеркальное пространство
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-Теперь вокруг отражения появляется аура.
-
-Она меняется вместе с твоими решениями.
-
-Даже пространство вокруг сущности начинает реагировать.
-
-
-Формирование оболочки:
-
-70%
-
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Q036&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="Q036" tags="" position="1325,1250" size="100,100">&lt;&lt;set $question = 36&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется древний враг.
-
-Он предлагает заключить соглашение.
-
-
-&lt;&lt;button &quot;Принять договор ради силы&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Отказаться от сделки&quot;&gt;&gt;
-	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попытаться изменить условия&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить его истинную цель&quot;&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
-	&lt;&lt;set $knowledge += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Атаковать первым&quot;&gt;&gt;
-	&lt;&lt;set $determination += 2&gt;&gt;
-	&lt;&lt;set $adventure += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="Q037" tags="" position="1325,1125" size="100,100">&lt;&lt;set $question = 37&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется небесное явление.
-
-Оно меняет мир вокруг.
-
-
-&lt;&lt;button &quot;Наблюдать и изучать&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попытаться получить силу явления&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Защитить других от последствий&quot;&gt;&gt;
-	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Следовать за явлением&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Создать свой путь независимо&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="Q038" tags="" position="1325,1000" size="100,100">&lt;&lt;set $question = 38&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты находишь древнюю маску.
-
-Она может изменить твоё восприятие мира.
-
-
-&lt;&lt;button &quot;Надеть её&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить её силу&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Уничтожить её&quot;&gt;&gt;
-	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Спрятать её&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $nature += 1&gt;&gt;
 	&lt;&lt;set $selfControl += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать часть силы дерева себе&quot;&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $will += 1&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q018&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Передать её другому&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $charisma += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="Q039" tags="" position="1325,875" size="100,100">&lt;&lt;set $question = 39&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="27" name="Q018" tags="" position="725,750" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 18&gt;&gt;&lt;&lt;header&gt;&gt;
 
 Перед тобой открывается портал.
 
-За ним находится мир, которого ты никогда не видел.
+За ним находится мир, который никогда не видел человеческих глаз.
 
+Из него доносится неизвестная энергия.
 
-&lt;&lt;button &quot;Войти без страха&quot;&gt;&gt;
+Никто не знает, что находится по ту сторону.
+
+Одни считают, что там скрыта величайшая тайна.
+
+Другие считают, что открытие портала может уничтожить оба мира.
+
+&lt;&lt;button &quot;Войти через портал и узнать, что находится внутри&quot;&gt;&gt;
 	&lt;&lt;set $adventure += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
 	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Сначала изучить портал&quot;&gt;&gt;
-	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $knowledge += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Проверить безопасность&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Закрыть портал ради безопасности существующего мира&quot;&gt;&gt;
 	&lt;&lt;set $caution += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Позвать кого-то с собой&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Создать собственный портал&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="Q040" tags="" position="1325,750" size="100,100">&lt;&lt;set $question = 40&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-СЮЖЕТНЫЙ ВОПРОС
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-Зеркало начинает показывать признаки будущей расы.
-
-
-Ты видишь пять возможных отражений.
-
-
-Какое из них проявляется?
-
-
-&lt;&lt;button &quot;Отражение древнего существа&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Отражение бессмертного создания&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Отражение звериной природы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Отражение существа света&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Отражение существа тьмы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="System_40" tags="" position="1325,625" size="100,100">&lt;&lt;set $mirrorStage = 8&gt;&gt;
-
-&lt;&lt;system &quot;Обнаружены признаки будущей природы.&lt;br&gt;&lt;br&gt;Система анализирует происхождение сущности.&lt;br&gt;&lt;br&gt;Некоторые варианты формы становятся вероятнее.&quot;&gt;&gt;
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Mirror_40&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="Mirror_40" tags="" position="1325,500" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
-
-Зеркальное пространство
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-В отражении появляются первые признаки будущей расы.
-
-Они ещё не определены полностью.
-
-Но теперь невозможно сказать, что ты обычная сущность.
-
-
-Формирование оболочки:
-
-80%
-
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Q041&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="Q041" tags="" position="1325,375" size="100,100">&lt;&lt;set $question = 41&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется древний источник магии.
-
-Он может изменить твою природу.
-
-
-&lt;&lt;button &quot;Поглотить энергию источника&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить источник полностью&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Защитить источник от других&quot;&gt;&gt;
-	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Связать источник с собой&quot;&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
-	&lt;&lt;set $nature += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Оставить источник нетронутым&quot;&gt;&gt;
-	&lt;&lt;set $selfControl += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="Q042" tags="" position="1325,250" size="100,100">&lt;&lt;set $question = 42&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Ты находишь древний символ.
-
-Он может быть знаком твоего происхождения.
-
-
-&lt;&lt;button &quot;Изучить символ&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Принять его как часть себя&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попытаться изменить его&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Скрыть его от мира&quot;&gt;&gt;
-	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
 	&lt;&lt;set $selfControl += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Показать его всем&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="Q043" tags="" position="1425,125" size="100,100">&lt;&lt;set $question = 43&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется древняя сущность.
-
-Она спрашивает:
-
-«Что ты понесёшь в новый мир?»
-
-
-&lt;&lt;button &quot;Знания прошлого&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Исследовать портал, не переходя через него&quot;&gt;&gt;
 	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Силу будущего&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Связь с живыми существами&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $nature += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Свободу выбора&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Порядок и стабильность&quot;&gt;&gt;
-	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="Q044" tags="" position="1525,250" size="100,100">&lt;&lt;set $question = 44&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед окончательным формированием тела
-ты видишь последнюю дверь.
-
-
-&lt;&lt;button &quot;Открыть её самому&quot;&gt;&gt;
-	&lt;&lt;set $adventure += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить её тайну&quot;&gt;&gt;
 	&lt;&lt;set $logic += 2&gt;&gt;
-	&lt;&lt;set $knowledge += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Подождать подходящего момента&quot;&gt;&gt;
-	&lt;&lt;set $patience += 2&gt;&gt;
-	&lt;&lt;set $caution += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Попросить помощи&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Создать новую дверь&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="Q045" tags="" position="1525,375" size="100,100">&lt;&lt;set $question = 45&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-СЮЖЕТНЫЙ ВОПРОС
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-Последний этап формирования тела.
-
-Отражение полностью появляется перед тобой.
-
-
-Что становится главным признаком твоего воплощения?
-
-
-&lt;&lt;button &quot;Древний символ силы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Особая форма тела&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Уникальная аура&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Наследие крови&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;След великой судьбы&quot;&gt;&gt;
-	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="System_45" tags="" position="1525,500" size="100,100">&lt;&lt;set $mirrorStage = 9&gt;&gt;
-
-&lt;&lt;system &quot;Основная форма создана.&lt;br&gt;&lt;br&gt;Тело сущности завершено.&lt;br&gt;&lt;br&gt;Последние признаки судьбы будут определены окончательными решениями.&quot;&gt;&gt;
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Mirror_45&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="Mirror_45" tags="" position="1525,625" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
-
-Зеркальное пространство
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-Ты впервые видишь себя полностью.
-
-Перед тобой стоит существо.
-
-Оно имеет лицо.
-
-Тело.
-
-Ауру.
-
-Но имя и судьба ещё неизвестны.
-
-
-Формирование оболочки:
-
-90%
-
-
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-&lt;&lt;button &quot;Продолжить&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Q046&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="Q046" tags="" position="1525,750" size="100,100">&lt;&lt;set $question = 46&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется последний путь.
-
-
-&lt;&lt;button &quot;Стать защитником мира&quot;&gt;&gt;
-	&lt;&lt;set $justice += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Стать исследователем неизвестного&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $adventure += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Стать носителем великой силы&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Стать хранителем знаний&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $patience += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Стать свободным от всех правил&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="Q047" tags="" position="1525,875" size="100,100">&lt;&lt;set $question = 47&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Система показывает возможные будущие жизни.
-
-
-&lt;&lt;button &quot;Выбрать славу&quot;&gt;&gt;
-	&lt;&lt;set $charisma += 2&gt;&gt;
-	&lt;&lt;set $adventure += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Выбрать мудрость&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Выбрать силу&quot;&gt;&gt;
-	&lt;&lt;set $will += 2&gt;&gt;
-	&lt;&lt;set $determination += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Выбрать гармонию&quot;&gt;&gt;
-	&lt;&lt;set $nature += 2&gt;&gt;
-	&lt;&lt;set $empathy += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Выбрать тайну&quot;&gt;&gt;
-	&lt;&lt;set $intuition += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Q048" tags="" position="1525,1000" size="100,100">&lt;&lt;set $question = 48&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед тобой появляется древняя печать.
-
-Она связывает твоё прошлое и будущее.
-
-
-&lt;&lt;button &quot;Принять печать&quot;&gt;&gt;
-	&lt;&lt;set $order += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Разрушить печать&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $adventure += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изменить печать&quot;&gt;&gt;
-	&lt;&lt;set $adaptability += 2&gt;&gt;
-	&lt;&lt;set $logic += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изучить печать&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
-	&lt;&lt;set $curiosity += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Передать печать другому&quot;&gt;&gt;
-	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $justice += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Q049" tags="" position="1525,1125" size="100,100">&lt;&lt;set $question = 49&gt;&gt;
-
-&lt;&lt;header&gt;&gt;
-
-Перед последним выбором ты видишь весь пройденный путь.
-
-
-Ты понимаешь:
-
-каждое решение создавало тебя.
-
-
-&lt;&lt;button &quot;Принять свою судьбу&quot;&gt;&gt;
-	&lt;&lt;set $determination += 2&gt;&gt;
-	&lt;&lt;set $will += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Изменить свою судьбу&quot;&gt;&gt;
-	&lt;&lt;set $independence += 2&gt;&gt;
-	&lt;&lt;set $adaptability += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Понять свою судьбу&quot;&gt;&gt;
-	&lt;&lt;set $knowledge += 2&gt;&gt;
 	&lt;&lt;set $intuition += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать портал как источник новой силы&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Позволить другим решить судьбу портала&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q019&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Поделиться судьбой с другими&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="28" name="Q019" tags="" position="725,875" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 19&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой стоит древний зал суда.
+
+На месте обвиняемого находится существо, которое выглядит как человек.
+
+Но его происхождение неизвестно.
+
+Одни утверждают, что оно спасло тысячи жизней.
+
+Другие говорят, что ради этого оно уничтожило целые города.
+
+Все ждут твоего решения.
+
+&lt;&lt;button &quot;Освободить существо и дать ему возможность начать заново&quot;&gt;&gt;
 	&lt;&lt;set $empathy += 2&gt;&gt;
-	&lt;&lt;set $charisma += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $intuition += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Наказать существо за совершённые поступки&quot;&gt;&gt;
+	&lt;&lt;set $justice += 3&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить все события прошлого перед решением&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Предложить существу сделку вместо суда&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить существо, чтобы исключить будущую угрозу&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q020&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Создать новую судьбу&quot;&gt;&gt;
-	&lt;&lt;set $curiosity += 2&gt;&gt;
-	&lt;&lt;set $order += 1&gt;&gt;
-	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Q050" tags="" position="1525,1250" size="100,100">&lt;&lt;set $question = 50&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="29" name="Q020" tags="" position="725,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 20&gt;&gt;&lt;&lt;header&gt;&gt;
 
-&lt;&lt;header&gt;&gt;
+Мир вокруг исчезает.
 
-━━━━━━━━━━━━━━━━━━━━━━
+Остаётся только бесконечное пространство зеркал.
 
-РОКОВОЙ ФИНАЛЬНЫЙ ВОПРОС
+Теперь в каждом отражении появляется не просто силуэт.
 
-━━━━━━━━━━━━━━━━━━━━━━
+Ты видишь возможные существования.
 
+Воином, который защищает границы миров.
 
-Перед тобой появляется твоё отражение.
+Правителем, чьи решения меняют эпохи.
 
-Теперь оно смотрит прямо на тебя.
+Существом древней силы, которому подчиняются законы природы.
 
+Сущностью, стоящей за пределами рождения и смерти.
 
 Система сообщает:
 
+Форма тела начинает закрепляться.
 
-«Последнее решение завершит формирование сущности.»
+Но основа будущего существования ещё может измениться.
 
+Перед тобой появляется источник силы.
 
-Что ты выбираешь?
-
-
-&lt;&lt;button &quot;Стать частью света&quot;&gt;&gt;
+&lt;&lt;button &quot;Направить силу на сохранение жизни всех существ&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 5&gt;&gt;
+	&lt;&lt;set $justice += 5&gt;&gt;
+	&lt;&lt;set $nature += 3&gt;&gt;
 	&lt;&lt;set $hiddenAngel = true&gt;&gt;
-	&lt;&lt;set $justice += 3&gt;&gt;
-	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Принять силу древних драконов&quot;&gt;&gt;
-	&lt;&lt;set $hiddenDragon = true&gt;&gt;
-	&lt;&lt;set $will += 3&gt;&gt;
-	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Открыть путь бездны&quot;&gt;&gt;
-	&lt;&lt;set $hiddenDemon = true&gt;&gt;
-	&lt;&lt;set $curiosity += 3&gt;&gt;
-	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Раствориться в пустоте&quot;&gt;&gt;
-	&lt;&lt;set $hiddenVoid = true&gt;&gt;
-	&lt;&lt;set $logic += 3&gt;&gt;
-	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &quot;Создать собственный путь&quot;&gt;&gt;
-	&lt;&lt;set $hiddenCreator = true&gt;&gt;
+	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать силу для создания порядка во всех мирах&quot;&gt;&gt;
+	&lt;&lt;set $order += 5&gt;&gt;
+	&lt;&lt;set $will += 5&gt;&gt;
 	&lt;&lt;set $charisma += 3&gt;&gt;
-	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="System_50" tags="" position="1625,1375" size="100,100">&lt;&lt;set $mirrorStage = 10&gt;&gt;
+	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Получить абсолютную свободу и отказаться от любых ограничений&quot;&gt;&gt;
+	&lt;&lt;set $independence += 5&gt;&gt;
+	&lt;&lt;set $curiosity += 5&gt;&gt;
+	&lt;&lt;set $adaptability += 3&gt;&gt;
+	&lt;&lt;set $hiddenVoid = true&gt;&gt;
+	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Поглотить силу и стать тем, кто определяет судьбы других&quot;&gt;&gt;
+	&lt;&lt;set $will += 7&gt;&gt;
+	&lt;&lt;set $determination += 5&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $hiddenDemon = true&gt;&gt;
+	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать собственный закон существования&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 5&gt;&gt;
+	&lt;&lt;set $logic += 3&gt;&gt;
+	&lt;&lt;set $adaptability += 5&gt;&gt;
+	&lt;&lt;set $hiddenCreator = true&gt;&gt;
+	&lt;&lt;goto &quot;System_20&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;system &quot;Испытание завершено.&lt;br&gt;&lt;br&gt;Формирование сущности окончено.&lt;br&gt;&lt;br&gt;Все решения сохранены.&lt;br&gt;&lt;br&gt;Определение судьбы начинается.&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="30" name="System_20" tags="" position="725,1125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 4&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Обнаружены первые устойчивые признаки индивидуальности.&lt;br&gt;&lt;br&gt;Внутренняя сущность начинает отражаться во внешней форме.&lt;br&gt;&lt;br&gt;Связь между природой и оболочкой усиливается.&quot;&gt;&gt;
 
-&lt;&lt;button &quot;Посмотреть воплощение&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Mirror_50&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="Mirror_50" tags="" position="1725,1250" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Mirror_20&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 
-Зеркальное пространство
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="31" name="Mirror_20" tags="" position="725,1250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+В отражении появляется взгляд.
+Глаза формируются первыми среди черт сущности.
+
+Они ещё не принадлежат человеку.
+Не принадлежат зверю.
+Не принадлежат ни одной известной форме существования.
+
+В них отражается не прошлое.
+А направление, выбранное среди бесчисленных возможных судеб.
 
 ━━━━━━━━━━━━━━━━━━━━━━
 
+Формирование оболочки:
+40%
 
+Система фиксирует:
+Восприятие сформировано.
+Связь между сущностью и будущим воплощением усиливается.
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q021&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="32" name="Q021" tags="" position="825,1375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 21&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой небольшая крепость на границе государства.
+
+На протяжении многих лет её защищают одни и те же воины.
+
+Но сейчас пришло сообщение:
+
+Армия противника приближается.
+
+Запасы ограничены.
+
+Помощь может не прийти вовремя.
+
+Командир крепости передаёт тебе право принять решение.
+
+&lt;&lt;button &quot;Остаться и защищать крепость вместе с воинами&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Отвести людей и сохранить им жизнь&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Подготовить хитрый план вместо прямого сражения&quot;&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $intuition += 1&gt;&gt;
+	&lt;&lt;set $caution += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Захватить инициативу и самому начать нападение&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $adventure += 1&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Передать командование другому и сохранить свои силы&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q022&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="33" name="Q022" tags="" position="925,1250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 22&gt;&gt;&lt;&lt;header&gt;&gt;
+
+В глубине древних руин ты находишь странный кристалл.
+
+Он не похож ни на один известный источник энергии.
+
+При прикосновении ты видишь тысячи воспоминаний.
+
+Одни принадлежат людям.
+
+Другие — существам, которых больше нет.
+
+Кристалл предлагает соединиться с ним.
+
+Но никто не знает, что произойдёт после этого.
+
+&lt;&lt;button &quot;Принять связь и сохранить все воспоминания внутри кристалла&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $intuition += 2&gt;&gt;
+	&lt;&lt;set $empathy += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить кристалл и найти способ контролировать его&quot;&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $caution += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать силу кристалла для усиления себя&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Разрушить кристалл, чтобы защитить мир от неизвестного&quot;&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Передать кристалл тем, кто сможет принять решение&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q023&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="Q023" tags="" position="925,1125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 23&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой огромный город, построенный над облаками.
+
+Его жители используют магию, технологии и древние знания.
+
+Но источник энергии города постепенно исчезает.
+
+Если ничего не сделать, город начнёт падать.
+
+Перед тобой находятся несколько способов изменить ситуацию.
+
+&lt;&lt;button &quot;Отдать часть собственной энергии, чтобы спасти город&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать новый источник энергии для будущих поколений&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать энергию города для собственного развития&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изменить устройство города, чтобы он больше не зависел от энергии&quot;&gt;&gt;
+	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Позволить городу исчезнуть и сохранить естественный порядок мира&quot;&gt;&gt;
+	&lt;&lt;set $nature += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q024&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="35" name="Q024" tags="" position="925,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 24&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Ночью над городом появляется неизвестное существо.
+
+Оно не атакует.
+
+Оно просто наблюдает.
+
+Люди называют его угрозой.
+
+Учёные считают его возможным источником новых знаний.
+
+Некоторые хотят уничтожить его до того, как оно станет опасным.
+
+Существо обращается к тебе первым.
+
+&lt;&lt;button &quot;Попытаться понять существо и установить связь&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $intuition += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Попросить существо покинуть этот мир&quot;&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить существо и узнать причину его появления&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Попытаться получить его силу&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Атаковать первым, пока оно не стало угрозой&quot;&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q025&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="Q025" tags="" position="925,875" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 25&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Пространство зеркал становится ярче.
+
+Теперь отражение больше не просто силуэт.
+
+В нём появляется настоящее тело.
+
+Но оно ещё не определено полностью.
+
+Возможные формы меняются перед тобой.
+
+Одни связаны с природой.
+
+Другие — с древней силой.
+
+Третьи — с теми, кто способен создавать или разрушать миры.
+
+Система сообщает:
+
+Душа начинает проявлять свой истинный потенциал.
+
+Следующий выбор определит направление силы.
+
+&lt;&lt;button &quot;Стать защитником мира и его жителей&quot;&gt;&gt;
+	&lt;&lt;set $justice += 5&gt;&gt;
+	&lt;&lt;set $empathy += 5&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Получить знания всех существующих эпох&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 5&gt;&gt;
+	&lt;&lt;set $logic += 4&gt;&gt;
+	&lt;&lt;set $curiosity += 3&gt;&gt;
+	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Получить силу, способную менять законы мира&quot;&gt;&gt;
+	&lt;&lt;set $will += 6&gt;&gt;
+	&lt;&lt;set $charisma += 3&gt;&gt;
+	&lt;&lt;set $determination += 3&gt;&gt;
+	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Стать существом, которого невозможно ограничить&quot;&gt;&gt;
+	&lt;&lt;set $independence += 5&gt;&gt;
+	&lt;&lt;set $adaptability += 4&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать собственное существование с нуля&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 5&gt;&gt;
+	&lt;&lt;set $logic += 3&gt;&gt;
+	&lt;&lt;set $adaptability += 4&gt;&gt;
+	&lt;&lt;set $hiddenCreator = true&gt;&gt;
+	&lt;&lt;goto &quot;System_25&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="37" name="System_25" tags="" position="925,750" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 5&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Новая часть оболочки стабилизирована.&lt;br&gt;&lt;br&gt;Связь между сознанием, волей и будущим воплощением усиливается.&lt;br&gt;&lt;br&gt;Сущность начинает проявлять собственную структуру.&quot;&gt;&gt;
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Mirror_25&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="Mirror_25" tags="" position="925,625" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+В отражении появляются руки.
+
+Они ещё не имеют цвета.
+Не обладают окончательной формой.
+Но в их очертаниях уже проявляется предназначение будущей оболочки.
+
+Ты пытаешься поднять руку и коснуться своего отражения.
+Пальцы медленно приближаются к зеркальной поверхности.
+
+Но вместо прикосновения они проходят сквозь неё.
+Будто перед тобой нет ни стекла, ни воды, ни чего-либо материального.
+
+Отражение существует.
+Но оно всё ещё не является настоящей формой.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+Формирование оболочки:
+50%
+
+Система фиксирует:
+Функциональная структура сформирована.
+Связь между сущностью и воплощением становится устойчивой.
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q026&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="39" name="Q026" tags="" position="925,500" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 26&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой открывается древний зал.
+
+В центре находится трон, который пустует тысячи лет.
+
+На стенах высечены имена тех, кто когда-то управлял этим местом.
+
+Но сейчас никто не имеет права занять его.
+
+Жители этого мира ждут решения.
+
+&lt;&lt;button &quot;Сесть на трон и взять ответственность за этот мир&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Отказаться от власти и позволить другим выбрать правителя&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать новый порядок, изменив старые правила&quot;&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить трон, чтобы никто больше не мог обладать этой властью&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить историю трона и узнать правду о прошлом&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q027&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="Q027" tags="" position="925,375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 27&gt;&gt;&lt;&lt;header&gt;&gt;
+
+В лесу, которого нет ни на одной карте, ты находишь поселение.
+
+Его жители не принадлежат ни одной известной расе.
+
+Они живут спокойно, но каждый год теряют часть своей территории.
+
+За пределами леса растёт город, который хочет занять эти земли.
+
+Обе стороны считают себя правыми.
+
+&lt;&lt;button &quot;Защитить жителей леса и остановить захват территории&quot;&gt;&gt;
+	&lt;&lt;set $nature += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $empathy += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Помочь городу расшириться ради будущего развития&quot;&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать решение, которое позволит обеим сторонам существовать вместе&quot;&gt;&gt;
+	&lt;&lt;set $adaptability += 3&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать территорию себе и установить собственные правила&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Оставить ситуацию без вмешательства&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $patience += 2&gt;&gt;
+	&lt;&lt;set $nature += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q028&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="41" name="Q028" tags="" position="925,250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 28&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой появляется оружие неизвестного происхождения.
+
+Оно создано не для одного владельца.
+
+Каждый, кто берёт его в руки, получает огромную силу.
+
+Но вместе с этим оружие усиливает желания своего хозяина.
+
+В истории мира оно уже становилось причиной великих побед и катастроф.
+
+&lt;&lt;button &quot;Использовать оружие для защиты слабых&quot;&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $empathy += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Спрятать оружие, чтобы никто не смог им воспользоваться&quot;&gt;&gt;
+	&lt;&lt;set $caution += 3&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить оружие и раскрыть его настоящую природу&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать оружие и сделать его частью своей силы&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить оружие, даже если мир потеряет эту силу&quot;&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q029&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="Q029" tags="" position="1025,125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 29&gt;&gt;&lt;&lt;header&gt;&gt;
+
+На границе миров появляется разлом.
+
+Через него видно другие реальности.
+
+В одной из них люди просят помощи.
+
+В другой находится мир, где цивилизация уже исчезла.
+
+В третьей неизвестная сила предлагает тебе знания о всех измерениях.
+
+Разлом может закрыться в любой момент.
+
+&lt;&lt;button &quot;Открыть проход и помочь тем, кто просит спасения&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 3&gt;&gt;
+	&lt;&lt;set $adventure += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Закрыть разлом, чтобы защитить свой мир&quot;&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Перейти через разлом и узнать другие миры&quot;&gt;&gt;
+	&lt;&lt;set $adventure += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $independence += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Получить знания разлома и использовать их позже&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Разрушить разлом вместе со всеми возможностями внутри него&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q030&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="Q030" tags="" position="1125,250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 30&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Зеркала вокруг тебя начинают исчезать.
+
+Перед тобой остаётся одно отражение.
+
+В нём ты видишь возможное будущее.
+
+Ты можешь стать существом, которое будет хранить миры.
+
+Или тем, кто изменит их навсегда.
+
+Или тем, кто уничтожит всё существующее, чтобы создать что-то новое.
+
+Система сообщает:
+
+Обнаружен основной путь сущности.
+
+Решение невозможно отменить.
+
+&lt;&lt;button &quot;Стать хранителем всех существующих миров&quot;&gt;&gt;
+	&lt;&lt;set $justice += 10&gt;&gt;
+	&lt;&lt;set $order += 8&gt;&gt;
+	&lt;&lt;set $will += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Получить силу для создания новых миров&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 10&gt;&gt;
+	&lt;&lt;set $adaptability += 8&gt;&gt;
+	&lt;&lt;set $logic += 5&gt;&gt;
+	&lt;&lt;set $hiddenCreator = true&gt;&gt;
+	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Стать абсолютной силой, свободной от всех ограничений&quot;&gt;&gt;
+	&lt;&lt;set $will += 10&gt;&gt;
+	&lt;&lt;set $independence += 8&gt;&gt;
+	&lt;&lt;set $determination += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Поглотить существующие силы и объединить их в себе&quot;&gt;&gt;
+	&lt;&lt;set $curiosity += 8&gt;&gt;
+	&lt;&lt;set $will += 8&gt;&gt;
+	&lt;&lt;set $adaptability += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить всё существование и оставить только пустоту&quot;&gt;&gt;
+	&lt;&lt;set $independence += 10&gt;&gt;
+	&lt;&lt;set $will += 8&gt;&gt;
+	&lt;&lt;set $hiddenVoid = true&gt;&gt;
+	&lt;&lt;goto &quot;System_30&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="44" name="System_30" tags="" position="1125,375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 6&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Последствия решения внесены в структуру сущности.&lt;br&gt;&lt;br&gt;Будущие линии развития изменены.&lt;br&gt;&lt;br&gt;Обнаружены новые возможности происхождения.&lt;br&gt;&lt;br&gt;Некоторые формы существования, ранее недоступные, теперь могут быть достигнуты.&quot;&gt;&gt;
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Mirror_30&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="Mirror_30" tags="" position="1125,500" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+Осколки зеркала, разлетевшиеся в пустоте, начинают медленно возвращаться обратно.
+
+Они соединяются один за другим, формируя новое отражение.
+
+Теперь у сущности появляется тело.
+
+На нём возникает одежда, созданная не из ткани, а из самой энергии будущего воплощения.
+
+Она ещё не принадлежит определённой расе.
+Не указывает на происхождение.
+Но в её очертаниях уже проявляется направление будущей судьбы.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+Формирование оболочки:
+60%
+
+Система фиксирует:
+Материальная форма стабилизирована.
+Связь между сущностью и будущим воплощением усиливается.
+
+&lt;&lt;button &quot;Продолжить испытание&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q031&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="Q031" tags="" position="1125,625" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 31&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой стоит древний город, который пережил тысячи лет.
+
+Его стены сохранили знания исчезнувших цивилизаций.
+
+Но сейчас город медленно умирает.
+
+Последние хранители предлагают тебе выбрать судьбу этого места.
+
+&lt;&lt;button &quot;Открыть знания города всем существам мира&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Сохранить знания только для достойных&quot;&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать знания себе и продолжить путь&quot;&gt;&gt;
+	&lt;&lt;set $curiosity += 3&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать знания для восстановления города&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Оставить город исчезнуть вместе с его прошлым&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $nature += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q032&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="Q032" tags="" position="1125,750" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 32&gt;&gt;&lt;&lt;header&gt;&gt;
+
+В небе появляется огромное существо.
+
+Его появление меняет погоду и движение стихий.
+
+Одни называют его древним защитником.
+
+Другие считают его угрозой, которую нельзя оставить в живых.
+
+Существо смотрит на тебя и ждёт решения.
+
+&lt;&lt;button &quot;Попытаться понять его истинную природу&quot;&gt;&gt;
+	&lt;&lt;set $intuition += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $nature += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Заключить с ним союз для защиты мира&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $nature += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить его силу и найти способ использовать её&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изгнать существо, чтобы сохранить порядок&quot;&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Поглотить его силу и сделать её частью себя&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q033&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="48" name="Q033" tags="" position="1125,875" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 33&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой появляется человек, который утверждает, что знает твоё прошлое.
+
+Он рассказывает о событиях, которых ты не помнишь.
+
+Он предлагает вернуть утраченные воспоминания.
+
+Но вместе с ними вернутся и старые чувства, ошибки и обязательства.
+
+&lt;&lt;button &quot;Вернуть все воспоминания&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $intuition += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Оставить прошлое забытым и создать новую судьбу&quot;&gt;&gt;
+	&lt;&lt;set $independence += 3&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Проверить правду перед тем, как принимать решение&quot;&gt;&gt;
+	&lt;&lt;set $logic += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Заставить его рассказать всё без возможности скрыть что-либо&quot;&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить воспоминания, чтобы никто не смог управлять твоим прошлым&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q034&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="Q034" tags="" position="1125,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 34&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Ты находишь маленькую деревню на краю мира.
+
+Она не имеет армии.
+
+У неё нет богатств.
+
+Но жители защищают древний источник, который может изменить судьбу целой страны.
+
+Несколько могущественных сил хотят получить его.
+
+&lt;&lt;button &quot;Защитить жителей и источник от всех угроз&quot;&gt;&gt;
+	&lt;&lt;set $justice += 3&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $will += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Передать источник тому, кто сможет использовать его лучше&quot;&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать источник для создания собственной силы&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Скрыть источник, чтобы никто больше его не нашёл&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить источник, чтобы прекратить борьбу за него&quot;&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q035&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="50" name="Q035" tags="" position="1125,1125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 35&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Пространство зеркал снова появляется.
+
+Теперь отражение показывает не только тело.
+
+За ним видна энергия.
+
+Она меняет форму вместе с каждым твоим решением.
+
+Система сообщает:
+
+Душа достигла следующей стадии формирования.
+
+Источник силы начинает пробуждаться.
+
+&lt;&lt;button &quot;Направить силу на защиту всех существ вокруг&quot;&gt;&gt;
+	&lt;&lt;set $justice += 5&gt;&gt;
+	&lt;&lt;set $empathy += 5&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Открыть доступ к знаниям всех миров&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 6&gt;&gt;
+	&lt;&lt;set $logic += 4&gt;&gt;
+	&lt;&lt;set $curiosity += 3&gt;&gt;
+	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать собственную силу, не зависящую ни от кого&quot;&gt;&gt;
+	&lt;&lt;set $will += 6&gt;&gt;
+	&lt;&lt;set $independence += 5&gt;&gt;
+	&lt;&lt;set $determination += 3&gt;&gt;
+	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Поглотить энергию других существ и стать сильнее&quot;&gt;&gt;
+	&lt;&lt;set $curiosity += 5&gt;&gt;
+	&lt;&lt;set $will += 5&gt;&gt;
+	&lt;&lt;set $adaptability += 3&gt;&gt;
+	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Разрушить ограничения существования&quot;&gt;&gt;
+	&lt;&lt;set $hiddenVoid = true&gt;&gt;
+	&lt;&lt;set $will += 5&gt;&gt;
+	&lt;&lt;set $independence += 5&gt;&gt;
+	&lt;&lt;set $curiosity += 3&gt;&gt;
+	&lt;&lt;goto &quot;System_35&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="51" name="System_35" tags="" position="1125,1250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 7&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Внутренняя энергия сущности начинает проявляться.&lt;br&gt;&lt;br&gt;Потоки силы, скрытые до этого момента, начинают выходить за пределы оболочки.&lt;br&gt;&lt;br&gt;Обнаружена первая устойчивая аура.&lt;br&gt;&lt;br&gt;Её природа пока не определена.&quot;&gt;&gt;
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Mirror_35&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="52" name="Mirror_35" tags="" position="1225,1375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+Теперь вокруг отражения появляется аура.
+
+Она больше не является просто частью внешнего облика.
+Она движется вместе с сущностью и изменяется под влиянием решений, принятых во время испытания.
+
+Цвет, плотность и ощущение этой силы ещё не определены.
+Но пространство вокруг отражения начинает реагировать на её присутствие.
+
+Поверхность зеркала дрожит.
+Пустота вокруг словно признаёт, что внутри неё появляется нечто настоящее.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+Формирование оболочки:
+70%
+
+Система фиксирует:
+Энергетическая структура сформирована.
+Связь между сущностью, телом и будущей судьбой установлена.
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q036&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="53" name="Q036" tags="" position="1325,1250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 36&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой появляется поле, покрытое следами великой битвы.
+
+Когда-то здесь столкнулись армии разных народов.
+
+Теперь среди разрушенных знамён остались только выжившие.
+
+Они смотрят на тебя.
+
+Одни просят отомстить.
+
+Другие хотят забыть прошлое.
+
+Третьи ждут решения, которое определит их будущее.
+
+&lt;&lt;button &quot;Остановить месть и помочь всем сторонам начать заново&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 3&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Наказать тех, кто начал войну&quot;&gt;&gt;
+	&lt;&lt;set $justice += 3&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать новую силу, которая больше не допустит войн&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить причины войны и найти скрытую правду&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Оставить прошлое и уйти дальше&quot;&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $adventure += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q037&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="54" name="Q037" tags="" position="1325,1125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 37&gt;&gt;&lt;&lt;header&gt;&gt;
+
+В глубине подземелья ты находишь комнату без входа.
+
+Внутри находится существо, которое существовало ещё до появления первых цивилизаций.
+
+Оно не просит освобождения.
+
+Оно предлагает тебе выбор.
+
+Получить часть его силы.
+
+Или оставить всё неизменным.
+
+&lt;&lt;button &quot;Освободить существо и позволить ему вернуться в мир&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $nature += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Получить его знания и сохранить их для будущего&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $intuition += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Получить его силу и объединить её со своей&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Оставить существо заточённым ради безопасности мира&quot;&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить древнюю сущность вместе с её силой&quot;&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q038&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="55" name="Q038" tags="" position="1325,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 38&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой открывается врата в место, которого нет в обычном мире.
+
+За ними находится пространство, где хранятся забытые души.
+
+Некоторые ждут возвращения.
+
+Некоторые сами выбрали остаться.
+
+А некоторые хотят покинуть это место любой ценой.
+
+&lt;&lt;button &quot;Освободить всех, кто хочет вернуться&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 3&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $intuition += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Оставить всё как есть, уважая их выбор&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 3&gt;&gt;
+	&lt;&lt;set $patience += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить это место и раскрыть тайны душ&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать силу этого места для изменения мира живых&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Закрыть врата навсегда&quot;&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q039&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="56" name="Q039" tags="" position="1325,875" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 39&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой появляется зеркало.
+
+В отличие от остальных, оно отражает тебя полностью.
+
+Но внутри отражения есть несколько возможных версий твоего существования.
+
+Одна спасает миры.
+
+Другая создаёт новые.
+
+Третья уничтожает всё, чтобы начать сначала.
+
+Зеркало спрашивает, какую сторону ты позволишь усилить.
+
+&lt;&lt;button &quot;Ту, что защищает жизнь и существование&quot;&gt;&gt;
+	&lt;&lt;set $justice += 3&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $nature += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Ту, что ищет знания и понимание всего сущего&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Ту, что стремится превзойти все ограничения&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Ту, что изменяет мир под собственное видение&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 3&gt;&gt;
+	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Ту, что возвращает всё к пустоте&quot;&gt;&gt;
+	&lt;&lt;set $hiddenVoid = true&gt;&gt;
+	&lt;&lt;set $independence += 3&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q040&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="57" name="Q040" tags="" position="1325,750" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 40&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Пространство вокруг начинает разрушаться.
+
+Ты видишь множество миров одновременно.
+
+Одни погибают от войн.
+
+Другие исчезают из-за времени.
+
+Некоторые никогда не получат шанс на существование.
+
+У тебя появляется возможность вмешаться.
+
+Но каждое решение изменит бесчисленное количество судеб.
+
+Система сообщает:
+
+Определяется истинное отношение сущности к существованию.
+
+&lt;&lt;button &quot;Спасти все миры, даже если это потребует всей моей силы&quot;&gt;&gt;
+	&lt;&lt;set $justice += 10&gt;&gt;
+	&lt;&lt;set $empathy += 8&gt;&gt;
+	&lt;&lt;set $will += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Создать новый порядок, где страдания станут невозможными&quot;&gt;&gt;
+	&lt;&lt;set $order += 10&gt;&gt;
+	&lt;&lt;set $charisma += 6&gt;&gt;
+	&lt;&lt;set $logic += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Получить абсолютную силу и самому решать судьбы миров&quot;&gt;&gt;
+	&lt;&lt;set $will += 10&gt;&gt;
+	&lt;&lt;set $independence += 8&gt;&gt;
+	&lt;&lt;set $determination += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучить все существующие миры и сохранить их знания&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 10&gt;&gt;
+	&lt;&lt;set $curiosity += 7&gt;&gt;
+	&lt;&lt;set $intuition += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить старое существование и позволить появиться новому&quot;&gt;&gt;
+	&lt;&lt;set $hiddenVoid = true&gt;&gt;
+	&lt;&lt;set $will += 10&gt;&gt;
+	&lt;&lt;set $adaptability += 6&gt;&gt;
+	&lt;&lt;goto &quot;System_40&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="58" name="System_40" tags="" position="1325,625" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 8&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Система анализирует происхождение сущности.&lt;br&gt;&lt;br&gt;Внутренняя энергия, структура души и принятые решения сопоставляются.&lt;br&gt;&lt;br&gt;Некоторые линии развития становятся более вероятными.&lt;br&gt;&lt;br&gt;Другие варианты начинают исчезать.&quot;&gt;&gt;
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Mirror_40&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="59" name="Mirror_40" tags="" position="1325,500" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+В отражении начинают проявляться первые признаки будущей природы.
+
+Изменения едва заметны.
+Форма ещё не завершена, происхождение ещё скрыто, но сама сущность уже начинает отличаться от обычного существования.
+
+То, что находится перед тобой, больше не является просто пустой оболочкой.
+В нём появляется след будущей расы.
+
+Некоторые черты проявляются сами собой.
+Другие остаются скрытыми до завершения испытания.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+Формирование оболочки:
+80%
+
+Система фиксирует:
+Природа сущности начинает стабилизироваться.
+Вероятные линии происхождения определены.
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q041&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="60" name="Q041" tags="" position="1325,375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 41&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой находится небольшое поселение на краю неизвестного мира.
+
+Люди здесь никогда не видели великих магов, богов или древних существ.
+
+Они живут простой жизнью.
+
+Но над поселением появляется опасность.
+
+Существо огромной силы требует уничтожить его за старый долг, которого никто уже не помнит.
+
+Жители ждут твоего решения.
+
+&lt;&lt;button &quot;Защитить поселение и принять удар на себя&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 3&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Узнать правду о старом долге перед решением&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $caution += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить угрозу до того, как она нападёт&quot;&gt;&gt;
+	&lt;&lt;set $determination += 3&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $caution += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Передать жителям силу, чтобы они смогли защитить себя&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $empathy += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Покинуть поселение и не вмешиваться в их судьбу&quot;&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q042&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="61" name="Q042" tags="" position="1325,250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 42&gt;&gt;&lt;&lt;header&gt;&gt;
+
+В центре древнего храма находится источник силы.
+
+Он способен исцелять любые раны.
+
+Но каждый раз после использования часть энергии мира исчезает.
+
+Если оставить источник нетронутым, многие погибнут.
+
+Если использовать его слишком часто, мир начнёт угасать.
+
+&lt;&lt;button &quot;Использовать источник, чтобы спасти всех нуждающихся&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 3&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $nature += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Сохранить источник для будущей катастрофы&quot;&gt;&gt;
+	&lt;&lt;set $caution += 3&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изменить источник, чтобы он больше не требовал платы&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $logic += 2&gt;&gt;
+	&lt;&lt;set $adaptability += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать силу источника себе&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить источник, чтобы сохранить равновесие мира&quot;&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q043&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="62" name="Q043" tags="" position="1425,125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 43&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Ты находишь существо, которое выглядит как обычный человек.
+
+Но его душа содержит силу, способную изменить целую эпоху.
+
+Оно боится собственной природы.
+
+Если оставить его одного, сила может выйти из-под контроля.
+
+Оно просит тебя решить его судьбу.
+
+&lt;&lt;button &quot;Помочь ему принять свою силу&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 3&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Запечатать его силу ради безопасности мира&quot;&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Обучить его использовать силу правильно&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $logic += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать эту силу себе&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить его до того, как сила станет угрозой&quot;&gt;&gt;
+	&lt;&lt;set $determination += 3&gt;&gt;
+	&lt;&lt;set $justice += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q044&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="63" name="Q044" tags="" position="1525,250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 44&gt;&gt;&lt;&lt;header&gt;&gt;
+
+На границе мира появляется армия из другого измерения.
+
+Они утверждают, что их мир погибает.
+
+Чтобы спасти своих людей, они должны забрать ресурсы твоего мира.
+
+Они не считают себя врагами.
+
+Они считают это единственным выходом.
+
+&lt;&lt;button &quot;Отдать часть ресурсов и помочь им выжить&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 3&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Закрыть границу и защитить свой мир&quot;&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Найти другой способ спасти оба мира&quot;&gt;&gt;
+	&lt;&lt;set $logic += 3&gt;&gt;
+	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;set $knowledge += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Победить их армию и забрать их силу&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить путь между мирами навсегда&quot;&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q045&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="64" name="Q045" tags="" position="1525,375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 45&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Пространство зеркал возвращается.
+
+Теперь в отражении видно не только тело.
+
+Вокруг него формируется аура.
+
+Она показывает отношение мира к твоему существованию.
+
+Одни существа видят в ней спасение.
+
+Другие — конец эпохи.
+
+Система сообщает:
+
+Энергия сущности достигла стадии проявления.
+
+Определяется направление будущей судьбы.
+
+&lt;&lt;button &quot;Стать светом, который будет защищать все живые существа&quot;&gt;&gt;
+	&lt;&lt;set $justice += 10&gt;&gt;
+	&lt;&lt;set $empathy += 8&gt;&gt;
+	&lt;&lt;set $order += 5&gt;&gt;
+	&lt;&lt;set $hiddenAngel = true&gt;&gt;
+	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Стать силой, которая создаёт новые миры&quot;&gt;&gt;
+	&lt;&lt;set $charisma += 10&gt;&gt;
+	&lt;&lt;set $logic += 6&gt;&gt;
+	&lt;&lt;set $adaptability += 5&gt;&gt;
+	&lt;&lt;set $hiddenCreator = true&gt;&gt;
+	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Стать существом, которое невозможно остановить&quot;&gt;&gt;
+	&lt;&lt;set $will += 10&gt;&gt;
+	&lt;&lt;set $determination += 8&gt;&gt;
+	&lt;&lt;set $independence += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Принять древнюю силу и выйти за пределы обычных существ&quot;&gt;&gt;
+	&lt;&lt;set $curiosity += 8&gt;&gt;
+	&lt;&lt;set $knowledge += 6&gt;&gt;
+	&lt;&lt;set $will += 5&gt;&gt;
+	&lt;&lt;set $hiddenDragon = true&gt;&gt;
+	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Стать частью пустоты вне существования&quot;&gt;&gt;
+	&lt;&lt;set $hiddenVoid = true&gt;&gt;
+	&lt;&lt;set $independence += 10&gt;&gt;
+	&lt;&lt;set $selfControl += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_45&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="65" name="System_45" tags="" position="1525,500" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 9&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Структура тела сущности завершена.&lt;br&gt;&lt;br&gt;Все основные элементы будущего воплощения сформированы.&lt;br&gt;&lt;br&gt;Последние неизвестные части судьбы будут определены окончательными решениями.&lt;br&gt;&lt;br&gt;После завершения следующего этапа изменить основу существования будет невозможно.&quot;&gt;&gt;
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Mirror_45&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="66" name="Mirror_45" tags="" position="1525,625" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+Ты впервые видишь себя полностью.
+
+В зеркальной поверхности больше нет пустоты.
+Перед тобой стоит существо, которое ещё недавно не имело ни формы, ни границ.
+
+У него есть лицо.
+Есть тело.
+Есть энергия, окружающая его присутствие.
+
+Но главное остаётся неизвестным.
+
+Имя ещё не появилось.
+Происхождение ещё скрыто.
+А окончательная судьба ждёт последнего выбора.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+Формирование оболочки:
+90%
+
+Система фиксирует:
+Физическая форма завершена.
+Сознание и воплощение связаны.
+Остался последний этап определения сущности.
+
+&lt;&lt;button &quot;Продолжить&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Q046&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="67" name="Q046" tags="" position="1525,750" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 46&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой появляется мир, который никогда не знал войны.
+
+Но его жители отказались от свободы ради полного порядка.
+
+Каждый шаг определён заранее.
+
+Каждое решение известно ещё до того, как оно принято.
+
+Они предлагают тебе стать частью этой системы.
+
+&lt;&lt;button &quot;Сохранить этот мир таким, какой он есть&quot;&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Вернуть жителям возможность выбирать свою судьбу&quot;&gt;&gt;
+	&lt;&lt;set $justice += 3&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изменить систему, сохранив её сильные стороны&quot;&gt;&gt;
+	&lt;&lt;set $logic += 3&gt;&gt;
+	&lt;&lt;set $adaptability += 2&gt;&gt;
+	&lt;&lt;set $patience += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Забрать контроль над системой и управлять миром самому&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $charisma += 2&gt;&gt;
+	&lt;&lt;set $order += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Разрушить систему и позволить миру начать заново&quot;&gt;&gt;
+	&lt;&lt;set $determination += 3&gt;&gt;
+	&lt;&lt;set $independence += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q047&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="68" name="Q047" tags="" position="1525,875" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 47&gt;&gt;&lt;&lt;header&gt;&gt;
+
+В забытом месте между мирами находится ребёнок.
+
+Его существование невозможно объяснить.
+
+Он появляется одновременно во многих реальностях.
+
+Каждая версия его судьбы отличается.
+
+Он спрашивает тебя:
+
+«Кем мне стать?»
+
+&lt;&lt;button &quot;Показать ему путь защиты других&quot;&gt;&gt;
+	&lt;&lt;set $empathy += 3&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $charisma += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Дать ему возможность самому выбрать судьбу&quot;&gt;&gt;
+	&lt;&lt;set $independence += 3&gt;&gt;
+	&lt;&lt;set $selfControl += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Обучить его знаниям всех миров&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $intuition += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Сделать его частью своей силы&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Стереть все возможные версии его существования&quot;&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $will += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q048&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="69" name="Q048" tags="" position="1525,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 48&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Ты находишь древнюю библиотеку.
+
+Её книги написаны на языках, которых никогда не существовало.
+
+Внутри находятся ответы на вопросы о происхождении миров.
+
+Но каждое знание имеет цену.
+
+Некоторые тайны способны изменить разум того, кто их узнает.
+
+&lt;&lt;button &quot;Открыть все знания и принять последствия&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;set $will += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Изучать только те знания, которые помогут другим&quot;&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $knowledge += 2&gt;&gt;
+	&lt;&lt;set $selfControl += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Запечатать опасные знания навсегда&quot;&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Использовать знания для возвышения собственной силы&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $curiosity += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить библиотеку, чтобы никто не смог злоупотребить тайнами&quot;&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q049&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="70" name="Q049" tags="" position="1525,1125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 49&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Перед тобой появляется врата.
+
+За ними находится место, где заканчивается время.
+
+Там можно увидеть:
+
+первый момент рождения мира;
+
+последнюю секунду существования;
+
+и все события между ними.
+
+Но тот, кто войдёт туда, может больше никогда не вернуться.
+
+&lt;&lt;button &quot;Войти и узнать всю историю существования&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 3&gt;&gt;
+	&lt;&lt;set $intuition += 2&gt;&gt;
+	&lt;&lt;set $adventure += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Закрыть врата ради безопасности всех миров&quot;&gt;&gt;
+	&lt;&lt;set $order += 3&gt;&gt;
+	&lt;&lt;set $caution += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Войти и изменить события прошлого&quot;&gt;&gt;
+	&lt;&lt;set $will += 3&gt;&gt;
+	&lt;&lt;set $determination += 2&gt;&gt;
+	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Остаться вне времени и наблюдать за всеми эпохами&quot;&gt;&gt;
+	&lt;&lt;set $selfControl += 3&gt;&gt;
+	&lt;&lt;set $patience += 2&gt;&gt;
+	&lt;&lt;set $knowledge += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Разрушить врата, чтобы никто не смог нарушить ход существования&quot;&gt;&gt;
+	&lt;&lt;set $justice += 2&gt;&gt;
+	&lt;&lt;set $order += 2&gt;&gt;
+	&lt;&lt;set $determination += 1&gt;&gt;
+	&lt;&lt;goto &quot;Q050&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="71" name="Q050" tags="" position="1525,1250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $question = 50&gt;&gt;&lt;&lt;header&gt;&gt;
+
+Пространство зеркал исчезает.
+
+Перед тобой остаётся только одно отражение.
+
+Теперь в нём есть:
+тело;
+лицо;
+аура;
+след твоей силы.
+
+Но судьба ещё не завершена.
+
+Перед тобой появляются все возможные пути.
+
+Ты можешь стать тем, кто сохранит существование.
+
+Тем, кто создаст новое.
+
+Тем, кто превзойдёт всё.
+
+Или тем, кто оставит после себя только пустоту.
+
+Система сообщает:
+
+Испытание природы завершено.
+
+Последний выбор определит основу твоей сущности.
+
+&lt;&lt;button &quot;Стать защитником всего существующего&quot;&gt;&gt;
+	&lt;&lt;set $justice += 15&gt;&gt;
+	&lt;&lt;set $empathy += 10&gt;&gt;
+	&lt;&lt;set $order += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Стать создателем новых миров&quot;&gt;&gt;
+	&lt;&lt;set $hiddenCreator = true&gt;&gt;
+	&lt;&lt;set $charisma += 15&gt;&gt;
+	&lt;&lt;set $logic += 8&gt;&gt;
+	&lt;&lt;set $adaptability += 7&gt;&gt;
+	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Стать абсолютной силой над всеми законами&quot;&gt;&gt;
+	&lt;&lt;set $will += 15&gt;&gt;
+	&lt;&lt;set $determination += 10&gt;&gt;
+	&lt;&lt;set $independence += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Стать хранителем всех знаний и судеб&quot;&gt;&gt;
+	&lt;&lt;set $knowledge += 15&gt;&gt;
+	&lt;&lt;set $intuition += 10&gt;&gt;
+	&lt;&lt;set $selfControl += 5&gt;&gt;
+	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;button &quot;Уничтожить старое существование и стать началом нового&quot;&gt;&gt;
+	&lt;&lt;set $hiddenVoid = true&gt;&gt;
+	&lt;&lt;set $will += 15&gt;&gt;
+	&lt;&lt;set $independence += 10&gt;&gt;
+	&lt;&lt;goto &quot;System_50&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="72" name="System_50" tags="" position="1625,1375" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;&lt;&lt;set $mirrorStage = 10&gt;&gt;&lt;&lt;system &quot;&lt;br&gt;Формирование сущности окончено.&lt;br&gt;&lt;br&gt;Все принятые решения сохранены в структуре души.&lt;br&gt;&lt;br&gt;Последствия каждого выбора учтены.&lt;br&gt;&lt;br&gt;Определение окончательной судьбы начинается.&quot;&gt;&gt;
+
+&lt;&lt;button &quot;Посмотреть воплощение&quot; class=&quot;genesis-continue&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Mirror_50&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="73" name="Mirror_50" tags="" position="1725,1250" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
 Отражение становится настоящим.
 
+Граница между тобой и зеркалом исчезает.
+
 Перед тобой больше нет пустоты.
+Нет неопределённой формы.
+Нет бесконечного множества возможных путей.
 
-Есть только тот, кем ты стал.
+Есть только то воплощение, которое было создано твоими решениями.
 
+Ты больше не являешься неизвестной сущностью.
+Теперь у тебя есть природа.
+Есть сила.
+Есть начало собственной истории.
+
+━━━━━━━━━━━━━━━━━━━━━━
 
 Полное воплощение завершено.
 
+Система завершает анализ всех решений.
 
-━━━━━━━━━━━━━━━━━━━━━━
-
-
-&lt;&lt;button &quot;Узнать свою судьбу&quot;&gt;&gt;
+&lt;&lt;button &quot;Узнать свою судьбу&quot; class=&quot;genesis-continue&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Calculate_Result&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Final_Result" tags="" position="1725,1000" size="100,100">━━━━━━━━━━━━━━━━━━━━━━
+&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="74" name="Final_Result" tags="" position="1725,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;━━━━━━━━━━━━━━━━━━━━━━
 
 Твоя судьба
 
 ━━━━━━━━━━━━━━━━━━━━━━
 
-
 Раса:
 
 &lt;&lt;print $race&gt;&gt;
 
-Твоя природа определена решениями, принятыми во время Испытания.
-
-
 ━━━━━━━━━━━━━━━━━━━━━━
-
 
 Класс:
 
 &lt;&lt;print $class&gt;&gt;
 
-Твой путь силы сформирован выбором.
-
-
 ━━━━━━━━━━━━━━━━━━━━━━
-
 
 Атрибут:
 
 &lt;&lt;print $attribute&gt;&gt;
 
-Энергия, связанная с твоей сущностью.
-
-
 ━━━━━━━━━━━━━━━━━━━━━━
-
 
 Навык:
 
 &lt;&lt;print $skill&gt;&gt;
 
-Врожденная способность твоего воплощения.
-
-
 ━━━━━━━━━━━━━━━━━━━━━━
-
 
 Благословение:
 
 &lt;&lt;print $blessing&gt;&gt;
 
-Дар, оставленный судьбой.
-
-
 ━━━━━━━━━━━━━━━━━━━━━━
+
 Проклятие:
 
 &lt;&lt;print $curse&gt;&gt;
 
-xctyuheuhfeyfg
 ━━━━━━━━━━━━━━━━━━━━━━
 
 Род:
 
 &lt;&lt;print $lineage&gt;&gt;
-
-Наследие прошлого.
-
 
 ━━━━━━━━━━━━━━━━━━━━━━
 
@@ -2561,23 +3346,18 @@ xctyuheuhfeyfg
 
 &lt;&lt;print $heritage&gt;&gt;
 
-xdcfvgbhnjkme
 ━━━━━━━━━━━━━━━━━━━━━━
-
 
 Происхождение крови:
 
 &lt;&lt;print $blood&gt;&gt;
 
-Источник твоей внутренней силы.
-
-
 ━━━━━━━━━━━━━━━━━━━━━━
-
 
 Испытание завершено.
 
-━━━━━━━━━━━━━━━━━━━━━━</tw-passagedata><tw-passagedata pid="75" name="Calculate_Result" tags="" position="1725,1125" size="100,100">/* ============================
+━━━━━━━━━━━━━━━━━━━━━━
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="75" name="Calculate_Result" tags="" position="1725,1125" size="100,100">/* ============================
    СИСТЕМА РАСЫ
 ============================ */
 
