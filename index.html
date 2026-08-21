@@ -881,407 +881,701 @@ body::before {
 }&gt;&gt;
 
 /* =========================================================
-   DATABASE — RACES (ЖЁСТКИЙ РЕБАЛАНС)
-   Теперь легендарные расы требуют 30+ в ключевых статах
+   DATABASE
+   RACES (26 рас)
 ========================================================= */
 
-/* ---------- ОБЫЧНЫЕ РАСЫ (common) ---------- */
+
+/* =========================
+   COMMON (9 рас)
+========================= */
+
 
 &lt;&lt;set $raceDatabase.human = _createResult(
-	&quot;human&quot;,
-	&quot;Человек&quot;,
-	&quot;images/races/human.webp&quot;,
-	&quot;Самая универсальная раса мира. Человек способен адаптироваться к любому пути и превзойти ограничения своего происхождения.&quot;,
-	function(s){ return s.adaptability + s.charisma + s.logic; },
-	&quot;common&quot;
+
+&quot;human&quot;,
+
+&quot;Человек&quot;,
+
+&quot;images/races/human.webp&quot;,
+
+&quot;Самая универсальная раса мира. Человек способен адаптироваться к любому пути и превзойти ограничения своего происхождения.&quot;,
+
+
+function(s){
+
+return s.adaptability
++s.charisma
++s.logic;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.dwarf = _createResult(
-	&quot;dwarf&quot;,
-	&quot;Дворф&quot;,
-	&quot;images/races/dwarf.webp&quot;,
-	&quot;Народ древних мастеров. Их сила заключается в терпении, стойкости и умении создавать невозможное.&quot;,
-	function(s){ return s.patience*2 + s.order + s.caution; },
-	&quot;common&quot;
+
+&quot;dwarf&quot;,
+
+&quot;Дворф&quot;,
+
+&quot;images/races/dwarf.webp&quot;,
+
+&quot;Народ древних мастеров. Их сила заключается в терпении, стойкости и умении создавать невозможное.&quot;,
+
+
+function(s){
+
+return s.patience*2
++s.order
++s.caution;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.elf = _createResult(
-	&quot;elf&quot;,
-	&quot;Эльф&quot;,
-	&quot;images/races/elf.webp&quot;,
-	&quot;Древняя раса, связанная с природой и тайнами мира. Эльфы обладают тонким восприятием и глубокими знаниями.&quot;,
-	function(s){ return s.nature*2 + s.intuition + s.knowledge; },
-	&quot;common&quot;
+
+&quot;elf&quot;,
+
+&quot;Эльф&quot;,
+
+&quot;images/races/elf.webp&quot;,
+
+&quot;Древняя раса, связанная с природой и тайнами мира. Эльфы обладают тонким восприятием и глубокими знаниями.&quot;,
+
+
+function(s){
+
+return s.nature*2
++s.intuition
++s.knowledge;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.halfElf = _createResult(
-	&quot;halfElf&quot;,
-	&quot;Полуэльф&quot;,
-	&quot;images/races/halfElf.webp&quot;,
-	&quot;Наследник двух миров. Полуэльфы сочетают гибкость человека и мудрость эльфов.&quot;,
-	function(s){ return s.adaptability + s.nature + s.charisma; },
-	&quot;common&quot;
+
+&quot;halfElf&quot;,
+
+&quot;Полуэльф&quot;,
+
+&quot;images/races/halfElf.webp&quot;,
+
+&quot;Наследник двух миров. Полуэльфы сочетают гибкость человека и мудрость эльфов.&quot;,
+
+
+function(s){
+
+return s.adaptability
++s.nature
++s.charisma;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.orc = _createResult(
-	&quot;orc&quot;,
-	&quot;Орк&quot;,
-	&quot;images/races/orc.webp&quot;,
-	&quot;Воинственная раса, где сила воли и решимость важнее всего.&quot;,
-	function(s){ return s.will*2 + s.determination; },
-	&quot;common&quot;
+
+&quot;orc&quot;,
+
+&quot;Орк&quot;,
+
+&quot;images/races/orc.webp&quot;,
+
+&quot;Воинственная раса, где сила воли и решимость важнее всего.&quot;,
+
+
+function(s){
+
+return s.will*2
++s.determination;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.goblin = _createResult(
-	&quot;goblin&quot;,
-	&quot;Гоблин&quot;,
-	&quot;images/races/goblin.webp&quot;,
-	&quot;Маленький, но невероятно хитрый народ изобретателей и выживших.&quot;,
-	function(s){ return s.adaptability*2 + s.curiosity; },
-	&quot;common&quot;
+
+&quot;goblin&quot;,
+
+&quot;Гоблин&quot;,
+
+&quot;images/races/goblin.webp&quot;,
+
+&quot;Маленький, но невероятно хитрый народ изобретателей и выживших.&quot;,
+
+
+function(s){
+
+return s.adaptability*2
++s.curiosity;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.kobold = _createResult(
-	&quot;kobold&quot;,
-	&quot;Кобольд&quot;,
-	&quot;images/races/kobold.webp&quot;,
-	&quot;Осторожная раса подземных мастеров и разведчиков.&quot;,
-	function(s){ return s.caution*2 + s.logic; },
-	&quot;common&quot;
+
+&quot;kobold&quot;,
+
+&quot;Кобольд&quot;,
+
+&quot;images/races/kobold.webp&quot;,
+
+&quot;Осторожная раса подземных мастеров и разведчиков.&quot;,
+
+
+function(s){
+
+return s.caution*2
++s.logic;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.beast = _createResult(
-	&quot;beast&quot;,
-	&quot;Зверочеловек&quot;,
-	&quot;images/races/beast.webp&quot;,
-	&quot;Народ, в котором смешались разум и древняя сила природы.&quot;,
-	function(s){ return s.nature*2 + s.intuition; },
-	&quot;common&quot;
+
+&quot;beast&quot;,
+
+&quot;Зверочеловек&quot;,
+
+&quot;images/races/beast.webp&quot;,
+
+&quot;Народ, в котором смешались разум и древняя сила природы.&quot;,
+
+
+function(s){
+
+return s.nature*2
++s.intuition;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.mermaid = _createResult(
-	&quot;mermaid&quot;,
-	&quot;Русалка&quot;,
-	&quot;images/races/mermaid.webp&quot;,
-	&quot;Мистический народ воды, связанный с эмоциями и глубинными силами мира.&quot;,
-	function(s){ return s.nature + s.intuition*2 + s.empathy; },
-	&quot;common&quot;
+
+&quot;mermaid&quot;,
+
+&quot;Русалка&quot;,
+
+&quot;images/races/mermaid.webp&quot;,
+
+&quot;Мистический народ воды, связанный с эмоциями и глубинными силами мира.&quot;,
+
+
+function(s){
+
+return s.nature
++s.intuition*2
++s.empathy;
+
+},
+
+{}
+
 )&gt;&gt;
 
-/* ---------- РЕДКИЕ РАСЫ (rare) — теперь требуют 20+ ---------- */
+
+
+/* =========================
+   RARE (9 рас)
+========================= */
+
 
 &lt;&lt;set $raceDatabase.darkElf = _createResult(
-	&quot;darkElf&quot;,
-	&quot;Тёмный эльф&quot;,
-	&quot;images/races/darkElf.webp&quot;,
-	&quot;Народ теней, знаний и запретных искусств.&quot;,
-	function(s){ return s.curiosity*2 + s.intuition + s.independence; },
-	&quot;rare&quot;,
-	{ minStats: { curiosity: 20, independence: 18 } }
+
+&quot;darkElf&quot;,
+
+&quot;Тёмный эльф&quot;,
+
+&quot;images/races/darkElf.webp&quot;,
+
+&quot;Народ теней, знаний и запретных искусств.&quot;,
+
+
+function(s){
+
+return s.curiosity*2
++s.intuition
++s.independence;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.draconid = _createResult(
-	&quot;draconid&quot;,
-	&quot;Драконид&quot;,
-	&quot;images/races/draconid.webp&quot;,
-	&quot;Потомок драконьей крови. Их сила растёт вместе с волей и стремлением к развитию.&quot;,
-	function(s){ return s.will*2 + s.determination*2; },
-	&quot;rare&quot;,
-	{ minStats: { will: 22, determination: 18 } }
+
+&quot;draconid&quot;,
+
+&quot;Драконид&quot;,
+
+&quot;images/races/draconid.webp&quot;,
+
+&quot;Потомок драконьей крови. Их сила растёт вместе с волей и стремлением к развитию.&quot;,
+
+
+function(s){
+
+return s.will*2
++s.determination*2;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.vampire = _createResult(
-	&quot;vampire&quot;,
-	&quot;Вампир&quot;,
-	&quot;images/races/vampire.webp&quot;,
-	&quot;Бессмертная кровь дарует силу, но требует постоянной борьбы с собственной природой.&quot;,
-	function(s){ return s.intuition*2 + s.curiosity + s.independence; },
-	&quot;rare&quot;,
-	{ minStats: { intuition: 20, curiosity: 18 } }
+
+&quot;vampire&quot;,
+
+&quot;Вампир&quot;,
+
+&quot;images/races/vampire.webp&quot;,
+
+&quot;Бессмертная кровь дарует силу, но требует постоянной борьбы с собственной природой.&quot;,
+
+
+function(s){
+
+return s.intuition*2
++s.curiosity
++s.independence;
+
+},
+
+{}
+
 )&gt;&gt;
 
-&lt;&lt;set $raceDatabase.halfDemon = _createResult(
-	&quot;halfDemon&quot;,
-	&quot;Полудемон&quot;,
-	&quot;images/races/halfDemon.webp&quot;,
-	&quot;Наследник двух противоположных начал.&quot;,
-	function(s){ return s.will + s.adaptability*2 + s.curiosity; },
-	&quot;rare&quot;,
-	{ minStats: { will: 20, adaptability: 18 } }
-)&gt;&gt;
 
-&lt;&lt;set $raceDatabase.oni = _createResult(
-	&quot;oni&quot;,
-	&quot;Они&quot;,
-	&quot;images/races/oni.webp&quot;,
-	&quot;Древний народ силы и ярости.&quot;,
-	function(s){ return s.will*3 + s.determination; },
-	&quot;rare&quot;,
-	{ minStats: { will: 24, determination: 18 } }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.chimera = _createResult(
-	&quot;chimera&quot;,
-	&quot;Химера&quot;,
-	&quot;images/races/chimera.webp&quot;,
-	&quot;Смешение различных сущностей, способное адаптироваться к любым условиям.&quot;,
-	function(s){ return s.adaptability*3 + s.nature; },
-	&quot;rare&quot;,
-	{ minStats: { adaptability: 22, nature: 16 } }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.succubus = _createResult(
-	&quot;succubus&quot;,
-	&quot;Суккуб&quot;,
-	&quot;images/races/succubus.webp&quot;,
-	&quot;Раса влияния и магии эмоций.&quot;,
-	function(s){ return s.charisma*3 + s.curiosity; },
-	&quot;rare&quot;,
-	{ minStats: { charisma: 24, curiosity: 16 } }
-)&gt;&gt;
 
 &lt;&lt;set $raceDatabase.demon = _createResult(
-	&quot;demon&quot;,
-	&quot;Демон&quot;,
-	&quot;images/races/demon.webp&quot;,
-	&quot;Сущность тёмной силы, питающаяся волей и желанием превосходства.&quot;,
-	function(s){ return s.will*2 + s.curiosity*2; },
-	&quot;rare&quot;,
-	{ minStats: { will: 22, curiosity: 20 }, requiredFlags: [&quot;demon&quot;] }
+
+&quot;demon&quot;,
+
+&quot;Демон&quot;,
+
+&quot;images/races/demon.webp&quot;,
+
+&quot;Сущность тёмной силы, питающаяся волей и желанием превосходства.&quot;,
+
+
+function(s){
+
+return s.will*2
++s.curiosity*2;
+
+},
+
+{}
+
 )&gt;&gt;
+
+
+
+&lt;&lt;set $raceDatabase.succubus = _createResult(
+
+&quot;succubus&quot;,
+
+&quot;Суккуб&quot;,
+
+&quot;images/races/succubus.webp&quot;,
+
+&quot;Раса влияния и магии эмоций.&quot;,
+
+
+function(s){
+
+return s.charisma*3
++s.curiosity;
+
+},
+
+{}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $raceDatabase.oni = _createResult(
+
+&quot;oni&quot;,
+
+&quot;Они&quot;,
+
+&quot;images/races/oni.webp&quot;,
+
+&quot;Древний народ силы и ярости.&quot;,
+
+
+function(s){
+
+return s.will*3
++s.determination;
+
+},
+
+{}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $raceDatabase.chimera = _createResult(
+
+&quot;chimera&quot;,
+
+&quot;Химера&quot;,
+
+&quot;images/races/chimera.webp&quot;,
+
+&quot;Смешение различных сущностей, способное адаптироваться к любым условиям.&quot;,
+
+
+function(s){
+
+return s.adaptability*3
++s.nature;
+
+},
+
+{}
+
+)&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.angel = _createResult(
-	&quot;angel&quot;,
-	&quot;Ангел&quot;,
-	&quot;images/races/angel.webp&quot;,
-	&quot;Сущность света, порядка и защиты.&quot;,
-	function(s){ return s.justice*3 + s.order*2 + s.empathy; },
-	&quot;rare&quot;,
-	{ minStats: { justice: 22, order: 20 }, requiredFlags: [&quot;angel&quot;] }
+
+&quot;angel&quot;,
+
+&quot;Ангел&quot;,
+
+&quot;images/races/angel.webp&quot;,
+
+&quot;Сущность света, порядка и защиты.&quot;,
+
+
+function(s){
+
+return s.justice*3
++s.order*2
++s.empathy;
+
+},
+
+{}
+
 )&gt;&gt;
 
-/* ---------- ЛЕГЕНДАРНЫЕ РАСЫ (legendary) — теперь требуют 30+ и флаги ---------- */
 
-&lt;&lt;set $raceDatabase.dragon = _createResult(
-    &quot;dragon&quot;,
-    &quot;Дракон&quot;,
-    &quot;images/races/dragon.webp&quot;,
-    &quot;Одна из древнейших рас мира. Кровь драконов хранит память эпох, а воля способна изменить судьбу.&quot;,
-    function(s){ return s.will*3 + s.determination*2 + _hiddenBonus(&quot;dragon&quot;); },
-    &quot;legendary&quot;,
-    { minStats: { will: 40, determination: 30 }, requiredFlags: [&quot;dragon&quot;] }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.phoenix = _createResult(
-	&quot;phoenix&quot;,
-	&quot;Феникс&quot;,
-	&quot;images/races/phoenix.webp&quot;,
-	&quot;Бессмертное создание огня и возрождения. Его сила заключается в способности возвращаться после падения.&quot;,
-	function(s){ return s.selfControl*2 + s.nature*3 + s.will + _hiddenBonus(&quot;angel&quot;); },
-	&quot;legendary&quot;,
-	{ minStats: { selfControl: 26, nature: 28, will: 24 } }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.titan = _createResult(
-	&quot;titan&quot;,
-	&quot;Титан&quot;,
-	&quot;images/races/titan.webp&quot;,
-	&quot;Древний народ огромной силы, связанный с порядком и устойчивостью мира.&quot;,
-	function(s){ return s.order*3 + s.will*2 + s.patience; },
-	&quot;legendary&quot;,
-	{ minStats: { order: 30, will: 26, patience: 22 } }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.natureSpirit = _createResult(
-	&quot;natureSpirit&quot;,
-	&quot;Дух природы&quot;,
-	&quot;images/races/natureSpirit.webp&quot;,
-	&quot;Сущность живой природы. Их сила течёт вместе с миром.&quot;,
-	function(s){ return s.nature*4 + s.empathy*2; },
-	&quot;legendary&quot;,
-	{ minStats: { nature: 32, empathy: 24 } }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.elementSpirit = _createResult(
-	&quot;elementSpirit&quot;,
-	&quot;Дух стихии&quot;,
-	&quot;images/races/elementSpirit.webp&quot;,
-	&quot;Воплощение одной из первородных сил природы.&quot;,
-	function(s){ return s.nature*3 + s.intuition*3; },
-	&quot;legendary&quot;,
-	{ minStats: { nature: 28, intuition: 26 } }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.leviathan = _createResult(
-	&quot;leviathan&quot;,
-	&quot;Левиафан&quot;,
-	&quot;images/races/leviathan.webp&quot;,
-	&quot;Древнее создание глубин, обладающее огромной природной мощью.&quot;,
-	function(s){ return s.nature*3 + s.will*3; },
-	&quot;legendary&quot;,
-	{ minStats: { nature: 28, will: 26 } }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.heavenly = _createResult(
-	&quot;heavenly&quot;,
-	&quot;Небожитель&quot;,
-	&quot;images/races/heavenly.webp&quot;,
-	&quot;Существо высших миров, соединяющее порядок, справедливость и мудрость.&quot;,
-	function(s){ return s.justice*3 + s.order*2 + s.intuition + _hiddenBonus(&quot;angel&quot;); },
-	&quot;legendary&quot;,
-	{ minStats: { justice: 30, order: 26 }, requiredFlags: [&quot;angel&quot;] }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.demigod = _createResult(
-	&quot;demigod&quot;,
-	&quot;Полубог&quot;,
-	&quot;images/races/demigod.webp&quot;,
-	&quot;Существо между смертным и божественным. Его потенциал выходит за пределы обычных существ.&quot;,
-	function(s){ return s.justice*2 + s.will*2 + s.charisma; },
-	&quot;legendary&quot;,
-	{ minStats: { justice: 26, will: 26, charisma: 24 } }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.god = _createResult(
-    &quot;god&quot;,
-    &quot;Бог&quot;,
-    &quot;images/races/god.webp&quot;,
-    &quot;Божественная сущность, способная влиять на законы мира.&quot;,
-    function(s){ return s.order*3 + s.will*2 + s.charisma*2 + _hiddenBonus(&quot;creator&quot;); },
-    &quot;legendary&quot;,
-    { minStats: { order: 45, will: 40, charisma: 35 }, requiredFlags: [&quot;creator&quot;] }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.avatar = _createResult(
-	&quot;avatar&quot;,
-	&quot;Аватар божества&quot;,
-	&quot;images/races/avatar.webp&quot;,
-	&quot;Избранный сосуд высшей силы.&quot;,
-	function(s){ return s.justice*2 + s.charisma*3 + _hiddenBonus(&quot;angel&quot;); },
-	&quot;legendary&quot;,
-	{ minStats: { justice: 26, charisma: 30 }, requiredFlags: [&quot;angel&quot;] }
-)&gt;&gt;
-
-&lt;&lt;set $raceDatabase.immortal = _createResult(
-	&quot;immortal&quot;,
-	&quot;Бессмертный&quot;,
-	&quot;images/races/immortal.webp&quot;,
-	&quot;Существо, преодолевшее пределы обычной жизни.&quot;,
-	function(s){ return s.selfControl*3 + s.will*2 + s.patience; },
-	&quot;legendary&quot;,
-	{ minStats: { selfControl: 30, will: 26, patience: 22 } }
-)&gt;&gt;
-
-/* ---------- СКРЫТЫЕ ЛЕГЕНДАРНЫЕ РАСЫ (требуют ещё больше) ---------- */
-
-&lt;&lt;set $raceDatabase.nephilim = _createResult(
-    &quot;nephilim&quot;,
-    &quot;Нефилим&quot;,
-    &quot;images/races/nephilim.webp&quot;,
-    &quot;Потомок высших существ, несущий силу двух миров.&quot;,
-    function(s){ return s.justice*2 + s.will*2 + s.charisma + _hiddenBonus(&quot;angel&quot;); },
-    &quot;legendary&quot;,
-    { minStats: { justice: 38, will: 38, charisma: 32 }, requiredFlags: [&quot;angel&quot;] }
-)&gt;&gt;
 
 &lt;&lt;set $raceDatabase.fallenAngel = _createResult(
-    &quot;fallenAngel&quot;,
-    &quot;Падший ангел&quot;,
-    &quot;images/races/fallenAngel.webp&quot;,
-    &quot;Тот, кто отвернулся от света и получил силу через падение.&quot;,
-    function(s){ return s.independence*3 + s.justice + s.will + _hiddenBonus(&quot;angel&quot;); },
-    &quot;legendary&quot;,
-    { minStats: { independence: 40, will: 34 }, requiredFlags: [&quot;angel&quot;] }
+
+&quot;fallenAngel&quot;,
+
+&quot;Падший ангел&quot;,
+
+&quot;images/races/fallenAngel.webp&quot;,
+
+&quot;Тот, кто отвернулся от света и получил силу через падение.&quot;,
+
+
+function(s){
+
+return s.independence*3
++s.justice
++s.will
++_hiddenBonus(&quot;angel&quot;);
+
+},
+
+{}
+
 )&gt;&gt;
 
-&lt;&lt;set $raceDatabase.highAngel = _createResult(
-    &quot;highAngel&quot;,
-    &quot;Высший ангел&quot;,
-    &quot;images/races/highAngel.webp&quot;,
-    &quot;Абсолютное воплощение небесной силы.&quot;,
-    function(s){ return s.justice*4 + s.order*3 + _hiddenBonus(&quot;angel&quot;); },
-    &quot;legendary&quot;,
-    { minStats: { justice: 45, order: 40 }, requiredFlags: [&quot;angel&quot;] }
+
+
+/* =========================
+   LEGENDARY (8 рас)
+========================= */
+
+
+&lt;&lt;set $raceDatabase.dragon = _createResult(
+
+&quot;dragon&quot;,
+
+&quot;Дракон&quot;,
+
+&quot;images/races/dragon.webp&quot;,
+
+&quot;Одна из древнейших рас мира. Кровь драконов хранит память эпох, а воля способна изменить судьбу.&quot;,
+
+
+function(s){
+
+return s.will*4
++s.determination*3
++_hiddenBonus(&quot;dragon&quot;);
+
+},
+
+{}
+
 )&gt;&gt;
+
+
+
+&lt;&lt;set $raceDatabase.phoenix = _createResult(
+
+&quot;phoenix&quot;,
+
+&quot;Феникс&quot;,
+
+&quot;images/races/phoenix.webp&quot;,
+
+&quot;Бессмертное создание огня и возрождения. Его сила заключается в способности возвращаться после падения.&quot;,
+
+
+function(s){
+
+return s.selfControl*2
++s.nature*3
++s.will;
+
+},
+
+{}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $raceDatabase.titan = _createResult(
+
+&quot;titan&quot;,
+
+&quot;Титан&quot;,
+
+&quot;images/races/titan.webp&quot;,
+
+&quot;Древний народ огромной силы, связанный с порядком и устойчивостью мира.&quot;,
+
+
+function(s){
+
+return s.order*3
++s.will*2
++s.patience;
+
+},
+
+{}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $raceDatabase.spirit = _createResult(
+
+&quot;spirit&quot;,
+
+&quot;Дух&quot;,
+
+&quot;images/races/spirit.webp&quot;,
+
+&quot;Чистая сущность стихии или природы. Дух может принимать форму огня, воды, ветра, земли, света, тьмы или самой жизни.&quot;,
+
+
+function(s){
+
+return s.nature*4
++s.intuition*3
++s.empathy*2;
+
+},
+
+{}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $raceDatabase.god = _createResult(
+
+&quot;god&quot;,
+
+&quot;Бог&quot;,
+
+&quot;images/races/god.webp&quot;,
+
+&quot;Божественная сущность, способная влиять на законы мира.&quot;,
+
+
+function(s){
+
+return s.order*3
++s.will*2
++s.charisma*2
++_hiddenBonus(&quot;creator&quot;);
+
+},
+
+{}
+
+)&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.archDemon = _createResult(
-    &quot;archDemon&quot;,
-    &quot;Архидемон&quot;,
-    &quot;images/races/archDemon.webp&quot;,
-    &quot;Высшая форма демонической сущности.&quot;,
-    function(s){ return s.will*4 + s.curiosity*2 + _hiddenBonus(&quot;demon&quot;); },
-    &quot;legendary&quot;,
-    { minStats: { will: 45, curiosity: 35 }, requiredFlags: [&quot;demon&quot;] }
+
+&quot;archDemon&quot;,
+
+&quot;Архидемон&quot;,
+
+&quot;images/races/archDemon.webp&quot;,
+
+&quot;Высшая форма демонической сущности.&quot;,
+
+
+function(s){
+
+return s.will*4
++s.curiosity*2
++_hiddenBonus(&quot;demon&quot;);
+
+},
+
+{}
+
 )&gt;&gt;
 
-&lt;&lt;set $raceDatabase.ancientDragon = _createResult(
-    &quot;ancientDragon&quot;,
-    &quot;Древний дракон&quot;,
-    &quot;images/races/ancientDragon.webp&quot;,
-    &quot;Первородный дракон, существовавший ещё до появления цивилизаций.&quot;,
-    function(s){ return s.will*5 + s.determination*3 + _hiddenBonus(&quot;dragon&quot;); },
-    &quot;legendary&quot;,
-    { minStats: { will: 50, determination: 40 }, requiredFlags: [&quot;dragon&quot;] }
-)&gt;&gt;
 
-&lt;&lt;set $raceDatabase.primal = _createResult(
-    &quot;primal&quot;,
-    &quot;Первозданная сущность&quot;,
-    &quot;images/races/primal.webp&quot;,
-    &quot;Существо, существовавшее до разделения мира на формы и законы.&quot;,
-    function(s){ return s.charisma*3 + s.logic*3 + _hiddenBonus(&quot;creator&quot;); },
-    &quot;legendary&quot;,
-    { minStats: { charisma: 40, logic: 40 }, requiredFlags: [&quot;creator&quot;] }
-)&gt;&gt;
 
 &lt;&lt;set $raceDatabase.void = _createResult(
-    &quot;void&quot;,
-    &quot;Создание пустоты&quot;,
-    &quot;images/races/void.webp&quot;,
-    &quot;Сущность из пространства между существованием и ничем.&quot;,
-    function(s){ return s.logic*3 + s.independence*2 + _hiddenBonus(&quot;void&quot;); },
-    &quot;legendary&quot;,
-    { minStats: { logic: 40, independence: 38 }, requiredFlags: [&quot;void&quot;] }
+
+&quot;void&quot;,
+
+&quot;Создание пустоты&quot;,
+
+&quot;images/races/void.webp&quot;,
+
+&quot;Сущность из пространства между существованием и ничем.&quot;,
+
+
+function(s){
+
+return s.logic*3
++s.independence*2
++_hiddenBonus(&quot;void&quot;);
+
+},
+
+{}
+
 )&gt;&gt;
+
+
 
 &lt;&lt;set $raceDatabase.chaos = _createResult(
-    &quot;chaos&quot;,
-    &quot;Воплощение хаоса&quot;,
-    &quot;images/races/chaos.webp&quot;,
-    &quot;Живое проявление абсолютной непредсказуемой силы.&quot;,
-    function(s){ return s.chaos*4 + s.curiosity*2; },
-    &quot;legendary&quot;,
-    { minStats: { chaos: 40, curiosity: 32 } }
+
+&quot;chaos&quot;,
+
+&quot;Воплощение хаоса&quot;,
+
+&quot;images/races/chaos.webp&quot;,
+
+&quot;Живое проявление абсолютной непредсказуемой силы.&quot;,
+
+
+function(s){
+
+return s.chaos*4
++s.curiosity*2;
+
+},
+
+{}
+
 )&gt;&gt;
 
+
+
+
 /* =========================================================
-   ВЫБОР РАСЫ (НОВАЯ ЛОГИКА С РЕДКОСТЬЮ)
+   ВЫБОР РАСЫ
 ========================================================= */
 
+
 &lt;&lt;set $race = &quot;human&quot;&gt;&gt;
-&lt;&lt;set $raceData = $raceDatabase.human&gt;&gt;
+
 &lt;&lt;set $highestRace = -999&gt;&gt;
 
+
+
 &lt;&lt;for _raceID range Object.keys($raceDatabase)&gt;&gt;
+
+
 	&lt;&lt;set _race = $raceDatabase[_raceID]&gt;&gt;
-	
-	&lt;&lt;if _checkRequirements(_race.requirements, _stats)&gt;&gt;
-		&lt;&lt;set _score = _race.formula(_stats)&gt;&gt;
-		
-		/* Штраф за редкость */
-		&lt;&lt;if _race.rarity == &quot;legendary&quot;&gt;&gt;
-			&lt;&lt;set _score = _score - 15&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-		&lt;&lt;if _race.rarity == &quot;rare&quot;&gt;&gt;
-			&lt;&lt;set _score = _score - 5&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-		
-		&lt;&lt;if _score &gt; $highestRace&gt;&gt;
-			&lt;&lt;set $highestRace = _score&gt;&gt;
-			&lt;&lt;set $race = _raceID&gt;&gt;
-			&lt;&lt;set $raceData = _race&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;set _score = _race.formula(_stats)&gt;&gt;
+
+
+	&lt;&lt;if _score &gt; $highestRace&gt;&gt;
+
+
+		&lt;&lt;set $highestRace = _score&gt;&gt;
+
+		&lt;&lt;set $race = _raceID&gt;&gt;
+
+		&lt;&lt;set $raceData = _race&gt;&gt;
+
+
 	&lt;&lt;/if&gt;&gt;
+
+
 &lt;&lt;/for&gt;&gt;
 
 /* =========================================================
@@ -4716,13 +5010,10 @@ $attributeData.id == &quot;creatorPower&quot;
 function(s){
 
 return (
-$raceData.id == &quot;angel&quot;
-||
-$raceData.id == &quot;higherAngel&quot;
-? 30 : 0
-)
-+s.justice*3
-+s.order;
+($raceData.id == &quot;angel&quot; || $raceData.id == &quot;fallenAngel&quot;)
+? 30
+: 0
+) + s.justice*3 + s.order;
 
 },
 
@@ -5281,13 +5572,13 @@ value:-10
 
 
 
-&lt;&lt;set $curseDatabase.ancientDragon = _createResult(
+&lt;&lt;set $curseDatabase.dragonCurse = _createResult(
 
-&quot;ancientDragon&quot;,
+&quot;dragonCurse&quot;,
 
-&quot;Проклятие древнего дракона&quot;,
+&quot;Проклятие дракона&quot;,
 
-&quot;images/curses/ancientDragon.webp&quot;,
+&quot;images/curses/dragon.webp&quot;,
 
 &quot;След силы, которую невозможно полностью контролировать.&quot;,
 
@@ -5295,7 +5586,7 @@ value:-10
 function(s){
 
 return (
-$raceData.id == &quot;ancientDragon&quot;
+$raceData.id == &quot;dragon&quot;
 ? 35 : 0
 )
 +s.will*2
@@ -5326,7 +5617,7 @@ value:-10
 function(s){
 
 return (
-$raceData.id == &quot;archdemon&quot;
+$raceData.id == &quot;archDemon&quot;
 ? 25 : 0
 )
 +s.curiosity*3
@@ -5357,7 +5648,7 @@ value:-10
 function(s){
 
 return (
-$raceData.id == &quot;voidCreation&quot;
+$raceData.id == &quot;void&quot;
 ? 30 : 0
 )
 +
@@ -6395,12 +6686,7 @@ return 0;
 
 function(s){
 
-return (
-$raceData.id == &quot;human&quot;
-? 30
-: 0
-)
-+s.charisma;
+return ($raceData.id == &quot;human&quot; ? 30 : 0) + s.charisma;
 
 }
 
@@ -6421,14 +6707,7 @@ $raceData.id == &quot;human&quot;
 
 function(s){
 
-return (
-$raceData.id == &quot;elf&quot;
-||
-$raceData.id == &quot;halfElf&quot;
-)
-? 30
-: 0
-+s.nature;
+return (($raceData.id == &quot;elf&quot; || $raceData.id == &quot;halfElf&quot;) ? 30 : 0) + s.nature;
 
 }
 
@@ -6449,12 +6728,91 @@ $raceData.id == &quot;halfElf&quot;
 
 function(s){
 
-return (
-$raceData.id == &quot;dwarf&quot;
-? 30
-: 0
-)
-+s.patience;
+return ($raceData.id == &quot;dwarf&quot; ? 30 : 0) + s.patience;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.halfElf = _createResult(
+
+&quot;halfElf&quot;,
+
+&quot;Кровь полуэльфа&quot;,
+
+&quot;images/blood/halfElf.webp&quot;,
+
+&quot;Смесь человеческой гибкости и эльфийской мудрости.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;halfElf&quot; ? 30 : 0) + s.adaptability;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.orc = _createResult(
+
+&quot;orc&quot;,
+
+&quot;Кровь орка&quot;,
+
+&quot;images/blood/orc.webp&quot;,
+
+&quot;Сильная и воинственная кровь, полная решимости.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;orc&quot; ? 30 : 0) + s.will;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.goblin = _createResult(
+
+&quot;goblin&quot;,
+
+&quot;Кровь гоблина&quot;,
+
+&quot;images/blood/goblin.webp&quot;,
+
+&quot;Хитрая и изобретательная кровь маленького народа.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;goblin&quot; ? 30 : 0) + s.adaptability;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.kobold = _createResult(
+
+&quot;kobold&quot;,
+
+&quot;Кровь кобольда&quot;,
+
+&quot;images/blood/kobold.webp&quot;,
+
+&quot;Осторожная кровь подземных мастеров.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;kobold&quot; ? 30 : 0) + s.caution;
 
 }
 
@@ -6475,16 +6833,32 @@ $raceData.id == &quot;dwarf&quot;
 
 function(s){
 
-return (
-$raceData.id == &quot;beastman&quot;
-? 30
-: 0
-)
-+s.nature;
+return ($raceData.id == &quot;beast&quot; ? 30 : 0) + s.nature;
 
 }
 
-)&gt;
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.mermaid = _createResult(
+
+&quot;mermaid&quot;,
+
+&quot;Кровь русалки&quot;,
+
+&quot;images/blood/mermaid.webp&quot;,
+
+&quot;Мистическая кровь воды и эмоций.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;mermaid&quot; ? 30 : 0) + s.empathy;
+
+}
+
+)&gt;&gt;
 
 
 
@@ -6494,27 +6868,20 @@ $raceData.id == &quot;beastman&quot;
 ========================================================= */
 
 
-&lt;&lt;set $bloodDatabase.dragon = _createResult(
+&lt;&lt;set $bloodDatabase.darkElf = _createResult(
 
-&quot;dragonBlood&quot;,
+&quot;darkElf&quot;,
 
-&quot;Кровь дракона&quot;,
+&quot;Кровь тёмного эльфа&quot;,
 
-&quot;images/blood/dragon.webp&quot;,
+&quot;images/blood/darkElf.webp&quot;,
 
-&quot;След древней силы драконов внутри твоей сущности.&quot;,
+&quot;Древняя кровь теней и знаний.&quot;,
 
 
 function(s){
 
-return (
-$raceData.id == &quot;dragon&quot;
-||
-$raceData.id == &quot;dragonkin&quot;
-)
-? 50
-: 0
-+s.will;
+return ($raceData.id == &quot;darkElf&quot; ? 35 : 0) + s.curiosity;
 
 }
 
@@ -6522,55 +6889,20 @@ $raceData.id == &quot;dragonkin&quot;
 
 
 
-&lt;&lt;set $bloodDatabase.demon = _createResult(
+&lt;&lt;set $bloodDatabase.draconid = _createResult(
 
-&quot;demonBlood&quot;,
+&quot;draconid&quot;,
 
-&quot;Кровь демона&quot;,
+&quot;Кровь драконида&quot;,
 
-&quot;images/blood/demon.webp&quot;,
+&quot;images/blood/draconid.webp&quot;,
 
-&quot;Темная энергия древнего демонического происхождения.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;demon&quot;
-||
-$raceData.id == &quot;archdemon&quot;
-)
-? 50
-: 0
-+s.curiosity;
-
-}
-
-)&gt;&gt;
-
-
-
-&lt;&lt;set $bloodDatabase.angel = _createResult(
-
-&quot;angelBlood&quot;,
-
-&quot;Кровь ангела&quot;,
-
-&quot;images/blood/angel.webp&quot;,
-
-&quot;Наследие света и высшей духовной силы.&quot;,
+&quot;След драконьей крови в смертном теле.&quot;,
 
 
 function(s){
 
-return (
-$raceData.id == &quot;angel&quot;
-||
-$raceData.id == &quot;highAngel&quot;
-)
-? 50
-: 0
-+s.justice;
+return ($raceData.id == &quot;draconid&quot; ? 35 : 0) + s.will;
 
 }
 
@@ -6591,12 +6923,7 @@ $raceData.id == &quot;highAngel&quot;
 
 function(s){
 
-return (
-$raceData.id == &quot;vampire&quot;
-? 50
-: 0
-)
-+s.intuition;
+return ($raceData.id == &quot;vampire&quot; ? 50 : 0) + s.intuition;
 
 }
 
@@ -6604,28 +6931,20 @@ $raceData.id == &quot;vampire&quot;
 
 
 
-&lt;&lt;set $bloodDatabase.spirit = _createResult(
+&lt;&lt;set $bloodDatabase.demon = _createResult(
 
-&quot;spiritBlood&quot;,
+&quot;demonBlood&quot;,
 
-&quot;Кровь духа&quot;,
+&quot;Кровь демона&quot;,
 
-&quot;images/blood/spirit.webp&quot;,
+&quot;images/blood/demon.webp&quot;,
 
-&quot;Связь с древними духами мира.&quot;,
+&quot;Темная энергия древнего демонического происхождения.&quot;,
 
 
 function(s){
 
-return (
-$raceData.id == &quot;natureSpirit&quot;
-||
-$raceData.id == &quot;elementSpirit&quot;
-)
-? 50
-: 0
-)
-+s.nature;
+return (($raceData.id == &quot;demon&quot; || $raceData.id == &quot;archDemon&quot;) ? 50 : 0) + s.curiosity;
 
 }
 
@@ -6633,25 +6952,130 @@ $raceData.id == &quot;elementSpirit&quot;
 
 
 
-&lt;&lt;set $bloodDatabase.titan = _createResult(
+&lt;&lt;set $bloodDatabase.succubus = _createResult(
 
-&quot;titanBlood&quot;,
+&quot;succubus&quot;,
 
-&quot;Кровь титана&quot;,
+&quot;Кровь суккуба&quot;,
 
-&quot;images/blood/titan.webp&quot;,
+&quot;images/blood/succubus.webp&quot;,
 
-&quot;Наследие великанов древних эпох.&quot;,
+&quot;Кровь, полная чар и влияния на других.&quot;,
 
 
 function(s){
 
-return (
-$raceData.id == &quot;titan&quot;
-? 50
-: 0
-)
-+s.order;
+return ($raceData.id == &quot;succubus&quot; ? 35 : 0) + s.charisma;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.oni = _createResult(
+
+&quot;oni&quot;,
+
+&quot;Кровь они&quot;,
+
+&quot;images/blood/oni.webp&quot;,
+
+&quot;Древняя кровь силы и ярости.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;oni&quot; ? 35 : 0) + s.will;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.chimera = _createResult(
+
+&quot;chimera&quot;,
+
+&quot;Кровь химеры&quot;,
+
+&quot;images/blood/chimera.webp&quot;,
+
+&quot;Смешанная кровь, способная к любой адаптации.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;chimera&quot; ? 35 : 0) + s.adaptability;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.angel = _createResult(
+
+&quot;angelBlood&quot;,
+
+&quot;Кровь ангела&quot;,
+
+&quot;images/blood/angel.webp&quot;,
+
+&quot;Наследие света и высшей духовной силы.&quot;,
+
+
+function(s){
+
+return (($raceData.id == &quot;angel&quot; || $raceData.id == &quot;fallenAngel&quot;) ? 50 : 0) + s.justice;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.fallenAngel = _createResult(
+
+&quot;fallenAngel&quot;,
+
+&quot;Кровь падшего ангела&quot;,
+
+&quot;images/blood/fallenAngel.webp&quot;,
+
+&quot;Кровь, утратившая свет, но сохранившая силу.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;fallenAngel&quot; ? 45 : 0) + s.independence;
+
+}
+
+)&gt;&gt;
+
+
+
+/* =========================================================
+   ДРЕВНЯЯ КРОВЬ
+========================================================= */
+
+
+&lt;&lt;set $bloodDatabase.dragon = _createResult(
+
+&quot;dragonBlood&quot;,
+
+&quot;Кровь дракона&quot;,
+
+&quot;images/blood/dragon.webp&quot;,
+
+&quot;След древней силы драконов внутри твоей сущности.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;dragon&quot; ? 50 : 0) + s.will;
 
 }
 
@@ -6672,21 +7096,148 @@ $raceData.id == &quot;titan&quot;
 
 function(s){
 
-return (
-$raceData.id == &quot;phoenix&quot;
-? 50
-: 0
-)
-+s.selfControl;
+return ($raceData.id == &quot;phoenix&quot; ? 50 : 0) + s.selfControl;
 
 }
 
-)&gt;
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.titan = _createResult(
+
+&quot;titanBlood&quot;,
+
+&quot;Кровь титана&quot;,
+
+&quot;images/blood/titan.webp&quot;,
+
+&quot;Наследие великанов древних эпох.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;titan&quot; ? 50 : 0) + s.order;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.spirit = _createResult(
+
+&quot;spiritBlood&quot;,
+
+&quot;Кровь духа&quot;,
+
+&quot;images/blood/spirit.webp&quot;,
+
+&quot;Связь с древними духами мира.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;spirit&quot; ? 50 : 0) + s.nature;
+
+}
+
+)&gt;&gt;
+
+
+
+/* =========================================================
+   ВЫСШАЯ КРОВЬ
+========================================================= */
+
+
+&lt;&lt;set $bloodDatabase.god = _createResult(
+
+&quot;godBlood&quot;,
+
+&quot;Кровь бога&quot;,
+
+&quot;images/blood/god.webp&quot;,
+
+&quot;Божественная кровь, несущая силу созидания.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;god&quot; ? 70 : 0) + s.order + s.charisma;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.archDemon = _createResult(
+
+&quot;archDemonBlood&quot;,
+
+&quot;Кровь архидемона&quot;,
+
+&quot;images/blood/archDemon.webp&quot;,
+
+&quot;Абсолютная демоническая кровь, полная тёмной воли.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;archDemon&quot; ? 70 : 0) + s.will + s.curiosity;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.void = _createResult(
+
+&quot;voidBlood&quot;,
+
+&quot;Кровь пустоты&quot;,
+
+&quot;images/blood/void.webp&quot;,
+
+&quot;Кровь из пространства между существованием и ничем.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;void&quot; ? 70 : 0) + s.logic + s.independence;
+
+}
+
+)&gt;&gt;
+
+
+
+&lt;&lt;set $bloodDatabase.chaos = _createResult(
+
+&quot;chaosBlood&quot;,
+
+&quot;Кровь хаоса&quot;,
+
+&quot;images/blood/chaos.webp&quot;,
+
+&quot;Непредсказуемая кровь абсолютного хаоса.&quot;,
+
+
+function(s){
+
+return ($raceData.id == &quot;chaos&quot; ? 70 : 0) + s.chaos + s.curiosity;
+
+}
+
+)&gt;&gt;
+
+
 
 /* =========================================================
    СМЕШАННАЯ КРОВЬ
 ========================================================= */
-
 
 
 &lt;&lt;set $bloodDatabase.angelHuman = _createResult(
@@ -6702,120 +7253,7 @@ $raceData.id == &quot;phoenix&quot;
 
 function(s){
 
-return (
-$raceData.id == &quot;angel&quot;
-? 40
-: 0
-)
-+s.empathy
-+s.charisma;
-
-}
-
-)&gt;&gt;
-
-
-
-&lt;&lt;set $bloodDatabase.angelDemon = _createResult(
-
-&quot;angelDemon&quot;,
-
-&quot;Ангел + демон&quot;,
-
-&quot;images/blood/angelDemon.webp&quot;,
-
-&quot;Противоречивая кровь света и тьмы.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;halfDemon&quot;
-? 40
-: 0
-)
-+s.justice
-+s.will;
-
-}
-
-)&gt;&gt;
-
-
-
-&lt;&lt;set $bloodDatabase.demonHuman = _createResult(
-
-&quot;demonHuman&quot;,
-
-&quot;Демон + человек&quot;,
-
-&quot;images/blood/demonHuman.webp&quot;,
-
-&quot;Нестабильное сочетание смертной души и демонической энергии.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;halfDemon&quot;
-? 35
-: 0
-)
-+s.curiosity
-+s.will;
-
-}
-
-)&gt;&gt;
-
-
-
-&lt;&lt;set $bloodDatabase.dragonHuman = _createResult(
-
-&quot;dragonHuman&quot;,
-
-&quot;Дракон + человек&quot;,
-
-&quot;images/blood/dragonHuman.webp&quot;,
-
-&quot;Наследие древних драконов, смешанное с человеческой адаптивностью.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;dragonkin&quot;
-? 50
-: 0
-)
-+s.adaptability;
-
-}
-
-)&gt;&gt;
-
-
-
-&lt;&lt;set $bloodDatabase.dragonDemon = _createResult(
-
-&quot;dragonDemon&quot;,
-
-&quot;Дракон + демон&quot;,
-
-&quot;images/blood/dragonDemon.webp&quot;,
-
-&quot;Опасное соединение двух древних сил.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;dragonkin&quot;
-? 40
-: 0
-)
-+s.will
-+s.curiosity;
+return ($raceData.id == &quot;angel&quot; ? 40 : 0) + s.empathy + s.charisma;
 
 }
 
@@ -6836,13 +7274,7 @@ $raceData.id == &quot;dragonkin&quot;
 
 function(s){
 
-return (
-$raceData.id == &quot;halfElf&quot;
-? 30
-: 0
-)
-+s.nature
-+s.intuition;
+return ($raceData.id == &quot;halfElf&quot; ? 30 : 0) + s.nature + s.intuition;
 
 }
 
@@ -6863,49 +7295,7 @@ $raceData.id == &quot;halfElf&quot;
 
 function(s){
 
-return (
-$raceData.id == &quot;vampire&quot;
-? 40
-: 0
-)
-+s.independence;
-
-}
-
-)&gt;
-
-
-
-
-/* =========================================================
-   ВЫСШАЯ КРОВЬ
-========================================================= */
-
-
-
-&lt;&lt;set $bloodDatabase.ancientGod = _createResult(
-
-&quot;ancientGod&quot;,
-
-&quot;Кровь древнего божества&quot;,
-
-&quot;images/blood/ancientGod.webp&quot;,
-
-&quot;След сущности, существовавшей задолго до нынешних богов.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;god&quot;
-||
-$raceData.id == &quot;avatarGod&quot;
-)
-? 70
-: 0
-)
-+s.justice
-+s.order;
+return ($raceData.id == &quot;vampire&quot; ? 40 : 0) + s.independence;
 
 }
 
@@ -6926,120 +7316,11 @@ $raceData.id == &quot;avatarGod&quot;
 
 function(s){
 
-return (
-$raceData.id == &quot;ancientDragon&quot;
-? 80
-: 0
-)
-+s.will*2;
+return ($raceData.id == &quot;dragon&quot; ? 80 : 0) + s.will*2;
 
 }
 
 )&gt;&gt;
-
-
-
-&lt;&lt;set $bloodDatabase.creator = _createResult(
-
-&quot;creatorBlood&quot;,
-
-&quot;Кровь создателя&quot;,
-
-&quot;images/blood/creator.webp&quot;,
-
-&quot;След силы того, кто стоял у истоков создания миров.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;worldCreator&quot;
-? 50
-: 0
-)
-+
-($classData.id == &quot;worldCreatorClass&quot;
-? 50
-: 0
-)
-+s.logic;
-
-}
-
-)&gt;&gt;
-
-
-
-&lt;&lt;set $bloodDatabase.primordial = _createResult(
-
-&quot;primordialBlood&quot;,
-
-&quot;Кровь первозданной сущности&quot;,
-
-&quot;images/blood/primordial.webp&quot;,
-
-&quot;Древнейшая кровь, существовавшая до появления мира.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;primordial&quot;
-? 100
-: 0
-)
-+
-($attributeData.id == &quot;ether&quot;
-? 20
-: 0
-)
-+s.charisma;
-
-}
-
-)&gt;
-
-
-
-
-/* =========================================================
-   ВЫБОР КРОВИ
-========================================================= */
-
-
-
-&lt;&lt;set $blood = &quot;human&quot;&gt;&gt;
-
-&lt;&lt;set $highestBlood = 0&gt;&gt;
-
-
-
-&lt;&lt;set $bloodData = $bloodDatabase.human&gt;&gt;
-
-
-
-&lt;&lt;for _bloodID range Object.keys($bloodDatabase)&gt;&gt;
-
-
-	&lt;&lt;set _blood = $bloodDatabase[_bloodID]&gt;&gt;
-
-	&lt;&lt;set _bloodScore = _blood.formula(_stats)&gt;&gt;
-
-
-	&lt;&lt;if _bloodScore &gt; $highestBlood&gt;&gt;
-
-
-		&lt;&lt;set $highestBlood = _bloodScore&gt;&gt;
-
-		&lt;&lt;set $blood = _bloodID&gt;&gt;
-
-		&lt;&lt;set $bloodData = _blood&gt;&gt;
-
-
-	&lt;&lt;/if&gt;&gt;
-
-
-&lt;&lt;/for&gt;&gt;
 
 /* =========================================================
    СИСТЕМА ШТРАФОВ
@@ -7186,38 +7467,23 @@ stats:$finalStats
 запоминаем это для будущих расширений.
 */
 
-
 &lt;&lt;set $legendaryCharacter = false&gt;&gt;
 
-
-
-&lt;&lt;if
-(
-$raceData.id == &quot;primordial&quot;
-and
-$classData.id == &quot;absolute&quot;
-)
-&gt;&gt;
-
-	&lt;&lt;set $legendaryCharacter = true&gt;&gt;
-
+&lt;&lt;if ($raceData.id == &quot;dragon&quot; and $classData.id == &quot;dragonLord&quot;)&gt;&gt;
+    &lt;&lt;set $legendaryCharacter = true&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-
-
-
-&lt;&lt;if
-(
-$bloodData.id == &quot;primordialBlood&quot;
-)
-&gt;&gt;
-
-	&lt;&lt;set $legendaryCharacter = true&gt;&gt;
-
+&lt;&lt;if ($raceData.id == &quot;god&quot; and $classData.id == &quot;godHeir&quot;)&gt;&gt;
+    &lt;&lt;set $legendaryCharacter = true&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-
-
-
-
+&lt;&lt;if ($raceData.id == &quot;archDemon&quot; and $classData.id == &quot;demonLord&quot;)&gt;&gt;
+    &lt;&lt;set $legendaryCharacter = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if ($raceData.id == &quot;void&quot; and $classData.id == &quot;voidBearer&quot;)&gt;&gt;
+    &lt;&lt;set $legendaryCharacter = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if ($raceData.id == &quot;spirit&quot; and $classData.id == &quot;elementalist&quot;)&gt;&gt;
+    &lt;&lt;set $legendaryCharacter = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 /* =========================================================
    ПЕРЕХОД К ФИНАЛУ
