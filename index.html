@@ -7323,6 +7323,24 @@ return ($raceData.id == &quot;dragon&quot; ? 80 : 0) + s.will*2;
 )&gt;&gt;
 
 /* =========================================================
+   ВЫБОР КРОВИ
+========================================================= */
+
+&lt;&lt;set $blood = &quot;human&quot;&gt;&gt;
+&lt;&lt;set $highestBlood = 0&gt;&gt;
+&lt;&lt;set $bloodData = $bloodDatabase.human&gt;&gt;
+
+&lt;&lt;for _bloodID range Object.keys($bloodDatabase)&gt;&gt;
+    &lt;&lt;set _blood = $bloodDatabase[_bloodID]&gt;&gt;
+    &lt;&lt;set _bloodScore = _blood.formula(_stats)&gt;&gt;
+    &lt;&lt;if _bloodScore &gt; $highestBlood&gt;&gt;
+        &lt;&lt;set $highestBlood = _bloodScore&gt;&gt;
+        &lt;&lt;set $blood = _bloodID&gt;&gt;
+        &lt;&lt;set $bloodData = _blood&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+
+/* =========================================================
    СИСТЕМА ШТРАФОВ
 ========================================================= */
 
