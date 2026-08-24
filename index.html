@@ -764,7 +764,7 @@ body::before {
 }
 
 /* =====================================
-        АДАПТИВНОСТЬ (НОВЫЕ БРЕЙКПОИНТЫ)
+        АДАПТИВНОСТЬ (ОБНОВЛЕННАЯ)
 ===================================== */
 
 /* --- Планшеты и маленькие ноутбуки (1024px) --- */
@@ -874,6 +874,7 @@ body::before {
         font-size: 15px;
         padding: 12px 14px;
         border-radius: 8px;
+        margin: 10px auto;
     }
 
     a.link-internal {
@@ -890,36 +891,154 @@ body::before {
     .system-message {
         font-size: 0.85em;
     }
+
+    /* Уменьшаем изображения для маленьких экранов */
+    .passage img,
+    .race-image {
+        max-width: 85% !important;
+        margin: 15px auto !important;
+        border-radius: 8px;
+    }
+}
+
+/* --- Очень маленькие телефоны (300px) --- */
+@media screen and (max-width: 300px) {
+    body {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .passage {
+        width: 100%;
+        padding: 12px 8px;
+        margin: 10px auto;
+        border-radius: 6px;
+        border-width: 1px;
+    }
+
+    h1 {
+        font-size: 18px;
+        letter-spacing: 2px;
+        margin: 0.5em 0;
+    }
+
+    h2, h3 {
+        font-size: 1em;
+        margin: 0.5em 0;
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    button,
+    .button {
+        width: 98%;
+        max-width: 100%;
+        font-size: 13px;
+        padding: 10px 12px;
+        border-radius: 6px;
+        margin: 8px auto;
+        letter-spacing: 0.5px;
+    }
+
+    a.link-internal {
+        max-width: 100%;
+        padding: 10px;
+        font-size: 0.85em;
+        border-radius: 6px;
+        margin: 8px auto;
+    }
+
+    hr {
+        margin: 15px 0;
+    }
+
+    .system-message {
+        font-size: 0.8em;
+    }
+
+    .typewriter {
+        font-size: 0.9em;
+    }
+
+    /* Изображения на совсем маленьких экранах */
+    .passage img,
+    .race-image {
+        max-width: 95% !important;
+        margin: 10px auto !important;
+        border-radius: 6px;
+    }
+
+    /* Убираем большие отступы */
+    .passage div:has(.race-image) {
+        margin: 5px 0 !important;
+    }
+
+    /* Уменьшаем текст в описаниях */
+    .passage div[style*="font-size: 28px"] {
+        font-size: 20px !important;
+    }
+
+    .passage div[style*="color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px"] {
+        font-size: 13px !important;
+        margin-top: 5px !important;
+    }
+
+    /* Компактные блоки с информацией */
+    .passage div[style*="background: rgba(255,255,255,0.05)"] {
+        padding: 15px !important;
+        margin: 10px 0 !important;
+    }
+
+    .passage div[style*="margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px"] {
+        margin-bottom: 15px !important;
+        padding-bottom: 10px !important;
+    }
 }
 
 /* =====================================
         ИЗОБРАЖЕНИЯ В ПРОХОЖДЕНИИ
 ===================================== */
 
-/* Основные стили для всех изображений */
+/* Все изображения в прохождении */
 .passage img {
     display: block;
-    max-width: 5%;
+    max-width: 15%;
     height: auto;
-    margin: 25px auto; /* Центрирование и отступы */
+    margin: 25px auto;
     border-radius: 12px;
     border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 
-        0 4px 20px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.1);
     transition: all 0.3s ease;
 }
 
-/* Эффект при наведении */
-.passage img:hover {
-    box-shadow: 
-        0 6px 30px rgba(0, 0, 0, 0.8),
-        0 0 30px rgba(212, 175, 55, 0.2);
-    border-color: rgba(212, 175, 55, 0.6);
-    transform: scale(1.02);
+/* Для картинок рас */
+.race-image {
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.15);
 }
 
-/* Если изображения внутри ссылок (для кликабельности) */
+.race-image:hover {
+    border-color: #d4af37;
+    box-shadow: 0 6px 35px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.25);
+}
+
+/* Центрирование картинок в Final_Result */
+.passage div:has(.race-image) {
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+/* Обертка для картинок в Final_Result */
+.passage div div:has(.race-image) {
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Если картинка внутри ссылки */
 .passage a:has(img) {
     display: block;
     text-align: center;
@@ -934,21 +1053,6 @@ body::before {
     background: none;
     box-shadow: none;
     transform: none;
-}
-
-/* Особый класс для картинок рас (если нужно уникальное оформление) */
-.race-image {
-    border-color: rgba(212, 175, 55, 0.5);
-    box-shadow: 
-        0 4px 25px rgba(0, 0, 0, 0.7),
-        0 0 30px rgba(212, 175, 55, 0.15);
-}
-
-.race-image:hover {
-    border-color: #d4af37;
-    box-shadow: 
-        0 6px 35px rgba(0, 0, 0, 0.8),
-        0 0 40px rgba(212, 175, 55, 0.25);
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">document.head.innerHTML += `
 <link href="https://fonts.googleapis.com/css2?family=Share Tech Mono:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 `;</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Calculate_Result" tags="" position="1725,1125" size="100,100">/* =========================================================
