@@ -7468,7 +7468,19 @@ stats:$finalStats
 }&gt;&gt;
 
 
+/* =========================================================
+   ГАРАНТИРОВАННОЕ ПЕРЕПРИСВАИВАНИЕ ОБЪЕКТОВ
+   (Исправляет вывод [function] в финальном экране)
+========================================================= */
 
+&lt;&lt;set $classData = $classDatabase[$class]&gt;&gt;
+&lt;&lt;set $attributeData = $attributeDatabase[$attribute]&gt;&gt;
+&lt;&lt;set $skillData = $skillDatabase[$skill]&gt;&gt;
+&lt;&lt;set $blessingData = $blessingDatabase[$blessing]&gt;&gt;
+&lt;&lt;set $curseData = $curseDatabase[$curse]&gt;&gt;
+&lt;&lt;set $lineageData = $lineageDatabase[$lineage]&gt;&gt;
+&lt;&lt;set $raceData = $raceDatabase[$race]&gt;&gt;
+&lt;&lt;set $bloodData = $bloodDatabase[$blood]&gt;&gt;
 
 
 /* =========================================================
@@ -7494,9 +7506,6 @@ stats:$finalStats
 &lt;&lt;set $finalHeritage = $characterResult.heritage&gt;&gt;
 
 &lt;&lt;set $finalBlood = $characterResult.blood&gt;&gt;
-
-
-
 
 
 /* =========================================================
