@@ -105,6 +105,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
 	<tw-storydata name="Genesis" startnode="63" creator="Twine" creator-version="2.12.0" format="SugarCube" format-version="2.37.3" ifid="1A11FB98-0316-42E9-A992-498A9C9F5734" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=MedievalSharp&display=swap');
 /* =========================================
         GENESIS UI SYSTEM v1.0
         SugarCube Edition
@@ -760,6 +761,166 @@ body::before {
     0 0 10px rgba(100,180,255,0.7);
 
 
+}
+
+/* =====================================
+        АДАПТИВНОСТЬ (НОВЫЕ БРЕЙКПОИНТЫ)
+===================================== */
+
+/* --- Планшеты и маленькие ноутбуки (1024px) --- */
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 17px;
+    }
+
+    .passage {
+        width: 92%;
+        max-width: 800px;
+        padding: 35px 25px;
+        margin: 40px auto;
+    }
+
+    h1 {
+        font-size: 38px;
+        letter-spacing: 8px;
+    }
+
+    button,
+    .button {
+        width: 85%;
+        max-width: 450px;
+        font-size: 17px;
+        padding: 14px 18px;
+    }
+
+    a.link-internal {
+        max-width: 450px;
+        padding: 14px;
+    }
+}
+
+/* --- Планшеты и большие телефоны (720px) --- */
+@media screen and (max-width: 720px) {
+    body {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .passage {
+        width: 95%;
+        max-width: 100%;
+        padding: 25px 18px;
+        margin: 30px auto;
+        border-radius: 14px;
+    }
+
+    h1 {
+        font-size: 30px;
+        letter-spacing: 5px;
+    }
+
+    h2, h3 {
+        font-size: 1.3em;
+    }
+
+    button,
+    .button {
+        width: 90%;
+        max-width: 400px;
+        font-size: 16px;
+        padding: 14px 16px;
+        border-radius: 10px;
+    }
+
+    a.link-internal {
+        max-width: 400px;
+        padding: 14px;
+        font-size: 0.95em;
+    }
+
+    .system-message {
+        font-size: 0.9em;
+    }
+}
+
+/* --- Мобильные телефоны (480px) --- */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .passage {
+        width: 98%;
+        padding: 20px 12px;
+        margin: 20px auto;
+        border-radius: 10px;
+        border-width: 1px;
+    }
+
+    h1 {
+        font-size: 24px;
+        letter-spacing: 3px;
+    }
+
+    h2, h3 {
+        font-size: 1.1em;
+    }
+
+    button,
+    .button {
+        width: 95%;
+        max-width: 100%;
+        font-size: 15px;
+        padding: 12px 14px;
+        border-radius: 8px;
+    }
+
+    a.link-internal {
+        max-width: 100%;
+        padding: 12px;
+        font-size: 0.9em;
+        border-radius: 8px;
+    }
+
+    hr {
+        margin: 20px 0;
+    }
+
+    .system-message {
+        font-size: 0.85em;
+    }
+}
+
+/* =====================================
+        ОФОРМЛЕНИЕ ИЗОБРАЖЕНИЙ
+===================================== */
+img {
+    display: block;
+    max-width: 66.67%; /* Уменьшаем в 1.5 раза */
+    height: auto;
+    margin: 20px auto; /* Центрирование */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(180, 160, 80, 0.25);
+}
+
+/* Для изображений в прохождении, которые могут быть обернуты в ссылки */
+.passage a:has(img) {
+    display: block;
+    text-align: center;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    max-width: 100%;
+}
+
+.passage a:has(img):hover {
+    background: none;
+    box-shadow: none;
+    transform: none;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">document.head.innerHTML += `
 <link href="https://fonts.googleapis.com/css2?family=Share Tech Mono:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 `;</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Calculate_Result" tags="" position="1725,1125" size="100,100">/* =========================================================
