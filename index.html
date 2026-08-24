@@ -612,64 +612,6 @@ a.link-internal:hover {
 
 }
 
-
-
-/* =========================================
-        МОБИЛЬНАЯ ВЕРСИЯ
-========================================= */
-
-
-@media screen and (max-width:700px) {
-
-
-    .passage {
-
-
-        width:95%;
-
-
-        padding:
-
-        25px 15px;
-
-    }
-
-
-
-    body {
-
-
-        font-size:16px;
-
-    }
-
-
-
-    h1 {
-
-
-        font-size:30px;
-
-
-        letter-spacing:5px;
-
-    }
-
-
-
-    button,
-    .button {
-
-
-        width:95%;
-
-
-        font-size:16px;
-
-    }
-
-}
-
 /* =====================================
         GENESIS MAGIC PARTICLES
 ===================================== */
@@ -764,8 +706,23 @@ body::before {
 }
 
 /* =====================================
-        АДАПТИВНОСТЬ (ПОЛНАЯ ПЕРЕРАБОТКА)
+        АДАПТИВНОСТЬ (ФИКС ПЕРЕНОСОВ)
 ===================================== */
+
+/* --- Базовые настройки для всех экранов --- */
+.passage {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Все внутренние блоки должны быть внутри passage */
+.passage > * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
 
 /* --- Планшеты и маленькие ноутбуки (1024px) --- */
 @media screen and (max-width: 1024px) {
@@ -856,6 +813,7 @@ body::before {
         margin: 20px auto;
         border-radius: 10px;
         border-width: 1px;
+        overflow: hidden !important;
     }
 
     h1 {
@@ -875,6 +833,7 @@ body::before {
         padding: 12px 14px;
         border-radius: 8px;
         margin: 10px auto;
+        box-sizing: border-box !important;
     }
 
     a.link-internal {
@@ -882,6 +841,7 @@ body::before {
         padding: 12px;
         font-size: 0.9em;
         border-radius: 8px;
+        box-sizing: border-box !important;
     }
 
     hr {
@@ -918,6 +878,10 @@ body::before {
         border-radius: 6px !important;
         border-width: 1px !important;
         box-shadow: none !important;
+        overflow: hidden !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
     }
 
     /* Заголовки */
@@ -947,6 +911,8 @@ body::before {
         margin: 8px auto !important;
         letter-spacing: 0.5px !important;
         box-sizing: border-box !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
     }
 
     a.link-internal {
@@ -956,6 +922,8 @@ body::before {
         border-radius: 6px !important;
         margin: 8px auto !important;
         box-sizing: border-box !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
     }
 
     hr {
@@ -968,6 +936,8 @@ body::before {
 
     .typewriter {
         font-size: 0.9em !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
     }
 
     /* ===== СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ FINAL_RESULT ===== */
@@ -977,12 +947,17 @@ body::before {
         padding: 12px 10px !important;
         margin: 10px 0 !important;
         border-radius: 10px !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
     }
 
     /* Каждая секция (Раса, Класс и т.д.) */
     .passage div[style*="margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px"] {
         margin-bottom: 12px !important;
         padding-bottom: 8px !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     /* Заголовки секций (✦ РАСА) */
@@ -996,6 +971,8 @@ body::before {
     .passage div[style*="font-size: 28px; font-weight: bold; color: #ffed9f"] {
         font-size: 18px !important;
         margin: 3px 0 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
 
     /* Описания */
@@ -1003,6 +980,8 @@ body::before {
         font-size: 12px !important;
         margin-top: 4px !important;
         line-height: 1.5 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
 
     /* Картинки */
@@ -1017,11 +996,14 @@ body::before {
     .passage div:has(.race-image) {
         margin: 5px 0 !important;
         padding: 0 !important;
+        max-width: 100% !important;
     }
 
     /* Кнопка "Пройти испытание заново" */
     .passage div[style*="text-align: center; margin-top: 25px"] {
         margin-top: 15px !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     /* Подвал */
@@ -1029,20 +1011,36 @@ body::before {
         font-size: 11px !important;
         margin-top: 15px !important;
         padding-top: 12px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
 
-    /* ===== СТИЛИ ДЛЯ СТАРТОВОГО ЭКРАНА ===== */
+    /* ===== СТИЛИ ДЛЯ ВОПРОСОВ ===== */
     
-    /* Заголовок "Испытание Судьбы" */
-    .typewriter {
-        font-size: 16px !important;
-        letter-spacing: 1px !important;
+    /* Контейнер с вопросами */
+    .passage .typewriter {
+        max-width: 100% !important;
+        overflow: hidden !important;
     }
 
-    /* Кнопка "Начать испытание" на старте */
-    #story .passage button:first-of-type {
-        font-size: 14px !important;
-        padding: 12px !important;
+    /* Текст вопросов */
+    .passage .typewriter p,
+    .passage .typewriter div {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
+    }
+
+    /* Кнопки в вопросах */
+    .passage .typewriter button {
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 12px !important;
+        padding: 8px 10px !important;
+        margin: 5px auto !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        text-align: left !important;
     }
 }
 
@@ -1096,6 +1094,42 @@ body::before {
     .passage div[style*="background: rgba(255,255,255,0.05)"] {
         padding: 10px 6px !important;
     }
+}
+
+/* =====================================
+        ДОПОЛНИТЕЛЬНЫЕ ФИКСЫ ДЛЯ ВСЕХ ЭКРАНОВ
+===================================== */
+
+/* Принудительный перенос длинных слов */
+.passage * {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Фикс для блоков с inline-стилями */
+.passage div[style] {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+/* Фикс для контейнера с титулом */
+.passage .typewriter {
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* Фикс для кнопок в typewriter */
+.passage .typewriter button {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
 }
 
 /* =====================================
