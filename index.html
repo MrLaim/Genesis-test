@@ -2043,1288 +2043,534 @@ return s.chaos*4
 /* =========================================================
    DATABASE
    CLASSES
-========================================================= */
-
+   ========================================================= */
 
 /* =========================================================
-   ВОЕННЫЕ КЛАССЫ
-========================================================= */
-
+   ВОЕННЫЕ КЛАССЫ — 10 штук
+   ========================================================= */
 
 &lt;&lt;set $classDatabase.warrior = _createResult(
-
-&quot;warrior&quot;,
-
-&quot;Воин&quot;,
-
-&quot;&quot;,
-
-&quot;Боец, который развивает силу воли, стойкость и мастерство оружия.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.determination;
-
-},
-
-{}
-
+    &quot;warrior&quot;,
+    &quot;Воин&quot;,
+    &quot;&quot;,
+    &quot;Боец, развивающий силу воли, стойкость и мастерство оружия.&quot;,
+    function(s){ return s.will*2 + s.determination + s.patience; },
+    { minStats: { will: 15, determination: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.swordsman = _createResult(
-
-&quot;swordsman&quot;,
-
-&quot;Мечник&quot;,
-
-	&quot;&quot;,
-
-&quot;Воин, достигший совершенства в управлении клинком.&quot;,
-
-
-function(s){
-
-return s.will
-+s.selfControl*2;
-
-},
-
-{}
-
+    &quot;swordsman&quot;,
+    &quot;Мечник&quot;,
+    &quot;&quot;,
+    &quot;Воин, достигший совершенства в управлении клинком.&quot;,
+    function(s){ return s.selfControl*2 + s.will + s.adaptability; },
+    { minStats: { selfControl: 18, will: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.knight = _createResult(
-
-&quot;knight&quot;,
-
-&quot;Рыцарь&quot;,
-
-	&quot;&quot;,
-
-&quot;Защитник порядка и чести.&quot;,
-
-
-function(s){
-
-return s.order
-+s.will
-+s.justice;
-
-},
-
-{}
-
+    &quot;knight&quot;,
+    &quot;Рыцарь&quot;,
+    &quot;&quot;,
+    &quot;Защитник порядка и чести, стойкий и благородный.&quot;,
+    function(s){ return s.order*2 + s.justice*2 + s.patience; },
+    { minStats: { order: 20, justice: 15, patience: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.paladin = _createResult(
-
-&quot;paladin&quot;,
-
-&quot;Паладин&quot;,
-
-	&quot;&quot;,
-
-&quot;Святой воин, соединяющий силу и веру.&quot;,
-
-
-function(s){
-
-return s.justice*2
-+s.will;
-
-},
-
-{}
-
+    &quot;paladin&quot;,
+    &quot;Паладин&quot;,
+    &quot;&quot;,
+    &quot;Святой воин, соединяющий силу и веру.&quot;,
+    function(s){ return s.justice*3 + s.will*2 + s.empathy; },
+    { minStats: { justice: 25, will: 18, empathy: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.berserk = _createResult(
-
-&quot;berserk&quot;,
-
-&quot;Берсерк&quot;,
-
-	&quot;&quot;,
-
-&quot;Воин чистой ярости, чья сила растёт через волю.&quot;,
-
-
-function(s){
-
-return s.will*3;
-
-},
-
-{}
-
+    &quot;berserk&quot;,
+    &quot;Берсерк&quot;,
+    &quot;&quot;,
+    &quot;Воин чистой ярости, чья сила растёт через волю.&quot;,
+    function(s){ return s.will*3 + s.determination*2; },
+    { minStats: { will: 25, determination: 15 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.duelist = _createResult(
-
-&quot;duelist&quot;,
-
-&quot;Дуэлянт&quot;,
-
-	&quot;&quot;,
-
-&quot;Мастер индивидуального боя и абсолютной концентрации.&quot;,
-
-
-function(s){
-
-return s.independence
-+s.will
-+s.adaptability;
-
-},
-
-{}
-
+    &quot;duelist&quot;,
+    &quot;Дуэлянт&quot;,
+    &quot;&quot;,
+    &quot;Мастер индивидуального боя и абсолютной концентрации.&quot;,
+    function(s){ return s.independence*2 + s.selfControl*2 + s.adaptability; },
+    { minStats: { independence: 20, selfControl: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.spearman = _createResult(
-
-&quot;spearman&quot;,
-
-&quot;Копейщик&quot;,
-
-	&quot;&quot;,
-
-&quot;Воин точности и контроля дистанции.&quot;,
-
-
-function(s){
-
-return s.caution
-+s.will;
-
-},
-
-{}
-
+    &quot;spearman&quot;,
+    &quot;Копейщик&quot;,
+    &quot;&quot;,
+    &quot;Воин точности и контроля дистанции.&quot;,
+    function(s){ return s.caution*2 + s.will + s.intuition; },
+    { minStats: { caution: 18, will: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.shieldMaster = _createResult(
-
-&quot;shieldMaster&quot;,
-
-&quot;Мастер щита&quot;,
-
-	&quot;&quot;,
-
-&quot;Непоколебимый защитник.&quot;,
-
-
-function(s){
-
-return s.order*2
-+s.patience;
-
-},
-
-{}
-
+    &quot;shieldMaster&quot;,
+    &quot;Мастер щита&quot;,
+    &quot;&quot;,
+    &quot;Непоколебимый защитник, стена для союзников.&quot;,
+    function(s){ return s.order*2 + s.patience*2 + s.caution; },
+    { minStats: { order: 18, patience: 20 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.weaponMaster = _createResult(
-
-&quot;weaponMaster&quot;,
-
-&quot;Оружейник&quot;,
-
-	&quot;&quot;,
-
-&quot;Мастер создания и использования оружия.&quot;,
-
-
-function(s){
-
-return s.logic
-+s.will
-+s.patience;
-
-},
-
-{}
-
+    &quot;weaponMaster&quot;,
+    &quot;Оружейник&quot;,
+    &quot;&quot;,
+    &quot;Мастер создания и использования оружия.&quot;,
+    function(s){ return s.logic + s.will + s.patience*2; },
+    { minStats: { logic: 15, patience: 15 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.deathKnight = _createResult(
-
-&quot;deathKnight&quot;,
-
-&quot;Рыцарь смерти&quot;,
-
-	&quot;&quot;,
-
-&quot;Воин, связавший свою силу с тёмной энергией.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.curiosity
-+s.independence;
-
-},
-
-{}
-
+    &quot;deathKnight&quot;,
+    &quot;Рыцарь смерти&quot;,
+    &quot;&quot;,
+    &quot;Воин, связавший свою силу с тёмной энергией.&quot;,
+    function(s){ return s.will*3 + s.curiosity*2 + s.independence; },
+    { minStats: { will: 28, curiosity: 20, independence: 15 } }
 )&gt;&gt;
 
-
-
-
 /* =========================================================
-   ЛОВКОСТЬ И СКРЫТНОСТЬ
-========================================================= */
-
+   ЛОВКОСТЬ И СКРЫТНОСТЬ — 7 штук
+   ========================================================= */
 
 &lt;&lt;set $classDatabase.rogue = _createResult(
-
-&quot;rogue&quot;,
-
-&quot;Разбойник&quot;,
-
-	&quot;&quot;,
-
-&quot;Мастер скрытности, хитрости и быстрых решений.&quot;,
-
-
-function(s){
-
-return s.independence*2
-+s.adaptability;
-
-},
-
-{}
-
+    &quot;rogue&quot;,
+    &quot;Разбойник&quot;,
+    &quot;&quot;,
+    &quot;Мастер скрытности, хитрости и быстрых решений.&quot;,
+    function(s){ return s.independence*2 + s.adaptability*2 + s.intuition; },
+    { minStats: { independence: 15, adaptability: 15 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.assassin = _createResult(
-
-&quot;assassin&quot;,
-
-&quot;Убийца&quot;,
-
-	&quot;&quot;,
-
-&quot;Специалист точного и смертельного удара.&quot;,
-
-
-function(s){
-
-return s.intuition*2
-+s.independence;
-
-},
-
-{}
-
+    &quot;assassin&quot;,
+    &quot;Убийца&quot;,
+    &quot;&quot;,
+    &quot;Специалист точного и смертельного удара.&quot;,
+    function(s){ return s.intuition*3 + s.independence*2 + s.caution; },
+    { minStats: { intuition: 22, independence: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.trueAssassin = _createResult(
-
-&quot;trueAssassin&quot;,
-
-&quot;Ассасин&quot;,
-
-	&quot;&quot;,
-
-&quot;Легендарный мастер скрытого убийства.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.curiosity;
-
-},
-
-{}
-
+    &quot;trueAssassin&quot;,
+    &quot;Ассасин&quot;,
+    &quot;&quot;,
+    &quot;Легендарный мастер скрытого убийства.&quot;,
+    function(s){ return s.intuition*4 + s.curiosity*2 + s.independence; },
+    { minStats: { intuition: 28, curiosity: 20, independence: 20 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.shadowBlade = _createResult(
-
-&quot;shadowBlade&quot;,
-
-&quot;Теневой клинок&quot;,
-
-	&quot;&quot;,
-
-&quot;Воин, соединяющий технику боя и силу теней.&quot;,
-
-
-function(s){
-
-return s.independence*3
-+s.will;
-
-},
-
-{}
-
+    &quot;shadowBlade&quot;,
+    &quot;Теневой клинок&quot;,
+    &quot;&quot;,
+    &quot;Воин, соединяющий технику боя и силу теней.&quot;,
+    function(s){ return s.independence*3 + s.will*2 + s.intuition; },
+    { minStats: { independence: 22, will: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.hunter = _createResult(
-
-&quot;hunter&quot;,
-
-&quot;Охотник&quot;,
-
-	&quot;&quot;,
-
-&quot;Следопыт и мастер выживания.&quot;,
-
-
-function(s){
-
-return s.nature
-+s.caution*2;
-
-},
-
-{}
-
+    &quot;hunter&quot;,
+    &quot;Охотник&quot;,
+    &quot;&quot;,
+    &quot;Следопыт и мастер выживания.&quot;,
+    function(s){ return s.nature*2 + s.caution*2 + s.intuition; },
+    { minStats: { nature: 20, caution: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.ranger = _createResult(
-
-&quot;ranger&quot;,
-
-&quot;Следопыт&quot;,
-
-	&quot;&quot;,
-
-&quot;Путешественник, связанный с природой.&quot;,
-
-
-function(s){
-
-return s.nature*2
-+s.intuition;
-
-},
-
-{}
-
+    &quot;ranger&quot;,
+    &quot;Следопыт&quot;,
+    &quot;&quot;,
+    &quot;Путешественник, связанный с природой.&quot;,
+    function(s){ return s.nature*3 + s.intuition*2 + s.adventure; },
+    { minStats: { nature: 22, intuition: 16, adventure: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.sniper = _createResult(
-
-&quot;sniper&quot;,
-
-&quot;Снайпер&quot;,
-
-	&quot;&quot;,
-
-&quot;Мастер дальнего боя и абсолютной точности.&quot;,
-
-
-function(s){
-
-return s.caution*2
-+s.logic;
-
-},
-
-{}
-
+    &quot;sniper&quot;,
+    &quot;Снайпер&quot;,
+    &quot;&quot;,
+    &quot;Мастер дальнего боя и абсолютной точности.&quot;,
+    function(s){ return s.caution*3 + s.logic*2 + s.selfControl; },
+    { minStats: { caution: 24, logic: 16, selfControl: 14 } }
 )&gt;&gt;
 
 /* =========================================================
-   МАГИЧЕСКИЕ КЛАССЫ
-========================================================= */
-
+   МАГИЧЕСКИЕ КЛАССЫ — 8 штук
+   ========================================================= */
 
 &lt;&lt;set $classDatabase.mage = _createResult(
-
-&quot;mage&quot;,
-
-&quot;Маг&quot;,
-
-	&quot;&quot;,
-
-&quot;Изучающий магию через знания и понимание законов мира.&quot;,
-
-
-function(s){
-
-return s.knowledge*2
-+s.logic;
-
-},
-
-{}
-
+    &quot;mage&quot;,
+    &quot;Маг&quot;,
+    &quot;&quot;,
+    &quot;Изучающий магию через знания и понимание законов мира.&quot;,
+    function(s){ return s.knowledge*3 + s.logic*2 + s.curiosity; },
+    { minStats: { knowledge: 20, logic: 15 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.archmage = _createResult(
-
-&quot;archmage&quot;,
-
-&quot;Архимаг&quot;,
-
-	&quot;&quot;,
-
-&quot;Маг, достигший высшего уровня понимания магических искусств.&quot;,
-
-
-function(s){
-
-return s.knowledge*3
-+s.logic*2;
-
-},
-
-{}
-
+    &quot;archmage&quot;,
+    &quot;Архимаг&quot;,
+    &quot;&quot;,
+    &quot;Маг, достигший высшего уровня понимания магических искусств.&quot;,
+    function(s){ return s.knowledge*4 + s.logic*3 + s.intuition*2; },
+    { minStats: { knowledge: 30, logic: 24, intuition: 20 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.elementalist = _createResult(
-
-&quot;elementalist&quot;,
-
-&quot;Элементалист&quot;,
-
-	&quot;&quot;,
-
-&quot;Маг, управляющий первородными стихиями.&quot;,
-
-
-function(s){
-
-return s.nature*2
-+s.intuition;
-
-},
-
-{}
-
+    &quot;elementalist&quot;,
+    &quot;Элементалист&quot;,
+    &quot;&quot;,
+    &quot;Маг, управляющий первородными стихиями.&quot;,
+    function(s){ return s.nature*3 + s.intuition*2 + s.empathy; },
+    { minStats: { nature: 25, intuition: 18, empathy: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.battleMage = _createResult(
-
-&quot;battleMage&quot;,
-
-&quot;Боевой маг&quot;,
-
-	&quot;&quot;,
-
-&quot;Воин, объединивший оружие и магию.&quot;,
-
-
-function(s){
-
-return s.will
-+s.knowledge
-+s.determination;
-
-},
-
-{}
-
+    &quot;battleMage&quot;,
+    &quot;Боевой маг&quot;,
+    &quot;&quot;,
+    &quot;Воин, объединивший оружие и магию.&quot;,
+    function(s){ return s.will + s.knowledge*2 + s.determination; },
+    { minStats: { will: 14, knowledge: 18, determination: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.illusionist = _createResult(
-
-&quot;illusionist&quot;,
-
-&quot;Иллюзионист&quot;,
-
-	&quot;&quot;,
-
-&quot;Мастер восприятия и изменения сознания.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.charisma;
-
-},
-
-{}
-
+    &quot;illusionist&quot;,
+    &quot;Иллюзионист&quot;,
+    &quot;&quot;,
+    &quot;Мастер восприятия и изменения сознания.&quot;,
+    function(s){ return s.curiosity*3 + s.charisma*2 + s.intuition; },
+    { minStats: { curiosity: 22, charisma: 16, intuition: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.summoner = _createResult(
-
-&quot;summoner&quot;,
-
-&quot;Призыватель&quot;,
-
-	&quot;&quot;,
-
-&quot;Маг, создающий связь с другими существами.&quot;,
-
-
-function(s){
-
-return s.knowledge
-+s.intuition
-+s.charisma;
-
-},
-
-{}
-
+    &quot;summoner&quot;,
+    &quot;Призыватель&quot;,
+    &quot;&quot;,
+    &quot;Маг, создающий связь с другими существами.&quot;,
+    function(s){ return s.knowledge + s.intuition*2 + s.charisma*2; },
+    { minStats: { knowledge: 14, intuition: 18, charisma: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.necromancer = _createResult(
-
-&quot;necromancer&quot;,
-
-&quot;Некромант&quot;,
-
-	&quot;&quot;,
-
-&quot;Исследователь запретной магии смерти.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.will
-+s.independence;
-
-},
-
-{}
-
+    &quot;necromancer&quot;,
+    &quot;Некромант&quot;,
+    &quot;&quot;,
+    &quot;Исследователь запретной магии смерти.&quot;,
+    function(s){ return s.curiosity*3 + s.will*2 + s.independence; },
+    { minStats: { curiosity: 24, will: 18, independence: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.alchemist = _createResult(
-
-&quot;alchemist&quot;,
-
-&quot;Алхимик&quot;,
-
-	&quot;&quot;,
-
-&quot;Учёный, превращающий знания в практическую силу.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.knowledge;
-
-},
-
-{}
-
+    &quot;alchemist&quot;,
+    &quot;Алхимик&quot;,
+    &quot;&quot;,
+    &quot;Учёный, превращающий знания в практическую силу.&quot;,
+    function(s){ return s.logic*3 + s.knowledge*2 + s.patience; },
+    { minStats: { logic: 20, knowledge: 16, patience: 10 } }
 )&gt;&gt;
 
-
-
-
 /* =========================================================
-   ВЫСШАЯ МАГИЯ
-========================================================= */
-
+   ВЫСШАЯ МАГИЯ — 8 штук (редкие)
+   ========================================================= */
 
 &lt;&lt;set $classDatabase.spaceMage = _createResult(
-
-&quot;spaceMage&quot;,
-
-&quot;Маг пространства&quot;,
-
-	&quot;&quot;,
-
-&quot;Властелин пространственных законов.&quot;,
-
-
-function(s){
-
-return s.logic*2
-+s.curiosity
-+s.adaptability;
-
-},
-
-{}
-
+    &quot;spaceMage&quot;,
+    &quot;Маг пространства&quot;,
+    &quot;&quot;,
+    &quot;Властелин пространственных законов.&quot;,
+    function(s){ return s.logic*3 + s.curiosity*2 + s.adaptability; },
+    { minStats: { logic: 24, curiosity: 18, adaptability: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.timeMage = _createResult(
-
-&quot;timeMage&quot;,
-
-&quot;Маг времени&quot;,
-
-	&quot;&quot;,
-
-&quot;Исследователь течения времени и причинности.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.knowledge;
-
-},
-
-{}
-
+    &quot;timeMage&quot;,
+    &quot;Маг времени&quot;,
+    &quot;&quot;,
+    &quot;Исследователь течения времени и причинности.&quot;,
+    function(s){ return s.intuition*4 + s.knowledge*2 + s.logic; },
+    { minStats: { intuition: 28, knowledge: 20, logic: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.gravityMage = _createResult(
-
-&quot;gravityMage&quot;,
-
-&quot;Маг гравитации&quot;,
-
-	&quot;&quot;,
-
-&quot;Маг, управляющий фундаментальными силами мира.&quot;,
-
-
-function(s){
-
-return s.logic*2
-+s.will*2;
-
-},
-
-{}
-
+    &quot;gravityMage&quot;,
+    &quot;Маг гравитации&quot;,
+    &quot;&quot;,
+    &quot;Маг, управляющий фундаментальными силами мира.&quot;,
+    function(s){ return s.logic*3 + s.will*2 + s.determination; },
+    { minStats: { logic: 22, will: 20, determination: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.soulMage = _createResult(
-
-&quot;soulMage&quot;,
-
-&quot;Маг души&quot;,
-
-	&quot;&quot;,
-
-&quot;Исследователь духовной энергии и сущности сознания.&quot;,
-
-
-function(s){
-
-return s.empathy*2
-+s.intuition
-+s.knowledge;
-
-},
-
-{}
-
+    &quot;soulMage&quot;,
+    &quot;Маг души&quot;,
+    &quot;&quot;,
+    &quot;Исследователь духовной энергии и сущности сознания.&quot;,
+    function(s){ return s.empathy*3 + s.intuition*2 + s.knowledge; },
+    { minStats: { empathy: 24, intuition: 18, knowledge: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.lifeMage = _createResult(
-
-&quot;lifeMage&quot;,
-
-&quot;Маг жизни&quot;,
-
-	&quot;&quot;,
-
-&quot;Маг, управляющий восстановлением и созданием жизни.&quot;,
-
-
-function(s){
-
-return s.nature*2
-+s.empathy*2;
-
-},
-
-{}
-
+    &quot;lifeMage&quot;,
+    &quot;Маг жизни&quot;,
+    &quot;&quot;,
+    &quot;Маг, управляющий восстановлением и созданием жизни.&quot;,
+    function(s){ return s.nature*3 + s.empathy*3 + s.intuition; },
+    { minStats: { nature: 26, empathy: 22, intuition: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.deathMage = _createResult(
-
-&quot;deathMage&quot;,
-
-&quot;Маг смерти&quot;,
-
-	&quot;&quot;,
-
-&quot;Мастер энергий разрушения и конца жизни.&quot;,
-
-
-function(s){
-
-return s.will
-+s.curiosity*2;
-
-},
-
-{}
-
+    &quot;deathMage&quot;,
+    &quot;Маг смерти&quot;,
+    &quot;&quot;,
+    &quot;Мастер энергий разрушения и конца жизни.&quot;,
+    function(s){ return s.curiosity*3 + s.will*2 + s.independence; },
+    { minStats: { curiosity: 24, will: 20, independence: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.creationMage = _createResult(
-
-&quot;creationMage&quot;,
-
-&quot;Маг творения&quot;,
-
-	&quot;&quot;,
-
-&quot;Маг, способный создавать новые формы и энергии.&quot;,
-
-
-function(s){
-
-return s.charisma*2
-+s.knowledge
-+s.logic;
-
-},
-
-{}
-
+    &quot;creationMage&quot;,
+    &quot;Маг творения&quot;,
+    &quot;&quot;,
+    &quot;Маг, способный создавать новые формы и энергии.&quot;,
+    function(s){ return s.charisma*3 + s.knowledge*2 + s.logic*2; },
+    { minStats: { charisma: 22, knowledge: 18, logic: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.destructionMage = _createResult(
-
-&quot;destructionMage&quot;,
-
-&quot;Маг разрушения&quot;,
-
-	&quot;&quot;,
-
-&quot;Маг абсолютного разрушительного потенциала.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.determination;
-
-},
-
-{}
-
+    &quot;destructionMage&quot;,
+    &quot;Маг разрушения&quot;,
+    &quot;&quot;,
+    &quot;Маг абсолютного разрушительного потенциала.&quot;,
+    function(s){ return s.will*3 + s.determination*2 + s.chaos; },
+    { minStats: { will: 24, determination: 16, chaos: 4 } }
 )&gt;&gt;
 
 /* =========================================================
-   ДУХОВНЫЕ КЛАССЫ
-========================================================= */
-
+   ДУХОВНЫЕ КЛАССЫ — 5 штук
+   ========================================================= */
 
 &lt;&lt;set $classDatabase.priest = _createResult(
-
-&quot;priest&quot;,
-
-&quot;Жрец&quot;,
-
-	&quot;&quot;,
-
-&quot;Служитель высших сил, соединяющий веру и знания.&quot;,
-
-
-function(s){
-
-return s.order*2
-+s.justice
-+s.empathy;
-
-},
-
-{}
-
+    &quot;priest&quot;,
+    &quot;Жрец&quot;,
+    &quot;&quot;,
+    &quot;Служитель высших сил, соединяющий веру и знания.&quot;,
+    function(s){ return s.order*2 + s.justice + s.empathy*2; },
+    { minStats: { order: 18, justice: 12, empathy: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.saint = _createResult(
-
-&quot;saint&quot;,
-
-&quot;Святой&quot;,
-
-	&quot;&quot;,
-
-&quot;Избранный носитель светлой силы.&quot;,
-
-
-function(s){
-
-return s.justice*3
-+s.order
-+s.empathy;
-
-},
-
-{}
-
+    &quot;saint&quot;,
+    &quot;Святой&quot;,
+    &quot;&quot;,
+    &quot;Избранный носитель светлой силы.&quot;,
+    function(s){ return s.justice*4 + s.order*2 + s.empathy*2; },
+    { minStats: { justice: 32, order: 20, empathy: 20 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.healer = _createResult(
-
-&quot;healer&quot;,
-
-&quot;Целитель&quot;,
-
-	&quot;&quot;,
-
-&quot;Мастер восстановления жизни и духовной энергии.&quot;,
-
-
-function(s){
-
-return s.empathy*3
-+s.nature;
-
-},
-
-{}
-
+    &quot;healer&quot;,
+    &quot;Целитель&quot;,
+    &quot;&quot;,
+    &quot;Мастер восстановления жизни и духовной энергии.&quot;,
+    function(s){ return s.empathy*3 + s.nature*2 + s.patience; },
+    { minStats: { empathy: 24, nature: 18, patience: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.oracle = _createResult(
-
-&quot;oracle&quot;,
-
-&quot;Оракул&quot;,
-
-	&quot;&quot;,
-
-&quot;Тот, кто видит скрытые закономерности мира.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.knowledge;
-
-},
-
-{}
-
+    &quot;oracle&quot;,
+    &quot;Оракул&quot;,
+    &quot;&quot;,
+    &quot;Тот, кто видит скрытые закономерности мира.&quot;,
+    function(s){ return s.intuition*4 + s.knowledge*2 + s.selfControl; },
+    { minStats: { intuition: 28, knowledge: 16, selfControl: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.prophet = _createResult(
-
-&quot;prophet&quot;,
-
-&quot;Пророк&quot;,
-
-	&quot;&quot;,
-
-&quot;Проводник будущих событий и высшей воли.&quot;,
-
-
-function(s){
-
-return s.intuition*2
-+s.charisma
-+s.justice;
-
-},
-
-{}
-
+    &quot;prophet&quot;,
+    &quot;Пророк&quot;,
+    &quot;&quot;,
+    &quot;Проводник будущих событий и высшей воли.&quot;,
+    function(s){ return s.intuition*3 + s.charisma*2 + s.justice; },
+    { minStats: { intuition: 22, charisma: 16, justice: 12 } }
 )&gt;&gt;
 
-
-
-
 /* =========================================================
-   ОСОБЫЕ КЛАССЫ
-========================================================= */
-
+   ОСОБЫЕ КЛАССЫ — 6 штук
+   ========================================================= */
 
 &lt;&lt;set $classDatabase.hero = _createResult(
-
-&quot;hero&quot;,
-
-&quot;Герой&quot;,
-
-	&quot;&quot;,
-
-&quot;Легендарный путь того, кто меняет судьбу мира.&quot;,
-
-
-function(s){
-
-return s.justice*2
-+s.will
-+s.charisma;
-
-},
-
-{}
-
+    &quot;hero&quot;,
+    &quot;Герой&quot;,
+    &quot;&quot;,
+    &quot;Легендарный путь того, кто меняет судьбу мира.&quot;,
+    function(s){ return s.justice*3 + s.will*2 + s.charisma*2; },
+    { minStats: { justice: 26, will: 20, charisma: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.king = _createResult(
-
-&quot;king&quot;,
-
-&quot;Король&quot;,
-
-	&quot;&quot;,
-
-&quot;Правитель, способный вести за собой других.&quot;,
-
-
-function(s){
-
-return s.order*2
-+s.charisma*2;
-
-},
-
-{}
-
+    &quot;king&quot;,
+    &quot;Король&quot;,
+    &quot;&quot;,
+    &quot;Правитель, способный вести за собой других.&quot;,
+    function(s){ return s.order*3 + s.charisma*3 + s.justice; },
+    { minStats: { order: 22, charisma: 20, justice: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.emperor = _createResult(
-
-&quot;emperor&quot;,
-
-&quot;Император&quot;,
-
-	&quot;&quot;,
-
-&quot;Высший правитель огромной силы и влияния.&quot;,
-
-
-function(s){
-
-return s.order*3
-+s.charisma*2;
-
-},
-
-{}
-
+    &quot;emperor&quot;,
+    &quot;Император&quot;,
+    &quot;&quot;,
+    &quot;Высший правитель огромной силы и влияния.&quot;,
+    function(s){ return s.order*4 + s.charisma*3 + s.will; },
+    { minStats: { order: 30, charisma: 24, will: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.worldWalker = _createResult(
-
-&quot;worldWalker&quot;,
-
-&quot;Странник миров&quot;,
-
-	&quot;&quot;,
-
-&quot;Путешественник между различными мирами.&quot;,
-
-
-function(s){
-
-return s.adventure*3
-+s.curiosity*2;
-
-},
-
-{}
-
+    &quot;worldWalker&quot;,
+    &quot;Странник миров&quot;,
+    &quot;&quot;,
+    &quot;Путешественник между различными мирами.&quot;,
+    function(s){ return s.adventure*4 + s.curiosity*3 + s.adaptability; },
+    { minStats: { adventure: 14, curiosity: 20, adaptability: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.balanceKeeper = _createResult(
-
-&quot;balanceKeeper&quot;,
-
-&quot;Хранитель равновесия&quot;,
-
-	&quot;&quot;,
-
-&quot;Тот, кто удерживает силы мира от разрушения.&quot;,
-
-
-function(s){
-
-return s.order
-+s.chaos
-+s.justice
-+s.adaptability;
-
-},
-
-{}
-
+    &quot;balanceKeeper&quot;,
+    &quot;Хранитель равновесия&quot;,
+    &quot;&quot;,
+    &quot;Тот, кто удерживает силы мира от разрушения.&quot;,
+    function(s){ return s.order + s.chaos*2 + s.justice + s.adaptability; },
+    { minStats: { order: 14, chaos: 6, justice: 12, adaptability: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.fateKeeper = _createResult(
-
-&quot;fateKeeper&quot;,
-
-&quot;Хранитель судьбы&quot;,
-
-	&quot;&quot;,
-
-&quot;Избранный, способный видеть нити судьбы.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.knowledge*2;
-
-},
-
-{}
-
+    &quot;fateKeeper&quot;,
+    &quot;Хранитель судьбы&quot;,
+    &quot;&quot;,
+    &quot;Избранный, способный видеть нити судьбы.&quot;,
+    function(s){ return s.intuition*4 + s.knowledge*2 + s.selfControl; },
+    { minStats: { intuition: 28, knowledge: 18, selfControl: 14 } }
 )&gt;&gt;
 
-
-
-
 /* =========================================================
-   СКРЫТЫЕ КЛАССЫ
-========================================================= */
-
+   СКРЫТЫЕ КЛАССЫ — 6 штук (легендарные)
+   Требуют высокие статы + скрытые бонусы
+   ========================================================= */
 
 &lt;&lt;set $classDatabase.dragonLord = _createResult(
-
-&quot;dragonLord&quot;,
-
-&quot;Владыка драконов&quot;,
-
-	&quot;&quot;,
-
-&quot;Повелитель древней драконьей силы.&quot;,
-
-
-function(s){
-
-return s.will*4
-+s.determination*2
-+_hiddenBonus(&quot;dragon&quot;);
-
-},
-
-{}
-
+    &quot;dragonLord&quot;,
+    &quot;Владыка драконов&quot;,
+    &quot;&quot;,
+    &quot;Повелитель древней драконьей силы.&quot;,
+    function(s){ 
+        return s.will*4 + s.determination*3 + s.adaptability + _hiddenBonus(&quot;dragon&quot;); 
+    },
+    { minStats: { will: 40, determination: 30, adaptability: 20 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.godHeir = _createResult(
-
-&quot;godHeir&quot;,
-
-&quot;Наследник богов&quot;,
-
-	&quot;&quot;,
-
-&quot;Носитель божественного наследия.&quot;,
-
-
-function(s){
-
-return s.justice*3
-+s.charisma*2
-+_hiddenBonus(&quot;angel&quot;);
-
-},
-
-{}
-
+    &quot;godHeir&quot;,
+    &quot;Наследник богов&quot;,
+    &quot;&quot;,
+    &quot;Носитель божественного наследия.&quot;,
+    function(s){ 
+        return s.justice*4 + s.charisma*3 + s.order*2 + _hiddenBonus(&quot;angel&quot;); 
+    },
+    { minStats: { justice: 38, charisma: 30, order: 24 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.demonLord = _createResult(
-
-&quot;demonLord&quot;,
-
-&quot;Повелитель демонов&quot;,
-
-	&quot;&quot;,
-
-&quot;Абсолютная власть над демоническими силами.&quot;,
-
-
-function(s){
-
-return s.will*4
-+s.curiosity*2
-+_hiddenBonus(&quot;demon&quot;);
-
-},
-
-{}
-
+    &quot;demonLord&quot;,
+    &quot;Повелитель демонов&quot;,
+    &quot;&quot;,
+    &quot;Абсолютная власть над демоническими силами.&quot;,
+    function(s){ 
+        return s.will*4 + s.curiosity*3 + s.independence*2 + _hiddenBonus(&quot;demon&quot;); 
+    },
+    { minStats: { will: 40, curiosity: 32, independence: 24 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.worldCreator = _createResult(
-
-&quot;worldCreator&quot;,
-
-&quot;Создатель миров&quot;,
-
-	&quot;&quot;,
-
-&quot;Сила, способная создавать новые реальности.&quot;,
-
-
-function(s){
-
-return s.charisma*3
-+s.logic*3
-+_hiddenBonus(&quot;creator&quot;);
-
-},
-
-{}
-
+    &quot;worldCreator&quot;,
+    &quot;Создатель миров&quot;,
+    &quot;&quot;,
+    &quot;Сила, способная создавать новые реальности.&quot;,
+    function(s){ 
+        return s.charisma*4 + s.logic*3 + s.adaptability*2 + _hiddenBonus(&quot;creator&quot;); 
+    },
+    { minStats: { charisma: 38, logic: 32, adaptability: 24 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.absolute = _createResult(
-
-&quot;absolute&quot;,
-
-&quot;Абсолютная сущность&quot;,
-
-	&quot;&quot;,
-
-&quot;Существование, вышедшее за пределы ограничений.&quot;,
-
-
-function(s){
-
-return s.charisma*3
-+s.will*3;
-
-},
-
-{}
-
+    &quot;absolute&quot;,
+    &quot;Абсолютная сущность&quot;,
+    &quot;&quot;,
+    &quot;Существование, вышедшее за пределы ограничений.&quot;,
+    function(s){ 
+        return s.charisma*3 + s.will*3 + s.selfControl*2; 
+    },
+    { minStats: { charisma: 34, will: 34, selfControl: 24 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $classDatabase.voidBearer = _createResult(
-
-&quot;voidBearer&quot;,
-
-&quot;Носитель пустоты&quot;,
-
-	&quot;&quot;,
-
-&quot;Тот, кто управляет энергией небытия.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.independence*2
-+_hiddenBonus(&quot;void&quot;);
-
-},
-
-{}
-
+    &quot;voidBearer&quot;,
+    &quot;Носитель пустоты&quot;,
+    &quot;&quot;,
+    &quot;Тот, кто управляет энергией небытия.&quot;,
+    function(s){ 
+        return s.logic*4 + s.independence*3 + s.selfControl*2 + _hiddenBonus(&quot;void&quot;); 
+    },
+    { minStats: { logic: 38, independence: 34, selfControl: 26 } }
 )&gt;&gt;
 
-
-
-
 /* =========================================================
-   ВЫБОР КЛАССА
-========================================================= */
-
+   ВЫБОР КЛАССА (С ПРОВЕРКОЙ ТРЕБОВАНИЙ И ШТРАФАМИ)
+   Скрытые классы: -25 штрафа
+   Обычные классы: 0 штрафа
+   ========================================================= */
 
 &lt;&lt;set $class = &quot;warrior&quot;&gt;&gt;
 &lt;&lt;set $highestClass = -999&gt;&gt;
+&lt;&lt;set $availableClassesCount = 0&gt;&gt;
 
 &lt;&lt;for _classID range Object.keys($classDatabase)&gt;&gt;
-	&lt;&lt;set _class = $classDatabase[_classID]&gt;&gt;
-	&lt;&lt;set _score = _class.formula(_stats)&gt;&gt;
-	
-	/* Штраф для скрытых/легендарных классов */
-	&lt;&lt;if _classID == &quot;dragonLord&quot; or _classID == &quot;godHeir&quot; or _classID == &quot;demonLord&quot; or _classID == &quot;worldCreator&quot; or _classID == &quot;absolute&quot; or _classID == &quot;voidBearer&quot;&gt;&gt;
-		&lt;&lt;set _score = _score - 15&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-	
-	&lt;&lt;if _score &gt; $highestClass&gt;&gt;
-		&lt;&lt;set $highestClass = _score&gt;&gt;
-		&lt;&lt;set $class = _classID&gt;&gt;
-		&lt;&lt;set $classData = _class&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
+    &lt;&lt;set _class = $classDatabase[_classID]&gt;&gt;
+    
+    &lt;&lt;if _checkRequirements(_class.requirements, _stats)&gt;&gt;
+        &lt;&lt;set $availableClassesCount = $availableClassesCount + 1&gt;&gt;
+        &lt;&lt;set _score = _class.formula(_stats)&gt;&gt;
+        
+        // Штраф для скрытых/легендарных классов (-25 вместо -15)
+        &lt;&lt;if _classID == &quot;dragonLord&quot; or _classID == &quot;godHeir&quot; or _classID == &quot;demonLord&quot; or _classID == &quot;worldCreator&quot; or _classID == &quot;absolute&quot; or _classID == &quot;voidBearer&quot;&gt;&gt;
+            &lt;&lt;set _score = _score - 25&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+        
+        &lt;&lt;if _score &gt; $highestClass&gt;&gt;
+            &lt;&lt;set $highestClass = _score&gt;&gt;
+            &lt;&lt;set $class = _classID&gt;&gt;
+            &lt;&lt;set $classData = _class&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
+
+// Страховка: если ни один класс не доступен
+&lt;&lt;if $availableClassesCount == 0&gt;&gt;
+    &lt;&lt;set $class = &quot;warrior&quot;&gt;&gt;
+    &lt;&lt;set $classData = $classDatabase.warrior&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 /* =========================================================
    АТРИБУТ / СИЛА
@@ -3341,8 +2587,6 @@ return s.logic*3
 &quot;fire&quot;,
 
 &quot;Огонь&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила пламени, разрушения и неудержимой воли.&quot;,
 
@@ -3366,8 +2610,6 @@ return s.will*2
 
 &quot;Вода&quot;,
 
-	&quot;&quot;,
-
 &quot;Гибкая энергия перемен и адаптации.&quot;,
 
 
@@ -3389,8 +2631,6 @@ return s.empathy
 &quot;earth&quot;,
 
 &quot;Земля&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила стойкости, защиты и терпения.&quot;,
 
@@ -3414,8 +2654,6 @@ return s.order
 
 &quot;Воздух&quot;,
 
-	&quot;&quot;,
-
 &quot;Свобода движения и независимый дух.&quot;,
 
 
@@ -3438,8 +2676,6 @@ return s.independence*2
 
 &quot;Лёд&quot;,
 
-	&quot;&quot;,
-
 &quot;Холодный разум и абсолютный контроль.&quot;,
 
 
@@ -3461,8 +2697,6 @@ return s.selfControl*2
 &quot;lightning&quot;,
 
 &quot;Молния&quot;,
-
-	&quot;&quot;,
 
 &quot;Стремительная сила энергии и импульса.&quot;,
 
@@ -3492,8 +2726,6 @@ return s.curiosity*2
 
 &quot;Жизнь&quot;,
 
-	&quot;&quot;,
-
 &quot;Энергия восстановления, роста и существования.&quot;,
 
 
@@ -3516,8 +2748,6 @@ return s.nature*3
 
 &quot;Природа&quot;,
 
-	&quot;&quot;,
-
 &quot;Связь с миром природы и первозданными силами.&quot;,
 
 
@@ -3538,8 +2768,6 @@ return s.nature*4;
 &quot;beast&quot;,
 
 &quot;Звериная сила&quot;,
-
-	&quot;&quot;,
 
 &quot;Инстинктивная мощь древних существ.&quot;,
 
@@ -3562,8 +2790,6 @@ return s.nature*2
 &quot;spiritEnergy&quot;,
 
 &quot;Духовная энергия&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила внутреннего духа и связи с невидимым.&quot;,
 
@@ -3593,8 +2819,6 @@ return s.intuition*2
 
 &quot;Свет&quot;,
 
-	&quot;&quot;,
-
 &quot;Чистая энергия порядка и справедливости.&quot;,
 
 
@@ -3616,8 +2840,6 @@ return s.justice*3
 &quot;healing&quot;,
 
 &quot;Исцеление&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила восстановления тела и души.&quot;,
 
@@ -3641,8 +2863,6 @@ return s.empathy*3
 
 &quot;Святая сила&quot;,
 
-	&quot;&quot;,
-
 &quot;Божественная энергия защиты и очищения.&quot;,
 
 
@@ -3665,8 +2885,6 @@ return s.justice*2
 &quot;angelPower&quot;,
 
 &quot;Сила ангелов&quot;,
-
-	&quot;&quot;,
 
 &quot;Небесная энергия высших существ.&quot;,
 
@@ -3696,8 +2914,6 @@ return s.justice*3
 
 &quot;Тьма&quot;,
 
-	&quot;&quot;,
-
 &quot;Энергия тайны, независимости и скрытых желаний.&quot;,
 
 
@@ -3719,8 +2935,6 @@ return s.independence*2
 &quot;demonPower&quot;,
 
 &quot;Демоническая сила&quot;,
-
-	&quot;&quot;,
 
 &quot;Разрушительная энергия демонических миров.&quot;,
 
@@ -3744,8 +2958,6 @@ return s.will*3
 
 &quot;Смерть&quot;,
 
-	&quot;&quot;,
-
 &quot;Сила конца, перехода и забвения.&quot;,
 
 
@@ -3768,8 +2980,6 @@ return s.will
 &quot;cursedEnergy&quot;,
 
 &quot;Проклятая энергия&quot;,
-
-	&quot;&quot;,
 
 &quot;Нестабильная энергия запретных сил.&quot;,
 
@@ -3796,8 +3006,6 @@ return s.curiosity*3
 
 &quot;Пространство&quot;,
 
-	&quot;&quot;,
-
 &quot;Контроль расстояний, границ и самой структуры мира.&quot;,
 
 
@@ -3821,8 +3029,6 @@ return s.logic*2
 
 &quot;Время&quot;,
 
-	&quot;&quot;,
-
 &quot;Сила управления ходом событий и моментами существования.&quot;,
 
 
@@ -3844,8 +3050,6 @@ return s.intuition*3
 &quot;gravity&quot;,
 
 &quot;Гравитация&quot;,
-
-	&quot;&quot;,
 
 &quot;Власть над одной из фундаментальных сил мира.&quot;,
 
@@ -3875,8 +3079,6 @@ return s.logic*3
 
 &quot;Душа&quot;,
 
-	&quot;&quot;,
-
 &quot;Сила внутренней сущности и духовной связи.&quot;,
 
 
@@ -3898,8 +3100,6 @@ return s.empathy*3
 &quot;fate&quot;,
 
 &quot;Судьба&quot;,
-
-	&quot;&quot;,
 
 &quot;Способность чувствовать и изменять нити судьбы.&quot;,
 
@@ -3923,8 +3123,6 @@ return s.intuition*3
 
 &quot;Разум&quot;,
 
-	&quot;&quot;,
-
 &quot;Абсолютная сила анализа и познания.&quot;,
 
 
@@ -3946,8 +3144,6 @@ return s.logic*3
 &quot;creatorPower&quot;,
 
 &quot;Сила Творца&quot;,
-
-	&quot;&quot;,
 
 &quot;Энергия создания новых форм существования.&quot;,
 
@@ -3977,8 +3173,6 @@ return s.charisma*3
 
 &quot;Хаос&quot;,
 
-	&quot;&quot;,
-
 &quot;Непредсказуемая сила изменения и разрушения порядка.&quot;,
 
 
@@ -4002,8 +3196,6 @@ return s.curiosity*2
 
 &quot;Порядок&quot;,
 
-	&quot;&quot;,
-
 &quot;Абсолютная структура, закон и стабильность.&quot;,
 
 
@@ -4025,8 +3217,6 @@ return s.order*3
 &quot;voidPower&quot;,
 
 &quot;Пустота&quot;,
-
-	&quot;&quot;,
 
 &quot;Энергия отсутствия и пространства между мирами.&quot;,
 
@@ -4051,8 +3241,6 @@ return s.logic*3
 
 &quot;Эфир&quot;,
 
-	&quot;&quot;,
-
 &quot;Первозданная энергия, лежащая за пределами стихий.&quot;,
 
 
@@ -4075,8 +3263,6 @@ return s.intuition*2
 &quot;nothing&quot;,
 
 &quot;Ничто&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила отсутствия, превосходящая понимание.&quot;,
 
@@ -4145,8 +3331,6 @@ return s.selfControl*3
 
 &quot;Анализ&quot;,
 
-	&quot;&quot;,
-
 &quot;Способность изучать объекты, ситуации и находить скрытые закономерности.&quot;,
 
 
@@ -4168,8 +3352,6 @@ return s.logic*3
 &quot;evaluation&quot;,
 
 &quot;Оценка&quot;,
-
-	&quot;&quot;,
 
 &quot;Позволяет быстро определять характеристики и возможности объектов.&quot;,
 
@@ -4193,8 +3375,6 @@ return s.logic*2
 
 &quot;Абсолютная оценка&quot;,
 
-	&quot;&quot;,
-
 &quot;Высшая форма анализа, позволяющая видеть истинную природу вещей.&quot;,
 
 
@@ -4216,8 +3396,6 @@ return s.logic*4
 &quot;weaknessAnalysis&quot;,
 
 &quot;Анализ слабостей&quot;,
-
-	&quot;&quot;,
 
 &quot;Способность находить уязвимые места противников и объектов.&quot;,
 
@@ -4241,8 +3419,6 @@ return s.logic*3
 
 &quot;Чтение информации&quot;,
 
-	&quot;&quot;,
-
 &quot;Получение скрытых знаний о мире и существах.&quot;,
 
 
@@ -4264,8 +3440,6 @@ return s.knowledge*3
 &quot;perfectMemory&quot;,
 
 &quot;Идеальная память&quot;,
-
-	&quot;&quot;,
 
 &quot;Способность сохранять и использовать огромные объёмы знаний.&quot;,
 
@@ -4295,8 +3469,6 @@ return s.knowledge*4
 
 &quot;Мастер оружия&quot;,
 
-	&quot;&quot;,
-
 &quot;Совершенное владение оружием любого типа.&quot;,
 
 
@@ -4318,8 +3490,6 @@ return s.will*3
 &quot;battleInstinct&quot;,
 
 &quot;Боевой инстинкт&quot;,
-
-	&quot;&quot;,
 
 &quot;Интуитивное понимание боя и действий противника.&quot;,
 
@@ -4343,8 +3513,6 @@ return s.intuition*2
 
 &quot;Предвидение атак&quot;,
 
-	&quot;&quot;,
-
 &quot;Способность предугадывать движения врага.&quot;,
 
 
@@ -4367,8 +3535,6 @@ return s.intuition*3
 
 &quot;Улучшенная реакция&quot;,
 
-	&quot;&quot;,
-
 &quot;Мгновенная реакция на опасность.&quot;,
 
 
@@ -4390,8 +3556,6 @@ return s.adaptability*2
 &quot;copyTechniques&quot;,
 
 &quot;Копирование техник&quot;,
-
-	&quot;&quot;,
 
 &quot;Способность изучать чужие боевые приёмы.&quot;,
 
@@ -4421,8 +3585,6 @@ return s.curiosity*2
 
 &quot;Контроль маны&quot;,
 
-	&quot;&quot;,
-
 &quot;Точное управление внутренней магической энергией.&quot;,
 
 
@@ -4446,8 +3608,6 @@ return s.knowledge*2
 
 &quot;Усиление магии&quot;,
 
-	&quot;&quot;,
-
 &quot;Увеличение силы магических способностей.&quot;,
 
 
@@ -4469,8 +3629,6 @@ return s.will
 &quot;spellCreation&quot;,
 
 &quot;Создание заклинаний&quot;,
-
-	&quot;&quot;,
 
 &quot;Создание новых магических формул.&quot;,
 
@@ -4494,8 +3652,6 @@ return s.logic*3
 
 &quot;Поглощение магии&quot;,
 
-	&quot;&quot;,
-
 &quot;Способность принимать чужую магическую энергию.&quot;,
 
 
@@ -4517,8 +3673,6 @@ return s.curiosity*2
 &quot;elementFusion&quot;,
 
 &quot;Слияние стихий&quot;,
-
-	&quot;&quot;,
 
 &quot;Объединение различных природных сил.&quot;,
 
@@ -4545,8 +3699,6 @@ return s.nature*2
 
 &quot;Скрытность&quot;,
 
-	&quot;&quot;,
-
 &quot;Способность скрывать своё присутствие и действовать незаметно.&quot;,
 
 
@@ -4568,8 +3720,6 @@ return s.independence*3
 &quot;invisibility&quot;,
 
 &quot;Невидимость&quot;,
-
-	&quot;&quot;,
 
 &quot;Позволяет скрывать тело и энергию от наблюдения.&quot;,
 
@@ -4593,8 +3743,6 @@ return s.independence*3
 
 &quot;Иллюзорная форма&quot;,
 
-	&quot;&quot;,
-
 &quot;Создание иллюзорного образа собственного существования.&quot;,
 
 
@@ -4617,8 +3765,6 @@ return s.curiosity*3
 
 &quot;Телепатия&quot;,
 
-	&quot;&quot;,
-
 &quot;Способность воспринимать мысли и эмоции других существ.&quot;,
 
 
@@ -4640,8 +3786,6 @@ return s.intuition*3
 &quot;readMind&quot;,
 
 &quot;Чтение мыслей&quot;,
-
-	&quot;&quot;,
 
 &quot;Глубокое проникновение в сознание другого существа.&quot;,
 
@@ -4671,8 +3815,6 @@ return s.intuition*4
 
 &quot;Предвидение будущего&quot;,
 
-	&quot;&quot;,
-
 &quot;Способность видеть возможные варианты будущих событий.&quot;,
 
 
@@ -4694,8 +3836,6 @@ return s.intuition*4
 &quot;rebirth&quot;,
 
 &quot;Возрождение&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила возвращения после смертельных повреждений.&quot;,
 
@@ -4720,8 +3860,6 @@ return s.nature*3
 
 &quot;Бессмертие&quot;,
 
-	&quot;&quot;,
-
 &quot;Преодоление естественного ограничения жизни.&quot;,
 
 
@@ -4743,8 +3881,6 @@ return s.selfControl*4
 &quot;abilitySteal&quot;,
 
 &quot;Кража способностей&quot;,
-
-	&quot;&quot;,
 
 &quot;Способность присваивать чужие силы.&quot;,
 
@@ -4768,8 +3904,6 @@ return s.curiosity*3
 
 &quot;Создание жизни&quot;,
 
-	&quot;&quot;,
-
 &quot;Высшая способность создавать новые формы жизни.&quot;,
 
 
@@ -4791,8 +3925,6 @@ return s.nature*3
 &quot;realityChange&quot;,
 
 &quot;Изменение реальности&quot;,
-
-	&quot;&quot;,
 
 &quot;Возможность воздействовать на саму структуру мира.&quot;,
 
@@ -4816,8 +3948,6 @@ return s.charisma*3
 
 &quot;Контроль пространства&quot;,
 
-	&quot;&quot;,
-
 &quot;Управление расстояниями и пространственными связями.&quot;,
 
 
@@ -4839,8 +3969,6 @@ return s.logic*3
 &quot;timeControl&quot;,
 
 &quot;Контроль времени&quot;,
-
-	&quot;&quot;,
 
 &quot;Управление течением времени.&quot;,
 
@@ -4909,8 +4037,6 @@ return s.intuition*3
 
 &quot;Благословение Судьбы&quot;,
 
-	&quot;&quot;,
-
 &quot;Сила, позволяющая идти по предназначенному пути.&quot;,
 
 
@@ -4932,8 +4058,6 @@ return s.intuition*2
 &quot;luck&quot;,
 
 &quot;Благословение Удачи&quot;,
-
-	&quot;&quot;,
 
 &quot;Скрытая сила, изменяющая вероятность событий.&quot;,
 
@@ -4957,8 +4081,6 @@ return s.charisma*2
 
 &quot;Благословение Мужества&quot;,
 
-	&quot;&quot;,
-
 &quot;Укрепляет волю и способность преодолевать страх.&quot;,
 
 
@@ -4980,8 +4102,6 @@ return s.will*2
 &quot;wisdom&quot;,
 
 &quot;Благословение Мудрости&quot;,
-
-	&quot;&quot;,
 
 &quot;Дар глубокого понимания мира.&quot;,
 
@@ -5005,8 +4125,6 @@ return s.knowledge*2
 
 &quot;Благословение Стойкости&quot;,
 
-	&quot;&quot;,
-
 &quot;Защищает разум и тело от разрушения.&quot;,
 
 
@@ -5028,8 +4146,6 @@ return s.patience*2
 &quot;guardian&quot;,
 
 &quot;Благословение Защитника&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила защиты союзников и сохранения порядка.&quot;,
 
@@ -5059,8 +4175,6 @@ return s.justice*2
 
 &quot;Благословение Огня&quot;,
 
-	&quot;&quot;,
-
 &quot;Дар владения энергией пламени.&quot;,
 
 
@@ -5082,8 +4196,6 @@ return s.will*2
 &quot;water&quot;,
 
 &quot;Благословение Воды&quot;,
-
-	&quot;&quot;,
 
 &quot;Гибкость и сила изменяющегося потока.&quot;,
 
@@ -5107,8 +4219,6 @@ return s.empathy
 
 &quot;Благословение Земли&quot;,
 
-	&quot;&quot;,
-
 &quot;Дар устойчивости и защиты.&quot;,
 
 
@@ -5130,8 +4240,6 @@ return s.patience*2
 &quot;air&quot;,
 
 &quot;Благословение Воздуха&quot;,
-
-	&quot;&quot;,
 
 &quot;Свобода движения и независимый путь.&quot;,
 
@@ -5155,8 +4263,6 @@ return s.independence*2
 
 &quot;Благословение Льда&quot;,
 
-	&quot;&quot;,
-
 &quot;Холодный контроль эмоций и энергии.&quot;,
 
 
@@ -5178,8 +4284,6 @@ return s.selfControl*2
 &quot;lightning&quot;,
 
 &quot;Благословение Молнии&quot;,
-
-	&quot;&quot;,
 
 &quot;Мгновенная сила энергии и скорости.&quot;,
 
@@ -5209,8 +4313,6 @@ return s.curiosity*2
 
 &quot;Благословение Света&quot;,
 
-	&quot;&quot;,
-
 &quot;Дар чистой энергии порядка и справедливости.&quot;,
 
 
@@ -5232,8 +4334,6 @@ return s.justice*3
 &quot;moon&quot;,
 
 &quot;Благословение Луны&quot;,
-
-	&quot;&quot;,
 
 &quot;Связь с тайнами ночи и интуицией.&quot;,
 
@@ -5257,8 +4357,6 @@ return s.intuition*3
 
 &quot;Благословение Солнца&quot;,
 
-	&quot;&quot;,
-
 &quot;Энергия жизни и внутреннего сияния.&quot;,
 
 
@@ -5280,8 +4378,6 @@ return s.will*2
 &quot;life&quot;,
 
 &quot;Благословение Жизни&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила восстановления и созидания.&quot;,
 
@@ -5305,8 +4401,6 @@ return s.nature*2
 
 &quot;Благословение Души&quot;,
 
-&quot;&quot;,
-
 &quot;Глубокая связь с духовной сущностью.&quot;,
 
 
@@ -5328,8 +4422,6 @@ return s.empathy*3
 &quot;time&quot;,
 
 &quot;Благословение Времени&quot;,
-
-	&quot;&quot;,
 
 &quot;Дар чувствовать течение времени.&quot;,
 
@@ -5356,8 +4448,6 @@ return s.intuition*2
 
 &quot;Благословение Дракона&quot;,
 
-	&quot;&quot;,
-
 &quot;Древний дар драконьей силы, стойкости и величия.&quot;,
 
 
@@ -5381,8 +4471,6 @@ return ($raceData.id == &quot;dragon&quot; ? 30 : 0)
 
 &quot;Благословение Бога Войны&quot;,
 
-	&quot;&quot;,
-
 &quot;Сила победителей, рождённых для великих сражений.&quot;,
 
 
@@ -5405,8 +4493,6 @@ return ($classData.id == &quot;warrior&quot; ? 25 : 0)
 &quot;knowledgeGod&quot;,
 
 &quot;Благословение Бога Знаний&quot;,
-
-	&quot;&quot;,
 
 &quot;Дар абсолютного познания и понимания.&quot;,
 
@@ -5436,8 +4522,6 @@ $classData.id == &quot;archmage&quot;
 
 &quot;Благословение Творца&quot;,
 
-	&quot;&quot;,
-
 &quot;Энергия создателя, способная менять структуру мира.&quot;,
 
 
@@ -5463,8 +4547,6 @@ $attributeData.id == &quot;creatorPower&quot;
 &quot;firstLight&quot;,
 
 &quot;Благословение Первого Света&quot;,
-
-	&quot;&quot;,
 
 &quot;Древняя сила первичного света.&quot;,
 
@@ -5551,8 +4633,6 @@ return (
 
 &quot;Проклятие одиночества&quot;,
 
-	&quot;&quot;,
-
 &quot;Печать изоляции, заставляющая идти своим путём.&quot;,
 
 
@@ -5576,8 +4656,6 @@ value:-5
 &quot;forgottenMemory&quot;,
 
 &quot;Проклятие забытых воспоминаний&quot;,
-
-	&quot;&quot;,
 
 &quot;Часть прошлого скрыта от сознания.&quot;,
 
@@ -5604,8 +4682,6 @@ value:-5
 
 &quot;Проклятие невезения&quot;,
 
-	&quot;&quot;,
-
 &quot;События часто складываются против носителя.&quot;,
 
 
@@ -5629,8 +4705,6 @@ value:-5
 &quot;exile&quot;,
 
 &quot;Проклятие изгнания&quot;,
-
-	&quot;&quot;,
 
 &quot;След изгнанника, отделяющий от общества.&quot;,
 
@@ -5656,8 +4730,6 @@ value:-3
 &quot;insomnia&quot;,
 
 &quot;Проклятие бессонницы&quot;,
-
-	&quot;&quot;,
 
 &quot;Разум никогда полностью не отдыхает.&quot;,
 
@@ -5690,8 +4762,6 @@ value:-5
 
 &quot;Проклятие ярости&quot;,
 
-	&quot;&quot;,
-
 &quot;Безумная сила, которую сложно контролировать.&quot;,
 
 
@@ -5716,8 +4786,6 @@ value:-10
 &quot;bloodThirst&quot;,
 
 &quot;Проклятие кровавой жажды&quot;,
-
-	&quot;&quot;,
 
 &quot;Неудержимое желание сражений.&quot;,
 
@@ -5744,8 +4812,6 @@ value:-5
 
 &quot;Проклятие вечной битвы&quot;,
 
-	&quot;&quot;,
-
 &quot;Судьба вечного воина.&quot;,
 
 
@@ -5769,8 +4835,6 @@ value:-5
 &quot;brokenWeapon&quot;,
 
 &quot;Проклятие сломанного оружия&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила бойца ограничена потерями прошлого.&quot;,
 
@@ -5803,8 +4867,6 @@ value:-5
 
 &quot;Проклятие нестабильной силы&quot;,
 
-	&quot;&quot;,
-
 &quot;Магическая энергия выходит из-под контроля.&quot;,
 
 
@@ -5830,8 +4892,6 @@ value:-8
 
 &quot;Проклятие запретной магии&quot;,
 
-	&quot;&quot;,
-
 &quot;Знания, которые опасно использовать.&quot;,
 
 
@@ -5856,8 +4916,6 @@ value:-5
 &quot;reverseSpell&quot;,
 
 &quot;Проклятие обратного заклинания&quot;,
-
-	&quot;&quot;,
 
 &quot;Магия может обратиться против владельца.&quot;,
 
@@ -5887,8 +4945,6 @@ value:-5
 
 &quot;Проклятие вампирской крови&quot;,
 
-	&quot;&quot;,
-
 &quot;Древняя кровь, несущая жажду и вечное существование.&quot;,
 
 
@@ -5916,8 +4972,6 @@ value:-8
 &quot;demonBlood&quot;,
 
 &quot;Проклятие демонической крови&quot;,
-
-	&quot;&quot;,
 
 &quot;След демонического происхождения внутри души.&quot;,
 
@@ -5947,8 +5001,6 @@ value:-8
 
 &quot;Проклятие драконьего безумия&quot;,
 
-	&quot;&quot;,
-
 &quot;Безудержная сила древней драконьей природы.&quot;,
 
 
@@ -5976,8 +5028,6 @@ value:-8
 &quot;mixedBlood&quot;,
 
 &quot;Проклятие смешанной крови&quot;,
-
-	&quot;&quot;,
 
 &quot;Конфликт различных наследий внутри одного существа.&quot;,
 
@@ -6009,8 +5059,6 @@ value:-5
 
 &quot;Проклятие падшего ангела&quot;,
 
-	&quot;&quot;,
-
 &quot;Печать утраченного света и разрушенной веры.&quot;,
 
 
@@ -6039,8 +5087,6 @@ value:-10
 &quot;dragonCurse&quot;,
 
 &quot;Проклятие дракона&quot;,
-
-	&quot;&quot;,
 
 &quot;След силы, которую невозможно полностью контролировать.&quot;,
 
@@ -6071,8 +5117,6 @@ value:-10
 
 &quot;Проклятие Бездны&quot;,
 
-	&quot;&quot;,
-
 &quot;Энергия глубин, поглощающая всё вокруг.&quot;,
 
 
@@ -6101,8 +5145,6 @@ value:-10
 &quot;void&quot;,
 
 &quot;Проклятие Пустоты&quot;,
-
-	&quot;&quot;,
 
 &quot;Связь с абсолютным отсутствием.&quot;,
 
@@ -6136,8 +5178,6 @@ value:-10
 
 &quot;Проклятие Вечного сна&quot;,
 
-	&quot;&quot;,
-
 &quot;Состояние между жизнью и забвением.&quot;,
 
 
@@ -6162,8 +5202,6 @@ value:-5
 &quot;god&quot;,
 
 &quot;Проклятие Бога&quot;,
-
-	&quot;&quot;,
 
 &quot;Наказание силой, превосходящей смертных.&quot;,
 
@@ -6192,8 +5230,6 @@ value:-10
 &quot;brokenFate&quot;,
 
 &quot;Проклятие разрушенной судьбы&quot;,
-
-	&quot;&quot;,
 
 &quot;Сломанная линия будущего и невозможность предсказать путь.&quot;,
 
@@ -6232,8 +5268,6 @@ value:-5
 &quot;none&quot;,
 
 &quot;Нет проклятия&quot;,
-
-	&quot;&quot;,
 
 &quot;Твоя судьба свободна от проклятий.&quot;,
 
@@ -6296,8 +5330,6 @@ return 0;
 
 &quot;Крестьянский род&quot;,
 
-	&quot;&quot;,
-
 &quot;Простое происхождение, закалённое трудом, терпением и связью с землёй.&quot;,
 
 
@@ -6317,8 +5349,6 @@ return s.nature
 &quot;craftsmen&quot;,
 
 &quot;Род ремесленников&quot;,
-
-	&quot;&quot;,
 
 &quot;Род мастеров, передающих знания и искусство создания вещей.&quot;,
 
@@ -6340,8 +5370,6 @@ return s.logic
 
 &quot;Род торговцев&quot;,
 
-	&quot;&quot;,
-
 &quot;Семья, привыкшая побеждать благодаря хитрости, связям и умению договариваться.&quot;,
 
 
@@ -6361,8 +5389,6 @@ return s.charisma*2
 &quot;hunters&quot;,
 
 &quot;Род охотников&quot;,
-
-	&quot;&quot;,
 
 &quot;Поколения следопытов, знающих тайны природы.&quot;,
 
@@ -6384,8 +5410,6 @@ return s.nature*2
 
 &quot;Род путешественников&quot;,
 
-&quot;&quot;,
-
 &quot;Кровь людей, которые никогда не оставались на одном месте.&quot;,
 
 
@@ -6406,8 +5430,6 @@ return s.adventure*2
 
 &quot;Семья наёмников&quot;,
 
-	&quot;&quot;,
-
 &quot;Род воинов, привыкших выживать среди бесконечных конфликтов.&quot;,
 
 
@@ -6427,8 +5449,6 @@ return s.will*2
 &quot;mageFamily&quot;,
 
 &quot;Семья магов&quot;,
-
-	&quot;&quot;,
 
 &quot;Поколения исследователей тайных искусств.&quot;,
 
@@ -6456,8 +5476,6 @@ return s.knowledge*3
 
 &quot;Баронский род&quot;,
 
-	&quot;&quot;,
-
 &quot;Небольшой дворянский род с древними традициями.&quot;,
 
 function(s){
@@ -6476,8 +5494,6 @@ return s.order
 &quot;viscount&quot;,
 
 &quot;Виконтский род&quot;,
-
-	&quot;&quot;,
 
 &quot;Род, поднявшийся благодаря влиянию и политике.&quot;,
 
@@ -6498,8 +5514,6 @@ return s.order*2
 
 &quot;Графский род&quot;,
 
-	&quot;&quot;,
-
 &quot;Дворянская кровь, связанная с управлением землями.&quot;,
 
 function(s){
@@ -6518,8 +5532,6 @@ return s.order*2
 &quot;marquis&quot;,
 
 &quot;Маркизский род&quot;,
-
-	&quot;&quot;,
 
 &quot;Высокий дворянский род, обладающий большим влиянием.&quot;,
 
@@ -6540,8 +5552,6 @@ return s.order*3
 
 &quot;Герцогский род&quot;,
 
-	&quot;&quot;,
-
 &quot;Один из сильнейших дворянских домов.&quot;,
 
 function(s){
@@ -6561,8 +5571,6 @@ return s.order*3
 
 &quot;Эрцгерцогский род&quot;,
 
-	&quot;&quot;,
-
 &quot;Род, стоящий почти у вершины власти.&quot;,
 
 function(s){
@@ -6580,8 +5588,6 @@ return s.order*4;
 &quot;royal&quot;,
 
 &quot;Королевский род&quot;,
-
-	&quot;&quot;,
 
 &quot;Кровь правителей, несущая ответственность за целые народы.&quot;,
 
@@ -6601,8 +5607,6 @@ return s.charisma*3
 &quot;imperial&quot;,
 
 &quot;Императорский род&quot;,
-
-	&quot;&quot;,
 
 &quot;Древнейшая власть, передаваемая через поколения.&quot;,
 
@@ -6626,8 +5630,6 @@ return s.charisma*3
 
 &quot;Павший аристократический род&quot;,
 
-	&quot;&quot;,
-
 &quot;Когда-то великий дом, потерявший своё положение, но сохранивший древнюю гордость.&quot;,
 
 
@@ -6649,8 +5651,6 @@ return s.justice*2
 
 &quot;Изгнанный род&quot;,
 
-	&quot;&quot;,
-
 &quot;Семья, изгнанная из общества и вынужденная искать собственный путь.&quot;,
 
 
@@ -6670,8 +5670,6 @@ return s.independence*3
 &quot;lastBlood&quot;,
 
 &quot;Последний представитель рода&quot;,
-
-	&quot;&quot;,
 
 &quot;Последний носитель древней линии, от которой осталось лишь одно имя.&quot;,
 
@@ -6693,8 +5691,6 @@ return s.selfControl*2
 
 &quot;Забытый древний род&quot;,
 
-	&quot;&quot;,
-
 &quot;Род, исчезнувший из истории, но сохранивший древние знания.&quot;,
 
 
@@ -6714,8 +5710,6 @@ return s.knowledge*3
 &quot;lost&quot;,
 
 &quot;Потерянный род&quot;,
-
-	&quot;&quot;,
 
 &quot;Семья странников, чья история была утеряна временем.&quot;,
 
@@ -6794,8 +5788,6 @@ return s.curiosity*2
 
 &quot;Род великих магов&quot;,
 
-	&quot;&quot;,
-
 &quot;Древняя линия магов, передающая знания тайных искусств через поколения.&quot;,
 
 
@@ -6815,8 +5807,6 @@ return s.knowledge*4
 &quot;summoners&quot;,
 
 &quot;Род призывателей&quot;,
-
-	&quot;&quot;,
 
 &quot;Наследие тех, кто заключал договоры с существами других миров.&quot;,
 
@@ -6838,8 +5828,6 @@ return s.intuition*3
 
 &quot;Род целителей&quot;,
 
-	&quot;&quot;,
-
 &quot;Потомки хранителей жизни и древних техник исцеления.&quot;,
 
 
@@ -6859,8 +5847,6 @@ return s.empathy*3
 &quot;blacksmiths&quot;,
 
 &quot;Род кузнецов легендарного оружия&quot;,
-
-	&quot;&quot;,
 
 &quot;Семья мастеров, создававшая оружие для героев прошлого.&quot;,
 
@@ -6887,8 +5873,6 @@ return s.patience*3
 
 &quot;Род пророков&quot;,
 
-	&quot;&quot;,
-
 &quot;Кровь провидцев, способных видеть больше, чем обычные существа.&quot;,
 
 
@@ -6909,8 +5893,6 @@ return s.intuition*4
 
 &quot;Род хранителей знаний&quot;,
 
-	&quot;&quot;,
-
 &quot;Древний род хранителей забытых библиотек и запретных знаний.&quot;,
 
 
@@ -6930,8 +5912,6 @@ return s.knowledge*4
 &quot;sealKeepers&quot;,
 
 &quot;Род хранителей печати&quot;,
-
-	&quot;&quot;,
 
 &quot;Потомки тех, кто удерживал древние силы под контролем.&quot;,
 
@@ -6959,8 +5939,6 @@ return s.order*3
 
 &quot;Род святых рыцарей&quot;,
 
-	&quot;&quot;,
-
 &quot;Поколения воинов, посвятивших жизнь защите мира.&quot;,
 
 
@@ -6981,8 +5959,6 @@ return s.justice*3
 
 &quot;Род древних воинов&quot;,
 
-	&quot;&quot;,
-
 &quot;Кровь бойцов, прошедших через тысячи сражений.&quot;,
 
 
@@ -7002,8 +5978,6 @@ return s.will*4
 &quot;dragonHunters&quot;,
 
 &quot;Род охотников на драконов&quot;,
-
-	&quot;&quot;,
 
 &quot;Легендарная линия воинов, посвятивших себя борьбе с драконами.&quot;,
 
@@ -7027,8 +6001,6 @@ return s.determination*3
 
 &quot;Род убийц теней&quot;,
 
-	&quot;&quot;,
-
 &quot;Семья мастеров скрытности и тайных операций.&quot;,
 
 
@@ -7048,8 +6020,6 @@ return s.independence*3
 &quot;worldProtectors&quot;,
 
 &quot;Род защитников мира&quot;,
-
-	&quot;&quot;,
 
 &quot;Наследие тех, кто стоял между миром и его уничтожением.&quot;,
 
@@ -7079,8 +6049,6 @@ return s.justice*3
 &quot;none&quot;,
 
 &quot;Нет особого наследия&quot;,
-
-	&quot;&quot;,
 
 &quot;Твой род не связан с великими традициями.&quot;,
 
@@ -7141,8 +6109,6 @@ return 0;
 
 &quot;Человеческая кровь&quot;,
 
-	&quot;&quot;,
-
 &quot;Гибкая кровь смертных, способная развиваться во многих направлениях.&quot;,
 
 
@@ -7161,8 +6127,6 @@ return ($raceData.id == &quot;human&quot; ? 30 : 0) + s.charisma;
 &quot;elf&quot;,
 
 &quot;Эльфийская кровь&quot;,
-
-	&quot;&quot;,
 
 &quot;Древняя кровь народа лесов и магии.&quot;,
 
@@ -7183,8 +6147,6 @@ return (($raceData.id == &quot;elf&quot; || $raceData.id == &quot;halfElf&quot;)
 
 &quot;Дворфийская кровь&quot;,
 
-	&quot;&quot;,
-
 &quot;Кровь мастеров, кузнецов и хранителей древних традиций.&quot;,
 
 
@@ -7203,8 +6165,6 @@ return ($raceData.id == &quot;dwarf&quot; ? 30 : 0) + s.patience;
 &quot;halfElf&quot;,
 
 &quot;Кровь полуэльфа&quot;,
-
-	&quot;&quot;,
 
 &quot;Смесь человеческой гибкости и эльфийской мудрости.&quot;,
 
@@ -7225,8 +6185,6 @@ return ($raceData.id == &quot;halfElf&quot; ? 30 : 0) + s.adaptability;
 
 &quot;Кровь орка&quot;,
 
-	&quot;&quot;,
-
 &quot;Сильная и воинственная кровь, полная решимости.&quot;,
 
 
@@ -7245,8 +6203,6 @@ return ($raceData.id == &quot;orc&quot; ? 30 : 0) + s.will;
 &quot;goblin&quot;,
 
 &quot;Кровь гоблина&quot;,
-
-	&quot;&quot;,
 
 &quot;Хитрая и изобретательная кровь маленького народа.&quot;,
 
@@ -7267,8 +6223,6 @@ return ($raceData.id == &quot;goblin&quot; ? 30 : 0) + s.adaptability;
 
 &quot;Кровь кобольда&quot;,
 
-	&quot;&quot;,
-
 &quot;Осторожная кровь подземных мастеров.&quot;,
 
 
@@ -7288,8 +6242,6 @@ return ($raceData.id == &quot;kobold&quot; ? 30 : 0) + s.caution;
 
 &quot;Звериная кровь&quot;,
 
-	&quot;&quot;,
-
 &quot;Наследие существ, связанных с природой.&quot;,
 
 
@@ -7308,8 +6260,6 @@ return ($raceData.id == &quot;beast&quot; ? 30 : 0) + s.nature;
 &quot;mermaid&quot;,
 
 &quot;Кровь русалки&quot;,
-
-	&quot;&quot;,
 
 &quot;Мистическая кровь воды и эмоций.&quot;,
 
@@ -7336,8 +6286,6 @@ return ($raceData.id == &quot;mermaid&quot; ? 30 : 0) + s.empathy;
 
 &quot;Кровь тёмного эльфа&quot;,
 
-	&quot;&quot;,
-
 &quot;Древняя кровь теней и знаний.&quot;,
 
 
@@ -7356,8 +6304,6 @@ return ($raceData.id == &quot;darkElf&quot; ? 35 : 0) + s.curiosity;
 &quot;draconid&quot;,
 
 &quot;Кровь драконида&quot;,
-
-	&quot;&quot;,
 
 &quot;След драконьей крови в смертном теле.&quot;,
 
@@ -7378,8 +6324,6 @@ return ($raceData.id == &quot;draconid&quot; ? 35 : 0) + s.will;
 
 &quot;Кровь вампира&quot;,
 
-	&quot;&quot;,
-
 &quot;Бессмертная кровь ночных существ.&quot;,
 
 
@@ -7398,8 +6342,6 @@ return ($raceData.id == &quot;vampire&quot; ? 50 : 0) + s.intuition;
 &quot;demonBlood&quot;,
 
 &quot;Кровь демона&quot;,
-
-	&quot;&quot;,
 
 &quot;Темная энергия древнего демонического происхождения.&quot;,
 
@@ -7420,8 +6362,6 @@ return (($raceData.id == &quot;demon&quot; || $raceData.id == &quot;archDemon&qu
 
 &quot;Кровь суккуба&quot;,
 
-	&quot;&quot;,
-
 &quot;Кровь, полная чар и влияния на других.&quot;,
 
 
@@ -7440,8 +6380,6 @@ return ($raceData.id == &quot;succubus&quot; ? 35 : 0) + s.charisma;
 &quot;oni&quot;,
 
 &quot;Кровь они&quot;,
-
-	&quot;&quot;,
 
 &quot;Древняя кровь силы и ярости.&quot;,
 
@@ -7462,8 +6400,6 @@ return ($raceData.id == &quot;oni&quot; ? 35 : 0) + s.will;
 
 &quot;Кровь химеры&quot;,
 
-	&quot;&quot;,
-
 &quot;Смешанная кровь, способная к любой адаптации.&quot;,
 
 
@@ -7483,8 +6419,6 @@ return ($raceData.id == &quot;chimera&quot; ? 35 : 0) + s.adaptability;
 
 &quot;Кровь ангела&quot;,
 
-	&quot;&quot;,
-
 &quot;Наследие света и высшей духовной силы.&quot;,
 
 
@@ -7503,8 +6437,6 @@ return (($raceData.id == &quot;angel&quot; || $raceData.id == &quot;fallenAngel&
 &quot;fallenAngel&quot;,
 
 &quot;Кровь падшего ангела&quot;,
-
-	&quot;&quot;,
 
 &quot;Кровь, утратившая свет, но сохранившая силу.&quot;,
 
@@ -7530,8 +6462,6 @@ return ($raceData.id == &quot;fallenAngel&quot; ? 45 : 0) + s.independence;
 
 &quot;Кровь дракона&quot;,
 
-	&quot;&quot;,
-
 &quot;След древней силы драконов внутри твоей сущности.&quot;,
 
 
@@ -7550,8 +6480,6 @@ return ($raceData.id == &quot;dragon&quot; ? 50 : 0) + s.will;
 &quot;phoenixBlood&quot;,
 
 &quot;Кровь феникса&quot;,
-
-	&quot;&quot;,
 
 &quot;Сила возрождения и вечного огня.&quot;,
 
@@ -7572,8 +6500,6 @@ return ($raceData.id == &quot;phoenix&quot; ? 50 : 0) + s.selfControl;
 
 &quot;Кровь титана&quot;,
 
-	&quot;&quot;,
-
 &quot;Наследие великанов древних эпох.&quot;,
 
 
@@ -7592,8 +6518,6 @@ return ($raceData.id == &quot;titan&quot; ? 50 : 0) + s.order;
 &quot;spiritBlood&quot;,
 
 &quot;Кровь духа&quot;,
-
-	&quot;&quot;,
 
 &quot;Связь с древними духами мира.&quot;,
 
@@ -7619,8 +6543,6 @@ return ($raceData.id == &quot;spirit&quot; ? 50 : 0) + s.nature;
 
 &quot;Кровь бога&quot;,
 
-	&quot;&quot;,
-
 &quot;Божественная кровь, несущая силу созидания.&quot;,
 
 
@@ -7639,8 +6561,6 @@ return ($raceData.id == &quot;god&quot; ? 70 : 0) + s.order + s.charisma;
 &quot;archDemonBlood&quot;,
 
 &quot;Кровь архидемона&quot;,
-
-	&quot;&quot;,
 
 &quot;Абсолютная демоническая кровь, полная тёмной воли.&quot;,
 
@@ -7661,8 +6581,6 @@ return ($raceData.id == &quot;archDemon&quot; ? 70 : 0) + s.will + s.curiosity;
 
 &quot;Кровь пустоты&quot;,
 
-	&quot;&quot;,
-
 &quot;Кровь из пространства между существованием и ничем.&quot;,
 
 
@@ -7681,9 +6599,7 @@ return ($raceData.id == &quot;void&quot; ? 70 : 0) + s.logic + s.independence;
 &quot;chaosBlood&quot;,
 
 &quot;Кровь хаоса&quot;,
-
-	&quot;&quot;,
-
+&quot;&quot;,
 &quot;Непредсказуемая кровь абсолютного хаоса.&quot;,
 
 
@@ -7708,8 +6624,6 @@ return ($raceData.id == &quot;chaos&quot; ? 70 : 0) + s.chaos + s.curiosity;
 
 &quot;Ангел + человек&quot;,
 
-	&quot;&quot;,
-
 &quot;Смешение смертной природы и света небесных существ.&quot;,
 
 
@@ -7728,8 +6642,6 @@ return ($raceData.id == &quot;angel&quot; ? 40 : 0) + s.empathy + s.charisma;
 &quot;elfSpirit&quot;,
 
 &quot;Эльф + дух&quot;,
-
-	&quot;&quot;,
 
 &quot;Связь древнего народа и духовного мира.&quot;,
 
@@ -7750,8 +6662,6 @@ return ($raceData.id == &quot;halfElf&quot; ? 30 : 0) + s.nature + s.intuition;
 
 &quot;Вампир + человек&quot;,
 
-	&quot;&quot;,
-
 &quot;Смешанная кровь смертного и бессмертного.&quot;,
 
 
@@ -7770,8 +6680,6 @@ return ($raceData.id == &quot;vampire&quot; ? 40 : 0) + s.independence;
 &quot;firstDragon&quot;,
 
 &quot;Кровь первого дракона&quot;,
-
-	&quot;&quot;,
 
 &quot;Абсолютное наследие первых драконов мира.&quot;,
 
@@ -7905,6 +6813,22 @@ stats:$finalStats
 
 }&gt;&gt;
 
+
+/* =========================================================
+   ГАРАНТИРОВАННОЕ ПЕРЕПРИСВАИВАНИЕ ОБЪЕКТОВ
+   (Исправляет вывод [function] в финальном экране)
+========================================================= */
+
+&lt;&lt;set $classData = $classDatabase[$class]&gt;&gt;
+&lt;&lt;set $attributeData = $attributeDatabase[$attribute]&gt;&gt;
+&lt;&lt;set $skillData = $skillDatabase[$skill]&gt;&gt;
+&lt;&lt;set $blessingData = $blessingDatabase[$blessing]&gt;&gt;
+&lt;&lt;set $curseData = $curseDatabase[$curse]&gt;&gt;
+&lt;&lt;set $lineageData = $lineageDatabase[$lineage]&gt;&gt;
+&lt;&lt;set $raceData = $raceDatabase[$race]&gt;&gt;
+&lt;&lt;set $bloodData = $bloodDatabase[$blood]&gt;&gt;
+
+
 /* =========================================================
    ДОПОЛНИТЕЛЬНЫЕ ПЕРЕМЕННЫЕ
    ДЛЯ ФИНАЛЬНОГО ЭКРАНА
@@ -7961,6 +6885,7 @@ stats:$finalStats
 /* =========================================================
    ПЕРЕХОД К ФИНАЛУ
 ========================================================= */
+
 
 &lt;&lt;goto &quot;Final_Result&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Final_Result" tags="" position="1725,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;━━━━━━━━━━━━━━━━━━━━━━
 ТВОЯ СУДЬБА
