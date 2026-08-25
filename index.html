@@ -1227,13 +1227,81 @@ body::before {
 }&gt;&gt;
 
 /* =========================================================
+   НОВАЯ СИСТЕМА СКРЫТЫХ ПУТЕЙ (ПОВЫШЕННЫЕ ПОРОГИ)
+   АВТОМАТИЧЕСКАЯ АКТИВАЦИЯ ПО ПОРОГАМ
+========================================================= */
+
+// Сброс всех флагов
+&lt;&lt;set $hiddenAngel = false&gt;&gt;
+&lt;&lt;set $hiddenDemon = false&gt;&gt;
+&lt;&lt;set $hiddenDragon = false&gt;&gt;
+&lt;&lt;set $hiddenVoid = false&gt;&gt;
+&lt;&lt;set $hiddenCreator = false&gt;&gt;
+&lt;&lt;set $hiddenFallenAngel = false&gt;&gt;
+
+// 1. ПУТЬ АНГЕЛА: justice &gt; 45, order &gt; 35, empathy &gt; 30
+&lt;&lt;if $justice &gt; 45 and $order &gt; 35 and $empathy &gt; 30&gt;&gt;
+    &lt;&lt;set $hiddenAngel = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// 2. ПУТЬ ДЕМОНА: will &gt; 45, curiosity &gt; 35, independence &gt; 28
+&lt;&lt;if $will &gt; 45 and $curiosity &gt; 35 and $independence &gt; 28&gt;&gt;
+    &lt;&lt;set $hiddenDemon = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// 3. ПУТЬ ДРАКОНА: will &gt; 42, determination &gt; 32, adaptability &gt; 28
+&lt;&lt;if $will &gt; 42 and $determination &gt; 32 and $adaptability &gt; 28&gt;&gt;
+    &lt;&lt;set $hiddenDragon = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// 4. ПУТЬ ПУСТОТЫ: logic &gt; 35, independence &gt; 32, selfControl &gt; 30
+&lt;&lt;if $logic &gt; 35 and $independence &gt; 32 and $selfControl &gt; 30&gt;&gt;
+    &lt;&lt;set $hiddenVoid = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// 5. ПУТЬ ТВОРЦА: charisma &gt; 35, adaptability &gt; 30, logic &gt; 28
+&lt;&lt;if $charisma &gt; 35 and $adaptability &gt; 30 and $logic &gt; 28&gt;&gt;
+    &lt;&lt;set $hiddenCreator = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// 6. ПУТЬ ПАДШЕГО АНГЕЛА: independence &gt; 38, justice &gt; 28, will &gt; 32
+&lt;&lt;if $independence &gt; 38 and $justice &gt; 28 and $will &gt; 32&gt;&gt;
+    &lt;&lt;set $hiddenFallenAngel = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// ===== КОНФЛИКТЫ ФЛАГОВ =====
+// Ангел и Демон не могут быть одновременно
+&lt;&lt;if $hiddenAngel and $hiddenDemon&gt;&gt;
+    &lt;&lt;set $hiddenAngel = false&gt;&gt;
+    &lt;&lt;set $hiddenDemon = false&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// Ангел и Пустота не могут быть одновременно
+&lt;&lt;if $hiddenAngel and $hiddenVoid&gt;&gt;
+    &lt;&lt;set $hiddenAngel = false&gt;&gt;
+    &lt;&lt;set $hiddenVoid = false&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// Демон и Творец не могут быть одновременно
+&lt;&lt;if $hiddenDemon and $hiddenCreator&gt;&gt;
+    &lt;&lt;set $hiddenDemon = false&gt;&gt;
+    &lt;&lt;set $hiddenCreator = false&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// Пустота и Творец не могут быть одновременно
+&lt;&lt;if $hiddenVoid and $hiddenCreator&gt;&gt;
+    &lt;&lt;set $hiddenVoid = false&gt;&gt;
+    &lt;&lt;set $hiddenCreator = false&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+/* =========================================================
    СИСТЕМА СКРЫТЫХ УСЛОВИЙ (ЖЁСТКИЙ РЕБАЛАНС)
 ========================================================= */
 
 &lt;&lt;set _hiddenBonus = function(type) {
 	switch(type) {
 		case &quot;dragon&quot;:
-			return $hiddenDragon ? 5 : 0; // было 100 → 15 → теперь 5
+			return $hiddenDragon ? 5 : 0;
 		case &quot;angel&quot;:
 			return $hiddenAngel ? 5 : 0;
 		case &quot;demon&quot;:
@@ -1257,7 +1325,6 @@ body::before {
 	// Проверка минимальных значений характеристик (УВЕЛИЧЕНЫ)
 	if (req.minStats) {
 		for (var stat in req.minStats) {
-			// Теперь требования стали выше, чтобы легендарки были реально редкими
 			if (stats[stat] &lt; req.minStats[stat]) return false;
 		}
 	}
@@ -1286,724 +1353,284 @@ body::before {
    RACES (26 рас)
 ========================================================= */
 
-
 /* =========================
    COMMON (9 рас) - БЕЗ ТРЕБОВАНИЙ (всегда доступны)
 ========================= */
 
-
 &lt;&lt;set $raceDatabase.human = _createResult(
-
-&quot;human&quot;,
-
-&quot;Человек&quot;,
-
-&quot;genesis_img/human.png&quot;,
-
-&quot;Самая универсальная раса мира. Человек способен адаптироваться к любому пути и превзойти ограничения своего происхождения.&quot;,
-
-
-function(s){
-
-return s.adaptability
-+s.charisma
-+s.logic;
-
-},
-
-&quot;common&quot;,
-
-{}  // ← БЕЗ ТРЕБОВАНИЙ
-
+	&quot;human&quot;,
+	&quot;Человек&quot;,
+	&quot;genesis_img/human.png&quot;,
+	&quot;Самая универсальная раса мира. Человек способен адаптироваться к любому пути и превзойти ограничения своего происхождения.&quot;,
+	function(s){ return s.adaptability + s.charisma + s.logic; },
+	&quot;common&quot;,
+	{}
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.dwarf = _createResult(
-
-&quot;dwarf&quot;,
-
-&quot;Дворф&quot;,
-
-&quot;genesis_img/dwarf.png&quot;,
-
-&quot;Народ древних мастеров. Их сила заключается в терпении, стойкости и умении создавать невозможное.&quot;,
-
-
-function(s){
-
-return s.patience*2
-+s.order
-+s.caution;
-
-},
-
-&quot;common&quot;,
-
-{}  // ← БЕЗ ТРЕБОВАНИЙ
-
+	&quot;dwarf&quot;,
+	&quot;Дворф&quot;,
+	&quot;genesis_img/dwarf.png&quot;,
+	&quot;Народ древних мастеров. Их сила заключается в терпении, стойкости и умении создавать невозможное.&quot;,
+	function(s){ return s.patience*2 + s.order + s.caution; },
+	&quot;common&quot;,
+	{}
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.elf = _createResult(
-
-&quot;elf&quot;,
-
-&quot;Эльф&quot;,
-
-&quot;genesis_img/elf.png&quot;,
-
-&quot;Древняя раса, связанная с природой и тайнами мира. Эльфы обладают тонким восприятием и глубокими знаниями.&quot;,
-
-
-function(s){
-
-return s.nature*2
-+s.intuition
-+s.knowledge;
-
-},
-
-&quot;common&quot;,
-
-{}  // ← БЕЗ ТРЕБОВАНИЙ
-
+	&quot;elf&quot;,
+	&quot;Эльф&quot;,
+	&quot;genesis_img/elf.png&quot;,
+	&quot;Древняя раса, связанная с природой и тайнами мира. Эльфы обладают тонким восприятием и глубокими знаниями.&quot;,
+	function(s){ return s.nature*2 + s.intuition + s.knowledge; },
+	&quot;common&quot;,
+	{}
 )&gt;&gt;
 
-
-
-&lt;&lt;set $raceDatabase.half_elf = _createResult(
-
-&quot;halfElf&quot;,
-
-&quot;Полуэльф&quot;,
-
-&quot;genesis_img/halfElf.png&quot;,
-
-&quot;Наследник двух миров. Полуэльфы сочетают гибкость человека и мудрость эльфов.&quot;,
-
-
-function(s){
-
-return s.adaptability
-+s.nature
-+s.charisma;
-
-},
-
-&quot;common&quot;,
-
-{}  // ← БЕЗ ТРЕБОВАНИЙ
-
+&lt;&lt;set $raceDatabase.halfElf = _createResult(
+	&quot;halfElf&quot;,
+	&quot;Полуэльф&quot;,
+	&quot;genesis_img/halfElf.png&quot;,
+	&quot;Наследник двух миров. Полуэльфы сочетают гибкость человека и мудрость эльфов.&quot;,
+	function(s){ return s.adaptability + s.nature + s.charisma; },
+	&quot;common&quot;,
+	{}
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.orc = _createResult(
-
-&quot;orc&quot;,
-
-&quot;Орк&quot;,
-
-&quot;genesis_img/orc.png&quot;,
-
-&quot;Воинственная раса, где сила воли и решимость важнее всего.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.determination;
-
-},
-
-&quot;common&quot;,
-
-{}  // ← БЕЗ ТРЕБОВАНИЙ
-
+	&quot;orc&quot;,
+	&quot;Орк&quot;,
+	&quot;genesis_img/orc.png&quot;,
+	&quot;Воинственная раса, где сила воли и решимость важнее всего.&quot;,
+	function(s){ return s.will*2 + s.determination; },
+	&quot;common&quot;,
+	{}
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.goblin = _createResult(
-
-&quot;goblin&quot;,
-
-&quot;Гоблин&quot;,
-
-&quot;genesis_img/goblin.png&quot;,
-
-&quot;Маленький, но невероятно хитрый народ изобретателей и выживших.&quot;,
-
-
-function(s){
-
-return s.adaptability*2
-+s.curiosity;
-
-},
-
-&quot;common&quot;,
-
-{}  // ← БЕЗ ТРЕБОВАНИЙ
-
+	&quot;goblin&quot;,
+	&quot;Гоблин&quot;,
+	&quot;genesis_img/goblin.png&quot;,
+	&quot;Маленький, но невероятно хитрый народ изобретателей и выживших.&quot;,
+	function(s){ return s.adaptability*2 + s.curiosity; },
+	&quot;common&quot;,
+	{}
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.kobold = _createResult(
-
-&quot;kobold&quot;,
-
-&quot;Кобольд&quot;,
-
-&quot;genesis_img/kobold.png&quot;,
-
-&quot;Осторожная раса подземных мастеров и разведчиков.&quot;,
-
-
-function(s){
-
-return s.caution*2
-+s.logic;
-
-},
-
-&quot;common&quot;,
-
-{}  // ← БЕЗ ТРЕБОВАНИЙ
-
+	&quot;kobold&quot;,
+	&quot;Кобольд&quot;,
+	&quot;genesis_img/kobold.png&quot;,
+	&quot;Осторожная раса подземных мастеров и разведчиков.&quot;,
+	function(s){ return s.caution*2 + s.logic; },
+	&quot;common&quot;,
+	{}
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.beast = _createResult(
-
-&quot;beast&quot;,
-
-&quot;Зверочеловек&quot;,
-
-&quot;genesis_img/beastman.png&quot;,
-
-&quot;Народ, в котором смешались разум и древняя сила природы.&quot;,
-
-
-function(s){
-
-return s.nature*2
-+s.intuition;
-
-},
-
-&quot;common&quot;,
-
-{}  // ← БЕЗ ТРЕБОВАНИЙ
-
+	&quot;beast&quot;,
+	&quot;Зверочеловек&quot;,
+	&quot;genesis_img/beastman.png&quot;,
+	&quot;Народ, в котором смешались разум и древняя сила природы.&quot;,
+	function(s){ return s.nature*2 + s.intuition; },
+	&quot;common&quot;,
+	{}
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.mermaid = _createResult(
-
-&quot;mermaid&quot;,
-
-&quot;Русалка&quot;,
-
-&quot;genesis_img/mermaid.png&quot;,
-
-&quot;Мистический народ воды, связанный с эмоциями и глубинными силами мира.&quot;,
-
-
-function(s){
-
-return s.nature
-+s.intuition*2
-+s.empathy;
-
-},
-
-&quot;common&quot;,
-
-{}  // ← БЕЗ ТРЕБОВАНИЙ
-
+	&quot;mermaid&quot;,
+	&quot;Русалка&quot;,
+	&quot;genesis_img/mermaid.png&quot;,
+	&quot;Мистический народ воды, связанный с эмоциями и глубинными силами мира.&quot;,
+	function(s){ return s.nature + s.intuition*2 + s.empathy; },
+	&quot;common&quot;,
+	{}
 )&gt;&gt;
-
-
 
 /* =========================
    RARE (9 рас) - ПОВЫШЕННЫЕ ТРЕБОВАНИЯ
 ========================= */
 
-
 &lt;&lt;set $raceDatabase.darkElf = _createResult(
-
-&quot;darkElf&quot;,
-
-&quot;Тёмный эльф&quot;,
-
-&quot;genesis_img/dark_elf.png&quot;,
-
-&quot;Народ теней, знаний и запретных искусств.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.intuition
-+s.independence;
-
-},
-
-&quot;rare&quot;,
-
-{ minStats: { curiosity: 32, independence: 28 } }
-
+	&quot;darkElf&quot;,
+	&quot;Тёмный эльф&quot;,
+	&quot;genesis_img/dark_elf.png&quot;,
+	&quot;Народ теней, знаний и запретных искусств.&quot;,
+	function(s){ return s.curiosity*2 + s.intuition + s.independence; },
+	&quot;rare&quot;,
+	{ minStats: { curiosity: 32, independence: 28 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.draconid = _createResult(
-
-&quot;draconid&quot;,
-
-&quot;Драконид&quot;,
-
-&quot;genesis_img/draconkin.png&quot;,
-
-&quot;Потомок драконьей крови. Их сила растёт вместе с волей и стремлением к развитию.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.determination*2;
-
-},
-
-&quot;rare&quot;,
-
-{ minStats: { will: 34, determination: 28 } }
-
+	&quot;draconid&quot;,
+	&quot;Драконид&quot;,
+	&quot;genesis_img/draconkin.png&quot;,
+	&quot;Потомок драконьей крови. Их сила растёт вместе с волей и стремлением к развитию.&quot;,
+	function(s){ return s.will*2 + s.determination*2; },
+	&quot;rare&quot;,
+	{ minStats: { will: 34, determination: 28 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.vampire = _createResult(
-
-&quot;vampire&quot;,
-
-&quot;Вампир&quot;,
-
-&quot;genesis_img/vampire.png&quot;,
-
-&quot;Бессмертная кровь дарует силу, но требует постоянной борьбы с собственной природой.&quot;,
-
-
-function(s){
-
-return s.intuition*2
-+s.curiosity
-+s.independence;
-
-},
-
-&quot;rare&quot;,
-
-{ minStats: { intuition: 32, curiosity: 28 } }
-
+	&quot;vampire&quot;,
+	&quot;Вампир&quot;,
+	&quot;genesis_img/vampire.png&quot;,
+	&quot;Бессмертная кровь дарует силу, но требует постоянной борьбы с собственной природой.&quot;,
+	function(s){ return s.intuition*2 + s.curiosity + s.independence; },
+	&quot;rare&quot;,
+	{ minStats: { intuition: 32, curiosity: 28 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.oni = _createResult(
-
-&quot;oni&quot;,
-
-&quot;Они&quot;,
-
-&quot;genesis_img/oni.png&quot;,
-
-&quot;Древний народ силы и ярости.&quot;,
-
-
-function(s){
-
-return s.will*3
-+s.determination;
-
-},
-
-&quot;rare&quot;,
-
-{ minStats: { will: 36, determination: 28 } }
-
+	&quot;oni&quot;,
+	&quot;Они&quot;,
+	&quot;genesis_img/oni.png&quot;,
+	&quot;Древний народ силы и ярости.&quot;,
+	function(s){ return s.will*3 + s.determination; },
+	&quot;rare&quot;,
+	{ minStats: { will: 36, determination: 28 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.chimera = _createResult(
-
-&quot;chimera&quot;,
-
-&quot;Химера&quot;,
-
-&quot;genesis_img/chimera.png&quot;,
-
-&quot;Смешение различных сущностей, способное адаптироваться к любым условиям.&quot;,
-
-
-function(s){
-
-return s.adaptability*3
-+s.nature;
-
-},
-
-&quot;rare&quot;,
-
-{ minStats: { adaptability: 32, nature: 26 } }
-
+	&quot;chimera&quot;,
+	&quot;Химера&quot;,
+	&quot;genesis_img/chimera.png&quot;,
+	&quot;Смешение различных сущностей, способное адаптироваться к любым условиям.&quot;,
+	function(s){ return s.adaptability*3 + s.nature; },
+	&quot;rare&quot;,
+	{ minStats: { adaptability: 32, nature: 26 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.succubus = _createResult(
-
-&quot;succubus&quot;,
-
-&quot;Суккуб&quot;,
-
-&quot;genesis_img/succubus.png&quot;,
-
-&quot;Раса влияния и магии эмоций.&quot;,
-
-
-function(s){
-
-return s.charisma*3
-+s.curiosity;
-
-},
-
-&quot;rare&quot;,
-
-{ minStats: { charisma: 34, curiosity: 26 } }
-
+	&quot;succubus&quot;,
+	&quot;Суккуб&quot;,
+	&quot;genesis_img/succubus.png&quot;,
+	&quot;Раса влияния и магии эмоций.&quot;,
+	function(s){ return s.charisma*3 + s.curiosity; },
+	&quot;rare&quot;,
+	{ minStats: { charisma: 34, curiosity: 26 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.demon = _createResult(
-
-&quot;demon&quot;,
-
-&quot;Демон&quot;,
-
-&quot;genesis_img/demon.png&quot;,
-
-&quot;Сущность тёмной силы, питающаяся волей и желанием превосходства.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.curiosity*2;
-
-},
-
-&quot;rare&quot;,
-
-{ minStats: { will: 38, curiosity: 34 } }
-
+	&quot;demon&quot;,
+	&quot;Демон&quot;,
+	&quot;genesis_img/demon.png&quot;,
+	&quot;Сущность тёмной силы, питающаяся волей и желанием превосходства.&quot;,
+	function(s){ return s.will*2 + s.curiosity*2; },
+	&quot;rare&quot;,
+	{ minStats: { will: 38, curiosity: 34 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.angel = _createResult(
-
-&quot;angel&quot;,
-
-&quot;Ангел&quot;,
-
-&quot;genesis_img/angel.png&quot;,
-
-&quot;Сущность света, порядка и защиты.&quot;,
-
-
-function(s){
-
-return s.justice*3
-+s.order*2
-+s.empathy;
-
-},
-
-&quot;rare&quot;,
-
-{ minStats: { justice: 38, order: 32, empathy: 28 } }
-
+	&quot;angel&quot;,
+	&quot;Ангел&quot;,
+	&quot;genesis_img/angel.png&quot;,
+	&quot;Сущность света, порядка и защиты.&quot;,
+	function(s){ return s.justice*3 + s.order*2 + s.empathy; },
+	&quot;rare&quot;,
+	{ minStats: { justice: 38, order: 32, empathy: 28 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.fallenAngel = _createResult(
-
-&quot;fallenAngel&quot;,
-
-&quot;Падший ангел&quot;,
-
-&quot;genesis_img/fallen_angel.png&quot;,
-
-&quot;Тот, кто отвернулся от света и получил силу через падение.&quot;,
-
-
-function(s){
-
-return s.independence*3
-+s.justice
-+s.will
-+_hiddenBonus(&quot;angel&quot;);
-
-},
-
-&quot;rare&quot;,
-
-{ minStats: { independence: 40, chaos: 28, will: 36 } }
-
+	&quot;fallenAngel&quot;,
+	&quot;Падший ангел&quot;,
+	&quot;genesis_img/fallen_angel.png&quot;,
+	&quot;Тот, кто отвернулся от света и получил силу через падение.&quot;,
+	function(s){ return s.independence*3 + s.justice + s.will + _hiddenBonus(&quot;angel&quot;); },
+	&quot;rare&quot;,
+	{ minStats: { independence: 40, chaos: 28, will: 36 } }
 )&gt;&gt;
-
-
 
 /* =========================
    LEGENDARY (8 рас) - ОЧЕНЬ ВЫСОКИЕ ТРЕБОВАНИЯ
 ========================= */
 
-
 &lt;&lt;set $raceDatabase.dragon = _createResult(
-
-&quot;dragon&quot;,
-
-&quot;Дракон&quot;,
-
-&quot;genesis_img/dragon.png&quot;,
-
-&quot;Одна из древнейших рас мира. Кровь драконов хранит память эпох, а воля способна изменить судьбу.&quot;,
-
-
-function(s){
-
-return s.will*4
-+s.determination*3
-+_hiddenBonus(&quot;dragon&quot;);
-
-},
-
-&quot;legendary&quot;,
-
-{ minStats: { will: 52, determination: 40 } }
-
+	&quot;dragon&quot;,
+	&quot;Дракон&quot;,
+	&quot;genesis_img/dragon.png&quot;,
+	&quot;Одна из древнейших рас мира. Кровь драконов хранит память эпох, а воля способна изменить судьбу.&quot;,
+	function(s){ return s.will*4 + s.determination*3 + _hiddenBonus(&quot;dragon&quot;); },
+	&quot;legendary&quot;,
+	{ minStats: { will: 52, determination: 40 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.phoenix = _createResult(
-
-&quot;phoenix&quot;,
-
-&quot;Феникс&quot;,
-
-&quot;genesis_img/phoenix.png&quot;,
-
-&quot;Бессмертное создание огня и возрождения. Его сила заключается в способности возвращаться после падения.&quot;,
-
-
-function(s){
-
-return s.selfControl*2
-+s.nature*3
-+s.will;
-
-},
-
-&quot;legendary&quot;,
-
-{ minStats: { selfControl: 40, nature: 42, will: 36 } }
-
+	&quot;phoenix&quot;,
+	&quot;Феникс&quot;,
+	&quot;genesis_img/phoenix.png&quot;,
+	&quot;Бессмертное создание огня и возрождения. Его сила заключается в способности возвращаться после падения.&quot;,
+	function(s){ return s.selfControl*2 + s.nature*3 + s.will; },
+	&quot;legendary&quot;,
+	{ minStats: { selfControl: 40, nature: 42, will: 36 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.titan = _createResult(
-
-&quot;titan&quot;,
-
-&quot;Титан&quot;,
-
-&quot;genesis_img/titan.png&quot;,
-
-&quot;Древний народ огромной силы, связанный с порядком и устойчивостью мира.&quot;,
-
-
-function(s){
-
-return s.order*3
-+s.will*2
-+s.patience;
-
-},
-
-&quot;legendary&quot;,
-
-{ minStats: { order: 42, will: 38, patience: 32 } }
-
+	&quot;titan&quot;,
+	&quot;Титан&quot;,
+	&quot;genesis_img/titan.png&quot;,
+	&quot;Древний народ огромной силы, связанный с порядком и устойчивостью мира.&quot;,
+	function(s){ return s.order*3 + s.will*2 + s.patience; },
+	&quot;legendary&quot;,
+	{ minStats: { order: 42, will: 38, patience: 32 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.spirit = _createResult(
-
-&quot;spirit&quot;,
-
-&quot;Дух&quot;,
-
-&quot;genesis_img/spirit.png&quot;,
-
-&quot;Чистая сущность стихии или природы. Дух может принимать форму огня, воды, ветра, земли, света, тьмы или самой жизни.&quot;,
-
-
-function(s){
-
-return s.nature*4
-+s.intuition*3
-+s.empathy*2;
-
-},
-
-&quot;legendary&quot;,
-
-{ minStats: { nature: 46, intuition: 40, empathy: 32 } }
-
+	&quot;spirit&quot;,
+	&quot;Дух&quot;,
+	&quot;genesis_img/spirit.png&quot;,
+	&quot;Чистая сущность стихии или природы. Дух может принимать форму огня, воды, ветра, земли, света, тьмы или самой жизни.&quot;,
+	function(s){ return s.nature*4 + s.intuition*3 + s.empathy*2; },
+	&quot;legendary&quot;,
+	{ minStats: { nature: 46, intuition: 40, empathy: 32 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.god = _createResult(
-
-&quot;god&quot;,
-
-&quot;Бог&quot;,
-
-&quot;genesis_img/god.png&quot;,
-
-&quot;Божественная сущность, способная влиять на законы мира.&quot;,
-
-
-function(s){
-
-return s.order*3
-+s.will*2
-+s.charisma*2
-+_hiddenBonus(&quot;creator&quot;);
-
-},
-
-&quot;legendary&quot;,
-
-{ minStats: { order: 58, will: 52, charisma: 48 } }
-
+	&quot;god&quot;,
+	&quot;Бог&quot;,
+	&quot;genesis_img/god.png&quot;,
+	&quot;Божественная сущность, способная влиять на законы мира.&quot;,
+	function(s){ return s.order*3 + s.will*2 + s.charisma*2 + _hiddenBonus(&quot;creator&quot;); },
+	&quot;legendary&quot;,
+	{ minStats: { order: 58, will: 52, charisma: 48 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.archDemon = _createResult(
-
-&quot;archDemon&quot;,
-
-&quot;Архидемон&quot;,
-
-&quot;genesis_img/archdemon.png&quot;,
-
-&quot;Высшая форма демонической сущности.&quot;,
-
-
-function(s){
-
-return s.will*4
-+s.curiosity*2
-+_hiddenBonus(&quot;demon&quot;);
-
-},
-
-&quot;legendary&quot;,
-
-{ minStats: { will: 60, curiosity: 50 } }
-
+	&quot;archDemon&quot;,
+	&quot;Архидемон&quot;,
+	&quot;genesis_img/archdemon.png&quot;,
+	&quot;Высшая форма демонической сущности.&quot;,
+	function(s){ return s.will*4 + s.curiosity*2 + _hiddenBonus(&quot;demon&quot;); },
+	&quot;legendary&quot;,
+	{ minStats: { will: 60, curiosity: 50 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.void = _createResult(
-
-&quot;void&quot;,
-
-&quot;Создание пустоты&quot;,
-
-&quot;genesis_img/void_creature.png&quot;,
-
-&quot;Сущность из пространства между существованием и ничем.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.independence*2
-+_hiddenBonus(&quot;void&quot;);
-
-},
-
-&quot;legendary&quot;,
-
-{ minStats: { logic: 54, independence: 50, selfControl: 42 } }
-
+	&quot;void&quot;,
+	&quot;Создание пустоты&quot;,
+	&quot;genesis_img/void_creature.png&quot;,
+	&quot;Сущность из пространства между существованием и ничем.&quot;,
+	function(s){ return s.logic*3 + s.independence*2 + _hiddenBonus(&quot;void&quot;); },
+	&quot;legendary&quot;,
+	{ minStats: { logic: 54, independence: 50, selfControl: 42 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $raceDatabase.chaos = _createResult(
-
-&quot;chaos&quot;,
-
-&quot;Воплощение хаоса&quot;,
-
-&quot;genesis_img/embodiment_of_chaos.png&quot;,
-
-&quot;Живое проявление абсолютной непредсказуемой силы.&quot;,
-
-
-function(s){
-
-return s.chaos*4
-+s.curiosity*2;
-
-},
-
-&quot;legendary&quot;,
-
-{ minStats: { chaos: 56, curiosity: 46 } }
-
+	&quot;chaos&quot;,
+	&quot;Воплощение хаоса&quot;,
+	&quot;genesis_img/embodiment_of_chaos.png&quot;,
+	&quot;Живое проявление абсолютной непредсказуемой силы.&quot;,
+	function(s){ return s.chaos*4 + s.curiosity*2; },
+	&quot;legendary&quot;,
+	{ minStats: { chaos: 56, curiosity: 46 } }
 )&gt;&gt;
 
-
-
-
 /* =========================================================
-   ВЫБОР РАСЫ (НОВАЯ ЛОГИКА С ПРОВЕРКОЙ ТРЕБОВАНИЙ)
+   ВЫБОР РАСЫ (С ПРОВЕРКОЙ ТРЕБОВАНИЙ И ШТРАФАМИ)
    Common: 0 штрафа
    Rare: -15 штрафа
    Legendary: -30 штрафа
 ========================================================= */
-
 
 &lt;&lt;set $race = &quot;human&quot;&gt;&gt;
 &lt;&lt;set $raceData = $raceDatabase.human&gt;&gt;
@@ -2013,12 +1640,10 @@ return s.chaos*4
 &lt;&lt;for _raceID range Object.keys($raceDatabase)&gt;&gt;
     &lt;&lt;set _race = $raceDatabase[_raceID]&gt;&gt;
     
-    // Проверяем требования (minStats)
     &lt;&lt;if _checkRequirements(_race.requirements, _stats)&gt;&gt;
         &lt;&lt;set $availableRacesCount = $availableRacesCount + 1&gt;&gt;
         &lt;&lt;set _score = _race.formula(_stats)&gt;&gt;
         
-        // Штраф за редкость
         &lt;&lt;if _race.rarity == &quot;legendary&quot;&gt;&gt;
             &lt;&lt;set _score = _score - 30&gt;&gt;
         &lt;&lt;/if&gt;&gt;
@@ -2034,7 +1659,6 @@ return s.chaos*4
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
-// Страховка: если ни одна раса не доступна (всегда есть common)
 &lt;&lt;if $availableRacesCount == 0&gt;&gt;
     &lt;&lt;set $race = &quot;human&quot;&gt;&gt;
     &lt;&lt;set $raceData = $raceDatabase.human&gt;&gt;
@@ -2043,11 +1667,11 @@ return s.chaos*4
 /* =========================================================
    DATABASE
    CLASSES
-   ========================================================= */
+========================================================= */
 
 /* =========================================================
    ВОЕННЫЕ КЛАССЫ — 10 штук
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $classDatabase.warrior = _createResult(
     &quot;warrior&quot;,
@@ -2141,7 +1765,7 @@ return s.chaos*4
 
 /* =========================================================
    ЛОВКОСТЬ И СКРЫТНОСТЬ — 7 штук
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $classDatabase.rogue = _createResult(
     &quot;rogue&quot;,
@@ -2208,7 +1832,7 @@ return s.chaos*4
 
 /* =========================================================
    МАГИЧЕСКИЕ КЛАССЫ — 8 штук
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $classDatabase.mage = _createResult(
     &quot;mage&quot;,
@@ -2284,7 +1908,7 @@ return s.chaos*4
 
 /* =========================================================
    ВЫСШАЯ МАГИЯ — 8 штук (редкие)
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $classDatabase.spaceMage = _createResult(
     &quot;spaceMage&quot;,
@@ -2360,7 +1984,7 @@ return s.chaos*4
 
 /* =========================================================
    ДУХОВНЫЕ КЛАССЫ — 5 штук
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $classDatabase.priest = _createResult(
     &quot;priest&quot;,
@@ -2404,12 +2028,13 @@ return s.chaos*4
     &quot;&quot;,
     &quot;Проводник будущих событий и высшей воли.&quot;,
     function(s){ return s.intuition*3 + s.charisma*2 + s.justice; },
-    { minStats: { intuition: 22, charisma: 16, justice: 12 } }
-)&gt;&gt;
+    { minStats: { intuition: 22, charisma: 16, justice: 12 }
+	)}&gt;&gt;
+
 
 /* =========================================================
    ОСОБЫЕ КЛАССЫ — 6 штук
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $classDatabase.hero = _createResult(
     &quot;hero&quot;,
@@ -2468,7 +2093,7 @@ return s.chaos*4
 /* =========================================================
    СКРЫТЫЕ КЛАССЫ — 6 штук (легендарные)
    Требуют высокие статы + скрытые бонусы
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $classDatabase.dragonLord = _createResult(
     &quot;dragonLord&quot;,
@@ -2540,7 +2165,7 @@ return s.chaos*4
    ВЫБОР КЛАССА (С ПРОВЕРКОЙ ТРЕБОВАНИЙ И ШТРАФАМИ)
    Скрытые классы: -25 штрафа
    Обычные классы: 0 штрафа
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $class = &quot;warrior&quot;&gt;&gt;
 &lt;&lt;set $highestClass = -999&gt;&gt;
@@ -2553,7 +2178,6 @@ return s.chaos*4
         &lt;&lt;set $availableClassesCount = $availableClassesCount + 1&gt;&gt;
         &lt;&lt;set _score = _class.formula(_stats)&gt;&gt;
         
-        // Штраф для скрытых/легендарных классов (-25 вместо -15)
         &lt;&lt;if _classID == &quot;dragonLord&quot; or _classID == &quot;godHeir&quot; or _classID == &quot;demonLord&quot; or _classID == &quot;worldCreator&quot; or _classID == &quot;absolute&quot; or _classID == &quot;voidBearer&quot;&gt;&gt;
             &lt;&lt;set _score = _score - 25&gt;&gt;
         &lt;&lt;/if&gt;&gt;
@@ -2566,7 +2190,6 @@ return s.chaos*4
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
-// Страховка: если ни один класс не доступен
 &lt;&lt;if $availableClassesCount == 0&gt;&gt;
     &lt;&lt;set $class = &quot;warrior&quot;&gt;&gt;
     &lt;&lt;set $classData = $classDatabase.warrior&gt;&gt;
@@ -2575,11 +2198,11 @@ return s.chaos*4
 /* =========================================================
    DATABASE
    ATTRIBUTES
-   ========================================================= */
+========================================================= */
 
 /* =========================================================
    ОСНОВНЫЕ СТИХИИ (6 штук) — minStats 12-15
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $attributeDatabase.fire = _createResult(
     &quot;fire&quot;,
@@ -2637,7 +2260,7 @@ return s.chaos*4
 
 /* =========================================================
    ПРИРОДНЫЕ СИЛЫ (4 штуки) — minStats 16-18
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $attributeDatabase.life = _createResult(
     &quot;life&quot;,
@@ -2677,7 +2300,7 @@ return s.chaos*4
 
 /* =========================================================
    СВЕТЛЫЕ СИЛЫ (4 штуки) — minStats 18-22
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $attributeDatabase.light = _createResult(
     &quot;light&quot;,
@@ -2717,7 +2340,7 @@ return s.chaos*4
 
 /* =========================================================
    ТЁМНЫЕ СИЛЫ (4 штуки) — minStats 18-22
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $attributeDatabase.dark = _createResult(
     &quot;dark&quot;,
@@ -2757,7 +2380,7 @@ return s.chaos*4
 
 /* =========================================================
    ПРОСТРАНСТВО И ВРЕМЯ (3 штуки) — minStats 20-24
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $attributeDatabase.space = _createResult(
     &quot;space&quot;,
@@ -2788,7 +2411,7 @@ return s.chaos*4
 
 /* =========================================================
    ВЫСШИЕ СИЛЫ (4 штуки) — minStats 24-28 (редкие)
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $attributeDatabase.soul = _createResult(
     &quot;soul&quot;,
@@ -2829,7 +2452,7 @@ return s.chaos*4
 /* =========================================================
    ЗАПРЕДЕЛЬНЫЕ СИЛЫ (4 штуки) — minStats 30+ (легендарные)
    Штраф -20 за редкость
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $attributeDatabase.chaosPower = _createResult(
     &quot;chaosPower&quot;,
@@ -2879,7 +2502,7 @@ return s.chaos*4
 /* =========================================================
    ВЫБОР АТРИБУТА (С ПРОВЕРКОЙ ТРЕБОВАНИЙ)
    Легендарные атрибуты: -20 штрафа
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $attribute = &quot;aether&quot;&gt;&gt;
 &lt;&lt;set $highestAttribute = -999&gt;&gt;
@@ -2892,7 +2515,6 @@ return s.chaos*4
         &lt;&lt;set $availableAttributesCount = $availableAttributesCount + 1&gt;&gt;
         &lt;&lt;set _score = _attribute.formula(_stats)&gt;&gt;
         
-        // Штраф для легендарных атрибутов
         &lt;&lt;if _attributeID == &quot;chaosPower&quot; or _attributeID == &quot;orderPower&quot; or _attributeID == &quot;voidPower&quot; or _attributeID == &quot;aether&quot; or _attributeID == &quot;nothing&quot;&gt;&gt;
             &lt;&lt;set _score = _score - 20&gt;&gt;
         &lt;&lt;/if&gt;&gt;
@@ -2905,7 +2527,6 @@ return s.chaos*4
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
-// Страховка
 &lt;&lt;if $availableAttributesCount == 0&gt;&gt;
     &lt;&lt;set $attribute = &quot;fire&quot;&gt;&gt;
     &lt;&lt;set $attributeData = $attributeDatabase.fire&gt;&gt;
@@ -2914,11 +2535,11 @@ return s.chaos*4
 /* =========================================================
    DATABASE
    SKILLS
-   ========================================================= */
+========================================================= */
 
 /* =========================================================
    АНАЛИТИЧЕСКИЕ НАВЫКИ (6 штук) — minStats 12-20
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $skillDatabase.analysis = _createResult(
     &quot;analysis&quot;,
@@ -2976,7 +2597,7 @@ return s.chaos*4
 
 /* =========================================================
    БОЕВЫЕ НАВЫКИ (5 штук) — minStats 12-20
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $skillDatabase.weaponMaster = _createResult(
     &quot;weaponMaster&quot;,
@@ -3025,7 +2646,7 @@ return s.chaos*4
 
 /* =========================================================
    МАГИЧЕСКИЕ НАВЫКИ (5 штук) — minStats 14-22
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $skillDatabase.manaControl = _createResult(
     &quot;manaControl&quot;,
@@ -3074,7 +2695,7 @@ return s.chaos*4
 
 /* =========================================================
    СКРЫТЫЕ НАВЫКИ (5 штук) — minStats 20-24
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $skillDatabase.stealth = _createResult(
     &quot;stealth&quot;,
@@ -3124,7 +2745,7 @@ return s.chaos*4
 /* =========================================================
    РЕДКИЕ НАВЫКИ (8 штук) — minStats 24-28 (легендарные)
    Штраф -15 за редкость
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $skillDatabase.futureSight = _createResult(
     &quot;futureSight&quot;,
@@ -3201,7 +2822,7 @@ return s.chaos*4
 /* =========================================================
    ВЫБОР НАВЫКА (С ПРОВЕРКОЙ ТРЕБОВАНИЙ)
    Редкие навыки: -15 штрафа
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $skill = &quot;analysis&quot;&gt;&gt;
 &lt;&lt;set $highestSkill = -999&gt;&gt;
@@ -3214,7 +2835,6 @@ return s.chaos*4
         &lt;&lt;set $availableSkillsCount = $availableSkillsCount + 1&gt;&gt;
         &lt;&lt;set _score = _skill.formula(_stats)&gt;&gt;
         
-        // Штраф для редких навыков
         &lt;&lt;if _skillID == &quot;futureSight&quot; or _skillID == &quot;rebirth&quot; or _skillID == &quot;immortality&quot; or _skillID == &quot;abilitySteal&quot; or _skillID == &quot;lifeCreation&quot; or _skillID == &quot;realityChange&quot; or _skillID == &quot;spaceControl&quot; or _skillID == &quot;timeControl&quot;&gt;&gt;
             &lt;&lt;set _score = _score - 15&gt;&gt;
         &lt;&lt;/if&gt;&gt;
@@ -3227,7 +2847,6 @@ return s.chaos*4
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
-// Страховка
 &lt;&lt;if $availableSkillsCount == 0&gt;&gt;
     &lt;&lt;set $skill = &quot;analysis&quot;&gt;&gt;
     &lt;&lt;set $skillData = $skillDatabase.analysis&gt;&gt;
@@ -3236,11 +2855,11 @@ return s.chaos*4
 /* =========================================================
    DATABASE
    BLESSINGS
-   ========================================================= */
+========================================================= */
 
 /* =========================================================
    ОБЫЧНЫЕ БЛАГОСЛОВЕНИЯ (6 штук) — minStats 10-14
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $blessingDatabase.fate = _createResult(
     &quot;fate&quot;,
@@ -3298,7 +2917,7 @@ return s.chaos*4
 
 /* =========================================================
    СТИХИЙНЫЕ БЛАГОСЛОВЕНИЯ (6 штук) — minStats 16-18
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $blessingDatabase.fire = _createResult(
     &quot;fire&quot;,
@@ -3356,7 +2975,7 @@ return s.chaos*4
 
 /* =========================================================
    ВЫСШИЕ БЛАГОСЛОВЕНИЯ (6 штук) — minStats 20-24
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $blessingDatabase.light = _createResult(
     &quot;light&quot;,
@@ -3415,7 +3034,7 @@ return s.chaos*4
 /* =========================================================
    БОЖЕСТВЕННЫЕ БЛАГОСЛОВЕНИЯ (5 штук) — minStats 28+ (легендарные)
    Штраф -10 за редкость
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $blessingDatabase.dragonBlessing = _createResult(
     &quot;dragonBlessing&quot;,
@@ -3480,7 +3099,7 @@ return s.chaos*4
 /* =========================================================
    ВЫБОР БЛАГОСЛОВЕНИЯ (С ПРОВЕРКОЙ ТРЕБОВАНИЙ)
    Божественные благословения: -10 штрафа
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $blessing = &quot;fate&quot;&gt;&gt;
 &lt;&lt;set $highestBlessing = -999&gt;&gt;
@@ -3493,7 +3112,6 @@ return s.chaos*4
         &lt;&lt;set $availableBlessingsCount = $availableBlessingsCount + 1&gt;&gt;
         &lt;&lt;set _score = _blessing.formula(_stats)&gt;&gt;
         
-        // Штраф для божественных благословений
         &lt;&lt;if _blessingID == &quot;dragonBlessing&quot; or _blessingID == &quot;warGod&quot; or _blessingID == &quot;knowledgeGod&quot; or _blessingID == &quot;creator&quot; or _blessingID == &quot;firstLight&quot;&gt;&gt;
             &lt;&lt;set _score = _score - 10&gt;&gt;
         &lt;&lt;/if&gt;&gt;
@@ -3506,7 +3124,6 @@ return s.chaos*4
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
-// Страховка
 &lt;&lt;if $availableBlessingsCount == 0&gt;&gt;
     &lt;&lt;set $blessing = &quot;fate&quot;&gt;&gt;
     &lt;&lt;set $blessingData = $blessingDatabase.fate&gt;&gt;
@@ -3515,11 +3132,11 @@ return s.chaos*4
 /* =========================================================
    DATABASE
    CURSES
-   ========================================================= */
+========================================================= */
 
 /* =========================================================
    ОБЫЧНЫЕ ПРОКЛЯТИЯ (5 штук) — БЕЗ ТРЕБОВАНИЙ (всегда доступны)
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $curseDatabase.loneliness = _createResult(
     &quot;loneliness&quot;,
@@ -3573,7 +3190,7 @@ return s.chaos*4
 
 /* =========================================================
    БОЕВЫЕ ПРОКЛЯТИЯ (4 штуки) — minStats 12-16
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $curseDatabase.rage = _createResult(
     &quot;rage&quot;,
@@ -3617,7 +3234,7 @@ return s.chaos*4
 
 /* =========================================================
    МАГИЧЕСКИЕ ПРОКЛЯТИЯ (3 штуки) — minStats 14-18
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $curseDatabase.unstablePower = _createResult(
     &quot;unstablePower&quot;,
@@ -3651,7 +3268,7 @@ return s.chaos*4
 
 /* =========================================================
    КРОВНЫЕ ПРОКЛЯТИЯ (4 штуки) — minStats 18-22
-   ========================================================= */
+========================================================= */
 
 &lt;&lt;set $curseDatabase.vampireBlood = _createResult(
     &quot;vampireBlood&quot;,
@@ -3703,9 +3320,9 @@ return s.chaos*4
 )&gt;&gt;
 
 /* =========================================================
-   ЛЕГЕНДАРНЫЕ ПРОКЛЯТИЯ (10 штук) — minStats 24+ (редкие)
-   Штраф +5 к порогу (чтобы не выпадали слишком часто)
-   ========================================================= */
+   ЛЕГЕНДАРНЫЕ ПРОКЛЯТИЯ (7 штук) — minStats 24+ (редкие)
+   Штраф -5 к скору (чтобы не выпадали слишком часто)
+========================================================= */
 
 &lt;&lt;set $curseDatabase.fallenAngel = _createResult(
     &quot;fallenAngel&quot;,
@@ -3795,8 +3412,8 @@ return s.chaos*4
 
 /* =========================================================
    ВЫБОР ПРОКЛЯТИЯ (С ПРОВЕРКОЙ ТРЕБОВАНИЙ)
-   Легендарные проклятия: -5 штрафа к скору (чтобы были реже)
-   ========================================================= */
+   Легендарные проклятия: -5 штрафа к скору
+========================================================= */
 
 &lt;&lt;set $curse = &quot;none&quot;&gt;&gt;
 &lt;&lt;set $highestCurse = 5&gt;&gt;
@@ -3818,7 +3435,6 @@ return s.chaos*4
         &lt;&lt;set $availableCursesCount = $availableCursesCount + 1&gt;&gt;
         &lt;&lt;set _score = _curse.formula(_stats)&gt;&gt;
         
-        // Штраф для легендарных проклятий (чтобы не выпадали слишком часто)
         &lt;&lt;if _curseID == &quot;fallenAngel&quot; or _curseID == &quot;dragonCurse&quot; or _curseID == &quot;abyss&quot; or _curseID == &quot;void&quot; or _curseID == &quot;eternalSleep&quot; or _curseID == &quot;god&quot; or _curseID == &quot;brokenFate&quot;&gt;&gt;
             &lt;&lt;set _score = _score - 5&gt;&gt;
         &lt;&lt;/if&gt;&gt;
@@ -4022,7 +3638,6 @@ return s.chaos*4
 &lt;&lt;set $highestLineage = 0&gt;&gt;
 &lt;&lt;set $lineageData = $lineageDatabase.peasant&gt;&gt;
 
-// Списки для штрафов
 &lt;&lt;set $nobleLineages = [&quot;baron&quot;, &quot;viscount&quot;, &quot;count&quot;, &quot;marquis&quot;, &quot;duke&quot;, &quot;archduke&quot;, &quot;royal&quot;, &quot;imperial&quot;]&gt;&gt;
 &lt;&lt;set $specialLineages = [&quot;fallenNoble&quot;, &quot;exiled&quot;, &quot;lastBlood&quot;, &quot;forgottenAncient&quot;, &quot;lost&quot;]&gt;&gt;
 
@@ -4030,12 +3645,10 @@ return s.chaos*4
     &lt;&lt;set _lineage = $lineageDatabase[_lineageID]&gt;&gt;
     &lt;&lt;set _lineageScore = _lineage.formula(_stats)&gt;&gt;
     
-    // Штраф для дворянских родов
     &lt;&lt;if $nobleLineages.includes(_lineageID)&gt;&gt;
         &lt;&lt;set _lineageScore = _lineageScore - 10&gt;&gt;
     &lt;&lt;/if&gt;&gt;
     
-    // Штраф для особых родов
     &lt;&lt;if $specialLineages.includes(_lineageID)&gt;&gt;
         &lt;&lt;set _lineageScore = _lineageScore - 5&gt;&gt;
     &lt;&lt;/if&gt;&gt;
@@ -4177,14 +3790,12 @@ return s.chaos*4
     function(s){ return 0; }
 )&gt;&gt;
 
-// Список редких наследий
 &lt;&lt;set $rareHeritage = [&quot;sealKeepers&quot;, &quot;dragonHunters&quot;, &quot;shadowAssassins&quot;, &quot;worldProtectors&quot;]&gt;&gt;
 
 &lt;&lt;for _heritageID range Object.keys($heritageDatabase)&gt;&gt;
     &lt;&lt;set _heritage = $heritageDatabase[_heritageID]&gt;&gt;
     &lt;&lt;set _heritageScore = _heritage.formula(_stats)&gt;&gt;
     
-    // Штраф для редких наследий
     &lt;&lt;if $rareHeritage.includes(_heritageID)&gt;&gt;
         &lt;&lt;set _heritageScore = _heritageScore - 10&gt;&gt;
     &lt;&lt;/if&gt;&gt;
@@ -4482,17 +4093,14 @@ return s.chaos*4
     &lt;&lt;set _blood = $bloodDatabase[_bloodID]&gt;&gt;
     &lt;&lt;set _bloodScore = _blood.formula(_stats)&gt;&gt;
     
-    // Штраф для особой крови
     &lt;&lt;if $specialBlood.includes(_bloodID)&gt;&gt;
         &lt;&lt;set _bloodScore = _bloodScore - 10&gt;&gt;
     &lt;&lt;/if&gt;&gt;
     
-    // Штраф для смешанной крови
     &lt;&lt;if $mixedBlood.includes(_bloodID)&gt;&gt;
         &lt;&lt;set _bloodScore = _bloodScore - 5&gt;&gt;
     &lt;&lt;/if&gt;&gt;
     
-    // Штраф для высшей крови
     &lt;&lt;if $highestBloodList.includes(_bloodID)&gt;&gt;
         &lt;&lt;set _bloodScore = _bloodScore - 20&gt;&gt;
     &lt;&lt;/if&gt;&gt;
@@ -4508,103 +4116,56 @@ return s.chaos*4
    СИСТЕМА ШТРАФОВ
 ========================================================= */
 
-
-/*
-Формат штрафа:
-
-penalties:{
-	stat:&quot;will&quot;,
-	value:-10
-}
-
-Позже сюда можно добавлять:
-- влияние проклятий
-- слабости рас
-- недостатки классов
-- ограничения крови
-*/
-
-
 &lt;&lt;set $penalties = []&gt;&gt;
 
-
-
 &lt;&lt;if $curseData.penalty&gt;&gt;
-
-	&lt;&lt;set $penalties.push($curseData.penalty)&gt;&gt;
-
+    &lt;&lt;set $penalties.push($curseData.penalty)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-
-
-
 
 /* =========================================================
    ПРИМЕНЕНИЕ ШТРАФОВ
 ========================================================= */
 
-
 &lt;&lt;set $finalStats = {
-logic:$logic,
-intuition:$intuition,
-empathy:$empathy,
-charisma:$charisma,
-will:$will,
-caution:$caution,
-curiosity:$curiosity,
-knowledge:$knowledge,
-adventure:$adventure,
-determination:$determination,
-patience:$patience,
-selfControl:$selfControl,
-independence:$independence,
-justice:$justice,
-adaptability:$adaptability,
-nature:$nature,
-order:$order,
-chaos:$chaos
+    logic:$logic,
+    intuition:$intuition,
+    empathy:$empathy,
+    charisma:$charisma,
+    will:$will,
+    caution:$caution,
+    curiosity:$curiosity,
+    knowledge:$knowledge,
+    adventure:$adventure,
+    determination:$determination,
+    patience:$patience,
+    selfControl:$selfControl,
+    independence:$independence,
+    justice:$justice,
+    adaptability:$adaptability,
+    nature:$nature,
+    order:$order,
+    chaos:$chaos
 }&gt;&gt;
 
-
-
 &lt;&lt;for _penalty range $penalties&gt;&gt;
-
-
-	&lt;&lt;set $finalStats[_penalty.stat] += _penalty.value&gt;&gt;
-
-
+    &lt;&lt;set $finalStats[_penalty.stat] += _penalty.value&gt;&gt;
 &lt;&lt;/for&gt;&gt;
-
-
-
-
 
 /* =========================================================
    ИТОГОВЫЙ ОБЪЕКТ ПЕРСОНАЖА
 ========================================================= */
 
-
 &lt;&lt;set $characterResult = {
-
-race:$raceData,
-
-class:$classData,
-
-attribute:$attributeData,
-
-skill:$skillData,
-
-blessing:$blessingData,
-
-curse:$curseData,
-
-lineage:$lineageData,
-
-heritage:$heritageData,
-
-blood:$bloodData,
-
-stats:$finalStats
-
+    race:$raceData,
+    class:$classData,
+    attribute:$attributeData,
+    skill:$skillData,
+    blessing:$blessingData,
+    curse:$curseData,
+    lineage:$lineageData,
+    heritage:$heritageData,
+    blood:$bloodData,
+    stats:$finalStats
 }&gt;&gt;
 
 /* =========================================================
@@ -4612,51 +4173,54 @@ stats:$finalStats
    ДЛЯ ФИНАЛЬНОГО ЭКРАНА
 ========================================================= */
 
-
 &lt;&lt;set $finalRace = $characterResult.race&gt;&gt;
-
 &lt;&lt;set $finalClass = $characterResult.class&gt;&gt;
-
 &lt;&lt;set $finalAttribute = $characterResult.attribute&gt;&gt;
-
 &lt;&lt;set $finalSkill = $characterResult.skill&gt;&gt;
-
 &lt;&lt;set $finalBlessing = $characterResult.blessing&gt;&gt;
-
 &lt;&lt;set $finalCurse = $characterResult.curse&gt;&gt;
-
 &lt;&lt;set $finalLineage = $characterResult.lineage&gt;&gt;
-
 &lt;&lt;set $finalHeritage = $characterResult.heritage&gt;&gt;
-
 &lt;&lt;set $finalBlood = $characterResult.blood&gt;&gt;
 
-
 /* =========================================================
-   ПРОВЕРКА КРИТИЧЕСКИХ СВЯЗОК
+   ПРОВЕРКА КРИТИЧЕСКИХ СВЯЗОК (ЛЕГЕНДАРНЫЙ СТАТУС)
 ========================================================= */
-
-
-/*
-Если получены комбинации высшего уровня,
-запоминаем это для будущих расширений.
-*/
 
 &lt;&lt;set $legendaryCharacter = false&gt;&gt;
 
-&lt;&lt;if ($raceData.id == &quot;dragon&quot; and $classData.id == &quot;dragonLord&quot;)&gt;&gt;
+// Дракон + Владыка драконов + hiddenDragon
+&lt;&lt;if ($raceData.id == &quot;dragon&quot; and $classData.id == &quot;dragonLord&quot; and $hiddenDragon)&gt;&gt;
     &lt;&lt;set $legendaryCharacter = true&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if ($raceData.id == &quot;god&quot; and $classData.id == &quot;godHeir&quot;)&gt;&gt;
+
+// Бог + Наследник богов + hiddenCreator
+&lt;&lt;if ($raceData.id == &quot;god&quot; and $classData.id == &quot;godHeir&quot; and $hiddenCreator)&gt;&gt;
     &lt;&lt;set $legendaryCharacter = true&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if ($raceData.id == &quot;archDemon&quot; and $classData.id == &quot;demonLord&quot;)&gt;&gt;
+
+// Архидемон + Повелитель демонов + hiddenDemon
+&lt;&lt;if ($raceData.id == &quot;archDemon&quot; and $classData.id == &quot;demonLord&quot; and $hiddenDemon)&gt;&gt;
     &lt;&lt;set $legendaryCharacter = true&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if ($raceData.id == &quot;void&quot; and $classData.id == &quot;voidBearer&quot;)&gt;&gt;
+
+// Пустота + Носитель пустоты + hiddenVoid
+&lt;&lt;if ($raceData.id == &quot;void&quot; and $classData.id == &quot;voidBearer&quot; and $hiddenVoid)&gt;&gt;
     &lt;&lt;set $legendaryCharacter = true&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if ($raceData.id == &quot;spirit&quot; and $classData.id == &quot;elementalist&quot;)&gt;&gt;
+
+// Дух + Элементалист + hiddenAngel
+&lt;&lt;if ($raceData.id == &quot;spirit&quot; and $classData.id == &quot;elementalist&quot; and $hiddenAngel)&gt;&gt;
+    &lt;&lt;set $legendaryCharacter = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// Ангел + Святой + hiddenAngel
+&lt;&lt;if ($raceData.id == &quot;angel&quot; and $classData.id == &quot;saint&quot; and $hiddenAngel)&gt;&gt;
+    &lt;&lt;set $legendaryCharacter = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+// Падший ангел + Рыцарь смерти + hiddenFallenAngel
+&lt;&lt;if ($raceData.id == &quot;fallenAngel&quot; and $classData.id == &quot;deathKnight&quot; and $hiddenFallenAngel)&gt;&gt;
     &lt;&lt;set $legendaryCharacter = true&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -4664,22 +4228,204 @@ stats:$finalStats
    ПЕРЕХОД К ФИНАЛУ
 ========================================================= */
 
-
 &lt;&lt;goto &quot;Final_Result&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Final_Result" tags="" position="1725,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;━━━━━━━━━━━━━━━━━━━━━━
 ТВОЯ СУДЬБА
-━━━━━━━━━━━━━━━━━━━━━━&lt;/div&gt;&lt;div style=&quot;background: rgba(255,255,255,0.05);border: 1px solid rgba(212,175,55,0.3);border-radius: 16px;padding: 25px;margin: 20px 0;font-family: &#39;Playfair Display&#39;, serif;&quot;&gt;&lt;!-- ===== РАСА ===== --&gt;&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ РАСА&lt;/h3&gt;&lt;&lt;if $raceData and $raceData.name&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $raceData.name&gt;&gt;&lt;/div&gt;
-	&lt;&lt;print&nbsp;&apos;&lt;img src=&quot;&apos;&plus;$raceData.image&plus;&apos;&quot; class=&quot;race-image&quot; &gt;&apos;&gt;&gt;
-    &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $raceData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные расы не найдены&lt;/div&gt;&lt;&lt;/if&gt;&gt;&lt;/div&gt;&lt;!-- ===== КЛАСС ===== --&gt;&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ КЛАСС&lt;/h3&gt;&lt;&lt;if $classData and $classData.name&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $classData.name&gt;&gt;&lt;/div&gt;
-	&lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $classData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные класса не найдены&lt;/div&gt;&lt;&lt;/if&gt;&gt;&lt;/div&gt;&lt;!-- ===== АТРИБУТ ===== --&gt;&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ АТРИБУТ&lt;/h3&gt;&lt;&lt;if $attributeData and $attributeData.name&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $attributeData.name&gt;&gt;&lt;/div&gt;
-    &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $attributeData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные атрибута не найдены&lt;/div&gt;&lt;&lt;/if&gt;&gt;&lt;/div&gt;&lt;!-- ===== НАВЫК ===== --&gt;&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ НАВЫК&lt;/h3&gt;&lt;&lt;if $skillData and $skillData.name&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $skillData.name&gt;&gt;&lt;/div&gt;
-	&lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $skillData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные навыка не найдены&lt;/div&gt;&lt;&lt;/if&gt;&gt;&lt;/div&gt;&lt;!-- ===== БЛАГОСЛОВЕНИЕ ===== --&gt;&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ БЛАГОСЛОВЕНИЕ&lt;/h3&gt;&lt;&lt;if $blessingData and $blessingData.name&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $blessingData.name&gt;&gt;&lt;/div&gt;
-	&lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $blessingData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные благословения не найдены&lt;/div&gt;&lt;&lt;/if&gt;&gt;&lt;/div&gt;&lt;!-- ===== ПРОКЛЯТИЕ ===== --&gt;&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ ПРОКЛЯТИЕ&lt;/h3&gt;&lt;&lt;if $curseData and $curseData.name&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ff9999;&quot;&gt;&lt;&lt;print $curseData.name&gt;&gt;&lt;/div&gt;
-	&lt;div style=&quot;color: #ffcccc; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $curseData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #888; font-style: italic;&quot;&gt;Нет проклятия&lt;/div&gt;&lt;&lt;/if&gt;&gt;&lt;/div&gt;&lt;!-- ===== РОД ===== --&gt;&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ РОД&lt;/h3&gt;&lt;&lt;if $lineageData and $lineageData.name&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $lineageData.name&gt;&gt;&lt;/div&gt;
-	&lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $lineageData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные рода не найдены&lt;/div&gt;&lt;&lt;/if&gt;&gt;&lt;/div&gt;&lt;!-- ===== НАСЛЕДИЕ ===== --&gt;&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ НАСЛЕДИЕ РОДА&lt;/h3&gt;&lt;&lt;if $heritageData and $heritageData.name and $heritageData.name != &quot;Нет особого наследия&quot;&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $heritageData.name&gt;&gt;&lt;/div&gt;
-	&lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $heritageData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #888; font-style: italic;&quot;&gt;Нет особого наследия&lt;/div&gt;&lt;&lt;/if&gt;&gt;&lt;/div&gt;&lt;!-- ===== КРОВЬ ===== --&gt;&lt;div style=&quot;margin-bottom: 10px; padding-bottom: 5px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ ПРОИСХОЖДЕНИЕ КРОВИ&lt;/h3&gt;&lt;&lt;if $bloodData and $bloodData.name&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $bloodData.name&gt;&gt;&lt;/div&gt;
-	&lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $bloodData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные крови не найдены&lt;/div&gt;&lt;&lt;/if&gt;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div style=&quot;text-align: center; color: #666; font-size: 14px; margin-top: 30px; border-top: 1px solid rgba(212,175,55,0.2); padding-top: 20px;&quot;&gt;Испытание Судьбы — завершено&lt;/div&gt;
-&lt;!-- ===== КНОПКА НАЧАТЬ ЗАНОВО ===== --&gt;&lt;div style=&quot;text-align: center; margin-top: 25px;&quot;&gt;&lt;&lt;link &quot;⟳ Пройти испытание заново&quot; &quot;Start&quot;&gt;&gt;&lt;&lt;set $logic = 0&gt;&gt;&lt;&lt;set $intuition = 0&gt;&gt;&lt;&lt;set $empathy = 0&gt;&gt;&lt;&lt;set $charisma = 0&gt;&gt;&lt;&lt;set $will = 0&gt;&gt;&lt;&lt;set $caution = 0&gt;&gt;&lt;&lt;set $curiosity = 0&gt;&gt;&lt;&lt;set $knowledge = 0&gt;&gt;&lt;&lt;set $adventure = 0&gt;&gt;&lt;&lt;set $determination = 0&gt;&gt;&lt;&lt;set $patience = 0&gt;&gt;&lt;&lt;set $selfControl = 0&gt;&gt;&lt;&lt;set $independence = 0&gt;&gt;&lt;&lt;set $justice = 0&gt;&gt;&lt;&lt;set $adaptability = 0&gt;&gt;&lt;&lt;set $nature = 0&gt;&gt;&lt;&lt;set $order = 0&gt;&gt;&lt;&lt;set $chaos = 0&gt;&gt;&lt;&lt;set $hiddenDragon = false&gt;&gt;&lt;&lt;set $hiddenAngel = false&gt;&gt;&lt;&lt;set $hiddenDemon = false&gt;&gt;&lt;&lt;set $hiddenVoid = false&gt;&gt;&lt;&lt;set $hiddenCreator = false&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="Mirror_05" tags="" position="325,1125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
+━━━━━━━━━━━━━━━━━━━━━━&lt;/div&gt;
+
+&lt;div style=&quot;background: rgba(255,255,255,0.05);border: 1px solid rgba(212,175,55,0.3);border-radius: 16px;padding: 25px;margin: 20px 0;font-family: &#39;Playfair Display&#39;, serif;&quot;&gt;
+
+&lt;!-- ===== РАСА ===== --&gt;
+&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ РАСА&lt;/h3&gt;
+    &lt;&lt;if $raceData and $raceData.name&gt;&gt;
+        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $raceData.name&gt;&gt;&lt;/div&gt;
+        &lt;&lt;print &#39;&lt;img src=&quot;&#39; + $raceData.image + &#39;&quot; class=&quot;race-image&quot; &gt;&#39;&gt;&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $raceData.description&gt;&gt;&lt;/div&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные расы не найдены&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== КЛАСС ===== --&gt;
+&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ КЛАСС&lt;/h3&gt;
+    &lt;&lt;if $classData and $classData.name&gt;&gt;
+        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $classData.name&gt;&gt;&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $classData.description&gt;&gt;&lt;/div&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные класса не найдены&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== АТРИБУТ ===== --&gt;
+&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ АТРИБУТ&lt;/h3&gt;
+    &lt;&lt;if $attributeData and $attributeData.name&gt;&gt;
+        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $attributeData.name&gt;&gt;&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $attributeData.description&gt;&gt;&lt;/div&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные атрибута не найдены&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== НАВЫК ===== --&gt;
+&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ НАВЫК&lt;/h3&gt;
+    &lt;&lt;if $skillData and $skillData.name&gt;&gt;
+        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $skillData.name&gt;&gt;&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $skillData.description&gt;&gt;&lt;/div&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные навыка не найдены&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== БЛАГОСЛОВЕНИЕ ===== --&gt;
+&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ БЛАГОСЛОВЕНИЕ&lt;/h3&gt;
+    &lt;&lt;if $blessingData and $blessingData.name&gt;&gt;
+        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $blessingData.name&gt;&gt;&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $blessingData.description&gt;&gt;&lt;/div&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные благословения не найдены&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== ПРОКЛЯТИЕ ===== --&gt;
+&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ ПРОКЛЯТИЕ&lt;/h3&gt;
+    &lt;&lt;if $curseData and $curseData.name&gt;&gt;
+        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ff9999;&quot;&gt;&lt;&lt;print $curseData.name&gt;&gt;&lt;/div&gt;
+        &lt;div style=&quot;color: #ffcccc; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $curseData.description&gt;&gt;&lt;/div&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;div style=&quot;color: #888; font-style: italic;&quot;&gt;Нет проклятия&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== СКРЫТЫЕ ПУТИ ===== --&gt;
+&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ СКРЫТЫЕ ПУТИ&lt;/h3&gt;
+    
+    &lt;&lt;if $hiddenAngel&gt;&gt;
+        &lt;div style=&quot;color: #ffed9f; font-weight: bold;&quot;&gt;★ Путь Ангела открыт&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
+            Справедливость &gt; 45, Порядок &gt; 35, Эмпатия &gt; 30
+        &lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    &lt;&lt;if $hiddenDemon&gt;&gt;
+        &lt;div style=&quot;color: #ff6666; font-weight: bold;&quot;&gt;★ Путь Демона открыт&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
+            Воля &gt; 45, Любопытство &gt; 35, Независимость &gt; 28
+        &lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    &lt;&lt;if $hiddenDragon&gt;&gt;
+        &lt;div style=&quot;color: #ff8844; font-weight: bold;&quot;&gt;★ Путь Дракона открыт&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
+            Воля &gt; 42, Решимость &gt; 32, Адаптивность &gt; 28
+        &lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    &lt;&lt;if $hiddenVoid&gt;&gt;
+        &lt;div style=&quot;color: #9966ff; font-weight: bold;&quot;&gt;★ Путь Пустоты открыт&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
+            Логика &gt; 35, Независимость &gt; 32, Самоконтроль &gt; 30
+        &lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    &lt;&lt;if $hiddenCreator&gt;&gt;
+        &lt;div style=&quot;color: #66ffaa; font-weight: bold;&quot;&gt;★ Путь Творца открыт&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
+            Харизма &gt; 35, Адаптивность &gt; 30, Логика &gt; 28
+        &lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    &lt;&lt;if $hiddenFallenAngel&gt;&gt;
+        &lt;div style=&quot;color: #cc88ff; font-weight: bold;&quot;&gt;★ Путь Падшего Ангела открыт&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
+            Независимость &gt; 38, Справедливость &gt; 28, Воля &gt; 32
+        &lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    &lt;&lt;if not $hiddenAngel and not $hiddenDemon and not $hiddenDragon and not $hiddenVoid and not $hiddenCreator and not $hiddenFallenAngel&gt;&gt;
+        &lt;div style=&quot;color: #888; font-style: italic;&quot;&gt;Ни один скрытый путь не открыт&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== РОД ===== --&gt;
+&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ РОД&lt;/h3&gt;
+    &lt;&lt;if $lineageData and $lineageData.name&gt;&gt;
+        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $lineageData.name&gt;&gt;&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $lineageData.description&gt;&gt;&lt;/div&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные рода не найдены&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== НАСЛЕДИЕ РОДА ===== --&gt;
+&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ НАСЛЕДИЕ РОДА&lt;/h3&gt;
+    &lt;&lt;if $heritageData and $heritageData.name and $heritageData.name != &quot;Нет особого наследия&quot;&gt;&gt;
+        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $heritageData.name&gt;&gt;&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $heritageData.description&gt;&gt;&lt;/div&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;div style=&quot;color: #888; font-style: italic;&quot;&gt;Нет особого наследия&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== КРОВЬ ===== --&gt;
+&lt;div style=&quot;margin-bottom: 10px; padding-bottom: 5px;&quot;&gt;
+    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ ПРОИСХОЖДЕНИЕ КРОВИ&lt;/h3&gt;
+    &lt;&lt;if $bloodData and $bloodData.name&gt;&gt;
+        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $bloodData.name&gt;&gt;&lt;/div&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $bloodData.description&gt;&gt;&lt;/div&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные крови не найдены&lt;/div&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!-- ===== ЛЕГЕНДАРНЫЙ СТАТУС ===== --&gt;
+&lt;&lt;if $legendaryCharacter&gt;&gt;
+    &lt;div style=&quot;text-align: center; color: #d4af37; font-size: 32px; font-weight: bold; letter-spacing: 8px; text-shadow: 0 0 30px rgba(212,175,55,0.8); margin: 30px 0 20px; border: 2px solid rgba(212,175,55,0.5); border-radius: 12px; padding: 15px; background: rgba(212,175,55,0.1);&quot;&gt;
+        ✦ ЛЕГЕНДАРНАЯ СУЩНОСТЬ ✦
+    &lt;/div&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;div style=&quot;text-align: center; color: #666; font-size: 14px; margin-top: 30px; border-top: 1px solid rgba(212,175,55,0.2); padding-top: 20px;&quot;&gt;
+    Испытание Судьбы — завершено
+&lt;/div&gt;
+
+&lt;!-- ===== КНОПКА НАЧАТЬ ЗАНОВО ===== --&gt;
+&lt;div style=&quot;text-align: center; margin-top: 25px;&quot;&gt;
+    &lt;&lt;link &quot;⟳ Пройти испытание заново&quot; &quot;Start&quot;&gt;&gt;
+        &lt;&lt;set $logic = 0&gt;&gt;
+        &lt;&lt;set $intuition = 0&gt;&gt;
+        &lt;&lt;set $empathy = 0&gt;&gt;
+        &lt;&lt;set $charisma = 0&gt;&gt;
+        &lt;&lt;set $will = 0&gt;&gt;
+        &lt;&lt;set $caution = 0&gt;&gt;
+        &lt;&lt;set $curiosity = 0&gt;&gt;
+        &lt;&lt;set $knowledge = 0&gt;&gt;
+        &lt;&lt;set $adventure = 0&gt;&gt;
+        &lt;&lt;set $determination = 0&gt;&gt;
+        &lt;&lt;set $patience = 0&gt;&gt;
+        &lt;&lt;set $selfControl = 0&gt;&gt;
+        &lt;&lt;set $independence = 0&gt;&gt;
+        &lt;&lt;set $justice = 0&gt;&gt;
+        &lt;&lt;set $adaptability = 0&gt;&gt;
+        &lt;&lt;set $nature = 0&gt;&gt;
+        &lt;&lt;set $order = 0&gt;&gt;
+        &lt;&lt;set $chaos = 0&gt;&gt;
+        &lt;&lt;set $hiddenDragon = false&gt;&gt;
+        &lt;&lt;set $hiddenAngel = false&gt;&gt;
+        &lt;&lt;set $hiddenDemon = false&gt;&gt;
+        &lt;&lt;set $hiddenVoid = false&gt;&gt;
+        &lt;&lt;set $hiddenCreator = false&gt;&gt;
+        &lt;&lt;set $hiddenFallenAngel = false&gt;&gt;
+    &lt;&lt;/link&gt;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="Mirror_05" tags="" position="325,1125" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;
 Зеркальная поверхность начинает двигаться.
 
 По её глади проходят волны, словно пространство впервые пытается отразить то, чего ещё не существует.
