@@ -2573,4136 +2573,1930 @@ return s.chaos*4
 &lt;&lt;/if&gt;&gt;
 
 /* =========================================================
-   АТРИБУТ / СИЛА
-========================================================= */
-
+   DATABASE
+   ATTRIBUTES
+   ========================================================= */
 
 /* =========================================================
-   ОСНОВНЫЕ СТИХИИ
-========================================================= */
-
+   ОСНОВНЫЕ СТИХИИ (6 штук) — minStats 12-15
+   ========================================================= */
 
 &lt;&lt;set $attributeDatabase.fire = _createResult(
-
-&quot;fire&quot;,
-
-&quot;Огонь&quot;,
-
-&quot;Сила пламени, разрушения и неудержимой воли.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.determination;
-
-},
-
-{}
-
+    &quot;fire&quot;,
+    &quot;Огонь&quot;,
+    &quot;&quot;,
+    &quot;Сила пламени, разрушения и неудержимой воли.&quot;,
+    function(s){ return s.will*2 + s.determination + s.curiosity; },
+    { minStats: { will: 15, determination: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.water = _createResult(
-
-&quot;water&quot;,
-
-&quot;Вода&quot;,
-
-&quot;Гибкая энергия перемен и адаптации.&quot;,
-
-
-function(s){
-
-return s.empathy
-+s.adaptability*2;
-
-},
-
-{}
-
+    &quot;water&quot;,
+    &quot;Вода&quot;,
+    &quot;&quot;,
+    &quot;Гибкая энергия перемен и адаптации.&quot;,
+    function(s){ return s.adaptability*2 + s.empathy + s.intuition; },
+    { minStats: { adaptability: 15, empathy: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.earth = _createResult(
-
-&quot;earth&quot;,
-
-&quot;Земля&quot;,
-
-&quot;Сила стойкости, защиты и терпения.&quot;,
-
-
-function(s){
-
-return s.order
-+s.patience*2;
-
-},
-
-{}
-
+    &quot;earth&quot;,
+    &quot;Земля&quot;,
+    &quot;&quot;,
+    &quot;Сила стойкости, защиты и терпения.&quot;,
+    function(s){ return s.patience*2 + s.order + s.caution; },
+    { minStats: { patience: 15, order: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.air = _createResult(
-
-&quot;air&quot;,
-
-&quot;Воздух&quot;,
-
-&quot;Свобода движения и независимый дух.&quot;,
-
-
-function(s){
-
-return s.independence*2
-+s.adaptability;
-
-},
-
-{}
-
+    &quot;air&quot;,
+    &quot;Воздух&quot;,
+    &quot;&quot;,
+    &quot;Свобода движения и независимый дух.&quot;,
+    function(s){ return s.independence*2 + s.adaptability + s.curiosity; },
+    { minStats: { independence: 15, adaptability: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.ice = _createResult(
-
-&quot;ice&quot;,
-
-&quot;Лёд&quot;,
-
-&quot;Холодный разум и абсолютный контроль.&quot;,
-
-
-function(s){
-
-return s.selfControl*2
-+s.logic;
-
-},
-
-{}
-
+    &quot;ice&quot;,
+    &quot;Лёд&quot;,
+    &quot;&quot;,
+    &quot;Холодный разум и абсолютный контроль.&quot;,
+    function(s){ return s.selfControl*2 + s.logic + s.patience; },
+    { minStats: { selfControl: 15, logic: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.lightning = _createResult(
-
-&quot;lightning&quot;,
-
-&quot;Молния&quot;,
-
-&quot;Стремительная сила энергии и импульса.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.will;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;lightning&quot;,
+    &quot;Молния&quot;,
+    &quot;&quot;,
+    &quot;Стремительная сила энергии и импульса.&quot;,
+    function(s){ return s.curiosity*2 + s.will + s.adventure; },
+    { minStats: { curiosity: 15, will: 12 } }
+)&gt;&gt;
 
 /* =========================================================
-   ПРИРОДНЫЕ СИЛЫ
-========================================================= */
-
+   ПРИРОДНЫЕ СИЛЫ (4 штуки) — minStats 16-18
+   ========================================================= */
 
 &lt;&lt;set $attributeDatabase.life = _createResult(
-
-&quot;life&quot;,
-
-&quot;Жизнь&quot;,
-
-&quot;Энергия восстановления, роста и существования.&quot;,
-
-
-function(s){
-
-return s.nature*3
-+s.empathy*2;
-
-},
-
-{}
-
+    &quot;life&quot;,
+    &quot;Жизнь&quot;,
+    &quot;&quot;,
+    &quot;Энергия восстановления, роста и существования.&quot;,
+    function(s){ return s.nature*3 + s.empathy*2 + s.patience; },
+    { minStats: { nature: 18, empathy: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.nature = _createResult(
-
-&quot;nature&quot;,
-
-&quot;Природа&quot;,
-
-&quot;Связь с миром природы и первозданными силами.&quot;,
-
-
-function(s){
-
-return s.nature*4;
-
-},
-
-{}
-
+    &quot;nature&quot;,
+    &quot;Природа&quot;,
+    &quot;&quot;,
+    &quot;Связь с миром природы и первозданными силами.&quot;,
+    function(s){ return s.nature*4 + s.intuition + s.empathy; },
+    { minStats: { nature: 20, intuition: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.beast = _createResult(
-
-&quot;beast&quot;,
-
-&quot;Звериная сила&quot;,
-
-&quot;Инстинктивная мощь древних существ.&quot;,
-
-
-function(s){
-
-return s.nature*2
-+s.adventure*2;
-
-},
-
-{}
-
+    &quot;beast&quot;,
+    &quot;Звериная сила&quot;,
+    &quot;&quot;,
+    &quot;Инстинктивная мощь древних существ.&quot;,
+    function(s){ return s.nature*2 + s.adventure*2 + s.will; },
+    { minStats: { nature: 16, adventure: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.spiritEnergy = _createResult(
-
-&quot;spiritEnergy&quot;,
-
-&quot;Духовная энергия&quot;,
-
-&quot;Сила внутреннего духа и связи с невидимым.&quot;,
-
-
-function(s){
-
-return s.intuition*2
-+s.nature;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;spiritEnergy&quot;,
+    &quot;Духовная энергия&quot;,
+    &quot;&quot;,
+    &quot;Сила внутреннего духа и связи с невидимым.&quot;,
+    function(s){ return s.intuition*2 + s.nature + s.empathy; },
+    { minStats: { intuition: 18, nature: 14 } }
+)&gt;&gt;
 
 /* =========================================================
-   СВЕТЛЫЕ СИЛЫ
-========================================================= */
-
+   СВЕТЛЫЕ СИЛЫ (4 штуки) — minStats 18-22
+   ========================================================= */
 
 &lt;&lt;set $attributeDatabase.light = _createResult(
-
-&quot;light&quot;,
-
-&quot;Свет&quot;,
-
-&quot;Чистая энергия порядка и справедливости.&quot;,
-
-
-function(s){
-
-return s.justice*3
-+s.order*2;
-
-},
-
-{}
-
+    &quot;light&quot;,
+    &quot;Свет&quot;,
+    &quot;&quot;,
+    &quot;Чистая энергия порядка и справедливости.&quot;,
+    function(s){ return s.justice*3 + s.order*2 + s.empathy; },
+    { minStats: { justice: 22, order: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.healing = _createResult(
-
-&quot;healing&quot;,
-
-&quot;Исцеление&quot;,
-
-&quot;Сила восстановления тела и души.&quot;,
-
-
-function(s){
-
-return s.empathy*3
-+s.nature;
-
-},
-
-{}
-
+    &quot;healing&quot;,
+    &quot;Исцеление&quot;,
+    &quot;&quot;,
+    &quot;Сила восстановления тела и души.&quot;,
+    function(s){ return s.empathy*3 + s.nature + s.patience; },
+    { minStats: { empathy: 20, nature: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.holy = _createResult(
-
-&quot;holy&quot;,
-
-&quot;Святая сила&quot;,
-
-&quot;Божественная энергия защиты и очищения.&quot;,
-
-
-function(s){
-
-return s.justice*2
-+s.order
-+s.empathy;
-
-},
-
-{}
-
+    &quot;holy&quot;,
+    &quot;Святая сила&quot;,
+    &quot;&quot;,
+    &quot;Божественная энергия защиты и очищения.&quot;,
+    function(s){ return s.justice*2 + s.order + s.empathy*2; },
+    { minStats: { justice: 20, order: 16, empathy: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.angelPower = _createResult(
-
-&quot;angelPower&quot;,
-
-&quot;Сила ангелов&quot;,
-
-&quot;Небесная энергия высших существ.&quot;,
-
-
-function(s){
-
-return s.justice*3
-+s.charisma;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;angelPower&quot;,
+    &quot;Сила ангелов&quot;,
+    &quot;&quot;,
+    &quot;Небесная энергия высших существ.&quot;,
+    function(s){ return s.justice*3 + s.charisma + s.order; },
+    { minStats: { justice: 22, charisma: 16 } }
+)&gt;&gt;
 
 /* =========================================================
-   ТЁМНЫЕ СИЛЫ
-========================================================= */
-
+   ТЁМНЫЕ СИЛЫ (4 штуки) — minStats 18-22
+   ========================================================= */
 
 &lt;&lt;set $attributeDatabase.dark = _createResult(
-
-&quot;dark&quot;,
-
-&quot;Тьма&quot;,
-
-&quot;Энергия тайны, независимости и скрытых желаний.&quot;,
-
-
-function(s){
-
-return s.independence*2
-+s.curiosity*2;
-
-},
-
-{}
-
+    &quot;dark&quot;,
+    &quot;Тьма&quot;,
+    &quot;&quot;,
+    &quot;Энергия тайны, независимости и скрытых желаний.&quot;,
+    function(s){ return s.independence*2 + s.curiosity*2 + s.intuition; },
+    { minStats: { independence: 20, curiosity: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.demonPower = _createResult(
-
-&quot;demonPower&quot;,
-
-&quot;Демоническая сила&quot;,
-
-&quot;Разрушительная энергия демонических миров.&quot;,
-
-
-function(s){
-
-return s.will*3
-+s.curiosity;
-
-},
-
-{}
-
+    &quot;demonPower&quot;,
+    &quot;Демоническая сила&quot;,
+    &quot;&quot;,
+    &quot;Разрушительная энергия демонических миров.&quot;,
+    function(s){ return s.will*3 + s.curiosity + s.independence; },
+    { minStats: { will: 22, curiosity: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.death = _createResult(
-
-&quot;death&quot;,
-
-&quot;Смерть&quot;,
-
-&quot;Сила конца, перехода и забвения.&quot;,
-
-
-function(s){
-
-return s.will
-+s.curiosity*2
-+s.independence;
-
-},
-
-{}
-
+    &quot;death&quot;,
+    &quot;Смерть&quot;,
+    &quot;&quot;,
+    &quot;Сила конца, перехода и забвения.&quot;,
+    function(s){ return s.curiosity*2 + s.will + s.independence*2; },
+    { minStats: { curiosity: 18, independence: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.cursedEnergy = _createResult(
-
-&quot;cursedEnergy&quot;,
-
-&quot;Проклятая энергия&quot;,
-
-&quot;Нестабильная энергия запретных сил.&quot;,
-
-
-function(s){
-
-return s.curiosity*3
-+s.will;
-
-},
-
-{}
-
-)&gt;
+    &quot;cursedEnergy&quot;,
+    &quot;Проклятая энергия&quot;,
+    &quot;&quot;,
+    &quot;Нестабильная энергия запретных сил.&quot;,
+    function(s){ return s.curiosity*3 + s.will + s.independence; },
+    { minStats: { curiosity: 22, will: 14 } }
+)&gt;&gt;
 
 /* =========================================================
-   ПРОСТРАНСТВО И ВРЕМЯ
-========================================================= */
-
+   ПРОСТРАНСТВО И ВРЕМЯ (3 штуки) — minStats 20-24
+   ========================================================= */
 
 &lt;&lt;set $attributeDatabase.space = _createResult(
-
-&quot;space&quot;,
-
-&quot;Пространство&quot;,
-
-&quot;Контроль расстояний, границ и самой структуры мира.&quot;,
-
-
-function(s){
-
-return s.logic*2
-+s.curiosity
-+s.adaptability;
-
-},
-
-{}
-
+    &quot;space&quot;,
+    &quot;Пространство&quot;,
+    &quot;&quot;,
+    &quot;Контроль расстояний, границ и самой структуры мира.&quot;,
+    function(s){ return s.logic*3 + s.curiosity + s.adaptability; },
+    { minStats: { logic: 22, curiosity: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.time = _createResult(
-
-&quot;time&quot;,
-
-&quot;Время&quot;,
-
-&quot;Сила управления ходом событий и моментами существования.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.logic*2;
-
-},
-
-{}
-
+    &quot;time&quot;,
+    &quot;Время&quot;,
+    &quot;&quot;,
+    &quot;Сила управления ходом событий и моментами существования.&quot;,
+    function(s){ return s.intuition*4 + s.logic*2 + s.selfControl; },
+    { minStats: { intuition: 24, logic: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.gravity = _createResult(
-
-&quot;gravity&quot;,
-
-&quot;Гравитация&quot;,
-
-&quot;Власть над одной из фундаментальных сил мира.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.will;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;gravity&quot;,
+    &quot;Гравитация&quot;,
+    &quot;&quot;,
+    &quot;Власть над одной из фундаментальных сил мира.&quot;,
+    function(s){ return s.logic*3 + s.will*2 + s.determination; },
+    { minStats: { logic: 20, will: 18 } }
+)&gt;&gt;
 
 /* =========================================================
-   ВЫСШИЕ СИЛЫ
-========================================================= */
-
+   ВЫСШИЕ СИЛЫ (4 штуки) — minStats 24-28 (редкие)
+   ========================================================= */
 
 &lt;&lt;set $attributeDatabase.soul = _createResult(
-
-&quot;soul&quot;,
-
-&quot;Душа&quot;,
-
-&quot;Сила внутренней сущности и духовной связи.&quot;,
-
-
-function(s){
-
-return s.empathy*3
-+s.intuition*2;
-
-},
-
-{}
-
+    &quot;soul&quot;,
+    &quot;Душа&quot;,
+    &quot;&quot;,
+    &quot;Сила внутренней сущности и духовной связи.&quot;,
+    function(s){ return s.empathy*3 + s.intuition*2 + s.selfControl; },
+    { minStats: { empathy: 24, intuition: 20 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.fate = _createResult(
-
-&quot;fate&quot;,
-
-&quot;Судьба&quot;,
-
-&quot;Способность чувствовать и изменять нити судьбы.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.knowledge*2;
-
-},
-
-{}
-
+    &quot;fate&quot;,
+    &quot;Судьба&quot;,
+    &quot;&quot;,
+    &quot;Способность чувствовать и изменять нити судьбы.&quot;,
+    function(s){ return s.intuition*4 + s.knowledge*2 + s.selfControl; },
+    { minStats: { intuition: 26, knowledge: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.mind = _createResult(
-
-&quot;mind&quot;,
-
-&quot;Разум&quot;,
-
-&quot;Абсолютная сила анализа и познания.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.knowledge*2;
-
-},
-
-{}
-
+    &quot;mind&quot;,
+    &quot;Разум&quot;,
+    &quot;&quot;,
+    &quot;Абсолютная сила анализа и познания.&quot;,
+    function(s){ return s.logic*4 + s.knowledge*3 + s.intuition; },
+    { minStats: { logic: 28, knowledge: 20 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.creatorPower = _createResult(
-
-&quot;creatorPower&quot;,
-
-&quot;Сила Творца&quot;,
-
-&quot;Энергия создания новых форм существования.&quot;,
-
-
-function(s){
-
-return s.charisma*3
-+s.adaptability*2;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;creatorPower&quot;,
+    &quot;Сила Творца&quot;,
+    &quot;&quot;,
+    &quot;Энергия создания новых форм существования.&quot;,
+    function(s){ return s.charisma*3 + s.adaptability*2 + s.logic; },
+    { minStats: { charisma: 24, adaptability: 20 } }
+)&gt;&gt;
 
 /* =========================================================
-   ЗАПРЕДЕЛЬНЫЕ СИЛЫ
-========================================================= */
-
+   ЗАПРЕДЕЛЬНЫЕ СИЛЫ (4 штуки) — minStats 30+ (легендарные)
+   Штраф -20 за редкость
+   ========================================================= */
 
 &lt;&lt;set $attributeDatabase.chaosPower = _createResult(
-
-&quot;chaosPower&quot;,
-
-&quot;Хаос&quot;,
-
-&quot;Непредсказуемая сила изменения и разрушения порядка.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.adaptability*2
-+s.independence;
-
-},
-
-{}
-
+    &quot;chaosPower&quot;,
+    &quot;Хаос&quot;,
+    &quot;&quot;,
+    &quot;Непредсказуемая сила изменения и разрушения порядка.&quot;,
+    function(s){ return s.curiosity*3 + s.adaptability*2 + s.independence; },
+    { minStats: { curiosity: 30, adaptability: 22 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.orderPower = _createResult(
-
-&quot;orderPower&quot;,
-
-&quot;Порядок&quot;,
-
-&quot;Абсолютная структура, закон и стабильность.&quot;,
-
-
-function(s){
-
-return s.order*3
-+s.justice*2;
-
-},
-
-{}
-
+    &quot;orderPower&quot;,
+    &quot;Порядок&quot;,
+    &quot;&quot;,
+    &quot;Абсолютная структура, закон и стабильность.&quot;,
+    function(s){ return s.order*4 + s.justice*3 + s.patience; },
+    { minStats: { order: 32, justice: 24 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.voidPower = _createResult(
-
-&quot;voidPower&quot;,
-
-&quot;Пустота&quot;,
-
-&quot;Энергия отсутствия и пространства между мирами.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.independence*2
-+_hiddenBonus(&quot;void&quot;);
-
-},
-
-{}
-
+    &quot;voidPower&quot;,
+    &quot;Пустота&quot;,
+    &quot;&quot;,
+    &quot;Энергия отсутствия и пространства между мирами.&quot;,
+    function(s){ return s.logic*3 + s.independence*2 + s.selfControl + _hiddenBonus(&quot;void&quot;); },
+    { minStats: { logic: 30, independence: 26, selfControl: 20 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.aether = _createResult(
-
-&quot;aether&quot;,
-
-&quot;Эфир&quot;,
-
-&quot;Первозданная энергия, лежащая за пределами стихий.&quot;,
-
-
-function(s){
-
-return s.intuition*2
-+s.logic
-+s.curiosity;
-
-},
-
-{}
-
+    &quot;aether&quot;,
+    &quot;Эфир&quot;,
+    &quot;&quot;,
+    &quot;Первозданная энергия, лежащая за пределами стихий.&quot;,
+    function(s){ return s.intuition*2 + s.logic + s.curiosity + s.charisma; },
+    { minStats: { intuition: 28, logic: 20, charisma: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $attributeDatabase.nothing = _createResult(
-
-&quot;nothing&quot;,
-
-&quot;Ничто&quot;,
-
-&quot;Сила отсутствия, превосходящая понимание.&quot;,
-
-
-function(s){
-
-return s.selfControl*3
-+s.independence*2;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;nothing&quot;,
+    &quot;Ничто&quot;,
+    &quot;&quot;,
+    &quot;Сила отсутствия, превосходящая понимание.&quot;,
+    function(s){ return s.selfControl*4 + s.independence*3 + s.will; },
+    { minStats: { selfControl: 34, independence: 28, will: 20 } }
+)&gt;&gt;
 
 /* =========================================================
-   ВЫБОР АТРИБУТА
-========================================================= */
-
+   ВЫБОР АТРИБУТА (С ПРОВЕРКОЙ ТРЕБОВАНИЙ)
+   Легендарные атрибуты: -20 штрафа
+   ========================================================= */
 
 &lt;&lt;set $attribute = &quot;aether&quot;&gt;&gt;
-
 &lt;&lt;set $highestAttribute = -999&gt;&gt;
-
-
+&lt;&lt;set $availableAttributesCount = 0&gt;&gt;
 
 &lt;&lt;for _attributeID range Object.keys($attributeDatabase)&gt;&gt;
-
-
-	&lt;&lt;set _attribute = $attributeDatabase[_attributeID]&gt;&gt;
-
-	&lt;&lt;set _score = _attribute.formula(_stats)&gt;&gt;
-
-
-	&lt;&lt;if _score &gt; $highestAttribute&gt;&gt;
-
-
-		&lt;&lt;set $highestAttribute = _score&gt;&gt;
-
-		&lt;&lt;set $attribute = _attributeID&gt;&gt;
-
-		&lt;&lt;set $attributeData = _attribute&gt;&gt;
-
-
-	&lt;&lt;/if&gt;&gt;
-
-
+    &lt;&lt;set _attribute = $attributeDatabase[_attributeID]&gt;&gt;
+    
+    &lt;&lt;if _checkRequirements(_attribute.requirements, _stats)&gt;&gt;
+        &lt;&lt;set $availableAttributesCount = $availableAttributesCount + 1&gt;&gt;
+        &lt;&lt;set _score = _attribute.formula(_stats)&gt;&gt;
+        
+        // Штраф для легендарных атрибутов
+        &lt;&lt;if _attributeID == &quot;chaosPower&quot; or _attributeID == &quot;orderPower&quot; or _attributeID == &quot;voidPower&quot; or _attributeID == &quot;aether&quot; or _attributeID == &quot;nothing&quot;&gt;&gt;
+            &lt;&lt;set _score = _score - 20&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+        
+        &lt;&lt;if _score &gt; $highestAttribute&gt;&gt;
+            &lt;&lt;set $highestAttribute = _score&gt;&gt;
+            &lt;&lt;set $attribute = _attributeID&gt;&gt;
+            &lt;&lt;set $attributeData = _attribute&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
+// Страховка
+&lt;&lt;if $availableAttributesCount == 0&gt;&gt;
+    &lt;&lt;set $attribute = &quot;fire&quot;&gt;&gt;
+    &lt;&lt;set $attributeData = $attributeDatabase.fire&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
 /* =========================================================
-   НАВЫК
-========================================================= */
-
+   DATABASE
+   SKILLS
+   ========================================================= */
 
 /* =========================================================
-   АНАЛИТИЧЕСКИЕ НАВЫКИ
-========================================================= */
-
+   АНАЛИТИЧЕСКИЕ НАВЫКИ (6 штук) — minStats 12-20
+   ========================================================= */
 
 &lt;&lt;set $skillDatabase.analysis = _createResult(
-
-&quot;analysis&quot;,
-
-&quot;Анализ&quot;,
-
-&quot;Способность изучать объекты, ситуации и находить скрытые закономерности.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.knowledge;
-
-},
-
-{}
-
+    &quot;analysis&quot;,
+    &quot;Анализ&quot;,
+    &quot;&quot;,
+    &quot;Способность изучать объекты, ситуации и находить скрытые закономерности.&quot;,
+    function(s){ return s.logic*3 + s.knowledge + s.curiosity; },
+    { minStats: { logic: 14, knowledge: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.evaluation = _createResult(
-
-&quot;evaluation&quot;,
-
-&quot;Оценка&quot;,
-
-&quot;Позволяет быстро определять характеристики и возможности объектов.&quot;,
-
-
-function(s){
-
-return s.logic*2
-+s.intuition;
-
-},
-
-{}
-
+    &quot;evaluation&quot;,
+    &quot;Оценка&quot;,
+    &quot;&quot;,
+    &quot;Позволяет быстро определять характеристики и возможности объектов.&quot;,
+    function(s){ return s.logic*2 + s.intuition + s.knowledge; },
+    { minStats: { logic: 14, intuition: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.absoluteEvaluation = _createResult(
-
-&quot;absoluteEvaluation&quot;,
-
-&quot;Абсолютная оценка&quot;,
-
-&quot;Высшая форма анализа, позволяющая видеть истинную природу вещей.&quot;,
-
-
-function(s){
-
-return s.logic*4
-+s.knowledge*2;
-
-},
-
-{}
-
+    &quot;absoluteEvaluation&quot;,
+    &quot;Абсолютная оценка&quot;,
+    &quot;&quot;,
+    &quot;Высшая форма анализа, позволяющая видеть истинную природу вещей.&quot;,
+    function(s){ return s.logic*4 + s.knowledge*2 + s.intuition; },
+    { minStats: { logic: 24, knowledge: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.weaknessAnalysis = _createResult(
-
-&quot;weaknessAnalysis&quot;,
-
-&quot;Анализ слабостей&quot;,
-
-&quot;Способность находить уязвимые места противников и объектов.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.intuition*2;
-
-},
-
-{}
-
+    &quot;weaknessAnalysis&quot;,
+    &quot;Анализ слабостей&quot;,
+    &quot;&quot;,
+    &quot;Способность находить уязвимые места противников и объектов.&quot;,
+    function(s){ return s.logic*3 + s.intuition*2 + s.caution; },
+    { minStats: { logic: 18, intuition: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.readInformation = _createResult(
-
-&quot;readInformation&quot;,
-
-&quot;Чтение информации&quot;,
-
-&quot;Получение скрытых знаний о мире и существах.&quot;,
-
-
-function(s){
-
-return s.knowledge*3
-+s.logic;
-
-},
-
-{}
-
+    &quot;readInformation&quot;,
+    &quot;Чтение информации&quot;,
+    &quot;&quot;,
+    &quot;Получение скрытых знаний о мире и существах.&quot;,
+    function(s){ return s.knowledge*3 + s.logic + s.intuition; },
+    { minStats: { knowledge: 18, logic: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.perfectMemory = _createResult(
-
-&quot;perfectMemory&quot;,
-
-&quot;Идеальная память&quot;,
-
-&quot;Способность сохранять и использовать огромные объёмы знаний.&quot;,
-
-
-function(s){
-
-return s.knowledge*4
-+s.selfControl;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;perfectMemory&quot;,
+    &quot;Идеальная память&quot;,
+    &quot;&quot;,
+    &quot;Способность сохранять и использовать огромные объёмы знаний.&quot;,
+    function(s){ return s.knowledge*4 + s.selfControl + s.logic; },
+    { minStats: { knowledge: 22, selfControl: 14 } }
+)&gt;&gt;
 
 /* =========================================================
-   БОЕВЫЕ НАВЫКИ
-========================================================= */
-
+   БОЕВЫЕ НАВЫКИ (5 штук) — minStats 12-20
+   ========================================================= */
 
 &lt;&lt;set $skillDatabase.weaponMaster = _createResult(
-
-&quot;weaponMaster&quot;,
-
-&quot;Мастер оружия&quot;,
-
-&quot;Совершенное владение оружием любого типа.&quot;,
-
-
-function(s){
-
-return s.will*3
-+s.determination;
-
-},
-
-{}
-
+    &quot;weaponMaster&quot;,
+    &quot;Мастер оружия&quot;,
+    &quot;&quot;,
+    &quot;Совершенное владение оружием любого типа.&quot;,
+    function(s){ return s.will*3 + s.determination + s.adaptability; },
+    { minStats: { will: 18, determination: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.battleInstinct = _createResult(
-
-&quot;battleInstinct&quot;,
-
-&quot;Боевой инстинкт&quot;,
-
-&quot;Интуитивное понимание боя и действий противника.&quot;,
-
-
-function(s){
-
-return s.intuition*2
-+s.will*2;
-
-},
-
-{}
-
+    &quot;battleInstinct&quot;,
+    &quot;Боевой инстинкт&quot;,
+    &quot;&quot;,
+    &quot;Интуитивное понимание боя и действий противника.&quot;,
+    function(s){ return s.intuition*2 + s.will*2 + s.caution; },
+    { minStats: { intuition: 16, will: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.attackPrediction = _createResult(
-
-&quot;attackPrediction&quot;,
-
-&quot;Предвидение атак&quot;,
-
-&quot;Способность предугадывать движения врага.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.caution;
-
-},
-
-{}
-
+    &quot;attackPrediction&quot;,
+    &quot;Предвидение атак&quot;,
+    &quot;&quot;,
+    &quot;Способность предугадывать движения врага.&quot;,
+    function(s){ return s.intuition*3 + s.caution + s.will; },
+    { minStats: { intuition: 18, caution: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.improvedReaction = _createResult(
-
-&quot;improvedReaction&quot;,
-
-&quot;Улучшенная реакция&quot;,
-
-&quot;Мгновенная реакция на опасность.&quot;,
-
-
-function(s){
-
-return s.adaptability*2
-+s.selfControl;
-
-},
-
-{}
-
+    &quot;improvedReaction&quot;,
+    &quot;Улучшенная реакция&quot;,
+    &quot;&quot;,
+    &quot;Мгновенная реакция на опасность.&quot;,
+    function(s){ return s.adaptability*2 + s.selfControl + s.intuition; },
+    { minStats: { adaptability: 16, selfControl: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.copyTechniques = _createResult(
-
-&quot;copyTechniques&quot;,
-
-&quot;Копирование техник&quot;,
-
-&quot;Способность изучать чужие боевые приёмы.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.adaptability*2;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;copyTechniques&quot;,
+    &quot;Копирование техник&quot;,
+    &quot;&quot;,
+    &quot;Способность изучать чужие боевые приёмы.&quot;,
+    function(s){ return s.curiosity*2 + s.adaptability*2 + s.intuition; },
+    { minStats: { curiosity: 18, adaptability: 14 } }
+)&gt;&gt;
 
 /* =========================================================
-   МАГИЧЕСКИЕ НАВЫКИ
-========================================================= */
-
+   МАГИЧЕСКИЕ НАВЫКИ (5 штук) — minStats 14-22
+   ========================================================= */
 
 &lt;&lt;set $skillDatabase.manaControl = _createResult(
-
-&quot;manaControl&quot;,
-
-&quot;Контроль маны&quot;,
-
-&quot;Точное управление внутренней магической энергией.&quot;,
-
-
-function(s){
-
-return s.knowledge*2
-+s.logic
-+s.intuition;
-
-},
-
-{}
-
+    &quot;manaControl&quot;,
+    &quot;Контроль маны&quot;,
+    &quot;&quot;,
+    &quot;Точное управление внутренней магической энергией.&quot;,
+    function(s){ return s.knowledge*2 + s.logic + s.intuition; },
+    { minStats: { knowledge: 16, logic: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.magicEnhancement = _createResult(
-
-&quot;magicEnhancement&quot;,
-
-&quot;Усиление магии&quot;,
-
-&quot;Увеличение силы магических способностей.&quot;,
-
-
-function(s){
-
-return s.will
-+s.knowledge*2;
-
-},
-
-{}
-
+    &quot;magicEnhancement&quot;,
+    &quot;Усиление магии&quot;,
+    &quot;&quot;,
+    &quot;Увеличение силы магических способностей.&quot;,
+    function(s){ return s.will + s.knowledge*2 + s.logic; },
+    { minStats: { will: 14, knowledge: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.spellCreation = _createResult(
-
-&quot;spellCreation&quot;,
-
-&quot;Создание заклинаний&quot;,
-
-&quot;Создание новых магических формул.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.knowledge*2;
-
-},
-
-{}
-
+    &quot;spellCreation&quot;,
+    &quot;Создание заклинаний&quot;,
+    &quot;&quot;,
+    &quot;Создание новых магических формул.&quot;,
+    function(s){ return s.logic*3 + s.knowledge*2 + s.curiosity; },
+    { minStats: { logic: 20, knowledge: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.magicAbsorption = _createResult(
-
-&quot;magicAbsorption&quot;,
-
-&quot;Поглощение магии&quot;,
-
-&quot;Способность принимать чужую магическую энергию.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.will;
-
-},
-
-{}
-
+    &quot;magicAbsorption&quot;,
+    &quot;Поглощение магии&quot;,
+    &quot;&quot;,
+    &quot;Способность принимать чужую магическую энергию.&quot;,
+    function(s){ return s.curiosity*2 + s.will + s.selfControl; },
+    { minStats: { curiosity: 18, will: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.elementFusion = _createResult(
-
-&quot;elementFusion&quot;,
-
-&quot;Слияние стихий&quot;,
-
-&quot;Объединение различных природных сил.&quot;,
-
-
-function(s){
-
-return s.nature*2
-+s.adaptability*2;
-
-},
-
-{}
-
-)&gt;
+    &quot;elementFusion&quot;,
+    &quot;Слияние стихий&quot;,
+    &quot;&quot;,
+    &quot;Объединение различных природных сил.&quot;,
+    function(s){ return s.nature*2 + s.adaptability*2 + s.intuition; },
+    { minStats: { nature: 18, adaptability: 14 } }
+)&gt;&gt;
 
 /* =========================================================
-   СКРЫТЫЕ НАВЫКИ
-========================================================= */
-
+   СКРЫТЫЕ НАВЫКИ (5 штук) — minStats 20-24
+   ========================================================= */
 
 &lt;&lt;set $skillDatabase.stealth = _createResult(
-
-&quot;stealth&quot;,
-
-&quot;Скрытность&quot;,
-
-&quot;Способность скрывать своё присутствие и действовать незаметно.&quot;,
-
-
-function(s){
-
-return s.independence*3
-+s.caution*2;
-
-},
-
-{}
-
+    &quot;stealth&quot;,
+    &quot;Скрытность&quot;,
+    &quot;&quot;,
+    &quot;Способность скрывать своё присутствие и действовать незаметно.&quot;,
+    function(s){ return s.independence*3 + s.caution*2 + s.adaptability; },
+    { minStats: { independence: 20, caution: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.invisibility = _createResult(
-
-&quot;invisibility&quot;,
-
-&quot;Невидимость&quot;,
-
-&quot;Позволяет скрывать тело и энергию от наблюдения.&quot;,
-
-
-function(s){
-
-return s.independence*3
-+s.caution*2;
-
-},
-
-{}
-
+    &quot;invisibility&quot;,
+    &quot;Невидимость&quot;,
+    &quot;&quot;,
+    &quot;Позволяет скрывать тело и энергию от наблюдения.&quot;,
+    function(s){ return s.independence*3 + s.caution*2 + s.curiosity; },
+    { minStats: { independence: 22, caution: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.illusionForm = _createResult(
-
-&quot;illusionForm&quot;,
-
-&quot;Иллюзорная форма&quot;,
-
-&quot;Создание иллюзорного образа собственного существования.&quot;,
-
-
-function(s){
-
-return s.curiosity*3
-+s.adaptability*2;
-
-},
-
-{}
-
+    &quot;illusionForm&quot;,
+    &quot;Иллюзорная форма&quot;,
+    &quot;&quot;,
+    &quot;Создание иллюзорного образа собственного существования.&quot;,
+    function(s){ return s.curiosity*3 + s.adaptability*2 + s.charisma; },
+    { minStats: { curiosity: 22, adaptability: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.telepathy = _createResult(
-
-&quot;telepathy&quot;,
-
-&quot;Телепатия&quot;,
-
-&quot;Способность воспринимать мысли и эмоции других существ.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.empathy*2;
-
-},
-
-{}
-
+    &quot;telepathy&quot;,
+    &quot;Телепатия&quot;,
+    &quot;&quot;,
+    &quot;Способность воспринимать мысли и эмоции других существ.&quot;,
+    function(s){ return s.intuition*3 + s.empathy*2 + s.curiosity; },
+    { minStats: { intuition: 22, empathy: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.readMind = _createResult(
-
-&quot;readMind&quot;,
-
-&quot;Чтение мыслей&quot;,
-
-&quot;Глубокое проникновение в сознание другого существа.&quot;,
-
-
-function(s){
-
-return s.intuition*4
-+s.curiosity;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;readMind&quot;,
+    &quot;Чтение мыслей&quot;,
+    &quot;&quot;,
+    &quot;Глубокое проникновение в сознание другого существа.&quot;,
+    function(s){ return s.intuition*4 + s.curiosity + s.empathy; },
+    { minStats: { intuition: 24, curiosity: 16 } }
+)&gt;&gt;
 
 /* =========================================================
-   РЕДКИЕ НАВЫКИ
-========================================================= */
-
+   РЕДКИЕ НАВЫКИ (8 штук) — minStats 24-28 (легендарные)
+   Штраф -15 за редкость
+   ========================================================= */
 
 &lt;&lt;set $skillDatabase.futureSight = _createResult(
-
-&quot;futureSight&quot;,
-
-&quot;Предвидение будущего&quot;,
-
-&quot;Способность видеть возможные варианты будущих событий.&quot;,
-
-
-function(s){
-
-return s.intuition*4
-+s.knowledge*2;
-
-},
-
-{}
-
+    &quot;futureSight&quot;,
+    &quot;Предвидение будущего&quot;,
+    &quot;&quot;,
+    &quot;Способность видеть возможные варианты будущих событий.&quot;,
+    function(s){ return s.intuition*4 + s.knowledge*2 + s.selfControl; },
+    { minStats: { intuition: 26, knowledge: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.rebirth = _createResult(
-
-&quot;rebirth&quot;,
-
-&quot;Возрождение&quot;,
-
-&quot;Сила возвращения после смертельных повреждений.&quot;,
-
-
-function(s){
-
-return s.nature*3
-+s.will*2
-+s.selfControl;
-
-},
-
-{}
-
+    &quot;rebirth&quot;,
+    &quot;Возрождение&quot;,
+    &quot;&quot;,
+    &quot;Сила возвращения после смертельных повреждений.&quot;,
+    function(s){ return s.nature*3 + s.will*2 + s.selfControl; },
+    { minStats: { nature: 24, will: 20, selfControl: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.immortality = _createResult(
-
-&quot;immortality&quot;,
-
-&quot;Бессмертие&quot;,
-
-&quot;Преодоление естественного ограничения жизни.&quot;,
-
-
-function(s){
-
-return s.selfControl*4
-+s.will*2;
-
-},
-
-{}
-
+    &quot;immortality&quot;,
+    &quot;Бессмертие&quot;,
+    &quot;&quot;,
+    &quot;Преодоление естественного ограничения жизни.&quot;,
+    function(s){ return s.selfControl*4 + s.will*2 + s.patience; },
+    { minStats: { selfControl: 28, will: 20, patience: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.abilitySteal = _createResult(
-
-&quot;abilitySteal&quot;,
-
-&quot;Кража способностей&quot;,
-
-&quot;Способность присваивать чужие силы.&quot;,
-
-
-function(s){
-
-return s.curiosity*3
-+s.adaptability*2;
-
-},
-
-{}
-
+    &quot;abilitySteal&quot;,
+    &quot;Кража способностей&quot;,
+    &quot;&quot;,
+    &quot;Способность присваивать чужие силы.&quot;,
+    function(s){ return s.curiosity*3 + s.adaptability*2 + s.will; },
+    { minStats: { curiosity: 24, adaptability: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.lifeCreation = _createResult(
-
-&quot;lifeCreation&quot;,
-
-&quot;Создание жизни&quot;,
-
-&quot;Высшая способность создавать новые формы жизни.&quot;,
-
-
-function(s){
-
-return s.nature*3
-+s.charisma*2;
-
-},
-
-{}
-
+    &quot;lifeCreation&quot;,
+    &quot;Создание жизни&quot;,
+    &quot;&quot;,
+    &quot;Высшая способность создавать новые формы жизни.&quot;,
+    function(s){ return s.nature*3 + s.charisma*2 + s.empathy; },
+    { minStats: { nature: 26, charisma: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.realityChange = _createResult(
-
-&quot;realityChange&quot;,
-
-&quot;Изменение реальности&quot;,
-
-&quot;Возможность воздействовать на саму структуру мира.&quot;,
-
-
-function(s){
-
-return s.charisma*3
-+s.logic*3;
-
-},
-
-{}
-
+    &quot;realityChange&quot;,
+    &quot;Изменение реальности&quot;,
+    &quot;&quot;,
+    &quot;Возможность воздействовать на саму структуру мира.&quot;,
+    function(s){ return s.charisma*3 + s.logic*3 + s.will; },
+    { minStats: { charisma: 24, logic: 24, will: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.spaceControl = _createResult(
-
-&quot;spaceControl&quot;,
-
-&quot;Контроль пространства&quot;,
-
-&quot;Управление расстояниями и пространственными связями.&quot;,
-
-
-function(s){
-
-return s.logic*3
-+s.curiosity*2;
-
-},
-
-{}
-
+    &quot;spaceControl&quot;,
+    &quot;Контроль пространства&quot;,
+    &quot;&quot;,
+    &quot;Управление расстояниями и пространственными связями.&quot;,
+    function(s){ return s.logic*3 + s.curiosity*2 + s.adaptability; },
+    { minStats: { logic: 24, curiosity: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $skillDatabase.timeControl = _createResult(
-
-&quot;timeControl&quot;,
-
-&quot;Контроль времени&quot;,
-
-&quot;Управление течением времени.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.logic*2;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;timeControl&quot;,
+    &quot;Контроль времени&quot;,
+    &quot;&quot;,
+    &quot;Управление течением времени.&quot;,
+    function(s){ return s.intuition*3 + s.logic*2 + s.selfControl; },
+    { minStats: { intuition: 24, logic: 20 } }
+)&gt;&gt;
 
 /* =========================================================
-   ВЫБОР НАВЫКА
-========================================================= */
-
+   ВЫБОР НАВЫКА (С ПРОВЕРКОЙ ТРЕБОВАНИЙ)
+   Редкие навыки: -15 штрафа
+   ========================================================= */
 
 &lt;&lt;set $skill = &quot;analysis&quot;&gt;&gt;
-
 &lt;&lt;set $highestSkill = -999&gt;&gt;
-
-
+&lt;&lt;set $availableSkillsCount = 0&gt;&gt;
 
 &lt;&lt;for _skillID range Object.keys($skillDatabase)&gt;&gt;
-
-
-	&lt;&lt;set _skill = $skillDatabase[_skillID]&gt;&gt;
-
-	&lt;&lt;set _score = _skill.formula(_stats)&gt;&gt;
-
-
-	&lt;&lt;if _score &gt; $highestSkill&gt;&gt;
-
-
-		&lt;&lt;set $highestSkill = _score&gt;&gt;
-
-		&lt;&lt;set $skill = _skillID&gt;&gt;
-
-		&lt;&lt;set $skillData = _skill&gt;&gt;
-
-
-	&lt;&lt;/if&gt;&gt;
-
-
+    &lt;&lt;set _skill = $skillDatabase[_skillID]&gt;&gt;
+    
+    &lt;&lt;if _checkRequirements(_skill.requirements, _stats)&gt;&gt;
+        &lt;&lt;set $availableSkillsCount = $availableSkillsCount + 1&gt;&gt;
+        &lt;&lt;set _score = _skill.formula(_stats)&gt;&gt;
+        
+        // Штраф для редких навыков
+        &lt;&lt;if _skillID == &quot;futureSight&quot; or _skillID == &quot;rebirth&quot; or _skillID == &quot;immortality&quot; or _skillID == &quot;abilitySteal&quot; or _skillID == &quot;lifeCreation&quot; or _skillID == &quot;realityChange&quot; or _skillID == &quot;spaceControl&quot; or _skillID == &quot;timeControl&quot;&gt;&gt;
+            &lt;&lt;set _score = _score - 15&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+        
+        &lt;&lt;if _score &gt; $highestSkill&gt;&gt;
+            &lt;&lt;set $highestSkill = _score&gt;&gt;
+            &lt;&lt;set $skill = _skillID&gt;&gt;
+            &lt;&lt;set $skillData = _skill&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
+// Страховка
+&lt;&lt;if $availableSkillsCount == 0&gt;&gt;
+    &lt;&lt;set $skill = &quot;analysis&quot;&gt;&gt;
+    &lt;&lt;set $skillData = $skillDatabase.analysis&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
 /* =========================================================
-   БЛАГОСЛОВЕНИЕ
-========================================================= */
-
+   DATABASE
+   BLESSINGS
+   ========================================================= */
 
 /* =========================================================
-   ОБЫЧНЫЕ БЛАГОСЛОВЕНИЯ
-========================================================= */
-
+   ОБЫЧНЫЕ БЛАГОСЛОВЕНИЯ (6 штук) — minStats 10-14
+   ========================================================= */
 
 &lt;&lt;set $blessingDatabase.fate = _createResult(
-
-&quot;fate&quot;,
-
-&quot;Благословение Судьбы&quot;,
-
-&quot;Сила, позволяющая идти по предназначенному пути.&quot;,
-
-
-function(s){
-
-return s.intuition*2
-+s.knowledge;
-
-},
-
-{}
-
+    &quot;fate&quot;,
+    &quot;Благословение Судьбы&quot;,
+    &quot;&quot;,
+    &quot;Сила, позволяющая идти по предназначенному пути.&quot;,
+    function(s){ return s.intuition*2 + s.knowledge + s.selfControl; },
+    { minStats: { intuition: 12, knowledge: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.luck = _createResult(
-
-&quot;luck&quot;,
-
-&quot;Благословение Удачи&quot;,
-
-&quot;Скрытая сила, изменяющая вероятность событий.&quot;,
-
-
-function(s){
-
-return s.charisma*2
-+s.adaptability;
-
-},
-
-{}
-
+    &quot;luck&quot;,
+    &quot;Благословение Удачи&quot;,
+    &quot;&quot;,
+    &quot;Скрытая сила, изменяющая вероятность событий.&quot;,
+    function(s){ return s.charisma*2 + s.adaptability + s.intuition; },
+    { minStats: { charisma: 12, adaptability: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.courage = _createResult(
-
-&quot;courage&quot;,
-
-&quot;Благословение Мужества&quot;,
-
-&quot;Укрепляет волю и способность преодолевать страх.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.determination;
-
-},
-
-{}
-
+    &quot;courage&quot;,
+    &quot;Благословение Мужества&quot;,
+    &quot;&quot;,
+    &quot;Укрепляет волю и способность преодолевать страх.&quot;,
+    function(s){ return s.will*2 + s.determination + s.selfControl; },
+    { minStats: { will: 14, determination: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.wisdom = _createResult(
-
-&quot;wisdom&quot;,
-
-&quot;Благословение Мудрости&quot;,
-
-&quot;Дар глубокого понимания мира.&quot;,
-
-
-function(s){
-
-return s.knowledge*2
-+s.logic;
-
-},
-
-{}
-
+    &quot;wisdom&quot;,
+    &quot;Благословение Мудрости&quot;,
+    &quot;&quot;,
+    &quot;Дар глубокого понимания мира.&quot;,
+    function(s){ return s.knowledge*2 + s.logic + s.intuition; },
+    { minStats: { knowledge: 14, logic: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.endurance = _createResult(
-
-&quot;endurance&quot;,
-
-&quot;Благословение Стойкости&quot;,
-
-&quot;Защищает разум и тело от разрушения.&quot;,
-
-
-function(s){
-
-return s.patience*2
-+s.selfControl;
-
-},
-
-{}
-
+    &quot;endurance&quot;,
+    &quot;Благословение Стойкости&quot;,
+    &quot;&quot;,
+    &quot;Защищает разум и тело от разрушения.&quot;,
+    function(s){ return s.patience*2 + s.selfControl + s.will; },
+    { minStats: { patience: 14, selfControl: 10 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.guardian = _createResult(
-
-&quot;guardian&quot;,
-
-&quot;Благословение Защитника&quot;,
-
-&quot;Сила защиты союзников и сохранения порядка.&quot;,
-
-
-function(s){
-
-return s.justice*2
-+s.order;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;guardian&quot;,
+    &quot;Благословение Защитника&quot;,
+    &quot;&quot;,
+    &quot;Сила защиты союзников и сохранения порядка.&quot;,
+    function(s){ return s.justice*2 + s.order + s.empathy; },
+    { minStats: { justice: 14, order: 10 } }
+)&gt;&gt;
 
 /* =========================================================
-   СТИХИЙНЫЕ БЛАГОСЛОВЕНИЯ
-========================================================= */
-
+   СТИХИЙНЫЕ БЛАГОСЛОВЕНИЯ (6 штук) — minStats 16-18
+   ========================================================= */
 
 &lt;&lt;set $blessingDatabase.fire = _createResult(
-
-&quot;fire&quot;,
-
-&quot;Благословение Огня&quot;,
-
-&quot;Дар владения энергией пламени.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.determination;
-
-},
-
-{}
-
+    &quot;fire&quot;,
+    &quot;Благословение Огня&quot;,
+    &quot;&quot;,
+    &quot;Дар владения энергией пламени.&quot;,
+    function(s){ return s.will*2 + s.determination + s.curiosity; },
+    { minStats: { will: 16, determination: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.water = _createResult(
-
-&quot;water&quot;,
-
-&quot;Благословение Воды&quot;,
-
-&quot;Гибкость и сила изменяющегося потока.&quot;,
-
-
-function(s){
-
-return s.empathy
-+s.adaptability*2;
-
-},
-
-{}
-
+    &quot;water&quot;,
+    &quot;Благословение Воды&quot;,
+    &quot;&quot;,
+    &quot;Гибкость и сила изменяющегося потока.&quot;,
+    function(s){ return s.empathy + s.adaptability*2 + s.intuition; },
+    { minStats: { empathy: 12, adaptability: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.earth = _createResult(
-
-&quot;earth&quot;,
-
-&quot;Благословение Земли&quot;,
-
-&quot;Дар устойчивости и защиты.&quot;,
-
-
-function(s){
-
-return s.patience*2
-+s.order;
-
-},
-
-{}
-
+    &quot;earth&quot;,
+    &quot;Благословение Земли&quot;,
+    &quot;&quot;,
+    &quot;Дар устойчивости и защиты.&quot;,
+    function(s){ return s.patience*2 + s.order + s.caution; },
+    { minStats: { patience: 16, order: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.air = _createResult(
-
-&quot;air&quot;,
-
-&quot;Благословение Воздуха&quot;,
-
-&quot;Свобода движения и независимый путь.&quot;,
-
-
-function(s){
-
-return s.independence*2
-+s.adaptability;
-
-},
-
-{}
-
+    &quot;air&quot;,
+    &quot;Благословение Воздуха&quot;,
+    &quot;&quot;,
+    &quot;Свобода движения и независимый путь.&quot;,
+    function(s){ return s.independence*2 + s.adaptability + s.curiosity; },
+    { minStats: { independence: 16, adaptability: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.ice = _createResult(
-
-&quot;ice&quot;,
-
-&quot;Благословение Льда&quot;,
-
-&quot;Холодный контроль эмоций и энергии.&quot;,
-
-
-function(s){
-
-return s.selfControl*2
-+s.logic;
-
-},
-
-{}
-
+    &quot;ice&quot;,
+    &quot;Благословение Льда&quot;,
+    &quot;&quot;,
+    &quot;Холодный контроль эмоций и энергии.&quot;,
+    function(s){ return s.selfControl*2 + s.logic + s.patience; },
+    { minStats: { selfControl: 16, logic: 12 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.lightning = _createResult(
-
-&quot;lightning&quot;,
-
-&quot;Благословение Молнии&quot;,
-
-&quot;Мгновенная сила энергии и скорости.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.will;
-
-},
-
-{}
-
+    &quot;lightning&quot;,
+    &quot;Благословение Молнии&quot;,
+    &quot;&quot;,
+    &quot;Мгновенная сила энергии и скорости.&quot;,
+    function(s){ return s.curiosity*2 + s.will + s.adventure; },
+    { minStats: { curiosity: 16, will: 12 } }
 )&gt;&gt;
 
-
-
-
 /* =========================================================
-   ВЫСШИЕ БЛАГОСЛОВЕНИЯ
-========================================================= */
-
+   ВЫСШИЕ БЛАГОСЛОВЕНИЯ (6 штук) — minStats 20-24
+   ========================================================= */
 
 &lt;&lt;set $blessingDatabase.light = _createResult(
-
-&quot;light&quot;,
-
-&quot;Благословение Света&quot;,
-
-&quot;Дар чистой энергии порядка и справедливости.&quot;,
-
-
-function(s){
-
-return s.justice*3
-+s.order;
-
-},
-
-{}
-
+    &quot;light&quot;,
+    &quot;Благословение Света&quot;,
+    &quot;&quot;,
+    &quot;Дар чистой энергии порядка и справедливости.&quot;,
+    function(s){ return s.justice*3 + s.order + s.empathy; },
+    { minStats: { justice: 20, order: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.moon = _createResult(
-
-&quot;moon&quot;,
-
-&quot;Благословение Луны&quot;,
-
-&quot;Связь с тайнами ночи и интуицией.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.nature;
-
-},
-
-{}
-
+    &quot;moon&quot;,
+    &quot;Благословение Луны&quot;,
+    &quot;&quot;,
+    &quot;Связь с тайнами ночи и интуицией.&quot;,
+    function(s){ return s.intuition*3 + s.nature + s.curiosity; },
+    { minStats: { intuition: 20, nature: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.sun = _createResult(
-
-&quot;sun&quot;,
-
-&quot;Благословение Солнца&quot;,
-
-&quot;Энергия жизни и внутреннего сияния.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.charisma;
-
-},
-
-{}
-
+    &quot;sun&quot;,
+    &quot;Благословение Солнца&quot;,
+    &quot;&quot;,
+    &quot;Энергия жизни и внутреннего сияния.&quot;,
+    function(s){ return s.will*2 + s.charisma + s.selfControl; },
+    { minStats: { will: 18, charisma: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.life = _createResult(
-
-&quot;life&quot;,
-
-&quot;Благословение Жизни&quot;,
-
-&quot;Сила восстановления и созидания.&quot;,
-
-
-function(s){
-
-return s.nature*2
-+s.empathy*2;
-
-},
-
-{}
-
+    &quot;life&quot;,
+    &quot;Благословение Жизни&quot;,
+    &quot;&quot;,
+    &quot;Сила восстановления и созидания.&quot;,
+    function(s){ return s.nature*2 + s.empathy*2 + s.patience; },
+    { minStats: { nature: 18, empathy: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.soul = _createResult(
-
-&quot;soul&quot;,
-
-&quot;Благословение Души&quot;,
-
-&quot;Глубокая связь с духовной сущностью.&quot;,
-
-
-function(s){
-
-return s.empathy*3
-+s.intuition;
-
-},
-
-{}
-
+    &quot;soul&quot;,
+    &quot;Благословение Души&quot;,
+    &quot;&quot;,
+    &quot;Глубокая связь с духовной сущностью.&quot;,
+    function(s){ return s.empathy*3 + s.intuition + s.selfControl; },
+    { minStats: { empathy: 22, intuition: 14 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.time = _createResult(
-
-&quot;time&quot;,
-
-&quot;Благословение Времени&quot;,
-
-&quot;Дар чувствовать течение времени.&quot;,
-
-
-function(s){
-
-return s.intuition*2
-+s.logic;
-
-},
-
-{}
-
-)&gt;
+    &quot;time&quot;,
+    &quot;Благословение Времени&quot;,
+    &quot;&quot;,
+    &quot;Дар чувствовать течение времени.&quot;,
+    function(s){ return s.intuition*2 + s.logic + s.patience; },
+    { minStats: { intuition: 20, logic: 14 } }
+)&gt;&gt;
 
 /* =========================================================
-   БОЖЕСТВЕННЫЕ БЛАГОСЛОВЕНИЯ
-========================================================= */
-
+   БОЖЕСТВЕННЫЕ БЛАГОСЛОВЕНИЯ (5 штук) — minStats 28+ (легендарные)
+   Штраф -10 за редкость
+   ========================================================= */
 
 &lt;&lt;set $blessingDatabase.dragonBlessing = _createResult(
-
-&quot;dragonBlessing&quot;,
-
-&quot;Благословение Дракона&quot;,
-
-&quot;Древний дар драконьей силы, стойкости и величия.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;dragon&quot; ? 30 : 0)
-+s.will*2
-+s.determination;
-
-},
-
-{}
-
+    &quot;dragonBlessing&quot;,
+    &quot;Благословение Дракона&quot;,
+    &quot;&quot;,
+    &quot;Древний дар драконьей силы, стойкости и величия.&quot;,
+    function(s){ 
+        let bonus = $raceData.id == &quot;dragon&quot; ? 30 : 0;
+        return bonus + s.will*2 + s.determination + s.patience; 
+    },
+    { minStats: { will: 24, determination: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.warGod = _createResult(
-
-&quot;warGod&quot;,
-
-&quot;Благословение Бога Войны&quot;,
-
-&quot;Сила победителей, рождённых для великих сражений.&quot;,
-
-
-function(s){
-
-return ($classData.id == &quot;warrior&quot; ? 25 : 0)
-+s.will*2
-+s.justice;
-
-},
-
-{}
-
+    &quot;warGod&quot;,
+    &quot;Благословение Бога Войны&quot;,
+    &quot;&quot;,
+    &quot;Сила победителей, рождённых для великих сражений.&quot;,
+    function(s){ 
+        let bonus = $classData.id == &quot;warrior&quot; ? 25 : 0;
+        return bonus + s.will*2 + s.justice + s.determination; 
+    },
+    { minStats: { will: 20, justice: 16 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.knowledgeGod = _createResult(
-
-&quot;knowledgeGod&quot;,
-
-&quot;Благословение Бога Знаний&quot;,
-
-&quot;Дар абсолютного познания и понимания.&quot;,
-
-
-function(s){
-
-return (
-$classData.id == &quot;mage&quot;
-||
-$classData.id == &quot;archmage&quot;
-? 25 : 0
-)
-+s.knowledge*3
-+s.logic;
-
-},
-
-{}
-
+    &quot;knowledgeGod&quot;,
+    &quot;Благословение Бога Знаний&quot;,
+    &quot;&quot;,
+    &quot;Дар абсолютного познания и понимания.&quot;,
+    function(s){ 
+        let bonus = ($classData.id == &quot;mage&quot; || $classData.id == &quot;archmage&quot;) ? 25 : 0;
+        return bonus + s.knowledge*3 + s.logic + s.intuition; 
+    },
+    { minStats: { knowledge: 24, logic: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.creator = _createResult(
-
-&quot;creator&quot;,
-
-&quot;Благословение Творца&quot;,
-
-&quot;Энергия создателя, способная менять структуру мира.&quot;,
-
-
-function(s){
-
-return (
-$attributeData.id == &quot;creatorPower&quot;
-? 30 : 0
-)
-+s.charisma*3
-+s.adaptability;
-
-},
-
-{}
-
+    &quot;creator&quot;,
+    &quot;Благословение Творца&quot;,
+    &quot;&quot;,
+    &quot;Энергия создателя, способная менять структуру мира.&quot;,
+    function(s){ 
+        let bonus = $attributeData.id == &quot;creatorPower&quot; ? 30 : 0;
+        return bonus + s.charisma*3 + s.adaptability + s.logic; 
+    },
+    { minStats: { charisma: 24, adaptability: 18 } }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $blessingDatabase.firstLight = _createResult(
-
-&quot;firstLight&quot;,
-
-&quot;Благословение Первого Света&quot;,
-
-&quot;Древняя сила первичного света.&quot;,
-
-
-function(s){
-
-return (
-($raceData.id == &quot;angel&quot; || $raceData.id == &quot;fallenAngel&quot;)
-? 30
-: 0
-) + s.justice*3 + s.order;
-
-},
-
-{}
-
-)&gt;
-
-
-
+    &quot;firstLight&quot;,
+    &quot;Благословение Первого Света&quot;,
+    &quot;&quot;,
+    &quot;Древняя сила первичного света.&quot;,
+    function(s){ 
+        let bonus = ($raceData.id == &quot;angel&quot; || $raceData.id == &quot;fallenAngel&quot;) ? 30 : 0;
+        return bonus + s.justice*3 + s.order + s.empathy; 
+    },
+    { minStats: { justice: 26, order: 18, empathy: 16 } }
+)&gt;&gt;
 
 /* =========================================================
-   ВЫБОР БЛАГОСЛОВЕНИЯ
-========================================================= */
-
+   ВЫБОР БЛАГОСЛОВЕНИЯ (С ПРОВЕРКОЙ ТРЕБОВАНИЙ)
+   Божественные благословения: -10 штрафа
+   ========================================================= */
 
 &lt;&lt;set $blessing = &quot;fate&quot;&gt;&gt;
-
 &lt;&lt;set $highestBlessing = -999&gt;&gt;
-
-
+&lt;&lt;set $availableBlessingsCount = 0&gt;&gt;
 
 &lt;&lt;for _blessingID range Object.keys($blessingDatabase)&gt;&gt;
-
-
-	&lt;&lt;set _blessing = $blessingDatabase[_blessingID]&gt;&gt;
-
-	&lt;&lt;set _score = _blessing.formula(_stats)&gt;&gt;
-
-
-	&lt;&lt;if _score &gt; $highestBlessing&gt;&gt;
-
-
-		&lt;&lt;set $highestBlessing = _score&gt;&gt;
-
-		&lt;&lt;set $blessing = _blessingID&gt;&gt;
-
-		&lt;&lt;set $blessingData = _blessing&gt;&gt;
-
-
-	&lt;&lt;/if&gt;&gt;
-
-
+    &lt;&lt;set _blessing = $blessingDatabase[_blessingID]&gt;&gt;
+    
+    &lt;&lt;if _checkRequirements(_blessing.requirements, _stats)&gt;&gt;
+        &lt;&lt;set $availableBlessingsCount = $availableBlessingsCount + 1&gt;&gt;
+        &lt;&lt;set _score = _blessing.formula(_stats)&gt;&gt;
+        
+        // Штраф для божественных благословений
+        &lt;&lt;if _blessingID == &quot;dragonBlessing&quot; or _blessingID == &quot;warGod&quot; or _blessingID == &quot;knowledgeGod&quot; or _blessingID == &quot;creator&quot; or _blessingID == &quot;firstLight&quot;&gt;&gt;
+            &lt;&lt;set _score = _score - 10&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+        
+        &lt;&lt;if _score &gt; $highestBlessing&gt;&gt;
+            &lt;&lt;set $highestBlessing = _score&gt;&gt;
+            &lt;&lt;set $blessing = _blessingID&gt;&gt;
+            &lt;&lt;set $blessingData = _blessing&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
-/* =========================================================
-   ПРОКЛЯТИЕ
-========================================================= */
-
-
-/*
-    Структура проклятия:
-
-    penalty:
-    {
-        stat: &quot;will&quot;,
-        value: -5
-    }
-
-    Пока штрафы не применяются,
-    но система уже готова.
-*/
-
-
+// Страховка
+&lt;&lt;if $availableBlessingsCount == 0&gt;&gt;
+    &lt;&lt;set $blessing = &quot;fate&quot;&gt;&gt;
+    &lt;&lt;set $blessingData = $blessingDatabase.fate&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 /* =========================================================
-   ОБЫЧНЫЕ ПРОКЛЯТИЯ
-========================================================= */
+   DATABASE
+   CURSES
+   ========================================================= */
 
+/* =========================================================
+   ОБЫЧНЫЕ ПРОКЛЯТИЯ (5 штук) — БЕЗ ТРЕБОВАНИЙ (всегда доступны)
+   ========================================================= */
 
 &lt;&lt;set $curseDatabase.loneliness = _createResult(
-
-&quot;loneliness&quot;,
-
-&quot;Проклятие одиночества&quot;,
-
-&quot;Печать изоляции, заставляющая идти своим путём.&quot;,
-
-
-function(s){
-
-return s.independence*2;
-
-},
-
-{
-stat:&quot;charisma&quot;,
-value:-5
-}
-
+    &quot;loneliness&quot;,
+    &quot;Проклятие одиночества&quot;,
+    &quot;&quot;,
+    &quot;Печать изоляции, заставляющая идти своим путём.&quot;,
+    function(s){ return s.independence*2 + s.selfControl; },
+    {},
+    { stat: &quot;charisma&quot;, value: -5 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.forgottenMemory = _createResult(
-
-&quot;forgottenMemory&quot;,
-
-&quot;Проклятие забытых воспоминаний&quot;,
-
-&quot;Часть прошлого скрыта от сознания.&quot;,
-
-
-function(s){
-
-return s.knowledge
-+s.selfControl;
-
-},
-
-{
-stat:&quot;knowledge&quot;,
-value:-5
-}
-
+    &quot;forgottenMemory&quot;,
+    &quot;Проклятие забытых воспоминаний&quot;,
+    &quot;&quot;,
+    &quot;Часть прошлого скрыта от сознания.&quot;,
+    function(s){ return s.knowledge + s.selfControl + s.patience; },
+    {},
+    { stat: &quot;knowledge&quot;, value: -5 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.badLuck = _createResult(
-
-&quot;badLuck&quot;,
-
-&quot;Проклятие невезения&quot;,
-
-&quot;События часто складываются против носителя.&quot;,
-
-
-function(s){
-
-return s.adaptability;
-
-},
-
-{
-stat:&quot;luck&quot;,
-value:-5
-}
-
+    &quot;badLuck&quot;,
+    &quot;Проклятие невезения&quot;,
+    &quot;&quot;,
+    &quot;События часто складываются против носителя.&quot;,
+    function(s){ return s.adaptability + s.intuition; },
+    {},
+    { stat: &quot;luck&quot;, value: -5 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.exile = _createResult(
-
-&quot;exile&quot;,
-
-&quot;Проклятие изгнания&quot;,
-
-&quot;След изгнанника, отделяющий от общества.&quot;,
-
-
-function(s){
-
-return s.independence
-+s.justice;
-
-},
-
-{
-stat:&quot;charisma&quot;,
-value:-3
-}
-
+    &quot;exile&quot;,
+    &quot;Проклятие изгнания&quot;,
+    &quot;&quot;,
+    &quot;След изгнанника, отделяющий от общества.&quot;,
+    function(s){ return s.independence + s.justice + s.selfControl; },
+    {},
+    { stat: &quot;charisma&quot;, value: -3 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.insomnia = _createResult(
-
-&quot;insomnia&quot;,
-
-&quot;Проклятие бессонницы&quot;,
-
-&quot;Разум никогда полностью не отдыхает.&quot;,
-
-
-function(s){
-
-return s.curiosity
-+s.logic;
-
-},
-
-{
-stat:&quot;selfControl&quot;,
-value:-5
-}
-
-)&gt;
-
-
-
+    &quot;insomnia&quot;,
+    &quot;Проклятие бессонницы&quot;,
+    &quot;&quot;,
+    &quot;Разум никогда полностью не отдыхает.&quot;,
+    function(s){ return s.curiosity + s.logic + s.will; },
+    {},
+    { stat: &quot;selfControl&quot;, value: -5 }
+)&gt;&gt;
 
 /* =========================================================
-   БОЕВЫЕ ПРОКЛЯТИЯ
-========================================================= */
-
+   БОЕВЫЕ ПРОКЛЯТИЯ (4 штуки) — minStats 12-16
+   ========================================================= */
 
 &lt;&lt;set $curseDatabase.rage = _createResult(
-
-&quot;rage&quot;,
-
-&quot;Проклятие ярости&quot;,
-
-&quot;Безумная сила, которую сложно контролировать.&quot;,
-
-
-function(s){
-
-return s.will*3
-+s.determination;
-
-},
-
-{
-stat:&quot;selfControl&quot;,
-value:-10
-}
-
+    &quot;rage&quot;,
+    &quot;Проклятие ярости&quot;,
+    &quot;&quot;,
+    &quot;Безумная сила, которую сложно контролировать.&quot;,
+    function(s){ return s.will*3 + s.determination + s.caution; },
+    { minStats: { will: 16, determination: 12 } },
+    { stat: &quot;selfControl&quot;, value: -10 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.bloodThirst = _createResult(
-
-&quot;bloodThirst&quot;,
-
-&quot;Проклятие кровавой жажды&quot;,
-
-&quot;Неудержимое желание сражений.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.adventure;
-
-},
-
-{
-stat:&quot;empathy&quot;,
-value:-5
-}
-
+    &quot;bloodThirst&quot;,
+    &quot;Проклятие кровавой жажды&quot;,
+    &quot;&quot;,
+    &quot;Неудержимое желание сражений.&quot;,
+    function(s){ return s.will*2 + s.adventure + s.determination; },
+    { minStats: { will: 14, adventure: 8 } },
+    { stat: &quot;empathy&quot;, value: -5 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.eternalBattle = _createResult(
-
-&quot;eternalBattle&quot;,
-
-&quot;Проклятие вечной битвы&quot;,
-
-&quot;Судьба вечного воина.&quot;,
-
-
-function(s){
-
-return s.determination*3;
-
-},
-
-{
-stat:&quot;patience&quot;,
-value:-5
-}
-
+    &quot;eternalBattle&quot;,
+    &quot;Проклятие вечной битвы&quot;,
+    &quot;&quot;,
+    &quot;Судьба вечного воина.&quot;,
+    function(s){ return s.determination*3 + s.will + s.patience; },
+    { minStats: { determination: 16, will: 12 } },
+    { stat: &quot;patience&quot;, value: -5 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.brokenWeapon = _createResult(
-
-&quot;brokenWeapon&quot;,
-
-&quot;Проклятие сломанного оружия&quot;,
-
-&quot;Сила бойца ограничена потерями прошлого.&quot;,
-
-
-function(s){
-
-return s.patience
-+s.will;
-
-},
-
-{
-stat:&quot;determination&quot;,
-value:-5
-}
-
-)&gt;
-
-
-
+    &quot;brokenWeapon&quot;,
+    &quot;Проклятие сломанного оружия&quot;,
+    &quot;&quot;,
+    &quot;Сила бойца ограничена потерями прошлого.&quot;,
+    function(s){ return s.patience + s.will + s.determination; },
+    { minStats: { patience: 12, will: 10 } },
+    { stat: &quot;determination&quot;, value: -5 }
+)&gt;&gt;
 
 /* =========================================================
-   МАГИЧЕСКИЕ ПРОКЛЯТИЯ
-========================================================= */
-
+   МАГИЧЕСКИЕ ПРОКЛЯТИЯ (3 штуки) — minStats 14-18
+   ========================================================= */
 
 &lt;&lt;set $curseDatabase.unstablePower = _createResult(
-
-&quot;unstablePower&quot;,
-
-&quot;Проклятие нестабильной силы&quot;,
-
-&quot;Магическая энергия выходит из-под контроля.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.adaptability;
-
-},
-
-{
-stat:&quot;selfControl&quot;,
-value:-8
-}
-
+    &quot;unstablePower&quot;,
+    &quot;Проклятие нестабильной силы&quot;,
+    &quot;&quot;,
+    &quot;Магическая энергия выходит из-под контроля.&quot;,
+    function(s){ return s.curiosity*2 + s.adaptability + s.will; },
+    { minStats: { curiosity: 16, adaptability: 12 } },
+    { stat: &quot;selfControl&quot;, value: -8 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.forbiddenMagic = _createResult(
-
-&quot;forbiddenMagic&quot;,
-
-&quot;Проклятие запретной магии&quot;,
-
-&quot;Знания, которые опасно использовать.&quot;,
-
-
-function(s){
-
-return s.knowledge*2
-+s.curiosity*2;
-
-},
-
-{
-stat:&quot;empathy&quot;,
-value:-5
-}
-
+    &quot;forbiddenMagic&quot;,
+    &quot;Проклятие запретной магии&quot;,
+    &quot;&quot;,
+    &quot;Знания, которые опасно использовать.&quot;,
+    function(s){ return s.knowledge*2 + s.curiosity*2 + s.independence; },
+    { minStats: { knowledge: 16, curiosity: 14 } },
+    { stat: &quot;empathy&quot;, value: -5 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.reverseSpell = _createResult(
-
-&quot;reverseSpell&quot;,
-
-&quot;Проклятие обратного заклинания&quot;,
-
-&quot;Магия может обратиться против владельца.&quot;,
-
-
-function(s){
-
-return s.logic
-+s.curiosity*2;
-
-},
-
-{
-stat:&quot;will&quot;,
-value:-5
-}
-
-)&gt;
+    &quot;reverseSpell&quot;,
+    &quot;Проклятие обратного заклинания&quot;,
+    &quot;&quot;,
+    &quot;Магия может обратиться против владельца.&quot;,
+    function(s){ return s.logic + s.curiosity*2 + s.will; },
+    { minStats: { logic: 14, curiosity: 14 } },
+    { stat: &quot;will&quot;, value: -5 }
+)&gt;&gt;
 
 /* =========================================================
-   КРОВНЫЕ ПРОКЛЯТИЯ
-========================================================= */
-
+   КРОВНЫЕ ПРОКЛЯТИЯ (4 штуки) — minStats 18-22
+   ========================================================= */
 
 &lt;&lt;set $curseDatabase.vampireBlood = _createResult(
-
-&quot;vampireBlood&quot;,
-
-&quot;Проклятие вампирской крови&quot;,
-
-&quot;Древняя кровь, несущая жажду и вечное существование.&quot;,
-
-
-function(s){
-
-return (
-$bloodData.id == &quot;vampireBlood&quot;
-? 30 : 0
-)
-+s.curiosity;
-
-},
-
-{
-stat:&quot;empathy&quot;,
-value:-8
-}
-
+    &quot;vampireBlood&quot;,
+    &quot;Проклятие вампирской крови&quot;,
+    &quot;&quot;,
+    &quot;Древняя кровь, несущая жажду и вечное существование.&quot;,
+    function(s){ 
+        let bonus = $bloodData.id == &quot;vampireBlood&quot; ? 30 : 0;
+        return bonus + s.curiosity + s.intuition; 
+    },
+    { minStats: { curiosity: 14, intuition: 12 } },
+    { stat: &quot;empathy&quot;, value: -8 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.demonBlood = _createResult(
-
-&quot;demonBlood&quot;,
-
-&quot;Проклятие демонической крови&quot;,
-
-&quot;След демонического происхождения внутри души.&quot;,
-
-
-function(s){
-
-return (
-$bloodData.id == &quot;demonBlood&quot;
-? 30 : 0
-)
-+s.will;
-
-},
-
-{
-stat:&quot;selfControl&quot;,
-value:-8
-}
-
+    &quot;demonBlood&quot;,
+    &quot;Проклятие демонической крови&quot;,
+    &quot;&quot;,
+    &quot;След демонического происхождения внутри души.&quot;,
+    function(s){ 
+        let bonus = $bloodData.id == &quot;demonBlood&quot; ? 30 : 0;
+        return bonus + s.will + s.curiosity; 
+    },
+    { minStats: { will: 18, curiosity: 14 } },
+    { stat: &quot;selfControl&quot;, value: -8 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.dragonMadness = _createResult(
-
-&quot;dragonMadness&quot;,
-
-&quot;Проклятие драконьего безумия&quot;,
-
-&quot;Безудержная сила древней драконьей природы.&quot;,
-
-
-function(s){
-
-return (
-$bloodData.id == &quot;dragonBlood&quot;
-? 30 : 0
-)
-+s.determination;
-
-},
-
-{
-stat:&quot;patience&quot;,
-value:-8
-}
-
+    &quot;dragonMadness&quot;,
+    &quot;Проклятие драконьего безумия&quot;,
+    &quot;&quot;,
+    &quot;Безудержная сила древней драконьей природы.&quot;,
+    function(s){ 
+        let bonus = $bloodData.id == &quot;dragonBlood&quot; ? 30 : 0;
+        return bonus + s.determination + s.will; 
+    },
+    { minStats: { determination: 16, will: 14 } },
+    { stat: &quot;patience&quot;, value: -8 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.mixedBlood = _createResult(
-
-&quot;mixedBlood&quot;,
-
-&quot;Проклятие смешанной крови&quot;,
-
-&quot;Конфликт различных наследий внутри одного существа.&quot;,
-
-
-function(s){
-
-return s.adaptability*3;
-
-},
-
-{
-stat:&quot;selfControl&quot;,
-value:-5
-}
-
-)&gt;
-
-
-
+    &quot;mixedBlood&quot;,
+    &quot;Проклятие смешанной крови&quot;,
+    &quot;&quot;,
+    &quot;Конфликт различных наследий внутри одного существа.&quot;,
+    function(s){ return s.adaptability*3 + s.selfControl; },
+    { minStats: { adaptability: 16, selfControl: 12 } },
+    { stat: &quot;selfControl&quot;, value: -5 }
+)&gt;&gt;
 
 /* =========================================================
-   ЛЕГЕНДАРНЫЕ ПРОКЛЯТИЯ
-========================================================= */
-
+   ЛЕГЕНДАРНЫЕ ПРОКЛЯТИЯ (10 штук) — minStats 24+ (редкие)
+   Штраф +5 к порогу (чтобы не выпадали слишком часто)
+   ========================================================= */
 
 &lt;&lt;set $curseDatabase.fallenAngel = _createResult(
-
-&quot;fallenAngel&quot;,
-
-&quot;Проклятие падшего ангела&quot;,
-
-&quot;Печать утраченного света и разрушенной веры.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;fallenAngel&quot;
-? 35 : 0
-)
-+s.justice
-+s.independence*2;
-
-},
-
-{
-stat:&quot;empathy&quot;,
-value:-10
-}
-
+    &quot;fallenAngel&quot;,
+    &quot;Проклятие падшего ангела&quot;,
+    &quot;&quot;,
+    &quot;Печать утраченного света и разрушенной веры.&quot;,
+    function(s){ 
+        let bonus = $raceData.id == &quot;fallenAngel&quot; ? 35 : 0;
+        return bonus + s.justice + s.independence*2 + s.will; 
+    },
+    { minStats: { justice: 18, independence: 24, will: 18 } },
+    { stat: &quot;empathy&quot;, value: -10 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.dragonCurse = _createResult(
-
-&quot;dragonCurse&quot;,
-
-&quot;Проклятие дракона&quot;,
-
-&quot;След силы, которую невозможно полностью контролировать.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;dragon&quot;
-? 35 : 0
-)
-+s.will*2
-+s.determination;
-
-},
-
-{
-stat:&quot;selfControl&quot;,
-value:-10
-}
-
+    &quot;dragonCurse&quot;,
+    &quot;Проклятие дракона&quot;,
+    &quot;&quot;,
+    &quot;След силы, которую невозможно полностью контролировать.&quot;,
+    function(s){ 
+        let bonus = $raceData.id == &quot;dragon&quot; ? 35 : 0;
+        return bonus + s.will*2 + s.determination + s.patience; 
+    },
+    { minStats: { will: 26, determination: 20 } },
+    { stat: &quot;selfControl&quot;, value: -10 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.abyss = _createResult(
-
-&quot;abyss&quot;,
-
-&quot;Проклятие Бездны&quot;,
-
-&quot;Энергия глубин, поглощающая всё вокруг.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;archDemon&quot;
-? 25 : 0
-)
-+s.curiosity*3
-+s.will;
-
-},
-
-{
-stat:&quot;empathy&quot;,
-value:-10
-}
-
+    &quot;abyss&quot;,
+    &quot;Проклятие Бездны&quot;,
+    &quot;&quot;,
+    &quot;Энергия глубин, поглощающая всё вокруг.&quot;,
+    function(s){ 
+        let bonus = $raceData.id == &quot;archDemon&quot; ? 25 : 0;
+        return bonus + s.curiosity*3 + s.will + s.independence; 
+    },
+    { minStats: { curiosity: 24, will: 20 } },
+    { stat: &quot;empathy&quot;, value: -10 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.void = _createResult(
-
-&quot;void&quot;,
-
-&quot;Проклятие Пустоты&quot;,
-
-&quot;Связь с абсолютным отсутствием.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;void&quot;
-? 30 : 0
-)
-+
-($attributeData.id == &quot;voidPower&quot;
-? 20 : 0
-)
-+s.independence*2;
-
-},
-
-{
-stat:&quot;charisma&quot;,
-value:-10
-}
-
+    &quot;void&quot;,
+    &quot;Проклятие Пустоты&quot;,
+    &quot;&quot;,
+    &quot;Связь с абсолютным отсутствием.&quot;,
+    function(s){ 
+        let bonus = $raceData.id == &quot;void&quot; ? 30 : 0;
+        bonus += $attributeData.id == &quot;voidPower&quot; ? 20 : 0;
+        return bonus + s.independence*2 + s.logic + s.selfControl; 
+    },
+    { minStats: { independence: 26, logic: 20 } },
+    { stat: &quot;charisma&quot;, value: -10 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.eternalSleep = _createResult(
-
-&quot;eternalSleep&quot;,
-
-&quot;Проклятие Вечного сна&quot;,
-
-&quot;Состояние между жизнью и забвением.&quot;,
-
-
-function(s){
-
-return s.selfControl*2
-+s.patience*2;
-
-},
-
-{
-stat:&quot;will&quot;,
-value:-5
-}
-
+    &quot;eternalSleep&quot;,
+    &quot;Проклятие Вечного сна&quot;,
+    &quot;&quot;,
+    &quot;Состояние между жизнью и забвением.&quot;,
+    function(s){ return s.selfControl*2 + s.patience*2 + s.will; },
+    { minStats: { selfControl: 20, patience: 18 } },
+    { stat: &quot;will&quot;, value: -5 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.god = _createResult(
-
-&quot;god&quot;,
-
-&quot;Проклятие Бога&quot;,
-
-&quot;Наказание силой, превосходящей смертных.&quot;,
-
-
-function(s){
-
-return (
-$raceData.id == &quot;god&quot;
-? 35 : 0
-)
-+s.will*2;
-
-},
-
-{
-stat:&quot;empathy&quot;,
-value:-10
-}
-
+    &quot;god&quot;,
+    &quot;Проклятие Бога&quot;,
+    &quot;&quot;,
+    &quot;Наказание силой, превосходящей смертных.&quot;,
+    function(s){ 
+        let bonus = $raceData.id == &quot;god&quot; ? 35 : 0;
+        return bonus + s.will*2 + s.justice + s.order; 
+    },
+    { minStats: { will: 28, justice: 20 } },
+    { stat: &quot;empathy&quot;, value: -10 }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $curseDatabase.brokenFate = _createResult(
-
-&quot;brokenFate&quot;,
-
-&quot;Проклятие разрушенной судьбы&quot;,
-
-&quot;Сломанная линия будущего и невозможность предсказать путь.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.adaptability*2
-+s.independence;
-
-},
-
-{
-stat:&quot;intuition&quot;,
-value:-5
-}
-
-)&gt;
-
-
-
-
-/* =========================================================
-   ВЫБОР ПРОКЛЯТИЯ
-========================================================= */
-
-
-&lt;&lt;set $curse = &quot;none&quot;&gt;&gt;
-
-&lt;&lt;set $highestCurse = 5&gt;&gt;
-
-
-
-&lt;&lt;set $curseData = _createResult(
-
-&quot;none&quot;,
-
-&quot;Нет проклятия&quot;,
-
-&quot;Твоя судьба свободна от проклятий.&quot;,
-
-
-function(s){
-
-return 0;
-
-},
-
-{}
-
+    &quot;brokenFate&quot;,
+    &quot;Проклятие разрушенной судьбы&quot;,
+    &quot;&quot;,
+    &quot;Сломанная линия будущего и невозможность предсказать путь.&quot;,
+    function(s){ return s.curiosity*2 + s.adaptability*2 + s.independence; },
+    { minStats: { curiosity: 20, adaptability: 16 } },
+    { stat: &quot;intuition&quot;, value: -5 }
 )&gt;&gt;
 
+/* =========================================================
+   ВЫБОР ПРОКЛЯТИЯ (С ПРОВЕРКОЙ ТРЕБОВАНИЙ)
+   Легендарные проклятия: -5 штрафа к скору (чтобы были реже)
+   ========================================================= */
 
+&lt;&lt;set $curse = &quot;none&quot;&gt;&gt;
+&lt;&lt;set $highestCurse = 5&gt;&gt;
+&lt;&lt;set $availableCursesCount = 0&gt;&gt;
+
+&lt;&lt;set $curseData = _createResult(
+    &quot;none&quot;,
+    &quot;Нет проклятия&quot;,
+    &quot;&quot;,
+    &quot;Твоя судьба свободна от проклятий.&quot;,
+    function(s){ return 0; },
+    {}
+)&gt;&gt;
 
 &lt;&lt;for _curseID range Object.keys($curseDatabase)&gt;&gt;
-
-
-	&lt;&lt;set _curse = $curseDatabase[_curseID]&gt;&gt;
-
-	&lt;&lt;set _score = _curse.formula(_stats)&gt;&gt;
-
-
-	&lt;&lt;if _score &gt; $highestCurse&gt;&gt;
-
-
-		&lt;&lt;set $highestCurse = _score&gt;&gt;
-
-		&lt;&lt;set $curse = _curseID&gt;&gt;
-
-		&lt;&lt;set $curseData = _curse&gt;&gt;
-
-
-	&lt;&lt;/if&gt;&gt;
-
-
+    &lt;&lt;set _curse = $curseDatabase[_curseID]&gt;&gt;
+    
+    &lt;&lt;if _checkRequirements(_curse.requirements, _stats)&gt;&gt;
+        &lt;&lt;set $availableCursesCount = $availableCursesCount + 1&gt;&gt;
+        &lt;&lt;set _score = _curse.formula(_stats)&gt;&gt;
+        
+        // Штраф для легендарных проклятий (чтобы не выпадали слишком часто)
+        &lt;&lt;if _curseID == &quot;fallenAngel&quot; or _curseID == &quot;dragonCurse&quot; or _curseID == &quot;abyss&quot; or _curseID == &quot;void&quot; or _curseID == &quot;eternalSleep&quot; or _curseID == &quot;god&quot; or _curseID == &quot;brokenFate&quot;&gt;&gt;
+            &lt;&lt;set _score = _score - 5&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+        
+        &lt;&lt;if _score &gt; $highestCurse&gt;&gt;
+            &lt;&lt;set $highestCurse = _score&gt;&gt;
+            &lt;&lt;set $curse = _curseID&gt;&gt;
+            &lt;&lt;set $curseData = _curse&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
 /* =========================================================
    СИСТЕМА РОДА
 ========================================================= */
 
-
 /* =========================================================
    БАЗА РОДОВ
 ========================================================= */
 
-
 &lt;&lt;set $lineageDatabase = {}&gt;&gt;
-
-
 
 /* ---------- ПРОИСХОЖДЕНИЕ ---------- */
 
-
 &lt;&lt;set $lineageDatabase.peasant = _createResult(
-
-&quot;peasant&quot;,
-
-&quot;Крестьянский род&quot;,
-
-&quot;Простое происхождение, закалённое трудом, терпением и связью с землёй.&quot;,
-
-
-function(s){
-
-return s.nature
-+s.patience*2;
-
-}
-
+    &quot;peasant&quot;,
+    &quot;Крестьянский род&quot;,
+    &quot;&quot;,
+    &quot;Простое происхождение, закалённое трудом, терпением и связью с землёй.&quot;,
+    function(s){ return s.nature + s.patience*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.craftsmen = _createResult(
-
-&quot;craftsmen&quot;,
-
-&quot;Род ремесленников&quot;,
-
-&quot;Род мастеров, передающих знания и искусство создания вещей.&quot;,
-
-
-function(s){
-
-return s.logic
-+s.patience*2;
-
-}
-
+    &quot;craftsmen&quot;,
+    &quot;Род ремесленников&quot;,
+    &quot;&quot;,
+    &quot;Род мастеров, передающих знания и искусство создания вещей.&quot;,
+    function(s){ return s.logic + s.patience*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.merchants = _createResult(
-
-&quot;merchants&quot;,
-
-&quot;Род торговцев&quot;,
-
-&quot;Семья, привыкшая побеждать благодаря хитрости, связям и умению договариваться.&quot;,
-
-
-function(s){
-
-return s.charisma*2
-+s.adaptability;
-
-}
-
+    &quot;merchants&quot;,
+    &quot;Род торговцев&quot;,
+    &quot;&quot;,
+    &quot;Семья, привыкшая побеждать благодаря хитрости, связям и умению договариваться.&quot;,
+    function(s){ return s.charisma*2 + s.adaptability; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.hunters = _createResult(
-
-&quot;hunters&quot;,
-
-&quot;Род охотников&quot;,
-
-&quot;Поколения следопытов, знающих тайны природы.&quot;,
-
-
-function(s){
-
-return s.nature*2
-+s.caution;
-
-}
-
+    &quot;hunters&quot;,
+    &quot;Род охотников&quot;,
+    &quot;&quot;,
+    &quot;Поколения следопытов, знающих тайны природы.&quot;,
+    function(s){ return s.nature*2 + s.caution; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.travelers = _createResult(
-
-&quot;travelers&quot;,
-
-&quot;Род путешественников&quot;,
-
-&quot;Кровь людей, которые никогда не оставались на одном месте.&quot;,
-
-
-function(s){
-
-return s.adventure*2
-+s.adaptability;
-
-}
-
+    &quot;travelers&quot;,
+    &quot;Род путешественников&quot;,
+    &quot;&quot;,
+    &quot;Кровь людей, которые никогда не оставались на одном месте.&quot;,
+    function(s){ return s.adventure*2 + s.adaptability; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.mercenary = _createResult(
-
-&quot;mercenary&quot;,
-
-&quot;Семья наёмников&quot;,
-
-&quot;Род воинов, привыкших выживать среди бесконечных конфликтов.&quot;,
-
-
-function(s){
-
-return s.will*2
-+s.determination;
-
-}
-
+    &quot;mercenary&quot;,
+    &quot;Семья наёмников&quot;,
+    &quot;&quot;,
+    &quot;Род воинов, привыкших выживать среди бесконечных конфликтов.&quot;,
+    function(s){ return s.will*2 + s.determination; }
 )&gt;&gt;
 
-
-
 &lt;&lt;set $lineageDatabase.mageFamily = _createResult(
-
-&quot;mageFamily&quot;,
-
-&quot;Семья магов&quot;,
-
-&quot;Поколения исследователей тайных искусств.&quot;,
-
-
-function(s){
-
-return s.knowledge*3
-+s.logic;
-
-}
-
-)&gt;
-
-
-
+    &quot;mageFamily&quot;,
+    &quot;Семья магов&quot;,
+    &quot;&quot;,
+    &quot;Поколения исследователей тайных искусств.&quot;,
+    function(s){ return s.knowledge*3 + s.logic; }
+)&gt;&gt;
 
 /* =========================================================
    ДВОРЯНСТВО
 ========================================================= */
 
-
 &lt;&lt;set $lineageDatabase.baron = _createResult(
-
-&quot;baron&quot;,
-
-&quot;Баронский род&quot;,
-
-&quot;Небольшой дворянский род с древними традициями.&quot;,
-
-function(s){
-
-return s.order
-+s.charisma;
-
-}
-
+    &quot;baron&quot;,
+    &quot;Баронский род&quot;,
+    &quot;&quot;,
+    &quot;Небольшой дворянский род с древними традициями.&quot;,
+    function(s){ return s.order + s.charisma; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.viscount = _createResult(
-
-&quot;viscount&quot;,
-
-&quot;Виконтский род&quot;,
-
-&quot;Род, поднявшийся благодаря влиянию и политике.&quot;,
-
-function(s){
-
-return s.order*2
-+s.charisma;
-
-}
-
+    &quot;viscount&quot;,
+    &quot;Виконтский род&quot;,
+    &quot;&quot;,
+    &quot;Род, поднявшийся благодаря влиянию и политике.&quot;,
+    function(s){ return s.order*2 + s.charisma; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.count = _createResult(
-
-&quot;count&quot;,
-
-&quot;Графский род&quot;,
-
-&quot;Дворянская кровь, связанная с управлением землями.&quot;,
-
-function(s){
-
-return s.order*2
-+s.knowledge;
-
-}
-
+    &quot;count&quot;,
+    &quot;Графский род&quot;,
+    &quot;&quot;,
+    &quot;Дворянская кровь, связанная с управлением землями.&quot;,
+    function(s){ return s.order*2 + s.knowledge; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.marquis = _createResult(
-
-&quot;marquis&quot;,
-
-&quot;Маркизский род&quot;,
-
-&quot;Высокий дворянский род, обладающий большим влиянием.&quot;,
-
-function(s){
-
-return s.order*3
-+s.charisma;
-
-}
-
+    &quot;marquis&quot;,
+    &quot;Маркизский род&quot;,
+    &quot;&quot;,
+    &quot;Высокий дворянский род, обладающий большим влиянием.&quot;,
+    function(s){ return s.order*3 + s.charisma; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.duke = _createResult(
-
-&quot;duke&quot;,
-
-&quot;Герцогский род&quot;,
-
-&quot;Один из сильнейших дворянских домов.&quot;,
-
-function(s){
-
-return s.order*3
-+s.justice;
-
-}
-
+    &quot;duke&quot;,
+    &quot;Герцогский род&quot;,
+    &quot;&quot;,
+    &quot;Один из сильнейших дворянских домов.&quot;,
+    function(s){ return s.order*3 + s.justice; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.archduke = _createResult(
-
-&quot;archduke&quot;,
-
-&quot;Эрцгерцогский род&quot;,
-
-&quot;Род, стоящий почти у вершины власти.&quot;,
-
-function(s){
-
-return s.order*4;
-
-}
-
+    &quot;archduke&quot;,
+    &quot;Эрцгерцогский род&quot;,
+    &quot;&quot;,
+    &quot;Род, стоящий почти у вершины власти.&quot;,
+    function(s){ return s.order*4; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.royal = _createResult(
-
-&quot;royal&quot;,
-
-&quot;Королевский род&quot;,
-
-&quot;Кровь правителей, несущая ответственность за целые народы.&quot;,
-
-function(s){
-
-return s.charisma*3
-+s.order*2;
-
-}
-
+    &quot;royal&quot;,
+    &quot;Королевский род&quot;,
+    &quot;&quot;,
+    &quot;Кровь правителей, несущая ответственность за целые народы.&quot;,
+    function(s){ return s.charisma*3 + s.order*2; }
 )&gt;&gt;
 
-
-
 &lt;&lt;set $lineageDatabase.imperial = _createResult(
-
-&quot;imperial&quot;,
-
-&quot;Императорский род&quot;,
-
-&quot;Древнейшая власть, передаваемая через поколения.&quot;,
-
-function(s){
-
-return s.charisma*3
-+s.order*4;
-
-}
-
-)&gt;
+    &quot;imperial&quot;,
+    &quot;Императорский род&quot;,
+    &quot;&quot;,
+    &quot;Древнейшая власть, передаваемая через поколения.&quot;,
+    function(s){ return s.charisma*3 + s.order*4; }
+)&gt;&gt;
 
 /* =========================================================
    ОСОБЫЕ РОДА
 ========================================================= */
 
-
 &lt;&lt;set $lineageDatabase.fallenNoble = _createResult(
-
-&quot;fallenNoble&quot;,
-
-&quot;Павший аристократический род&quot;,
-
-&quot;Когда-то великий дом, потерявший своё положение, но сохранивший древнюю гордость.&quot;,
-
-
-function(s){
-
-return s.justice*2
-+s.independence*2
-+s.charisma;
-
-}
-
+    &quot;fallenNoble&quot;,
+    &quot;Павший аристократический род&quot;,
+    &quot;&quot;,
+    &quot;Когда-то великий дом, потерявший своё положение, но сохранивший древнюю гордость.&quot;,
+    function(s){ return s.justice*2 + s.independence*2 + s.charisma; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.exiled = _createResult(
-
-&quot;exiled&quot;,
-
-&quot;Изгнанный род&quot;,
-
-&quot;Семья, изгнанная из общества и вынужденная искать собственный путь.&quot;,
-
-
-function(s){
-
-return s.independence*3
-+s.adaptability;
-
-}
-
+    &quot;exiled&quot;,
+    &quot;Изгнанный род&quot;,
+    &quot;&quot;,
+    &quot;Семья, изгнанная из общества и вынужденная искать собственный путь.&quot;,
+    function(s){ return s.independence*3 + s.adaptability; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.lastBlood = _createResult(
-
-&quot;lastBlood&quot;,
-
-&quot;Последний представитель рода&quot;,
-
-&quot;Последний носитель древней линии, от которой осталось лишь одно имя.&quot;,
-
-
-function(s){
-
-return s.selfControl*2
-+s.will*2;
-
-}
-
+    &quot;lastBlood&quot;,
+    &quot;Последний представитель рода&quot;,
+    &quot;&quot;,
+    &quot;Последний носитель древней линии, от которой осталось лишь одно имя.&quot;,
+    function(s){ return s.selfControl*2 + s.will*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $lineageDatabase.forgottenAncient = _createResult(
-
-&quot;forgottenAncient&quot;,
-
-&quot;Забытый древний род&quot;,
-
-&quot;Род, исчезнувший из истории, но сохранивший древние знания.&quot;,
-
-
-function(s){
-
-return s.knowledge*3
-+s.intuition*2;
-
-}
-
+    &quot;forgottenAncient&quot;,
+    &quot;Забытый древний род&quot;,
+    &quot;&quot;,
+    &quot;Род, исчезнувший из истории, но сохранивший древние знания.&quot;,
+    function(s){ return s.knowledge*3 + s.intuition*2; }
 )&gt;&gt;
 
-
-
 &lt;&lt;set $lineageDatabase.lost = _createResult(
-
-&quot;lost&quot;,
-
-&quot;Потерянный род&quot;,
-
-&quot;Семья странников, чья история была утеряна временем.&quot;,
-
-
-function(s){
-
-return s.curiosity*2
-+s.adventure*2;
-
-}
-
-)&gt;
-
-
-
+    &quot;lost&quot;,
+    &quot;Потерянный род&quot;,
+    &quot;&quot;,
+    &quot;Семья странников, чья история была утеряна временем.&quot;,
+    function(s){ return s.curiosity*2 + s.adventure*2; }
+)&gt;&gt;
 
 /* =========================================================
-   ВЫБОР РОДА
+   ВЫБОР РОДА (СО ШТРАФАМИ)
+   Простые роды: 0 штрафа
+   Дворянские роды: -10 штрафа
+   Особые роды: -5 штрафа
 ========================================================= */
 
-
 &lt;&lt;set $lineage = &quot;peasant&quot;&gt;&gt;
-
 &lt;&lt;set $highestLineage = 0&gt;&gt;
-
-
-
 &lt;&lt;set $lineageData = $lineageDatabase.peasant&gt;&gt;
 
-
+// Списки для штрафов
+&lt;&lt;set $nobleLineages = [&quot;baron&quot;, &quot;viscount&quot;, &quot;count&quot;, &quot;marquis&quot;, &quot;duke&quot;, &quot;archduke&quot;, &quot;royal&quot;, &quot;imperial&quot;]&gt;&gt;
+&lt;&lt;set $specialLineages = [&quot;fallenNoble&quot;, &quot;exiled&quot;, &quot;lastBlood&quot;, &quot;forgottenAncient&quot;, &quot;lost&quot;]&gt;&gt;
 
 &lt;&lt;for _lineageID range Object.keys($lineageDatabase)&gt;&gt;
-
-
-	&lt;&lt;set _lineage = $lineageDatabase[_lineageID]&gt;&gt;
-
-
-	&lt;&lt;set _lineageScore = _lineage.formula(_stats)&gt;&gt;
-
-
-	&lt;&lt;if _lineageScore &gt; $highestLineage&gt;&gt;
-
-
-		&lt;&lt;set $highestLineage = _lineageScore&gt;&gt;
-
-		&lt;&lt;set $lineage = _lineageID&gt;&gt;
-
-		&lt;&lt;set $lineageData = _lineage&gt;&gt;
-
-
-	&lt;&lt;/if&gt;&gt;
-
-
+    &lt;&lt;set _lineage = $lineageDatabase[_lineageID]&gt;&gt;
+    &lt;&lt;set _lineageScore = _lineage.formula(_stats)&gt;&gt;
+    
+    // Штраф для дворянских родов
+    &lt;&lt;if $nobleLineages.includes(_lineageID)&gt;&gt;
+        &lt;&lt;set _lineageScore = _lineageScore - 10&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    // Штраф для особых родов
+    &lt;&lt;if $specialLineages.includes(_lineageID)&gt;&gt;
+        &lt;&lt;set _lineageScore = _lineageScore - 5&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    &lt;&lt;if _lineageScore &gt; $highestLineage&gt;&gt;
+        &lt;&lt;set $highestLineage = _lineageScore&gt;&gt;
+        &lt;&lt;set $lineage = _lineageID&gt;&gt;
+        &lt;&lt;set $lineageData = _lineage&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
 /* =========================================================
    СИСТЕМА НАСЛЕДИЯ РОДА
 ========================================================= */
 
-
 /* =========================================================
    БАЗА НАСЛЕДИЯ
 ========================================================= */
 
-
 &lt;&lt;set $heritageDatabase = {}&gt;&gt;
-
-
 
 /* ---------- МАГИЧЕСКОЕ НАСЛЕДИЕ ---------- */
 
-
 &lt;&lt;set $heritageDatabase.greatMages = _createResult(
-
-&quot;greatMages&quot;,
-
-&quot;Род великих магов&quot;,
-
-&quot;Древняя линия магов, передающая знания тайных искусств через поколения.&quot;,
-
-
-function(s){
-
-return s.knowledge*4
-+s.logic*2;
-
-}
-
+    &quot;greatMages&quot;,
+    &quot;Род великих магов&quot;,
+    &quot;&quot;,
+    &quot;Древняя линия магов, передающая знания тайных искусств через поколения.&quot;,
+    function(s){ return s.knowledge*4 + s.logic*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $heritageDatabase.summoners = _createResult(
-
-&quot;summoners&quot;,
-
-&quot;Род призывателей&quot;,
-
-&quot;Наследие тех, кто заключал договоры с существами других миров.&quot;,
-
-
-function(s){
-
-return s.intuition*3
-+s.charisma*2;
-
-}
-
+    &quot;summoners&quot;,
+    &quot;Род призывателей&quot;,
+    &quot;&quot;,
+    &quot;Наследие тех, кто заключал договоры с существами других миров.&quot;,
+    function(s){ return s.intuition*3 + s.charisma*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $heritageDatabase.healers = _createResult(
-
-&quot;healers&quot;,
-
-&quot;Род целителей&quot;,
-
-&quot;Потомки хранителей жизни и древних техник исцеления.&quot;,
-
-
-function(s){
-
-return s.empathy*3
-+s.nature*2;
-
-}
-
+    &quot;healers&quot;,
+    &quot;Род целителей&quot;,
+    &quot;&quot;,
+    &quot;Потомки хранителей жизни и древних техник исцеления.&quot;,
+    function(s){ return s.empathy*3 + s.nature*2; }
 )&gt;&gt;
 
-
-
 &lt;&lt;set $heritageDatabase.blacksmiths = _createResult(
-
-&quot;blacksmiths&quot;,
-
-&quot;Род кузнецов легендарного оружия&quot;,
-
-&quot;Семья мастеров, создававшая оружие для героев прошлого.&quot;,
-
-
-function(s){
-
-return s.patience*3
-+s.logic
-+s.will;
-
-}
-
-)&gt;
-
-
-
+    &quot;blacksmiths&quot;,
+    &quot;Род кузнецов легендарного оружия&quot;,
+    &quot;&quot;,
+    &quot;Семья мастеров, создававшая оружие для героев прошлого.&quot;,
+    function(s){ return s.patience*3 + s.logic + s.will; }
+)&gt;&gt;
 
 /* ---------- ДУХОВНОЕ НАСЛЕДИЕ ---------- */
 
-
 &lt;&lt;set $heritageDatabase.seers = _createResult(
-
-&quot;seers&quot;,
-
-&quot;Род пророков&quot;,
-
-&quot;Кровь провидцев, способных видеть больше, чем обычные существа.&quot;,
-
-
-function(s){
-
-return s.intuition*4
-+s.knowledge*2;
-
-}
-
+    &quot;seers&quot;,
+    &quot;Род пророков&quot;,
+    &quot;&quot;,
+    &quot;Кровь провидцев, способных видеть больше, чем обычные существа.&quot;,
+    function(s){ return s.intuition*4 + s.knowledge*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $heritageDatabase.knowledgeKeepers = _createResult(
-
-&quot;knowledgeKeepers&quot;,
-
-&quot;Род хранителей знаний&quot;,
-
-&quot;Древний род хранителей забытых библиотек и запретных знаний.&quot;,
-
-
-function(s){
-
-return s.knowledge*4
-+s.logic*2;
-
-}
-
+    &quot;knowledgeKeepers&quot;,
+    &quot;Род хранителей знаний&quot;,
+    &quot;&quot;,
+    &quot;Древний род хранителей забытых библиотек и запретных знаний.&quot;,
+    function(s){ return s.knowledge*4 + s.logic*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $heritageDatabase.sealKeepers = _createResult(
-
-&quot;sealKeepers&quot;,
-
-&quot;Род хранителей печати&quot;,
-
-&quot;Потомки тех, кто удерживал древние силы под контролем.&quot;,
-
-
-function(s){
-
-return s.order*3
-+s.knowledge*2
-+
-($lineageData.id == &quot;lastBlood&quot; ? 20 : 0);
-
-}
-
+    &quot;sealKeepers&quot;,
+    &quot;Род хранителей печати&quot;,
+    &quot;&quot;,
+    &quot;Потомки тех, кто удерживал древние силы под контролем.&quot;,
+    function(s){ 
+        return s.order*3 + s.knowledge*2 + ($lineageData.id == &quot;lastBlood&quot; ? 20 : 0); 
+    }
 )&gt;&gt;
-
-
-
 
 /* ---------- ВОИНСКОЕ НАСЛЕДИЕ ---------- */
 
-
 &lt;&lt;set $heritageDatabase.holyKnights = _createResult(
-
-&quot;holyKnights&quot;,
-
-&quot;Род святых рыцарей&quot;,
-
-&quot;Поколения воинов, посвятивших жизнь защите мира.&quot;,
-
-
-function(s){
-
-return s.justice*3
-+s.will*2;
-
-}
-
+    &quot;holyKnights&quot;,
+    &quot;Род святых рыцарей&quot;,
+    &quot;&quot;,
+    &quot;Поколения воинов, посвятивших жизнь защите мира.&quot;,
+    function(s){ return s.justice*3 + s.will*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $heritageDatabase.ancientWarriors = _createResult(
-
-&quot;ancientWarriors&quot;,
-
-&quot;Род древних воинов&quot;,
-
-&quot;Кровь бойцов, прошедших через тысячи сражений.&quot;,
-
-
-function(s){
-
-return s.will*4
-+s.determination*2;
-
-}
-
+    &quot;ancientWarriors&quot;,
+    &quot;Род древних воинов&quot;,
+    &quot;&quot;,
+    &quot;Кровь бойцов, прошедших через тысячи сражений.&quot;,
+    function(s){ return s.will*4 + s.determination*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $heritageDatabase.dragonHunters = _createResult(
-
-&quot;dragonHunters&quot;,
-
-&quot;Род охотников на драконов&quot;,
-
-&quot;Легендарная линия воинов, посвятивших себя борьбе с драконами.&quot;,
-
-
-function(s){
-
-return s.determination*3
-+s.adventure*2
-+
-($raceData.id == &quot;dragon&quot; ? 15 : 0);
-
-}
-
+    &quot;dragonHunters&quot;,
+    &quot;Род охотников на драконов&quot;,
+    &quot;&quot;,
+    &quot;Легендарная линия воинов, посвятивших себя борьбе с драконами.&quot;,
+    function(s){ return s.determination*3 + s.adventure*2 + ($raceData.id == &quot;dragon&quot; ? 15 : 0); }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $heritageDatabase.shadowAssassins = _createResult(
-
-&quot;shadowAssassins&quot;,
-
-&quot;Род убийц теней&quot;,
-
-&quot;Семья мастеров скрытности и тайных операций.&quot;,
-
-
-function(s){
-
-return s.independence*3
-+s.intuition*2;
-
-}
-
+    &quot;shadowAssassins&quot;,
+    &quot;Род убийц теней&quot;,
+    &quot;&quot;,
+    &quot;Семья мастеров скрытности и тайных операций.&quot;,
+    function(s){ return s.independence*3 + s.intuition*2; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $heritageDatabase.worldProtectors = _createResult(
-
-&quot;worldProtectors&quot;,
-
-&quot;Род защитников мира&quot;,
-
-&quot;Наследие тех, кто стоял между миром и его уничтожением.&quot;,
-
-
-function(s){
-
-return s.justice*3
-+s.order*2;
-
-}
-
-)&gt;
-
-/* =========================================================
-   ВЫБОР НАСЛЕДИЯ РОДА
-========================================================= */
-
-
-&lt;&lt;set $heritage = &quot;none&quot;&gt;&gt;
-
-&lt;&lt;set $highestHeritage = 0&gt;&gt;
-
-
-
-&lt;&lt;set $heritageData = _createResult(
-
-&quot;none&quot;,
-
-&quot;Нет особого наследия&quot;,
-
-&quot;Твой род не связан с великими традициями.&quot;,
-
-function(s){
-
-return 0;
-
-}
-
+    &quot;worldProtectors&quot;,
+    &quot;Род защитников мира&quot;,
+    &quot;&quot;,
+    &quot;Наследие тех, кто стоял между миром и его уничтожением.&quot;,
+    function(s){ return s.justice*3 + s.order*2; }
 )&gt;&gt;
 
+/* =========================================================
+   ВЫБОР НАСЛЕДИЯ РОДА (СО ШТРАФАМИ)
+   Обычные наследия: 0 штрафа
+   Редкие наследия: -10 штрафа
+========================================================= */
 
+&lt;&lt;set $heritage = &quot;none&quot;&gt;&gt;
+&lt;&lt;set $highestHeritage = 0&gt;&gt;
+&lt;&lt;set $heritageData = _createResult(
+    &quot;none&quot;,
+    &quot;Нет особого наследия&quot;,
+    &quot;&quot;,
+    &quot;Твой род не связан с великими традициями.&quot;,
+    function(s){ return 0; }
+)&gt;&gt;
+
+// Список редких наследий
+&lt;&lt;set $rareHeritage = [&quot;sealKeepers&quot;, &quot;dragonHunters&quot;, &quot;shadowAssassins&quot;, &quot;worldProtectors&quot;]&gt;&gt;
 
 &lt;&lt;for _heritageID range Object.keys($heritageDatabase)&gt;&gt;
-
-
-	&lt;&lt;set _heritage = $heritageDatabase[_heritageID]&gt;&gt;
-
-	&lt;&lt;set _heritageScore = _heritage.formula(_stats)&gt;&gt;
-
-
-	&lt;&lt;if _heritageScore &gt; $highestHeritage&gt;&gt;
-
-
-		&lt;&lt;set $highestHeritage = _heritageScore&gt;&gt;
-
-		&lt;&lt;set $heritage = _heritageID&gt;&gt;
-
-		&lt;&lt;set $heritageData = _heritage&gt;&gt;
-
-
-	&lt;&lt;/if&gt;&gt;
-
-
+    &lt;&lt;set _heritage = $heritageDatabase[_heritageID]&gt;&gt;
+    &lt;&lt;set _heritageScore = _heritage.formula(_stats)&gt;&gt;
+    
+    // Штраф для редких наследий
+    &lt;&lt;if $rareHeritage.includes(_heritageID)&gt;&gt;
+        &lt;&lt;set _heritageScore = _heritageScore - 10&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    &lt;&lt;if _heritageScore &gt; $highestHeritage&gt;&gt;
+        &lt;&lt;set $highestHeritage = _heritageScore&gt;&gt;
+        &lt;&lt;set $heritage = _heritageID&gt;&gt;
+        &lt;&lt;set $heritageData = _heritage&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
-
-
-
-
 
 /* =========================================================
    СИСТЕМА ПРОИСХОЖДЕНИЯ КРОВИ
 ========================================================= */
 
-
 &lt;&lt;set $bloodDatabase = {}&gt;&gt;
-
-
 
 /* =========================================================
    ОБЫЧНАЯ КРОВЬ
 ========================================================= */
 
-
 &lt;&lt;set $bloodDatabase.human = _createResult(
-
-&quot;human&quot;,
-
-&quot;Человеческая кровь&quot;,
-
-&quot;Гибкая кровь смертных, способная развиваться во многих направлениях.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;human&quot; ? 30 : 0) + s.charisma;
-
-}
-
+    &quot;human&quot;,
+    &quot;Человеческая кровь&quot;,
+    &quot;&quot;,
+    &quot;Гибкая кровь смертных, способная развиваться во многих направлениях.&quot;,
+    function(s){ return ($raceData.id == &quot;human&quot; ? 30 : 0) + s.charisma; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.elf = _createResult(
-
-&quot;elf&quot;,
-
-&quot;Эльфийская кровь&quot;,
-
-&quot;Древняя кровь народа лесов и магии.&quot;,
-
-
-function(s){
-
-return (($raceData.id == &quot;elf&quot; || $raceData.id == &quot;halfElf&quot;) ? 30 : 0) + s.nature;
-
-}
-
+    &quot;elf&quot;,
+    &quot;Эльфийская кровь&quot;,
+    &quot;&quot;,
+    &quot;Древняя кровь народа лесов и магии.&quot;,
+    function(s){ return (($raceData.id == &quot;elf&quot; || $raceData.id == &quot;halfElf&quot;) ? 30 : 0) + s.nature; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.dwarf = _createResult(
-
-&quot;dwarf&quot;,
-
-&quot;Дворфийская кровь&quot;,
-
-&quot;Кровь мастеров, кузнецов и хранителей древних традиций.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;dwarf&quot; ? 30 : 0) + s.patience;
-
-}
-
+    &quot;dwarf&quot;,
+    &quot;Дворфийская кровь&quot;,
+    &quot;&quot;,
+    &quot;Кровь мастеров, кузнецов и хранителей древних традиций.&quot;,
+    function(s){ return ($raceData.id == &quot;dwarf&quot; ? 30 : 0) + s.patience; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.halfElf = _createResult(
-
-&quot;halfElf&quot;,
-
-&quot;Кровь полуэльфа&quot;,
-
-&quot;Смесь человеческой гибкости и эльфийской мудрости.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;halfElf&quot; ? 30 : 0) + s.adaptability;
-
-}
-
+    &quot;halfElf&quot;,
+    &quot;Кровь полуэльфа&quot;,
+    &quot;&quot;,
+    &quot;Смесь человеческой гибкости и эльфийской мудрости.&quot;,
+    function(s){ return ($raceData.id == &quot;halfElf&quot; ? 30 : 0) + s.adaptability; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.orc = _createResult(
-
-&quot;orc&quot;,
-
-&quot;Кровь орка&quot;,
-
-&quot;Сильная и воинственная кровь, полная решимости.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;orc&quot; ? 30 : 0) + s.will;
-
-}
-
+    &quot;orc&quot;,
+    &quot;Кровь орка&quot;,
+    &quot;&quot;,
+    &quot;Сильная и воинственная кровь, полная решимости.&quot;,
+    function(s){ return ($raceData.id == &quot;orc&quot; ? 30 : 0) + s.will; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.goblin = _createResult(
-
-&quot;goblin&quot;,
-
-&quot;Кровь гоблина&quot;,
-
-&quot;Хитрая и изобретательная кровь маленького народа.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;goblin&quot; ? 30 : 0) + s.adaptability;
-
-}
-
+    &quot;goblin&quot;,
+    &quot;Кровь гоблина&quot;,
+    &quot;&quot;,
+    &quot;Хитрая и изобретательная кровь маленького народа.&quot;,
+    function(s){ return ($raceData.id == &quot;goblin&quot; ? 30 : 0) + s.adaptability; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.kobold = _createResult(
-
-&quot;kobold&quot;,
-
-&quot;Кровь кобольда&quot;,
-
-&quot;Осторожная кровь подземных мастеров.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;kobold&quot; ? 30 : 0) + s.caution;
-
-}
-
+    &quot;kobold&quot;,
+    &quot;Кровь кобольда&quot;,
+    &quot;&quot;,
+    &quot;Осторожная кровь подземных мастеров.&quot;,
+    function(s){ return ($raceData.id == &quot;kobold&quot; ? 30 : 0) + s.caution; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.beast = _createResult(
-
-&quot;beast&quot;,
-
-&quot;Звериная кровь&quot;,
-
-&quot;Наследие существ, связанных с природой.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;beast&quot; ? 30 : 0) + s.nature;
-
-}
-
+    &quot;beast&quot;,
+    &quot;Звериная кровь&quot;,
+    &quot;&quot;,
+    &quot;Наследие существ, связанных с природой.&quot;,
+    function(s){ return ($raceData.id == &quot;beast&quot; ? 30 : 0) + s.nature; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.mermaid = _createResult(
-
-&quot;mermaid&quot;,
-
-&quot;Кровь русалки&quot;,
-
-&quot;Мистическая кровь воды и эмоций.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;mermaid&quot; ? 30 : 0) + s.empathy;
-
-}
-
+    &quot;mermaid&quot;,
+    &quot;Кровь русалки&quot;,
+    &quot;&quot;,
+    &quot;Мистическая кровь воды и эмоций.&quot;,
+    function(s){ return ($raceData.id == &quot;mermaid&quot; ? 30 : 0) + s.empathy; }
 )&gt;&gt;
-
-
-
 
 /* =========================================================
    ОСОБАЯ КРОВЬ
 ========================================================= */
 
-
 &lt;&lt;set $bloodDatabase.darkElf = _createResult(
-
-&quot;darkElf&quot;,
-
-&quot;Кровь тёмного эльфа&quot;,
-
-&quot;Древняя кровь теней и знаний.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;darkElf&quot; ? 35 : 0) + s.curiosity;
-
-}
-
+    &quot;darkElf&quot;,
+    &quot;Кровь тёмного эльфа&quot;,
+    &quot;&quot;,
+    &quot;Древняя кровь теней и знаний.&quot;,
+    function(s){ return ($raceData.id == &quot;darkElf&quot; ? 35 : 0) + s.curiosity; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.draconid = _createResult(
-
-&quot;draconid&quot;,
-
-&quot;Кровь драконида&quot;,
-
-&quot;След драконьей крови в смертном теле.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;draconid&quot; ? 35 : 0) + s.will;
-
-}
-
+    &quot;draconid&quot;,
+    &quot;Кровь драконида&quot;,
+    &quot;&quot;,
+    &quot;След драконьей крови в смертном теле.&quot;,
+    function(s){ return ($raceData.id == &quot;draconid&quot; ? 35 : 0) + s.will; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.vampire = _createResult(
-
-&quot;vampireBlood&quot;,
-
-&quot;Кровь вампира&quot;,
-
-&quot;Бессмертная кровь ночных существ.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;vampire&quot; ? 50 : 0) + s.intuition;
-
-}
-
+    &quot;vampireBlood&quot;,
+    &quot;Кровь вампира&quot;,
+    &quot;&quot;,
+    &quot;Бессмертная кровь ночных существ.&quot;,
+    function(s){ return ($raceData.id == &quot;vampire&quot; ? 50 : 0) + s.intuition; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.demon = _createResult(
-
-&quot;demonBlood&quot;,
-
-&quot;Кровь демона&quot;,
-
-&quot;Темная энергия древнего демонического происхождения.&quot;,
-
-
-function(s){
-
-return (($raceData.id == &quot;demon&quot; || $raceData.id == &quot;archDemon&quot;) ? 50 : 0) + s.curiosity;
-
-}
-
+    &quot;demonBlood&quot;,
+    &quot;Кровь демона&quot;,
+    &quot;&quot;,
+    &quot;Темная энергия древнего демонического происхождения.&quot;,
+    function(s){ return (($raceData.id == &quot;demon&quot; || $raceData.id == &quot;archDemon&quot;) ? 50 : 0) + s.curiosity; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.succubus = _createResult(
-
-&quot;succubus&quot;,
-
-&quot;Кровь суккуба&quot;,
-
-&quot;Кровь, полная чар и влияния на других.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;succubus&quot; ? 35 : 0) + s.charisma;
-
-}
-
+    &quot;succubus&quot;,
+    &quot;Кровь суккуба&quot;,
+    &quot;&quot;,
+    &quot;Кровь, полная чар и влияния на других.&quot;,
+    function(s){ return ($raceData.id == &quot;succubus&quot; ? 35 : 0) + s.charisma; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.oni = _createResult(
-
-&quot;oni&quot;,
-
-&quot;Кровь они&quot;,
-
-&quot;Древняя кровь силы и ярости.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;oni&quot; ? 35 : 0) + s.will;
-
-}
-
+    &quot;oni&quot;,
+    &quot;Кровь они&quot;,
+    &quot;&quot;,
+    &quot;Древняя кровь силы и ярости.&quot;,
+    function(s){ return ($raceData.id == &quot;oni&quot; ? 35 : 0) + s.will; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.chimera = _createResult(
-
-&quot;chimera&quot;,
-
-&quot;Кровь химеры&quot;,
-
-&quot;Смешанная кровь, способная к любой адаптации.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;chimera&quot; ? 35 : 0) + s.adaptability;
-
-}
-
+    &quot;chimera&quot;,
+    &quot;Кровь химеры&quot;,
+    &quot;&quot;,
+    &quot;Смешанная кровь, способная к любой адаптации.&quot;,
+    function(s){ return ($raceData.id == &quot;chimera&quot; ? 35 : 0) + s.adaptability; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.angel = _createResult(
-
-&quot;angelBlood&quot;,
-
-&quot;Кровь ангела&quot;,
-
-&quot;Наследие света и высшей духовной силы.&quot;,
-
-
-function(s){
-
-return (($raceData.id == &quot;angel&quot; || $raceData.id == &quot;fallenAngel&quot;) ? 50 : 0) + s.justice;
-
-}
-
+    &quot;angelBlood&quot;,
+    &quot;Кровь ангела&quot;,
+    &quot;&quot;,
+    &quot;Наследие света и высшей духовной силы.&quot;,
+    function(s){ return (($raceData.id == &quot;angel&quot; || $raceData.id == &quot;fallenAngel&quot;) ? 50 : 0) + s.justice; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.fallenAngel = _createResult(
-
-&quot;fallenAngel&quot;,
-
-&quot;Кровь падшего ангела&quot;,
-
-&quot;Кровь, утратившая свет, но сохранившая силу.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;fallenAngel&quot; ? 45 : 0) + s.independence;
-
-}
-
+    &quot;fallenAngel&quot;,
+    &quot;Кровь падшего ангела&quot;,
+    &quot;&quot;,
+    &quot;Кровь, утратившая свет, но сохранившая силу.&quot;,
+    function(s){ return ($raceData.id == &quot;fallenAngel&quot; ? 45 : 0) + s.independence; }
 )&gt;&gt;
-
-
 
 /* =========================================================
    ДРЕВНЯЯ КРОВЬ
 ========================================================= */
 
-
 &lt;&lt;set $bloodDatabase.dragon = _createResult(
-
-&quot;dragonBlood&quot;,
-
-&quot;Кровь дракона&quot;,
-
-&quot;След древней силы драконов внутри твоей сущности.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;dragon&quot; ? 50 : 0) + s.will;
-
-}
-
+    &quot;dragonBlood&quot;,
+    &quot;Кровь дракона&quot;,
+    &quot;&quot;,
+    &quot;След древней силы драконов внутри твоей сущности.&quot;,
+    function(s){ return ($raceData.id == &quot;dragon&quot; ? 50 : 0) + s.will; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.phoenix = _createResult(
-
-&quot;phoenixBlood&quot;,
-
-&quot;Кровь феникса&quot;,
-
-&quot;Сила возрождения и вечного огня.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;phoenix&quot; ? 50 : 0) + s.selfControl;
-
-}
-
+    &quot;phoenixBlood&quot;,
+    &quot;Кровь феникса&quot;,
+    &quot;&quot;,
+    &quot;Сила возрождения и вечного огня.&quot;,
+    function(s){ return ($raceData.id == &quot;phoenix&quot; ? 50 : 0) + s.selfControl; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.titan = _createResult(
-
-&quot;titanBlood&quot;,
-
-&quot;Кровь титана&quot;,
-
-&quot;Наследие великанов древних эпох.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;titan&quot; ? 50 : 0) + s.order;
-
-}
-
+    &quot;titanBlood&quot;,
+    &quot;Кровь титана&quot;,
+    &quot;&quot;,
+    &quot;Наследие великанов древних эпох.&quot;,
+    function(s){ return ($raceData.id == &quot;titan&quot; ? 50 : 0) + s.order; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.spirit = _createResult(
-
-&quot;spiritBlood&quot;,
-
-&quot;Кровь духа&quot;,
-
-&quot;Связь с древними духами мира.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;spirit&quot; ? 50 : 0) + s.nature;
-
-}
-
+    &quot;spiritBlood&quot;,
+    &quot;Кровь духа&quot;,
+    &quot;&quot;,
+    &quot;Связь с древними духами мира.&quot;,
+    function(s){ return ($raceData.id == &quot;spirit&quot; ? 50 : 0) + s.nature; }
 )&gt;&gt;
-
-
 
 /* =========================================================
    ВЫСШАЯ КРОВЬ
 ========================================================= */
 
-
 &lt;&lt;set $bloodDatabase.god = _createResult(
-
-&quot;godBlood&quot;,
-
-&quot;Кровь бога&quot;,
-
-&quot;Божественная кровь, несущая силу созидания.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;god&quot; ? 70 : 0) + s.order + s.charisma;
-
-}
-
+    &quot;godBlood&quot;,
+    &quot;Кровь бога&quot;,
+    &quot;&quot;,
+    &quot;Божественная кровь, несущая силу созидания.&quot;,
+    function(s){ return ($raceData.id == &quot;god&quot; ? 70 : 0) + s.order + s.charisma; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.archDemon = _createResult(
-
-&quot;archDemonBlood&quot;,
-
-&quot;Кровь архидемона&quot;,
-
-&quot;Абсолютная демоническая кровь, полная тёмной воли.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;archDemon&quot; ? 70 : 0) + s.will + s.curiosity;
-
-}
-
+    &quot;archDemonBlood&quot;,
+    &quot;Кровь архидемона&quot;,
+    &quot;&quot;,
+    &quot;Абсолютная демоническая кровь, полная тёмной воли.&quot;,
+    function(s){ return ($raceData.id == &quot;archDemon&quot; ? 70 : 0) + s.will + s.curiosity; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.void = _createResult(
-
-&quot;voidBlood&quot;,
-
-&quot;Кровь пустоты&quot;,
-
-&quot;Кровь из пространства между существованием и ничем.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;void&quot; ? 70 : 0) + s.logic + s.independence;
-
-}
-
+    &quot;voidBlood&quot;,
+    &quot;Кровь пустоты&quot;,
+    &quot;&quot;,
+    &quot;Кровь из пространства между существованием и ничем.&quot;,
+    function(s){ return ($raceData.id == &quot;void&quot; ? 70 : 0) + s.logic + s.independence; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.chaos = _createResult(
-
-&quot;chaosBlood&quot;,
-
-&quot;Кровь хаоса&quot;,
-&quot;&quot;,
-&quot;Непредсказуемая кровь абсолютного хаоса.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;chaos&quot; ? 70 : 0) + s.chaos + s.curiosity;
-
-}
-
+    &quot;chaosBlood&quot;,
+    &quot;Кровь хаоса&quot;,
+    &quot;&quot;,
+    &quot;Непредсказуемая кровь абсолютного хаоса.&quot;,
+    function(s){ return ($raceData.id == &quot;chaos&quot; ? 70 : 0) + s.chaos + s.curiosity; }
 )&gt;&gt;
-
-
 
 /* =========================================================
    СМЕШАННАЯ КРОВЬ
 ========================================================= */
 
-
 &lt;&lt;set $bloodDatabase.angelHuman = _createResult(
-
-&quot;angelHuman&quot;,
-
-&quot;Ангел + человек&quot;,
-
-&quot;Смешение смертной природы и света небесных существ.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;angel&quot; ? 40 : 0) + s.empathy + s.charisma;
-
-}
-
+    &quot;angelHuman&quot;,
+    &quot;Ангел + человек&quot;,
+    &quot;&quot;,
+    &quot;Смешение смертной природы и света небесных существ.&quot;,
+    function(s){ return ($raceData.id == &quot;angel&quot; ? 40 : 0) + s.empathy + s.charisma; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.elfSpirit = _createResult(
-
-&quot;elfSpirit&quot;,
-
-&quot;Эльф + дух&quot;,
-
-&quot;Связь древнего народа и духовного мира.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;halfElf&quot; ? 30 : 0) + s.nature + s.intuition;
-
-}
-
+    &quot;elfSpirit&quot;,
+    &quot;Эльф + дух&quot;,
+    &quot;&quot;,
+    &quot;Связь древнего народа и духовного мира.&quot;,
+    function(s){ return ($raceData.id == &quot;halfElf&quot; ? 30 : 0) + s.nature + s.intuition; }
 )&gt;&gt;
-
-
 
 &lt;&lt;set $bloodDatabase.vampireHuman = _createResult(
-
-&quot;vampireHuman&quot;,
-
-&quot;Вампир + человек&quot;,
-
-&quot;Смешанная кровь смертного и бессмертного.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;vampire&quot; ? 40 : 0) + s.independence;
-
-}
-
+    &quot;vampireHuman&quot;,
+    &quot;Вампир + человек&quot;,
+    &quot;&quot;,
+    &quot;Смешанная кровь смертного и бессмертного.&quot;,
+    function(s){ return ($raceData.id == &quot;vampire&quot; ? 40 : 0) + s.independence; }
 )&gt;&gt;
 
-
-
 &lt;&lt;set $bloodDatabase.firstDragon = _createResult(
-
-&quot;firstDragon&quot;,
-
-&quot;Кровь первого дракона&quot;,
-
-&quot;Абсолютное наследие первых драконов мира.&quot;,
-
-
-function(s){
-
-return ($raceData.id == &quot;dragon&quot; ? 80 : 0) + s.will*2;
-
-}
-
+    &quot;firstDragon&quot;,
+    &quot;Кровь первого дракона&quot;,
+    &quot;&quot;,
+    &quot;Абсолютное наследие первых драконов мира.&quot;,
+    function(s){ return ($raceData.id == &quot;dragon&quot; ? 80 : 0) + s.will*2; }
 )&gt;&gt;
 
 /* =========================================================
-   ВЫБОР КРОВИ
+   ВЫБОР КРОВИ (СО ШТРАФАМИ)
+   Обычная кровь: 0 штрафа
+   Особая кровь: -10 штрафа
+   Смешанная кровь: -5 штрафа
+   Высшая кровь: -20 штрафа
 ========================================================= */
 
 &lt;&lt;set $blood = &quot;human&quot;&gt;&gt;
 &lt;&lt;set $highestBlood = 0&gt;&gt;
 &lt;&lt;set $bloodData = $bloodDatabase.human&gt;&gt;
 
+&lt;&lt;set $specialBlood = [&quot;dragon&quot;, &quot;demon&quot;, &quot;angel&quot;, &quot;vampire&quot;, &quot;spirit&quot;, &quot;titan&quot;, &quot;phoenix&quot;]&gt;&gt;
+&lt;&lt;set $mixedBlood = [&quot;angelHuman&quot;, &quot;elfSpirit&quot;, &quot;vampireHuman&quot;]&gt;&gt;
+&lt;&lt;set $highestBloodList = [&quot;god&quot;, &quot;archDemon&quot;, &quot;void&quot;, &quot;chaos&quot;, &quot;firstDragon&quot;]&gt;&gt;
+
 &lt;&lt;for _bloodID range Object.keys($bloodDatabase)&gt;&gt;
     &lt;&lt;set _blood = $bloodDatabase[_bloodID]&gt;&gt;
     &lt;&lt;set _bloodScore = _blood.formula(_stats)&gt;&gt;
+    
+    // Штраф для особой крови
+    &lt;&lt;if $specialBlood.includes(_bloodID)&gt;&gt;
+        &lt;&lt;set _bloodScore = _bloodScore - 10&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    // Штраф для смешанной крови
+    &lt;&lt;if $mixedBlood.includes(_bloodID)&gt;&gt;
+        &lt;&lt;set _bloodScore = _bloodScore - 5&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+    // Штраф для высшей крови
+    &lt;&lt;if $highestBloodList.includes(_bloodID)&gt;&gt;
+        &lt;&lt;set _bloodScore = _bloodScore - 20&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    
     &lt;&lt;if _bloodScore &gt; $highestBlood&gt;&gt;
         &lt;&lt;set $highestBlood = _bloodScore&gt;&gt;
         &lt;&lt;set $blood = _bloodID&gt;&gt;
@@ -6812,22 +4606,6 @@ blood:$bloodData,
 stats:$finalStats
 
 }&gt;&gt;
-
-
-/* =========================================================
-   ГАРАНТИРОВАННОЕ ПЕРЕПРИСВАИВАНИЕ ОБЪЕКТОВ
-   (Исправляет вывод [function] в финальном экране)
-========================================================= */
-
-&lt;&lt;set $classData = $classDatabase[$class]&gt;&gt;
-&lt;&lt;set $attributeData = $attributeDatabase[$attribute]&gt;&gt;
-&lt;&lt;set $skillData = $skillDatabase[$skill]&gt;&gt;
-&lt;&lt;set $blessingData = $blessingDatabase[$blessing]&gt;&gt;
-&lt;&lt;set $curseData = $curseDatabase[$curse]&gt;&gt;
-&lt;&lt;set $lineageData = $lineageDatabase[$lineage]&gt;&gt;
-&lt;&lt;set $raceData = $raceDatabase[$race]&gt;&gt;
-&lt;&lt;set $bloodData = $bloodDatabase[$blood]&gt;&gt;
-
 
 /* =========================================================
    ДОПОЛНИТЕЛЬНЫЕ ПЕРЕМЕННЫЕ
