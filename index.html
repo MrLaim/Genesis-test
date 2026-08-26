@@ -4231,19 +4231,10 @@ body::before {
 &lt;&lt;goto &quot;Final_Result&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Final_Result" tags="" position="1725,1000" size="100,100">&lt;div class=&quot;typewriter&quot;&gt;━━━━━━━━━━━━━━━━━━━━━━
 ТВОЯ СУДЬБА
 ━━━━━━━━━━━━━━━━━━━━━━&lt;/div&gt;
-
 &lt;div style=&quot;background: rgba(255,255,255,0.05);border: 1px solid rgba(212,175,55,0.3);border-radius: 16px;padding: 25px;margin: 20px 0;font-family: &#39;Playfair Display&#39;, serif;&quot;&gt;
-
-&lt;!-- ===== РАСА ===== --&gt;
-&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
-    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ РАСА&lt;/h3&gt;
-    &lt;&lt;if $raceData and $raceData.name&gt;&gt;
-        &lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $raceData.name&gt;&gt;&lt;/div&gt;
-        &lt;&lt;print &#39;&lt;img src=&quot;&#39; + $raceData.image + &#39;&quot; class=&quot;race-image&quot; &gt;&#39;&gt;&gt;
-        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $raceData.description&gt;&gt;&lt;/div&gt;
-    &lt;&lt;else&gt;&gt;
-        &lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные расы не найдены&lt;/div&gt;
-    &lt;&lt;/if&gt;&gt;
+&lt;!-- ===== РАСА ===== --&gt;&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;&lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ РАСА&lt;/h3&gt;
+    &lt;&lt;if $raceData and $raceData.name&gt;&gt;&lt;div style=&quot;font-size: 28px; font-weight: bold; color: #ffed9f;&quot;&gt;&lt;&lt;print $raceData.name&gt;&gt;&lt;/div&gt;&lt;&lt;print &#39;&lt;img src=&quot;&#39; + $raceData.image + &#39;&quot; class=&quot;race-image&quot; &gt;&#39;&gt;&gt;
+        &lt;div style=&quot;color: #ccccff; font-style: italic; margin-top: 8px; font-size: 16px; line-height: 1.6;&quot;&gt;&lt;&lt;print $raceData.description&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;div style=&quot;color: #ff6666;&quot;&gt;Ошибка: данные расы не найдены&lt;/div&gt;&lt;&lt;/if&gt;&gt;
 &lt;/div&gt;
 
 &lt;!-- ===== КЛАСС ===== --&gt;
@@ -4300,58 +4291,6 @@ body::before {
         &lt;div style=&quot;color: #888; font-style: italic;&quot;&gt;Нет проклятия&lt;/div&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;/div&gt;
-
-&lt;!-- ===== СКРЫТЫЕ ПУТИ ===== --&gt;
-&lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
-    &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ СКРЫТЫЕ ПУТИ&lt;/h3&gt;
-    
-    &lt;&lt;if $hiddenAngel&gt;&gt;
-        &lt;div style=&quot;color: #ffed9f; font-weight: bold;&quot;&gt;★ Путь Ангела открыт&lt;/div&gt;
-        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
-            Справедливость &gt; 45, Порядок &gt; 35, Эмпатия &gt; 30
-        &lt;/div&gt;
-    &lt;&lt;/if&gt;&gt;
-    
-    &lt;&lt;if $hiddenDemon&gt;&gt;
-        &lt;div style=&quot;color: #ff6666; font-weight: bold;&quot;&gt;★ Путь Демона открыт&lt;/div&gt;
-        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
-            Воля &gt; 45, Любопытство &gt; 35, Независимость &gt; 28
-        &lt;/div&gt;
-    &lt;&lt;/if&gt;&gt;
-    
-    &lt;&lt;if $hiddenDragon&gt;&gt;
-        &lt;div style=&quot;color: #ff8844; font-weight: bold;&quot;&gt;★ Путь Дракона открыт&lt;/div&gt;
-        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
-            Воля &gt; 42, Решимость &gt; 32, Адаптивность &gt; 28
-        &lt;/div&gt;
-    &lt;&lt;/if&gt;&gt;
-    
-    &lt;&lt;if $hiddenVoid&gt;&gt;
-        &lt;div style=&quot;color: #9966ff; font-weight: bold;&quot;&gt;★ Путь Пустоты открыт&lt;/div&gt;
-        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
-            Логика &gt; 35, Независимость &gt; 32, Самоконтроль &gt; 30
-        &lt;/div&gt;
-    &lt;&lt;/if&gt;&gt;
-    
-    &lt;&lt;if $hiddenCreator&gt;&gt;
-        &lt;div style=&quot;color: #66ffaa; font-weight: bold;&quot;&gt;★ Путь Творца открыт&lt;/div&gt;
-        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
-            Харизма &gt; 35, Адаптивность &gt; 30, Логика &gt; 28
-        &lt;/div&gt;
-    &lt;&lt;/if&gt;&gt;
-    
-    &lt;&lt;if $hiddenFallenAngel&gt;&gt;
-        &lt;div style=&quot;color: #cc88ff; font-weight: bold;&quot;&gt;★ Путь Падшего Ангела открыт&lt;/div&gt;
-        &lt;div style=&quot;color: #ccccff; font-style: italic; font-size: 14px; margin-bottom: 5px;&quot;&gt;
-            Независимость &gt; 38, Справедливость &gt; 28, Воля &gt; 32
-        &lt;/div&gt;
-    &lt;&lt;/if&gt;&gt;
-    
-    &lt;&lt;if not $hiddenAngel and not $hiddenDemon and not $hiddenDragon and not $hiddenVoid and not $hiddenCreator and not $hiddenFallenAngel&gt;&gt;
-        &lt;div style=&quot;color: #888; font-style: italic;&quot;&gt;Ни один скрытый путь не открыт&lt;/div&gt;
-    &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;
-
 &lt;!-- ===== РОД ===== --&gt;
 &lt;div style=&quot;margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px;&quot;&gt;
     &lt;h3 style=&quot;color: #d4af37; letter-spacing: 4px; margin-bottom: 5px;&quot;&gt;✦ РОД&lt;/h3&gt;
